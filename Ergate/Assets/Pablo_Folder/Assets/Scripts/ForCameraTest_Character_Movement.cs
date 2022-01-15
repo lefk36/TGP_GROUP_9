@@ -7,6 +7,7 @@ public class ForCameraTest_Character_Movement : MonoBehaviour
     private Rigidbody m_RB; //Rigidbody
     [SerializeField] private CapsuleCollider m_PlayerCollider; //Collider of the player
     [SerializeField] private LayerMask m_Ground; //Ground layr mask
+    [SerializeField] private Transform m_Cam;
 
     [SerializeField] [Min(0f)] private float m_TurnSmoothTime; //Makes the rotation of the player smoother
     private float m_PlayerSpeed = 1f; //Speed of the player
@@ -57,7 +58,7 @@ public class ForCameraTest_Character_Movement : MonoBehaviour
         //Gets the direction where the character is moving
         Vector3 direction = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
 
-        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg; //Calculates the angle where the character is facing
+        float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg + m_Cam.eulerAngles.y; //Calculates the angle where the character is facing
 
         Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward; //Calculates the direction in which the player is moving
 
