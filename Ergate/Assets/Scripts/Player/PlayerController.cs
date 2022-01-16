@@ -71,7 +71,7 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        //update handles logic such as input. Physics calculations are done in fixed update
+        //update handles logic. Actual Physics calculations are done in fixed update
 
         //find if player is on ground. small modifications to the collider are made to make the result more accurate
         RaycastHit hit;
@@ -92,7 +92,16 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButtonDown("Jump") && !lockMovement && isOnGround)
         {
+            animator.SetTrigger("Jump");
             jumping = true;
+        }
+        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f) && isOnGround)
+        {
+            animator.SetBool("IsRunning", true);
+        }
+        else
+        {
+            animator.SetBool("IsRunning", false);
         }
     }
     private void FixedUpdate()
@@ -166,5 +175,6 @@ public class PlayerController : MonoBehaviour
     {
         impactDirection = impactDirection.normalized;
         // implementation for taking damage. Interrupt attacking, calculate if the hit has knocked the player down. If it did, calculate how far they fly, if at all.
+        //Perhaps this will be edited to make a damage script with similar functionality between the player and the enemies.
     }
 }
