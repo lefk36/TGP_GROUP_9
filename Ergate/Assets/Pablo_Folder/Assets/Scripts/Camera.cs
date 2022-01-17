@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class Camera : MonoBehaviour
 {
-    [SerializeField] private Vector3 m_LocalCameraOffSet; //Position of the camera from the player.
+    public Vector3 m_LocalCameraOffSet; //Position of the camera from the player.
     [SerializeField] private Transform m_TrackedObjectTransform; //Object that the camera will follow
     [SerializeField] private Transform m_Camera; //Camera Transform
     [SerializeField] private float m_AutoCamSpeed; //Speed in which the camra follows the player
-    [SerializeField] private float m_Sensitivity; //Sensitivity of the camera
-    [SerializeField] private float m_ClampAngle;//Limit angle movement X rotation
+
+    [Range(0f, 2000f)] //Made it a range so it can be changed in inspector
+    [Min(0f)][SerializeField] private float m_Sensitivity; //Sensitivity of the camera
+
+    [Range(0f, 80f)]
+    [Min(0f)][SerializeField] private float m_ClampAngle;//Limit angle movement X rotation
     //Mouse Input Variables
     private float m_MouseX;
     private float m_MouseY;
@@ -20,9 +24,11 @@ public class Camera : MonoBehaviour
     private float m_MixedInputX;
     private float m_MixedInputY;
     //Rotation X axis
-    private float m_RotationX;
+    [SerializeField] private float m_RotationX;
     //ROtation Y Axis
-    private float m_RotationY;
+    [SerializeField] private float m_RotationY;
+    //List of enemies located
+    List<GameObject> m_EnemiesLocated = new List<GameObject>();
 
     private void Start()
     {
@@ -35,10 +41,13 @@ public class Camera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //Makes the cursor invisible
         Cursor.visible = false;
+        //Makes the camera start on that rotation
+        transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
 
     }
 
-    private void Update()
+    private void LateUpdate()
     {
         //Intent camera
         //Sets the Axis input to their variables
@@ -60,19 +69,23 @@ public class Camera : MonoBehaviour
 
         //Sets the rotation of the camera holder to the rotation on the x and y axis
         transform.rotation = Quaternion.Euler(m_RotationX, m_RotationY, 0f);
+        //Sets the position of the camera holder always in the character
+        transform.position = m_TrackedObjectTransform.parent.position;
+
+        
+        
     }
 
     //I put it on FixedUpdate because in Late it makes the camera jittery
     private void FixedUpdate()
     {
-
         //AutoCamera
         float worldYRotInRad = m_Camera.rotation.eulerAngles.y * Mathf.Deg2Rad; //The y rotation of the camera in radians
-
         //Current position of the camera
         Vector3 currentCameraPosition = m_Camera.position - new Vector3(m_LocalCameraOffSet.z * Mathf.Sin(worldYRotInRad) + m_LocalCameraOffSet.x * Mathf.Cos(worldYRotInRad),
                                                                     m_LocalCameraOffSet.y,
                                                                     m_LocalCameraOffSet.z * Mathf.Cos(worldYRotInRad) - m_LocalCameraOffSet.x * Mathf.Sin(worldYRotInRad));
+
         //Position of the offSetCamera
         Vector3 cameraOffSetPosition = m_Camera.position - currentCameraPosition;
 
@@ -81,29 +94,6 @@ public class Camera : MonoBehaviour
 
         //Makes the camera follow the player
         m_Camera.position = Vector3.MoveTowards(currentCameraPosition, m_TrackedObjectTransform.position, distToTarget * m_AutoCamSpeed * Time.fixedDeltaTime) + cameraOffSetPosition;
-
-        //Intent Camera
-        //Modify the rotation of the y rotation of the rotation point in the character. 
-        //if (Input.GetAxis("Mouse X") > 0f)
-        //{
-        //    //Positive X axis
-        //    m_RotationPoint.rotation = m_RotationPoint.rotation * Quaternion.Euler(0f, Input.GetAxis("Mouse X") * m_Sensitivity * Time.fixedDeltaTime, 0f);
-        //}
-        //else if (Input.GetAxis("Mouse X") < 0f)
-        //{
-        //    //Negative x axis
-        //    m_RotationPoint.rotation = m_RotationPoint.rotation * Quaternion.Euler(0f, Input.GetAxis("Mouse X") * m_Sensitivity * Time.fixedDeltaTime, 0f);
-        //}
-        //else if (Input.GetAxis("ControllerHorizontal") > 0)
-        //{
-        //    //Controller positive x axis
-        //    m_RotationPoint.rotation = m_RotationPoint.rotation * Quaternion.Euler(0f, Input.GetAxis("ControllerHorizontal") * m_Sensitivity * Time.fixedDeltaTime, 0f);
-        //}
-        //else if (Input.GetAxis("ControllerHorizontal") < 0)
-        //{
-        //    //Controller negative x axis
-        //    m_RotationPoint.rotation = m_RotationPoint.rotation * Quaternion.Euler(0f, Input.GetAxis("ControllerHorizontal") * m_Sensitivity * Time.fixedDeltaTime, 0f);
-        //}
 
 
     }
