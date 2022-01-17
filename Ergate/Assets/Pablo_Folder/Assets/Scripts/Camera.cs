@@ -51,8 +51,8 @@ public class Camera : MonoBehaviour
     {
         //Intent camera
         //Sets the Axis input to their variables
-        m_ControllerHorizontal = Input.GetAxis("Horizontal");
-        m_ControllerVertical = Input.GetAxis("Vertical");
+        m_ControllerHorizontal = Input.GetAxis("ControllerHorizontal");
+        m_ControllerVertical = Input.GetAxis("ControllerVertical");
         m_MouseX = Input.GetAxis("Mouse X");
         m_MouseY = Input.GetAxis("Mouse Y");
 
