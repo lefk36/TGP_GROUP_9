@@ -14,11 +14,13 @@ public class PlayerController : MonoBehaviour
     [Min(1.0f)] public float jumpingGravityScale;
     [Min(1.0f)] public float fallingMultiplier;
 
-    public bool lockMovement; //Access this property from other scripts whenever they move the character instead
+    public bool lockMovement; //Access these properties from other scripts whenever they move them instead
     public bool lockFalling;
+    public bool lockAttackDirection;
 
-    [HideInInspector] bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
-    [HideInInspector] bool isOnGround = true;
+    [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
+    [HideInInspector] public bool isOnGround = true;
+    public bool cameraLockedToTarget; //edit this in camera script to determine whether
 
     //this object's components
     private new Rigidbody rigidbody;
@@ -29,16 +31,22 @@ public class PlayerController : MonoBehaviour
     private GameObject character;
     private  Collider[] hitboxes;
 
+
     //model object and its components
     private GameObject model;
     private Animator animator;
 
-    //camera centre to find the direction its looking in
+    //camera objects to use for input calculations
     private Transform cameraCentre;
+    private new Transform camera;
+
+    //Attack direction object that rotates with input or uses the camera to rotate.
+    private Transform attackDirectionObject;
 
     //maths variables
     private Vector3 movementDirection;
-    float angularVelocity;
+    private float angularVelocity;
+    private float attackDirectionAngularVelocity;
 
     //private bools
     bool jumping = false;
@@ -61,10 +69,22 @@ public class PlayerController : MonoBehaviour
             else Debug.Log("No child object with the name 'Model' was found");
         }
         else Debug.Log("No child object with the name 'Character' was found");
+
         cameraCentre = transform.Find("Camera Centre");
-        if (cameraCentre == null)
+        if (cameraCentre != null)
         {
-            Debug.Log("No child object with the name 'Camera Centre' was found");
+            camera = cameraCentre.transform.Find("Main Camera");
+            if(camera == null)
+            {
+                Debug.Log("No child object with the name 'Main Camera' was found");
+            }
+        }
+        else Debug.Log("No child object with the name 'Camera Centre' was found");
+
+        attackDirectionObject = transform.Find("Attack Direction");
+        if (attackDirectionObject == null)
+        {
+            Debug.Log("No child object with the name 'Attack Direction' was found");
         }
 
 
@@ -80,10 +100,21 @@ public class PlayerController : MonoBehaviour
         Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); //first the character's direction is defined by the inputs
         Quaternion cameraYRotation = Quaternion.Euler(0, cameraCentre.rotation.eulerAngles.y, 0);
         inputDirection = cameraYRotation * inputDirection; //transform the direction vector by camera centre's quaternion to make the direction relative to camera
-        if (inputDirection.magnitude >= 0.1f && !lockMovement) //if user is pressing a movement button
+        if (cameraLockedToTarget)
         {
-            RotateCharacterToDirection(inputDirection);
-            movementDirection = inputDirection.normalized;
+            RotateObjectToDirection(cameraYRotation.eulerAngles.y, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
+        }
+        if (inputDirection.magnitude >= 0.1f) //if user is pressing a movement button
+        {
+            if (!cameraLockedToTarget && !lockAttackDirection)
+            {
+                RotateObjectToDirection(inputDirection, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
+            }
+            if (!lockMovement)
+            {
+                RotateObjectToDirection(inputDirection, character.transform, rotationTime, ref angularVelocity);
+                movementDirection = inputDirection.normalized;
+            }
         }
         else
         {
@@ -95,7 +126,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Jump");
             jumping = true;
         }
-        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f) && isOnGround)
+        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f || inputDirection.magnitude > 0.1f) && isOnGround && !lockMovement)
         {
             animator.SetBool("IsRunning", true);
         }
@@ -165,11 +196,16 @@ public class PlayerController : MonoBehaviour
         
 
     }
-    void RotateCharacterToDirection(Vector3 direction)
+    void RotateObjectToDirection(Vector3 direction, Transform target, float timeToRotate, ref float outVelocity)
     {
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg; //Calculates the angle on which to rotate the character
-        float angle = Mathf.SmoothDampAngle(character.transform.eulerAngles.y, targetAngle, ref angularVelocity, rotationTime); // Function to smooth the angle movement
-        character.transform.rotation = Quaternion.Euler(0f, angle, 0f);
+        float angle = Mathf.SmoothDampAngle(target.eulerAngles.y, targetAngle, ref outVelocity, timeToRotate); // Function to smooth the angle movement
+        target.rotation = Quaternion.Euler(0f, angle, 0f);
+    }
+    void RotateObjectToDirection(float targetAngle, Transform target, float timeToRotate, ref float outVelocity)
+    {
+        float angle = Mathf.SmoothDampAngle(target.eulerAngles.y, targetAngle, ref outVelocity, timeToRotate); // Function to smooth the angle movement
+        target.rotation = Quaternion.Euler(0f, angle, 0f);
     }
     public void TakeDamage(Vector3 impactDirection, int damage, int poiseDamage)
     {

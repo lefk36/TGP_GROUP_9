@@ -55,7 +55,6 @@ public class Camera : MonoBehaviour
         m_ControllerVertical = Input.GetAxis("ControllerVertical");
         m_MouseX = Input.GetAxis("Mouse X");
         m_MouseY = Input.GetAxis("Mouse Y");
-
         //Mixes both mouse and controller input, so I dont put the code twice
         m_MixedInputX = m_MouseX + m_ControllerHorizontal;
         m_MixedInputY = -m_MouseY + m_ControllerVertical;
