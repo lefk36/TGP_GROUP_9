@@ -198,7 +198,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 731576027, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
 --- !u!1 &79150941
 GameObject:
@@ -929,7 +930,6 @@ MonoBehaviour:
   m_Ground:
     serializedVersion: 2
     m_Bits: 8
-  m_Target: {fileID: 1972127812}
 --- !u!1 &1517744667
 GameObject:
   m_ObjectHideFlags: 0
