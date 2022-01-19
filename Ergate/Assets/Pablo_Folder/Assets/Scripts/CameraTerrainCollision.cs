@@ -6,7 +6,6 @@ public class CameraTerrainCollision : MonoBehaviour
 {
     private RaycastHit hit;
     [SerializeField] private LayerMask m_Ground;
-    [SerializeField] private Transform m_Target;
     private Vector3 m_offset;
 
     private void Start()
