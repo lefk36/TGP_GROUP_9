@@ -33,12 +33,12 @@ public class PlayerController : MonoBehaviour
 
 
     //model object and its components
-    private GameObject model;
-    private Animator animator;
+    [HideInInspector] public GameObject model;
+    [HideInInspector] public Animator animator;
 
     //camera objects to use for input calculations
-    private Transform cameraCentre;
-    private new Transform camera;
+    [HideInInspector] public GameObject cameraCentre;
+    [HideInInspector] public new GameObject camera;
 
     //Attack direction object that rotates with input or uses the camera to rotate.
     private Transform attackDirectionObject;
@@ -70,10 +70,10 @@ public class PlayerController : MonoBehaviour
         }
         else Debug.Log("No child object with the name 'Character' was found");
 
-        cameraCentre = transform.Find("Camera Centre");
+        cameraCentre = transform.Find("Camera Centre").gameObject;
         if (cameraCentre != null)
         {
-            camera = cameraCentre.transform.Find("Main Camera");
+            camera = cameraCentre.transform.Find("Main Camera").gameObject;
             if(camera == null)
             {
                 Debug.Log("No child object with the name 'Main Camera' was found");
@@ -98,7 +98,7 @@ public class PlayerController : MonoBehaviour
         isOnGround = Physics.SphereCast(movementCollider.bounds.center, movementCollider.radius-0.2f, Vector3.down, out hit, movementCollider.bounds.extents.y-0.2f, m_Ground);
 
         Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); //first the character's direction is defined by the inputs
-        Quaternion cameraYRotation = Quaternion.Euler(0, cameraCentre.rotation.eulerAngles.y, 0);
+        Quaternion cameraYRotation = Quaternion.Euler(0, cameraCentre.transform.rotation.eulerAngles.y, 0);
         inputDirection = cameraYRotation * inputDirection; //transform the direction vector by camera centre's quaternion to make the direction relative to camera
         if (cameraLockedToTarget)
         {
