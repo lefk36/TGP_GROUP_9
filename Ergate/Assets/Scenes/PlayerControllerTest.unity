@@ -1363,6 +1363,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 46803666}
     m_Modifications:
+    - target: {fileID: 331821925537053135, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 331821925537053135, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 331821925537053135, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 331821925537053135, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 331821925537053135, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1974813283724407729, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
       propertyPath: m_Name
       value: WeaponWheel
@@ -1455,6 +1475,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6020033465480329852, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020033465480329852, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6020033465480329852, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7041674307481228818, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -1524,5 +1556,29 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 555628669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+--- !u!1 &4314367972499868177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4943754815482095059, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+  m_PrefabInstance: {fileID: 4314367972499868176}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4314367972499868178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4314367972499868177}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efb8db06eed2c464bac100f0135fa0dd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiMask:
+    serializedVersion: 2
+    m_Bits: 0
+  buttonHoldingTimeRequired: 0
+  cursorHolderUI: {fileID: 0}
+  weaponWheelUI: {fileID: 0}
