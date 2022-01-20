@@ -154,9 +154,6 @@ public class EnemiesCameraLock : MonoBehaviour
         while (true)
         {
             m_Enemies = GameObject.FindGameObjectsWithTag("Enemy");
-
-            Debug.Log("CurrentIndexOnTarget" + m_TargetableEnemyIndex);
-            Debug.Log("ListLength" + m_TargetableEnemies.Count);
             foreach (GameObject enemy in m_Enemies)
             {
                 m_RayDirection = enemy.transform.position - transform.position;

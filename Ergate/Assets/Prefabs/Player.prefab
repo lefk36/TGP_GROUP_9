@@ -226,8 +226,9 @@ GameObject:
   - component: {fileID: 4314367972261544405}
   - component: {fileID: 4314367972261544404}
   - component: {fileID: 4314367972261544403}
-  - component: {fileID: 86736269}
-  - component: {fileID: 731576027}
+  - component: {fileID: 1343191694}
+  - component: {fileID: 1343191696}
+  - component: {fileID: 1343191698}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -281,7 +282,7 @@ Camera:
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 2147483647
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -301,7 +302,7 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4314367972261544402}
   m_Enabled: 1
---- !u!114 &86736269
+--- !u!114 &1343191694
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -313,8 +314,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b071db857413943acdc79f87bf61f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1427165005}
---- !u!114 &731576027
+  targetObj: {fileID: 0}
+--- !u!114 &1343191696
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,6 +330,29 @@ MonoBehaviour:
   m_Ground:
     serializedVersion: 2
     m_Bits: 8
+--- !u!114 &1343191698
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4314367972261544402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d758c2dfdcd0f7343ba4f7d7f6de36d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TargetableEnemyIndex: 0
+  m_LockOn: 0
+  m_TurnToEnemySpeed: 0
+  m_MaxDistanceAllowed: 25
+  m_TargetableEnemies: []
+  m_Layer:
+    serializedVersion: 2
+    m_Bits: 72
+  m_TargetToLook: {fileID: 1343191694}
+  m_CameraMovement: {fileID: 3382758903527361518}
+  m_Player: {fileID: 3142202214008486164}
 --- !u!136 &558449382
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -490,6 +514,7 @@ MonoBehaviour:
   m_MouseSensitivity: 1000
   m_ControllerSensitivity: 300
   m_ClampAngle: 60
+  m_TurnSmoothRotation: 0
 --- !u!136 &979723894
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -748,6 +773,11 @@ GameObject:
 --- !u!1 &3808556903321761616 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: 6ae2aa4f1b36c27418f51b026df938ea, type: 3}
+  m_PrefabInstance: {fileID: 4314367970520738138}
+  m_PrefabAsset: {fileID: 0}
+--- !u!137 &3142202214008486164 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 1172324090021531726, guid: 6ae2aa4f1b36c27418f51b026df938ea, type: 3}
   m_PrefabInstance: {fileID: 4314367970520738138}
   m_PrefabAsset: {fileID: 0}
 --- !u!4 &4347398276627779249 stripped
