@@ -246,7 +246,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelectionCursorHolder
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 339181142359768579, guid: d4503cbc9955eec4699674261a92300c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: d4503cbc9955eec4699674261a92300c, type: 3}
 --- !u!224 &2103157371777603313 stripped
 RectTransform:
