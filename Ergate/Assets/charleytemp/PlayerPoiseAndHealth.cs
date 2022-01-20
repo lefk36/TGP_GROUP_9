@@ -11,10 +11,12 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     private int defaultPoiseRegen = 5;
     private int defaultMaxHealth = 100;
     private int defaultMaxPoise = 100;
-    private bool hasRegened;
+    private bool hasRegenedHealth;
+    private bool hasRegenedPoise;
     [SerializeField] private int currentPlayerHealth;
     [SerializeField] private int currentPlayerPoise;
-    [SerializeField] private int timeBetweenRegen; //time in seconds before health regen
+    [SerializeField] private int timeBetweenHealthRegen; //time in seconds before health regen
+    [SerializeField] private int timeBetweenPoiseRegen; //time in seconds before Poise regen
     [SerializeField] private bool isKnockedDown;
     #endregion
 
@@ -22,7 +24,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     public int maximumHealth = 100; //
 
     public int currentPlayerPoiseRegen;  //May be changed with items in future
-    public int currentHealthRegen;       //
+    public int currentPlayerHealthRegen;       //
 
     
     void Awake()
@@ -34,11 +36,12 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         currentPlayerPoise = maximumPoise;      //
 
         currentPlayerPoiseRegen = defaultPoiseRegen;
-        currentHealthRegen = defaultHealthRegen;
+        currentPlayerHealthRegen = defaultHealthRegen;
     }
     private void Start()
     {
-        hasRegened = false;
+        hasRegenedHealth = false;
+        hasRegenedPoise = false;
         rb = GetComponent<Rigidbody>();
         //StartCoroutine(RegenHealth()); //restores health every 5 seconds so that we don't have to mess around with floats
     }
@@ -55,15 +58,15 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         if (currentPlayerHealth <= 0)
             PlayerDie();
 
-        if (currentPlayerHealth <= maximumHealth && hasRegened == false)
+        if (currentPlayerHealth <= maximumHealth && hasRegenedHealth == false)
         {
             StartCoroutine(RegenHealth()); // only regens when health is below full
         }
         #endregion
 
         #region Poise Stuff
-        if (currentPlayerPoise <= maximumPoise)
-            currentPlayerPoise += currentPlayerPoiseRegen;
+        if (currentPlayerPoise <= maximumPoise && hasRegenedPoise == false)
+            StartCoroutine(RegenPoise());
         if (currentPlayerPoise < minimumPoise)
             currentPlayerPoise = minimumPoise;
         if (currentPlayerPoise <= 0)
@@ -90,9 +93,16 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     IEnumerator RegenHealth()
     {
-        currentPlayerHealth += currentHealthRegen;
-        hasRegened = true;
-        yield return new WaitForSeconds(timeBetweenRegen);
-        hasRegened = false;
+        currentPlayerHealth += currentPlayerHealthRegen;
+        hasRegenedHealth = true;
+        yield return new WaitForSeconds(timeBetweenHealthRegen);
+        hasRegenedHealth = false;
+    }
+    IEnumerator RegenPoise()
+    {
+        currentPlayerPoise += currentPlayerPoiseRegen;
+        hasRegenedPoise = true;
+        yield return new WaitForSeconds(timeBetweenPoiseRegen);
+        hasRegenedPoise = false;
     }
 }
