@@ -29,7 +29,8 @@ public class Camera : MonoBehaviour
     private float m_ControllerRotationY;
     //List of enemies located
     List<GameObject> m_EnemiesLocated = new List<GameObject>();
-    private void OnEnable()
+
+    private void Start()
     {
         //vector of the camera holder rotation
         Vector3 rotation = transform.localRotation.eulerAngles;
@@ -44,12 +45,10 @@ public class Camera : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         //Makes the cursor invisible
         Cursor.visible = false;
-    }
-    private void OnDisable()
-    {
-        //on disabled, make cursor work as normal
-        Cursor.lockState = CursorLockMode.Confined;
-        Cursor.visible = true;
+        //Makes the camera start on that rotation
+        transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+
+
     }
 
     private void LateUpdate()

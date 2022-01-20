@@ -427,8 +427,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8de9cfe5725dd594c8a2105fd727cd73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cursorHolderUI: {fileID: 0}
-  weaponWheelUI: {fileID: 0}
 --- !u!136 &414501707
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -487,7 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ec175a34cb332419e2c8f418f65f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MouseSensitivity: 1000
+  m_MouseSensitivity: 210
   m_ControllerSensitivity: 352
   m_ClampAngle: 60
 --- !u!136 &979723894
@@ -599,10 +597,6 @@ MonoBehaviour:
   readyForAction: 1
   isOnGround: 1
   cameraLockedToTarget: 0
-  model: {fileID: 0}
-  animator: {fileID: 0}
-  cameraCentre: {fileID: 0}
-  camera: {fileID: 0}
 --- !u!114 &1031727961
 MonoBehaviour:
   m_ObjectHideFlags: 0
