@@ -40,13 +40,14 @@ public class EnemiesCameraLock : MonoBehaviour
     private void Start()
     {
         StartCoroutine(EnemyListChange());
-
+        m_ScrollWheelInput = 0;
     }
 
     private void Update()
     {
 
-        m_ScrollWheelInput = Input.GetAxis("Mouse ScrollWheel");
+        m_ScrollWheelInput = Input.GetAxisRaw("Mouse ScrollWheel");
+        Debug.Log(m_ScrollWheelInput);
         m_ControllerHorizontal = Input.GetAxis("ControllerHorizontal");
         m_RightStickPressed = Input.GetButton("RightStick");
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
@@ -81,6 +82,8 @@ public class EnemiesCameraLock : MonoBehaviour
 
                 if(m_LockOn)
                 {
+                    Debug.Log("True");
+                    Debug.Log(m_ScrollWheelInput);
                     if(m_ScrollWheelInput != 0f)
                     {
                         m_TargetableEnemyIndex += Mathf.FloorToInt(m_ScrollWheelInput * 10);
