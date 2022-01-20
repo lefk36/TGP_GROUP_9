@@ -27,14 +27,16 @@ public class Camera_Movement : MonoBehaviour
     private float m_ControllerRotationX;
     //ROtation Y Axis(Controller)
     private float m_ControllerRotationY;
-    
-    private void Start(){
-        transform.localRotation = Quaternion.Euler(0,0,0);
+
+
+    private void Start()
+    {
+        //Makes the camera start on that rotation
+        transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
     }
     private void OnEnable()
     {
         //vector of the camera holder rotation
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
         Vector3 rotation = transform.localRotation.eulerAngles;
         //Set the x and y rotation to the variables made for that
         m_MouseRotationX = rotation.x;
@@ -72,15 +74,12 @@ public class Camera_Movement : MonoBehaviour
         //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
         if (Mathf.Abs(m_MouseX) > 0.1f || Mathf.Abs(m_MouseY) > 0.1f)
         {
-            transform.localRotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
+            transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
         }
         else if (Mathf.Abs(m_ControllerHorizontal) > 0.1f || Mathf.Abs(m_ControllerVertical) > 0.1f)
         {
-            transform.localRotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
+            transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
         }
-
-
-        
     }
 
     ////I put it on FixedUpdate because in Late it makes the camera jittery

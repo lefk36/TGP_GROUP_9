@@ -4,20 +4,11 @@ using UnityEngine;
 
 public class SimpleLookAt : MonoBehaviour
 {
-    public Transform targetObj;
+    public Transform target;
 
     // Update is called once per frame
     void Update()
     {
-        if(targetObj == null)
-        {
-            Vector3 target = transform.position + (transform.parent.localRotation * Vector3.forward);
-            transform.LookAt(target);
-        }
-        else
-        {
-            transform.LookAt(targetObj);
-        }
-        
+        transform.LookAt(target);
     }
 }
