@@ -8,17 +8,29 @@ public class explosionScript : MonoBehaviour
     public float m_explosionForce;
     public float m_damage = 100f;
     public ParticleSystem m_explosionParticles;
-    public GameObject m_barrel_partOne;
-    public GameObject m_barrel_partTwo;
+  
     private Collider[] colliders;
+    private Collider[] destroyedObjects;
     public void explode()
     {
         Vector3 position = transform.position;
         Quaternion rotation = transform.rotation;
-        GameObject b1 = Instantiate(m_barrel_partOne, new Vector3(position.x,position.y + 0.5f, position.z), rotation);
-        GameObject b2 = Instantiate(m_barrel_partTwo, new Vector3(position.x, position.y - 0.5f, position.z), rotation);
-        Destroy(transform.gameObject);
+        
+        destroyedObjects = Physics.OverlapSphere(transform.position, m_radius);
 
+        for(int x = 0; x < destroyedObjects.Length; x++)
+        {
+            if(destroyedObjects[x].GetComponent<destructibleObject>() != null)
+            {
+                destroyedObjects[x].GetComponent<destructibleObject>().destroyObject();
+            }
+        }
+
+        /*if(transform.gameObject.GetComponent<destructibleObject>() != null)
+        {
+            transform.gameObject.GetComponent<destructibleObject>().destroyObject();
+        }*/
+        
         colliders = Physics.OverlapSphere(transform.position, m_radius);
         for(int i = 0; i < colliders.Length; i++)
         {
@@ -30,6 +42,13 @@ public class explosionScript : MonoBehaviour
                 {
                     colliders[i].GetComponent<barrelStatsScript>().takeDamage(m_damage);
                 }
+
+                if(colliders[i].GetComponent<objectStats>() != null)
+                {
+                    colliders[i].GetComponent<objectStats>().takeDamage(m_damage);
+                }
+
+                
                 colliders[i].attachedRigidbody.AddExplosionForce(m_explosionForce, transform.position, m_radius);
                 ParticleSystem temp = Instantiate(m_explosionParticles, position, rotation);
                 
