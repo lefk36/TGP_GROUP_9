@@ -60,7 +60,6 @@ public class Camera_Movement : MonoBehaviour
         m_MouseX = Input.GetAxis("Mouse X");
         m_MouseY = Input.GetAxis("Mouse Y");
 
-
         //Sets the rotations to the input multiplied by the sensitivity to control how fast the camera moves
         m_MouseRotationY += m_MouseX * m_MouseSensitivity * Time.deltaTime;
         m_MouseRotationX += -m_MouseY * m_MouseSensitivity * Time.deltaTime;
@@ -73,11 +72,11 @@ public class Camera_Movement : MonoBehaviour
         m_ControllerRotationX = Mathf.Clamp(m_ControllerRotationX, -m_ClampAngle, m_ClampAngle);
 
         //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
-        if (Input.GetAxis("Mouse X") < 0.1f || Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse Y") < 0.1f || Input.GetAxis("Mouse Y") > 0.1f)
+        if (Mathf.Abs(m_MouseX) > 0.1f || Mathf.Abs(m_MouseY) > 0.1f)
         {
             transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
         }
-        else if (Input.GetAxis("ControllerHorizontal") < 0.1f || Input.GetAxis("ControllerHorizontal") > 0.1f || Input.GetAxis("ControllerVertical") < 0.1f || Input.GetAxis("ControllerVertical") > 0.1f)
+        else if (Mathf.Abs(m_ControllerHorizontal) > 0.1f || Mathf.Abs(m_ControllerVertical) > 0.1f)
         {
             transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
         }

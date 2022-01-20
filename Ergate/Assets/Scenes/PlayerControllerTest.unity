@@ -1459,6 +1459,22 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 5b3b62907da471445a6baf0e1f1fb982, type: 3}
+    - target: {fileID: 8951593129013531215, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_Interactable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951593129013531215, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951593129013531215, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8951593129013531215, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
+      propertyPath: m_Colors.m_DisabledColor.r
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b77dabe6ea9733f489a291b764e3eb76, type: 3}
 --- !u!1001 &4314367972499868176
@@ -1469,10 +1485,6 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 555628669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: cursorHolder
-      value: 
-      objectReference: {fileID: 1828825525}
-    - target: {fileID: 555628669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: weaponWheelUI
       value: 
       objectReference: {fileID: 1951522305}
@@ -1480,9 +1492,21 @@ PrefabInstance:
       propertyPath: cursorHolderUI
       value: 
       objectReference: {fileID: 1828825525}
-    - target: {fileID: 731576027, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_Ground.m_Bits
-      value: 8
+    - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_MouseSensitivity
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: lockMovement
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: lockAttackDirection
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7208981455675459386, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_RootOrder
