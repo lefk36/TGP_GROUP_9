@@ -133,7 +133,7 @@ PrefabInstance:
     - target: {fileID: 86736269, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: target
       value: 
-      objectReference: {fileID: 1972127812}
+      objectReference: {fileID: 0}
     - target: {fileID: 86736269, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -143,8 +143,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1343191698}
     - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_MouseSensitivity
       value: 1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_TurnSmoothRotation
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_ControllerSensitivity
@@ -537,7 +545,7 @@ GameObject:
   - component: {fileID: 585180730}
   - component: {fileID: 585180729}
   m_Layer: 6
-  m_Name: Capsule (2)
+  m_Name: 1
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -634,7 +642,7 @@ GameObject:
   - component: {fileID: 657643350}
   - component: {fileID: 657643349}
   m_Layer: 6
-  m_Name: Capsule (3)
+  m_Name: 3
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -960,7 +968,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b071db857413943acdc79f87bf61f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1972127812}
+  targetObj: {fileID: 0}
 --- !u!114 &1343191696
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,13 +996,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d758c2dfdcd0f7343ba4f7d7f6de36d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_TargetableEnemyIndex: 0
   m_LockOn: 0
+  m_TurnToEnemySpeed: 0.2
   m_MaxDistanceAllowed: 25
+  m_TargetableEnemies: []
   m_Layer:
     serializedVersion: 2
     m_Bits: 72
   m_TargetToLook: {fileID: 1343191694}
   m_CameraMovement: {fileID: 1691199696}
+  m_Player: {fileID: 1579710576}
 --- !u!1 &1517744667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1008,7 +1020,7 @@ GameObject:
   - component: {fileID: 1517744670}
   - component: {fileID: 1517744669}
   m_Layer: 6
-  m_Name: Capsule (1)
+  m_Name: 2
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,6 +1104,11 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1517744667}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!137 &1579710576 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 3142202214008486164, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+  m_PrefabInstance: {fileID: 19584540}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1643304623
 GameObject:
   m_ObjectHideFlags: 0
@@ -1199,11 +1216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31ec175a34cb332419e2c8f418f65f2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!4 &1972127812 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1427165005, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-  m_PrefabInstance: {fileID: 19584540}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1983818124
 GameObject:
   m_ObjectHideFlags: 0

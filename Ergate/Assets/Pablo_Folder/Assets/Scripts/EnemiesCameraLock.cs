@@ -35,14 +35,14 @@ public class EnemiesCameraLock : MonoBehaviour
     [SerializeField] private SimpleLookAt m_TargetToLook;
     //Camera Center
     [SerializeField] private Camera_Movement m_CameraMovement;
+    [SerializeField] private Renderer m_Player;
     private Vector3 m_RayDirection;
 
     private bool m_CameraMovementActive = true;
 
     private void Start()
     {
-        StartCoroutine(EnemyListChange());
-
+        StartCoroutine(EnemyListChange());    
     }
 
     private void Update()
@@ -126,29 +126,11 @@ public class EnemiesCameraLock : MonoBehaviour
                 }
             }
 
-            //if(m_ScrollWheelInput != 0f)
-            //{
-            //    m_TargetableEnemyIndex += Mathf.FloorToInt(m_ScrollWheelInput * 10);
-            //    Debug.Log(m_TargetableEnemyIndex);
-            //}
-            //if (m_CameraTargetIndex == (m_CameraTargetIndex - 1) + 1)
-            //{
-            //    m_TargetableEnemyIndex++;
-            //    m_TargetToLook.target = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
-            //    if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
-            //    {
-            //        m_TargetableEnemyIndex = 0;
-            //    }
-            //}
-            //else if(m_CameraTargetIndex < m_CameraTargetIndex + 1)
-            //{
-            //    m_TargetableEnemyIndex--;
-            //    m_TargetToLook.target = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
-            //    if (m_TargetableEnemyIndex < 0)
-            //    {
-            //        m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
-            //    }
-            //}
+            if(!m_Player.isVisible)
+            {
+                m_LockOn = false;
+            }
+            
 
             m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
             Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;

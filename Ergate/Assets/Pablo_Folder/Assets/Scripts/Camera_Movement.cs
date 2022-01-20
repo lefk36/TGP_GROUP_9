@@ -27,6 +27,10 @@ public class Camera_Movement : MonoBehaviour
     private float m_ControllerRotationX;
     //ROtation Y Axis(Controller)
     private float m_ControllerRotationY;
+    //Initial Rotation
+    private Vector3 m_InitialRotation;
+    //Turn Smooth rotation
+    [SerializeField] private float m_TurnSmoothRotation;
 
     private void Start(){
         transform.localRotation = Quaternion.Euler(0,0,0);
@@ -35,13 +39,13 @@ public class Camera_Movement : MonoBehaviour
     {
         //vector of the camera holder rotation
         transform.localRotation = Quaternion.Euler(0, 0, 0);
-        Vector3 rotation = transform.localRotation.eulerAngles;
+        m_InitialRotation = transform.localRotation.eulerAngles;
         //Set the x and y rotation to the variables made for that
-        m_MouseRotationX = rotation.x;
-        m_MouseRotationY = rotation.y;
+        m_MouseRotationX = m_InitialRotation.x;
+        m_MouseRotationY = m_InitialRotation.y;
 
-        m_ControllerRotationX = rotation.x;
-        m_ControllerRotationY = rotation.y;
+        m_ControllerRotationX = m_InitialRotation.x;
+        m_ControllerRotationY = m_InitialRotation.y;
 
         //Lock the cursor to not make the camera go around crazy
         Cursor.lockState = CursorLockMode.Locked;
@@ -81,10 +85,13 @@ public class Camera_Movement : MonoBehaviour
         if (Input.GetAxis("Mouse X") < 0.1f || Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse Y") < 0.1f || Input.GetAxis("Mouse Y") > 0.1f)
         {
             transform.localRotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
+            //transform.localRotation = Quaternion.Lerp(mouseRotation, m_InitialRotation, Time.deltaTime * m_TurnSmoothRotation);
+            //transform.localRotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
         }
         else if (Input.GetAxis("ControllerHorizontal") < 0.1f || Input.GetAxis("ControllerHorizontal") > 0.1f || Input.GetAxis("ControllerVertical") < 0.1f || Input.GetAxis("ControllerVertical") > 0.1f)
         {
             transform.localRotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
+            //transform.localRotation = Quaternion.Lerp(controllerRotation, m_InitialRotation, Time.deltaTime * m_TurnSmoothRotation);
         }
 
         
