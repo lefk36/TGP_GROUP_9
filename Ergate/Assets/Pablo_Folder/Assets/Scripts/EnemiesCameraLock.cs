@@ -6,7 +6,7 @@ public class EnemiesCameraLock : MonoBehaviour
 {
 
     private float m_CameraTargetIndex = 0;
-    private int m_TargetableEnemyIndex = 0;
+    [SerializeField] private int m_TargetableEnemyIndex = 0;
 
     //Bool to tell if the lock is on or off
     public bool m_LockOn;
@@ -17,7 +17,7 @@ public class EnemiesCameraLock : MonoBehaviour
     //Variable that will take the horizontal input of the controller
     private float m_ControllerHorizontal;
     //Turn speed of the camera
-    private float m_TurnToEnemySpeed;
+    [SerializeField] private float m_TurnToEnemySpeed;
     //Variable that will take the input for the right Stick press
     private bool m_RightStickPressed;
     //Variable that will take the input of the middle button click
@@ -28,7 +28,7 @@ public class EnemiesCameraLock : MonoBehaviour
     //List of enemies
     private GameObject[] m_Enemies;
     //List of enemies located
-    List<GameObject> m_TargetableEnemies = new List<GameObject>();
+    [SerializeField] private List<GameObject> m_TargetableEnemies = new List<GameObject>();
     //LayerMask for the enemies
     [SerializeField] private LayerMask m_Layer;
     //Target that the camera will be looking at
@@ -150,15 +150,16 @@ public class EnemiesCameraLock : MonoBehaviour
             //    }
             //}
 
-            m_TargetToLook.target = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
+            m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
             Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
             Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
             Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
+            
             m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
         }
         else
         {
-            m_TargetToLook.target = transform.GetChild(0).transform;
+            m_TargetToLook.targetObj = null;
             if (!m_CameraMovementActive)
             {
                 m_CameraMovement.enabled = true;
@@ -173,6 +174,7 @@ public class EnemiesCameraLock : MonoBehaviour
             m_Enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
             Debug.Log("CurrentIndexOnTarget" + m_TargetableEnemyIndex);
+            Debug.Log("ListLength" + m_TargetableEnemies.Count);
             foreach (GameObject enemy in m_Enemies)
             {
                 m_RayDirection = enemy.transform.position - transform.position;
@@ -198,16 +200,29 @@ public class EnemiesCameraLock : MonoBehaviour
 
                         int indexOfGameObjectToRemove = m_TargetableEnemies.FindIndex(x => x.Equals(hit.collider.gameObject));
                         Debug.Log("IndexToRemove" + indexOfGameObjectToRemove);
+                        m_TargetableEnemies.Remove(hit.collider.gameObject);
 
-                        Debug.Log("ListLength" + m_TargetableEnemies.Count);
-                        if (indexOfGameObjectToRemove >= 0)
+                        if(m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
                         {
-                            m_TargetableEnemies.Remove(hit.collider.gameObject);
-                            //if (indexOfGameObjectToRemove > m_TargetableEnemyIndex)
-                            //{
-                                m_TargetableEnemyIndex = 0;
-                            //}
+                            m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
                         }
+                        else if(m_TargetableEnemyIndex < 0)
+                        {
+                            m_TargetableEnemyIndex = 0;
+                        }
+                        else if(m_TargetableEnemyIndex == indexOfGameObjectToRemove)
+                        {
+                            m_TargetableEnemyIndex = indexOfGameObjectToRemove - 1;
+                        }
+                        
+                        //if (indexOfGameObjectToRemove >= 0)
+                        //{
+                            
+                        //    //if (indexOfGameObjectToRemove > m_TargetableEnemyIndex)
+                        //    //{
+                        //        m_TargetableEnemyIndex = 0;
+                        //    //}
+                        //}
 
 
 
@@ -234,7 +249,7 @@ public class EnemiesCameraLock : MonoBehaviour
 
 
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }

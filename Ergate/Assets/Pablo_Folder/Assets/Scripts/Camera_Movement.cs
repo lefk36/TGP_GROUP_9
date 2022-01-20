@@ -27,14 +27,14 @@ public class Camera_Movement : MonoBehaviour
     private float m_ControllerRotationX;
     //ROtation Y Axis(Controller)
     private float m_ControllerRotationY;
-    //List of enemies located
-    List<GameObject> m_EnemiesLocated = new List<GameObject>();
+
     private void Start(){
         transform.localRotation = Quaternion.Euler(0,0,0);
     }
     private void OnEnable()
     {
         //vector of the camera holder rotation
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
         Vector3 rotation = transform.localRotation.eulerAngles;
         //Set the x and y rotation to the variables made for that
         m_MouseRotationX = rotation.x;
@@ -80,11 +80,11 @@ public class Camera_Movement : MonoBehaviour
         //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
         if (Input.GetAxis("Mouse X") < 0.1f || Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse Y") < 0.1f || Input.GetAxis("Mouse Y") > 0.1f)
         {
-            transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
+            transform.localRotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
         }
         else if (Input.GetAxis("ControllerHorizontal") < 0.1f || Input.GetAxis("ControllerHorizontal") > 0.1f || Input.GetAxis("ControllerVertical") < 0.1f || Input.GetAxis("ControllerVertical") > 0.1f)
         {
-            transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
+            transform.localRotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
         }
 
         
