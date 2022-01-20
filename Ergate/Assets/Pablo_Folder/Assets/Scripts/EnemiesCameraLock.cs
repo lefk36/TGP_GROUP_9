@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class EnemiesCameraLock : MonoBehaviour
 {
-    
+
     private float m_CameraTargetIndex = 0;
-    private int m_TargetableEnemyIndex = 0;
+    [SerializeField] private int m_TargetableEnemyIndex = 0;
 
     //Bool to tell if the lock is on or off
     public bool m_LockOn;
@@ -17,40 +17,42 @@ public class EnemiesCameraLock : MonoBehaviour
     //Variable that will take the horizontal input of the controller
     private float m_ControllerHorizontal;
     //Turn speed of the camera
-    private float m_TurnToEnemySpeed;
+    [SerializeField] private float m_TurnToEnemySpeed;
     //Variable that will take the input for the right Stick press
     private bool m_RightStickPressed;
     //Variable that will take the input of the middle button click
     private bool m_MiddleButtonPressed;
     //Maximum distance range
     [SerializeField] private float m_MaxDistanceAllowed;
-    
+
     //List of enemies
     private GameObject[] m_Enemies;
     //List of enemies located
-    List<GameObject> m_TargetableEnemies = new List<GameObject>();
+    [SerializeField] private List<GameObject> m_TargetableEnemies = new List<GameObject>();
     //LayerMask for the enemies
     [SerializeField] private LayerMask m_Layer;
     //Target that the camera will be looking at
     [SerializeField] private SimpleLookAt m_TargetToLook;
     //Camera Center
     [SerializeField] private Camera_Movement m_CameraMovement;
+    [SerializeField] private Renderer m_Player;
     private Vector3 m_RayDirection;
+
+    private bool m_CameraMovementActive = true;
 
     private void Start()
     {
-        StartCoroutine(EnemyListChange());
-
+        StartCoroutine(EnemyListChange());    
     }
 
     private void Update()
     {
-
-        m_ScrollWheelInput = Input.GetAxis("Mouse ScrollWheel");
+        
+        m_ScrollWheelInput = Input.mouseScrollDelta.y;
         m_ControllerHorizontal = Input.GetAxis("ControllerHorizontal");
         m_RightStickPressed = Input.GetButton("RightStick");
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
-        
+
         //m_Hits = Physics.SphereCastAll(transform.position, m_SphereCastRadius, Vector3.forward, m_MaxDistanceAllowed, m_Enemy);
 
         //for(int i = 0; i < m_Hits.Length; i++)
@@ -75,57 +77,86 @@ public class EnemiesCameraLock : MonoBehaviour
 
         if (m_MiddleButtonPressed || m_RightStickPressed)
         {
-            if(m_TargetableEnemies.Count != 0)
+            if (!m_LockOn)
             {
-                m_LockOn = true;
-
-                if(m_LockOn)
+                if (m_TargetableEnemies.Count != 0)
                 {
-                    if(m_ScrollWheelInput != 0f)
-                    {
-                        m_TargetableEnemyIndex += Mathf.FloorToInt(m_ScrollWheelInput * 10);
-                        Debug.Log(m_TargetableEnemyIndex);
-                    }
-                    //if (m_CameraTargetIndex == (m_CameraTargetIndex - 1) + 1)
-                    //{
-                    //    m_TargetableEnemyIndex++;
-                    //    m_TargetToLook.target = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
-                    //    if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
-                    //    {
-                    //        m_TargetableEnemyIndex = 0;
-                    //    }
-                    //}
-                    //else if(m_CameraTargetIndex < m_CameraTargetIndex + 1)
-                    //{
-                    //    m_TargetableEnemyIndex--;
-                    //    m_TargetToLook.target = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
-                    //    if (m_TargetableEnemyIndex < 0)
-                    //    {
-                    //        m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
-                    //    }
-                    //}
-
-
-                    Vector3 cameraCenterToFirstEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
-                    Quaternion lookFirstEnemyRotation = Quaternion.LookRotation(cameraCenterToFirstEnemy);
-                    Vector3 Firstrotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookFirstEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
-                    m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, Firstrotation.y, 0f);
+                    m_LockOn = true;
                 }
-                
-                
-
             }
+            else if (m_LockOn)
+            {
+                m_LockOn = false;
+            }
+
+
+
         }
 
-        
-    }
+        if (m_LockOn)
+        {
+            m_CameraTargetIndex += m_ScrollWheelInput;
 
+            if (m_CameraMovementActive)
+            {
+                m_CameraMovement.enabled = false;
+                m_CameraMovementActive = false;
+            }
+
+            if (m_CameraTargetIndex != 0f)
+            {
+                if (m_CameraTargetIndex > 0f)
+                {
+                    m_TargetableEnemyIndex++;
+                    if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                    {
+                        m_TargetableEnemyIndex = 0;
+                    }
+                    m_CameraTargetIndex = 0f;
+
+                }
+                else if (m_CameraTargetIndex < 0f)
+                {
+                    m_TargetableEnemyIndex--;
+                    if (m_TargetableEnemyIndex < 0)
+                    {
+                        m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                    }
+                    m_CameraTargetIndex = 0f;
+                }
+            }
+
+            if(!m_Player.isVisible)
+            {
+                m_LockOn = false;
+            }
+            
+
+            m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
+            Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
+            Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
+            Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
+            
+            m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
+        else
+        {
+            m_TargetToLook.targetObj = null;
+            if (!m_CameraMovementActive)
+            {
+                m_CameraMovement.enabled = true;
+                m_CameraMovementActive = true;
+            }
+        }
+    }
     IEnumerator EnemyListChange()
     {
-        while(true)
+        while (true)
         {
             m_Enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            
+
+            Debug.Log("CurrentIndexOnTarget" + m_TargetableEnemyIndex);
+            Debug.Log("ListLength" + m_TargetableEnemies.Count);
             foreach (GameObject enemy in m_Enemies)
             {
                 m_RayDirection = enemy.transform.position - transform.position;
@@ -133,10 +164,8 @@ public class EnemiesCameraLock : MonoBehaviour
                 Debug.DrawRay(transform.position, m_RayDirection, Color.red);
                 if (enemy.GetComponent<Renderer>().isVisible)
                 {
-                   
                     foreach (RaycastHit hit in m_Hits)
                     {
-                        
                         if (hit.collider.tag == "Enemy")
                         {
                             if (!m_TargetableEnemies.Contains(hit.collider.gameObject))
@@ -148,15 +177,61 @@ public class EnemiesCameraLock : MonoBehaviour
                 }
                 else
                 {
-                    foreach(RaycastHit hit in m_Hits)
+                    foreach (RaycastHit hit in m_Hits)
                     {
+
+                        int indexOfGameObjectToRemove = m_TargetableEnemies.FindIndex(x => x.Equals(hit.collider.gameObject));
+                        Debug.Log("IndexToRemove" + indexOfGameObjectToRemove);
                         m_TargetableEnemies.Remove(hit.collider.gameObject);
+
+                        if(m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                        {
+                            m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                        }
+                        else if(m_TargetableEnemyIndex < 0)
+                        {
+                            m_TargetableEnemyIndex = 0;
+                        }
+                        else if(m_TargetableEnemyIndex == indexOfGameObjectToRemove)
+                        {
+                            m_TargetableEnemyIndex = indexOfGameObjectToRemove - 1;
+                        }
                         
+                        //if (indexOfGameObjectToRemove >= 0)
+                        //{
+                            
+                        //    //if (indexOfGameObjectToRemove > m_TargetableEnemyIndex)
+                        //    //{
+                        //        m_TargetableEnemyIndex = 0;
+                        //    //}
+                        //}
+
+
+
+                        //else if (indexOfGameObjectToRemove == m_TargetableEnemyIndex)
+                        //{
+                        //    m_LockOn = false;
+                        //}
+
+                        //if (indexOfGameObjectToRemove >= 0)
+                        //{
+
+                        //}
+
+
+
+                        //var test = m_TargetableEnemies[indexOfGameObjectToRemove];
+                        //m_TargetableEnemies.Add(test);
+
                     }
                 }
-                
+
             }
-            yield return new WaitForSeconds(0.5f);
+
+
+
+
+            yield return new WaitForSeconds(0.1f);
         }
     }
 }
