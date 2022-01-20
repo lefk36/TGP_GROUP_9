@@ -8,16 +8,27 @@ public class WeaponWheel : MonoBehaviour
     public RectTransform cursorHolderUI;
     public GameObject weaponWheelUI;
     private PlayerController playerControllerScript;
+    private bool wheelActive = false;
     
     void Start()
     {
         playerControllerScript = transform.parent.gameObject.GetComponent<PlayerController>();
-        weaponWheelUI.SetActive(true);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetButton("WeaponWheel")){
+            if(!wheelActive)
+            {
+                weaponWheelUI.SetActive(true);
+                wheelActive = true;
+            }
+        }
+        if (Input.GetButtonUp("WeaponWheel"))
+        {
+            weaponWheelUI.SetActive(false);
+            wheelActive = false;
+        }
     }
 }
