@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class EnemiesCameraLock : MonoBehaviour
 {
+    
+    private float m_CameraTargetIndex = 0;
+    private int m_TargetableEnemyIndex = 0;
+
     //Bool to tell if the lock is on or off
     public bool m_LockOn;
     //Array of every hit that happens
@@ -12,6 +16,8 @@ public class EnemiesCameraLock : MonoBehaviour
     private float m_ScrollWheelInput;
     //Variable that will take the horizontal input of the controller
     private float m_ControllerHorizontal;
+    //Turn speed of the camera
+    private float m_TurnToEnemySpeed;
     //Variable that will take the input for the right Stick press
     private bool m_RightStickPressed;
     //Variable that will take the input of the middle button click
@@ -39,12 +45,12 @@ public class EnemiesCameraLock : MonoBehaviour
 
     private void Update()
     {
-        
+
         m_ScrollWheelInput = Input.GetAxis("Mouse ScrollWheel");
         m_ControllerHorizontal = Input.GetAxis("ControllerHorizontal");
         m_RightStickPressed = Input.GetButton("RightStick");
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
-
+        
         //m_Hits = Physics.SphereCastAll(transform.position, m_SphereCastRadius, Vector3.forward, m_MaxDistanceAllowed, m_Enemy);
 
         //for(int i = 0; i < m_Hits.Length; i++)
@@ -71,9 +77,41 @@ public class EnemiesCameraLock : MonoBehaviour
         {
             if(m_TargetableEnemies.Count != 0)
             {
-                m_TargetToLook.target = m_TargetableEnemies[0].transform;
                 m_LockOn = true;
 
+                if(m_LockOn)
+                {
+                    if(m_ScrollWheelInput != 0f)
+                    {
+                        m_TargetableEnemyIndex += Mathf.FloorToInt(m_ScrollWheelInput * 10);
+                        Debug.Log(m_TargetableEnemyIndex);
+                    }
+                    //if (m_CameraTargetIndex == (m_CameraTargetIndex - 1) + 1)
+                    //{
+                    //    m_TargetableEnemyIndex++;
+                    //    m_TargetToLook.target = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
+                    //    if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                    //    {
+                    //        m_TargetableEnemyIndex = 0;
+                    //    }
+                    //}
+                    //else if(m_CameraTargetIndex < m_CameraTargetIndex + 1)
+                    //{
+                    //    m_TargetableEnemyIndex--;
+                    //    m_TargetToLook.target = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
+                    //    if (m_TargetableEnemyIndex < 0)
+                    //    {
+                    //        m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                    //    }
+                    //}
+
+
+                    Vector3 cameraCenterToFirstEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
+                    Quaternion lookFirstEnemyRotation = Quaternion.LookRotation(cameraCenterToFirstEnemy);
+                    Vector3 Firstrotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookFirstEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
+                    m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, Firstrotation.y, 0f);
+                }
+                
                 
 
             }
@@ -113,7 +151,7 @@ public class EnemiesCameraLock : MonoBehaviour
                     foreach(RaycastHit hit in m_Hits)
                     {
                         m_TargetableEnemies.Remove(hit.collider.gameObject);
-                        Debug.Log("Object " + hit.collider.gameObject + " removed from list");
+                        
                     }
                 }
                 

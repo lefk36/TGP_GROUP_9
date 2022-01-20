@@ -142,6 +142,14 @@ PrefabInstance:
       propertyPath: m_CamLock
       value: 
       objectReference: {fileID: 1343191698}
+    - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_MouseSensitivity
+      value: 1001
+      objectReference: {fileID: 0}
+    - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_ControllerSensitivity
+      value: 578
+      objectReference: {fileID: 0}
     - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -952,7 +960,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4b071db857413943acdc79f87bf61f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1972127812}
 --- !u!114 &1343191696
 MonoBehaviour:
   m_ObjectHideFlags: 0
