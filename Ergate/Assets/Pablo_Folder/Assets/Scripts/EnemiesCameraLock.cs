@@ -134,7 +134,7 @@ public class EnemiesCameraLock : MonoBehaviour
 
             m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
             Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
-            Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
+            Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy, Vector3.up);
             Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
             
             m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);

@@ -969,6 +969,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetObj: {fileID: 0}
+  m_TurnSmooth: 0.2
 --- !u!114 &1343191696
 MonoBehaviour:
   m_ObjectHideFlags: 0
