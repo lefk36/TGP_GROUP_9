@@ -35,12 +35,12 @@ public class EnemiesCameraLock : MonoBehaviour
     [SerializeField] private SimpleLookAt m_TargetToLook;
     //Camera Center
     [SerializeField] private Camera_Movement m_CameraMovement;
+    [SerializeField] private Renderer m_Player;
     private Vector3 m_RayDirection;
 
     private void Start()
     {
-        StartCoroutine(EnemyListChange());
-
+        StartCoroutine(EnemyListChange());    
     }
 
     private void Update()
@@ -114,6 +114,26 @@ public class EnemiesCameraLock : MonoBehaviour
                 
                 
 
+            if(!m_Player.isVisible)
+            {
+                m_LockOn = false;
+            }
+            
+
+            m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
+            Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
+            Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
+            Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
+            
+            m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+        }
+        else
+        {
+            m_TargetToLook.targetObj = null;
+            if (!m_CameraMovementActive)
+            {
+                m_CameraMovement.enabled = true;
+                m_CameraMovementActive = true;
             }
         }
 
