@@ -57,38 +57,37 @@ public class Camera_Movement : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(!m_CamLock.m_LockOn)
+        
+        //Intent camera
+        //Sets the Axis input to their variables
+        m_ControllerHorizontal = Input.GetAxis("ControllerHorizontal");
+        m_ControllerVertical = Input.GetAxis("ControllerVertical");
+        m_MouseX = Input.GetAxis("Mouse X");
+        m_MouseY = Input.GetAxis("Mouse Y");
+
+
+        //Sets the rotations to the input multiplied by the sensitivity to control how fast the camera moves
+        m_MouseRotationY += m_MouseX * m_MouseSensitivity * Time.deltaTime;
+        m_MouseRotationX += -m_MouseY * m_MouseSensitivity * Time.deltaTime;
+
+        m_ControllerRotationY += m_ControllerHorizontal * m_ControllerSensitivity * Time.deltaTime;
+        m_ControllerRotationX += m_ControllerVertical * m_ControllerSensitivity * Time.deltaTime;
+
+        //Limits the rotation on the x axis
+        m_MouseRotationX = Mathf.Clamp(m_MouseRotationX, -m_ClampAngle, m_ClampAngle);
+        m_ControllerRotationX = Mathf.Clamp(m_ControllerRotationX, -m_ClampAngle, m_ClampAngle);
+
+        //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
+        if (Input.GetAxis("Mouse X") < 0.1f || Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse Y") < 0.1f || Input.GetAxis("Mouse Y") > 0.1f)
         {
-            //Intent camera
-            //Sets the Axis input to their variables
-            m_ControllerHorizontal = Input.GetAxis("ControllerHorizontal");
-            m_ControllerVertical = Input.GetAxis("ControllerVertical");
-            m_MouseX = Input.GetAxis("Mouse X");
-            m_MouseY = Input.GetAxis("Mouse Y");
-
-
-            //Sets the rotations to the input multiplied by the sensitivity to control how fast the camera moves
-            m_MouseRotationY += m_MouseX * m_MouseSensitivity * Time.deltaTime;
-            m_MouseRotationX += -m_MouseY * m_MouseSensitivity * Time.deltaTime;
-
-            m_ControllerRotationY += m_ControllerHorizontal * m_ControllerSensitivity * Time.deltaTime;
-            m_ControllerRotationX += m_ControllerVertical * m_ControllerSensitivity * Time.deltaTime;
-
-            //Limits the rotation on the x axis
-            m_MouseRotationX = Mathf.Clamp(m_MouseRotationX, -m_ClampAngle, m_ClampAngle);
-            m_ControllerRotationX = Mathf.Clamp(m_ControllerRotationX, -m_ClampAngle, m_ClampAngle);
-
-            //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
-            if (Input.GetAxis("Mouse X") < 0.1f || Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse Y") < 0.1f || Input.GetAxis("Mouse Y") > 0.1f)
-            {
-                transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
-            }
-            else if (Input.GetAxis("ControllerHorizontal") < 0.1f || Input.GetAxis("ControllerHorizontal") > 0.1f || Input.GetAxis("ControllerVertical") < 0.1f || Input.GetAxis("ControllerVertical") > 0.1f)
-            {
-                transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
-            }
-
+            transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
         }
+        else if (Input.GetAxis("ControllerHorizontal") < 0.1f || Input.GetAxis("ControllerHorizontal") > 0.1f || Input.GetAxis("ControllerVertical") < 0.1f || Input.GetAxis("ControllerVertical") > 0.1f)
+        {
+            transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
+        }
+
+        
     }
 
     ////I put it on FixedUpdate because in Late it makes the camera jittery
