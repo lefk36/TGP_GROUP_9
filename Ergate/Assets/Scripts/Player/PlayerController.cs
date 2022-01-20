@@ -126,7 +126,7 @@ public class PlayerController : MonoBehaviour
             animator.SetTrigger("Jump");
             jumping = true;
         }
-        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f || inputDirection.magnitude > 0.1f) && isOnGround)
+        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f || inputDirection.magnitude > 0.1f) && isOnGround && !lockMovement)
         {
             animator.SetBool("IsRunning", true);
         }

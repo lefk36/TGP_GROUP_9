@@ -6,19 +6,19 @@ TagManager:
   tags:
   - barrel
   - slippery
-  - Enemy
-  - WeaponWheelButton
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - mine
   - Ground
   - Water
   - UI
-  - mine
   - door
   - slipperyGround
   - Enemy
+  - 
+  - 
   - 
   - 
   - 
