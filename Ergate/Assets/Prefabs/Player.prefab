@@ -392,7 +392,7 @@ GameObject:
   - component: {fileID: 9099689607135665240}
   - component: {fileID: 555628667}
   - component: {fileID: 555628668}
-  - component: {fileID: 555628669}
+  - component: {fileID: 4314367972499868178}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6866e4972a057bd42b79b642e030a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &555628669
+--- !u!114 &4314367972499868178
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -448,9 +448,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 4943754815482095059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8de9cfe5725dd594c8a2105fd727cd73, type: 3}
+  m_Script: {fileID: 11500000, guid: efb8db06eed2c464bac100f0135fa0dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uiMask:
+    serializedVersion: 2
+    m_Bits: 32
+  buttonHoldingTimeRequired: 0.1
   cursorHolderUI: {fileID: 0}
   weaponWheelUI: {fileID: 0}
 --- !u!136 &414501707
@@ -514,7 +518,6 @@ MonoBehaviour:
   m_MouseSensitivity: 1000
   m_ControllerSensitivity: 300
   m_ClampAngle: 60
-  m_TurnSmoothRotation: 0
 --- !u!136 &979723894
 CapsuleCollider:
   m_ObjectHideFlags: 0
