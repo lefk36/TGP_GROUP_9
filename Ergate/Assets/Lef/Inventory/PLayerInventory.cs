@@ -24,15 +24,15 @@ public class PLayerInventory : MonoBehaviour
     // Clears the inventory when game is exited
     private void OnApplicationQuit()
     {
-        inventory.Container.Clear();
+        //inventory.Container.Items.Clear();
     }
 
     public void OnTriggerEnter(Collider other)
     {
-        var s_item = other.GetComponent<Item_s>();
+        var s_item = other.GetComponent<Item_s>(); 
         if (s_item)
         {
-            inventory.AddItem(s_item.s_item, 1);
+            inventory.AddItem(new ItemObject(s_item.s_item), 1);
             Destroy(other.gameObject);
             Debug.Log("Collided");
         }

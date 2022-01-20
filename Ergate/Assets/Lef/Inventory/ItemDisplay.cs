@@ -13,54 +13,57 @@ public class ItemDisplay : MonoBehaviour
 
     Dictionary<InventorySpot, GameObject> itemsDisplayed = new Dictionary<InventorySpot, GameObject>();
     public InventoryItems inventory;
+    ItemScript Item_n;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        CreateDisplay();
-    }
+    //// Start is called before the first frame update
+    //void Start()
+    //{
+    //    CreateDisplay();
+    //}
 
-    // Update is called once per frame
-    void Update()
-    {
-        UpdateDisplay();
-    }
+    //// Update is called once per frame
+    //void Update()
+    //{
+    //    UpdateDisplay();
+    //}
 
-    // Displays each item icon on the screen
-    public void CreateDisplay()
-    {
-        for(int i=0; i< inventory.Container.Count; i++)
-        {
-            var obj = Instantiate(inventory.Container[i].item.itemPrefab, Vector3.zero,Quaternion.identity, transform);
-            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
-        }
-    }
+    //// Displays each item icon on the screen
+    //public void CreateDisplay()
+    //{
+    //    for(int i=0; i< inventory.Container.Items.Count; i++)
+    //    {
+    //        var obj = Instantiate(inventory.Container.Items[i].item.itemPrefab, Vector3.zero,Quaternion.identity, transform);
+    //        //obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = 
+    //        obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+    //        obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
+    //    }
+    //}
 
-    // Calculates the variables of the distance between each icon
-    public Vector3 GetPosition(int i)
-    {
-        return new Vector3(spaceBetwwenX * (i % columnNumber), (-spaceBetwwenY * (i / columnNumber)), 0f);
-    }
+    //// Calculates the variables of the distance between each icon
+    //public Vector3 GetPosition(int i)
+    //{
+    //    return new Vector3(spaceBetwwenX * (i % columnNumber), (-spaceBetwwenY * (i / columnNumber)), 0f);
+    //}
 
-    // Updates the display of item icons on the UI panel of the inventory
-    public void UpdateDisplay()
-    {
+    //// Updates the display of item icons on the UI panel of the inventory
+    //public void UpdateDisplay()
+    //{
 
-        for (int i = 0; i < inventory.Container.Count; i++)
-        {
-            if (itemsDisplayed.ContainsKey(inventory.Container[i]))
-            { 
-            itemsDisplayed[inventory.Container[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
-            }
-            else
-            {
-                var obj = Instantiate(inventory.Container[i].item.itemPrefab, Vector3.zero, Quaternion.identity, transform);
-                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container[i].amount.ToString("n0");
+    //    for (int i = 0; i < inventory.Container.Items.Count; i++)
+    //    {
+    //        if (itemsDisplayed.ContainsKey(inventory.Container.Items[i]))
+    //        { 
+    //        itemsDisplayed[inventory.Container.Items[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
+    //        }
+    //        else
+    //        {
+    //            var obj = Instantiate(inventory.Container.Items[i].item.itemPrefab, Vector3.zero, Quaternion.identity, transform);
+    //            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
+    //            obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
 
-                itemsDisplayed.Add(inventory.Container[i], obj);
-            }
-        }
-    }
+    //            itemsDisplayed.Add(inventory.Container.Items[i], obj);
+    //        }
+    //    }
+    //}
+
 }
