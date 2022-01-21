@@ -11,15 +11,13 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - mine
-  - Ground
+  - Terrain
   - Water
+  - UI
   - UI
   - door
   - slipperyGround
   - Enemy
-  - 
-  - 
   - 
   - 
   - 
