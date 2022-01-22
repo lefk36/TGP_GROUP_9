@@ -82,13 +82,14 @@ public class Camera_Movement : MonoBehaviour
         m_ControllerRotationX = Mathf.Clamp(m_ControllerRotationX, -m_ClampAngle, m_ClampAngle);
 
         //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
-        if (Input.GetAxis("Mouse X") < 0.1f || Input.GetAxis("Mouse X") > 0.1f || Input.GetAxis("Mouse Y") < 0.1f || Input.GetAxis("Mouse Y") > 0.1f)
+        if (Mathf.Abs(m_MouseRotationX) > 0f || Mathf.Abs(m_MouseRotationY) > 0f)
         {
             transform.localRotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
             //transform.localRotation = Quaternion.Lerp(mouseRotation, m_InitialRotation, Time.deltaTime * m_TurnSmoothRotation);
             //transform.localRotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
         }
-        else if (Input.GetAxis("ControllerHorizontal") < 0.1f || Input.GetAxis("ControllerHorizontal") > 0.1f || Input.GetAxis("ControllerVertical") < 0.1f || Input.GetAxis("ControllerVertical") > 0.1f)
+        
+        if (Mathf.Abs(m_ControllerRotationX) > 0f || Mathf.Abs(m_ControllerRotationY) > 0f)
         {
             transform.localRotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
             //transform.localRotation = Quaternion.Lerp(controllerRotation, m_InitialRotation, Time.deltaTime * m_TurnSmoothRotation);

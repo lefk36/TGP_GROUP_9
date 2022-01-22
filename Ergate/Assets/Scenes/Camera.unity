@@ -156,7 +156,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1206081342, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_ControllerSensitivity
-      value: 578
+      value: 719
       objectReference: {fileID: 0}
     - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_Enabled
@@ -996,7 +996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d758c2dfdcd0f7343ba4f7d7f6de36d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TargetableEnemyIndex: 0
   m_LockOn: 0
   m_TurnToEnemySpeed: 0.3
   m_MaxDistanceAllowed: 25

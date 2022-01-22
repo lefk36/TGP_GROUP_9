@@ -9,6 +9,8 @@ public class EnemiesCameraLock : MonoBehaviour
     //Index of the enemies in the targetable enemies list
     private int m_TargetableEnemyIndex = 0;
 
+    private bool m_ControllerHorizontalInputDone = false;
+
     //Bool to tell if the lock is on or off
     public bool m_LockOn;
     //Array of every hit that happens
@@ -54,7 +56,7 @@ public class EnemiesCameraLock : MonoBehaviour
         //Holders of the input that we are going to use for the camera lock
         m_ScrollWheelInput = Input.mouseScrollDelta.y;
         m_ControllerHorizontal = Input.GetAxis("ControllerHorizontal");
-        m_RightStickPressed = Input.GetButton("RightStick");
+        m_RightStickPressed = Input.GetButtonDown("RightStick");
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
 
         //If the player press the mouse middle button or presses the right stick
@@ -82,9 +84,10 @@ public class EnemiesCameraLock : MonoBehaviour
         //If the lock mode is active
         if (m_LockOn)
         {
+            //Mouse Controller
             //Sets a value for the scrollwheel input
             m_ScrollWheelInputValue += m_ScrollWheelInput;
-
+            Debug.Log(m_ControllerHorizontal);
             //If the camera movement is active, then disenable it
             if (m_CameraMovementActive)
             {
@@ -121,7 +124,38 @@ public class EnemiesCameraLock : MonoBehaviour
 
                 
             }
-            
+
+            if(m_ControllerHorizontal > 0f && !m_ControllerHorizontalInputDone)
+            {
+                
+                m_ControllerHorizontalInputDone = true;
+                m_TargetableEnemyIndex++;
+                //If the index is greater than the last index in the list set it to 0
+                if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                {
+                    m_TargetableEnemyIndex = 0;
+                }
+
+                
+                
+            }
+            else if(m_ControllerHorizontal < 0f && !m_ControllerHorizontalInputDone)
+            {
+                m_ControllerHorizontalInputDone = true;
+                m_TargetableEnemyIndex--;
+                //If the index is less than 0 then go to the las index in the list
+                if (m_TargetableEnemyIndex < 0)
+                {
+                    m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                }
+                
+            }
+
+            if (m_ControllerHorizontal == 0)
+            {
+                m_ControllerHorizontalInputDone = false;
+            }
+
             //If there is only 1 item in the list, the index if the list is 0
             if (m_TargetableEnemies.Count == 1)
             {
