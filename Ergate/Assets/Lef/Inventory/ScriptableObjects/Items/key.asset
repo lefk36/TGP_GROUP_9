@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab274ff427afbe14aae0452ce98320ca, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 0158d1a71b49781499f276a15138bad2, type: 3}
+  m_Name: key
   m_EditorClassIdentifier: 
-  savePath: /Ergate.Save
-  dataBase: {fileID: 11400000, guid: 9d65e3615dccc9743bf4936f294c1172, type: 2}
-  Container:
-    ObjectItems: []
+  id: 2
+  ItemIcon: {fileID: 21300000, guid: 8f27f8b71f0141f43b51991819301bf9, type: 3}
+  type: 2
+  description: 

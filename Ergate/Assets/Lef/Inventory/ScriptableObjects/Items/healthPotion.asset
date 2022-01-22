@@ -9,10 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab274ff427afbe14aae0452ce98320ca, type: 3}
-  m_Name: PlayerInventory
+  m_Script: {fileID: 11500000, guid: 44138fa5aebb68440b544e232e5e65ba, type: 3}
+  m_Name: healthPotion
   m_EditorClassIdentifier: 
-  savePath: /Ergate.Save
-  dataBase: {fileID: 11400000, guid: 9d65e3615dccc9743bf4936f294c1172, type: 2}
-  Container:
-    ObjectItems: []
+  id: 1
+  ItemIcon: {fileID: 21300000, guid: 1b2c0ef1afced654aa03e21f32a58b09, type: 3}
+  type: 1
+  description: 
