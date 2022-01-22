@@ -24,7 +24,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     public int maximumHealth = 100; //
 
     public int currentPlayerPoiseRegen;  //May be changed with items in future
+<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
     public int currentPlayerHealthRegen;       //
+=======
+    public int currentHealthPlayerRegen;       //
+>>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
 
     
     void Awake()
@@ -36,7 +40,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         currentPlayerPoise = maximumPoise;      //
 
         currentPlayerPoiseRegen = defaultPoiseRegen;
+<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
         currentPlayerHealthRegen = defaultHealthRegen;
+=======
+        currentHealthPlayerRegen = defaultHealthRegen;
+>>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
     }
     private void Start()
     {
@@ -59,9 +67,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             PlayerDie();
 
         if (currentPlayerHealth <= maximumHealth && hasRegenedHealth == false)
+<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
         {
+=======
+>>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
             StartCoroutine(RegenHealth()); // only regens when health is below full
-        }
         #endregion
 
         #region Poise Stuff
@@ -69,16 +79,20 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             StartCoroutine(RegenPoise());
         if (currentPlayerPoise < minimumPoise)
             currentPlayerPoise = minimumPoise;
+
         if (currentPlayerPoise <= 0)
             isKnockedDown = true;
+        else
+            isKnockedDown = false;
+
         if (isKnockedDown == true)
             KnockedDown();
         #endregion
     }
     public void KnockedDown()
     {
-        gameObject.GetComponent<PlayerController>().lockMovement = true;
-        gameObject.GetComponent<PlayerController>().lockAttackDirection = true;
+        gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
+        gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         //play an animation
     }
     void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
@@ -93,16 +107,26 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     IEnumerator RegenHealth()
     {
+<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
         currentPlayerHealth += currentPlayerHealthRegen;
         hasRegenedHealth = true;
         yield return new WaitForSeconds(timeBetweenHealthRegen);
+=======
+        currentPlayerHealth += currentHealthPlayerRegen;
+        hasRegenedHealth = true;
+        yield return new WaitForSeconds(timeBetweenRegen);
+>>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
         hasRegenedHealth = false;
     }
     IEnumerator RegenPoise()
     {
         currentPlayerPoise += currentPlayerPoiseRegen;
         hasRegenedPoise = true;
+<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
         yield return new WaitForSeconds(timeBetweenPoiseRegen);
+=======
+        yield return new WaitForSeconds(timeBetweenRegen);
+>>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
         hasRegenedPoise = false;
     }
 }
