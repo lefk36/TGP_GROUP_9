@@ -6,18 +6,17 @@ TagManager:
   tags:
   - barrel
   - slippery
+  - Enemy
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - mine
   - Ground
   - Water
   - UI
   - door
   - slipperyGround
   - Enemy
-  - 
   - 
   - 
   - 
