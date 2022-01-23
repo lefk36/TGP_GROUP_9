@@ -3,10 +3,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponWheel : MonoBehaviour
+public class WeaponWheelController : MonoBehaviour
 {
     //Inspector values
-    public LayerMask uiMask;
     public float buttonHoldingTimeRequired;
 
     //UI Objects
@@ -95,7 +94,7 @@ public class WeaponWheel : MonoBehaviour
     {
         Time.timeScale = Convert.ToInt32(!state);
         weaponWheelUI.SetActive(state);
-        if(!cameraLockScript.m_LockOn)
+        if (!cameraLockScript.m_LockOn)
         {
             cameraLockScript.enabled = !state;
             cameraMovementScript.enabled = !state;

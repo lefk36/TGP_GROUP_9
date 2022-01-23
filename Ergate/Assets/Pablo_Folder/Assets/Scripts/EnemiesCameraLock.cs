@@ -50,7 +50,13 @@ public class EnemiesCameraLock : MonoBehaviour
         //Coroutine that happens every 0.1 seconds
         StartCoroutine(EnemyListChange());    
     }
-
+    private void OnEnable()
+    {
+        //Lock the cursor to not make the camera go around crazy
+        Cursor.lockState = CursorLockMode.Locked;
+        //Makes the cursor invisible
+        Cursor.visible = false;
+    }
     private void Update()
     {
         //Holders of the input that we are going to use for the camera lock
