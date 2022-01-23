@@ -109,6 +109,7 @@ public class Camera_Movement : MonoBehaviour
                 m_ControllerRotationX = 0f;
                 m_ControllerRotationY = 0f;
                 m_UsingController = true;
+
            }
             
            transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
