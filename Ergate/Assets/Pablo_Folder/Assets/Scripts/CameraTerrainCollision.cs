@@ -17,16 +17,15 @@ public class CameraTerrainCollision : MonoBehaviour
     {
         Vector3 originalCameraPosition = transform.parent.position + (transform.parent.localRotation * m_offset); //calculate the pre-terrain collision position
         Debug.DrawLine(transform.parent.position, originalCameraPosition, Color.black);
-        ///Explanation of this script
-        ///It creates a linecast from the cameraholder to the camera, and if the lineCast hits an object with "Ground" layer, 
-        ///then the position of the camera is equal to the point of the raycast hit
+        //Creates a linecast from the camera center to the pre-terrain collision position
         bool originalPositionHit = Physics.Linecast(transform.parent.position, originalCameraPosition, out hit, m_Ground);
-
+        //If the linecast hits on something then the position of the camera is equal to the point where the linecast hits
         if (originalPositionHit)
         {
             transform.position = hit.point*0.95f;
 
         }
+        //If not, then sets the localPosition to the offset camera position
         else
         {
             transform.localPosition = m_offset;

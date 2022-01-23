@@ -72,11 +72,12 @@ public class Camera_Movement : MonoBehaviour
         m_ControllerRotationX = Mathf.Clamp(m_ControllerRotationX, -m_ClampAngle, m_ClampAngle);
 
         //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
-        if (Mathf.Abs(m_MouseX) > 0.1f || Mathf.Abs(m_MouseY) > 0.1f)
+        if (Mathf.Abs(m_MouseRotationX) > 0f || Mathf.Abs(m_MouseRotationY) > 0f)
         {
             transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
         }
-        else if (Mathf.Abs(m_ControllerHorizontal) > 0.1f || Mathf.Abs(m_ControllerVertical) > 0.1f)
+        
+        if (Mathf.Abs(m_ControllerRotationX) > 0f || Mathf.Abs(m_ControllerRotationY) > 0f)
         {
             transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
         }
