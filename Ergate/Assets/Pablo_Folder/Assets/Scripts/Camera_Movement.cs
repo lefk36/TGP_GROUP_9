@@ -27,7 +27,10 @@ public class Camera_Movement : MonoBehaviour
     private float m_ControllerRotationX;
     //ROtation Y Axis(Controller)
     private float m_ControllerRotationY;
-
+    //Initial Rotation
+    private Vector3 m_InitialRotation;
+    //Turn Smooth rotation
+    [SerializeField] private float m_TurnSmoothRotation;
 
     private void Start()
     {
@@ -36,6 +39,7 @@ public class Camera_Movement : MonoBehaviour
     }
     private void OnEnable()
     {
+        transform.localRotation = Quaternion.Euler(0, 0, 0);
         //vector of the camera holder rotation
         Vector3 rotation = transform.localRotation.eulerAngles;
         //Set the x and y rotation to the variables made for that

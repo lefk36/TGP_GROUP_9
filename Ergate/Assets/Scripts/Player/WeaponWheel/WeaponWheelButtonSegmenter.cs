@@ -7,6 +7,7 @@ public class WeaponWheelButtonSegmenter : MonoBehaviour
     // Start is called before the first frame update
     public List<RectTransform> buttons;
     public float segmentAngle;
+
     void Start()
     {
         for (int i = 0; i < buttons.Count; i++)
