@@ -57,6 +57,8 @@ MonoBehaviour:
   - {fileID: 331821925537053135}
   - {fileID: 6020033465480329852}
   segmentAngle: 36
+  cursor: {fileID: 2103157371777603313}
+  wheelControllerScript: {fileID: 0}
 --- !u!1001 &1108457912827586063
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -152,6 +154,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpikeCannonButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2758275222526730320, guid: 9a6b24a6b4d81a24bbf4f061c43c29fc, type: 3}
+      propertyPath: uiSegmenterScript
+      value: 
+      objectReference: {fileID: 5647782264222604408}
     - target: {fileID: 4492338125526021831, guid: 9a6b24a6b4d81a24bbf4f061c43c29fc, type: 3}
       propertyPath: m_Name
       value: SpikeCannonButton
@@ -370,6 +376,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MantisBladesButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2758275222526730320, guid: 9a6b24a6b4d81a24bbf4f061c43c29fc, type: 3}
+      propertyPath: uiSegmenterScript
+      value: 
+      objectReference: {fileID: 5647782264222604408}
     - target: {fileID: 4492338125526021831, guid: 9a6b24a6b4d81a24bbf4f061c43c29fc, type: 3}
       propertyPath: m_Name
       value: MantisBladesButton
@@ -482,6 +492,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TentacleLasherButtonHolder
       objectReference: {fileID: 0}
+    - target: {fileID: 2758275222526730320, guid: 9a6b24a6b4d81a24bbf4f061c43c29fc, type: 3}
+      propertyPath: uiSegmenterScript
+      value: 
+      objectReference: {fileID: 5647782264222604408}
     - target: {fileID: 4492338125526021831, guid: 9a6b24a6b4d81a24bbf4f061c43c29fc, type: 3}
       propertyPath: m_Name
       value: TentacleLasherButton

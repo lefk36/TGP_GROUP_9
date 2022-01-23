@@ -2,6 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class WeaponWheelController : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class WeaponWheelController : MonoBehaviour
     public RectTransform cursorHolderUI;
     private RectTransform canvas;
     public GameObject weaponWheelUI;
+    [HideInInspector] public string buttonName;
+    
 
     //game scripts
     private PlayerController playerControllerScript;
@@ -47,13 +51,20 @@ public class WeaponWheelController : MonoBehaviour
                 if (weaponWheelState == true)
                 {
                     RotateCursor();
-                    //
                 }
 
             }
         }
         if (Input.GetButtonUp("WeaponWheel"))
         {
+            GameObject buttonObj = EventSystem.current.currentSelectedGameObject;
+            Button button;
+            if(buttonObj != null)
+            {
+                button = buttonObj.GetComponent<Button>();
+                button.onClick.Invoke();
+                Debug.Log(buttonName);
+            }
             mouseCursorState = false;
             cursorHolderUI.rotation = Quaternion.Euler(0, 0, 0);
             timeButtonIsHeld = 0;
@@ -76,7 +87,8 @@ public class WeaponWheelController : MonoBehaviour
             RectTransformUtility.ScreenPointToLocalPointInRectangle(canvas, Input.mousePosition, null, out mousePos); //converts mouse pos to UI coordinates
             Vector2 directionToMouse = mousePos - cursorHolderUI.anchoredPosition;
             float angle = Mathf.Atan2(directionToMouse.x, directionToMouse.y) * Mathf.Rad2Deg;
-            cursorHolderUI.rotation = Quaternion.Euler(0, 0, -angle);//rotates the arrow cursor towards mouse cursor
+            angle = ClampTo360(angle);
+            cursorHolderUI.localRotation = Quaternion.Euler(0, 0, angle);//rotates the arrow cursor towards mouse cursor
         }
         if (controllerInput.magnitude > 0.1f) //if the controller is in use
         {
@@ -87,7 +99,8 @@ public class WeaponWheelController : MonoBehaviour
                 Cursor.visible = false;
             }
             float angle = Mathf.Atan2(controllerInput.x, controllerInput.y) * Mathf.Rad2Deg;
-            cursorHolderUI.rotation = Quaternion.Euler(0, 0, -angle); //rotates the arrow cursor with the direction of 
+            angle = ClampTo360(angle);
+            cursorHolderUI.localRotation = Quaternion.Euler(0, 0, angle); //rotates the arrow cursor with the direction of 
         }
     }
     void WheelActive(bool state)
@@ -109,5 +122,24 @@ public class WeaponWheelController : MonoBehaviour
         playerControllerScript.lockFalling = state;
         weaponWheelState = state;
     }
+    float ClampTo360(float angle)
+    {
+        float result = -angle;
+        if (result < 0)
+        {
+            result += 360f;
+        }
+        return result;
+    }
+    public float ReturnCleanAngle()
+    {
+        float angle;
+        angle = cursorHolderUI.localRotation.eulerAngles.z;
+        angle = ClampTo360(angle);
+        return angle;
+    }
+    void SwitchWeapons()
+    {
 
+    }
 }
