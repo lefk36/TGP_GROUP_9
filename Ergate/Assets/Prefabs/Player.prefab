@@ -342,14 +342,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d758c2dfdcd0f7343ba4f7d7f6de36d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TargetableEnemyIndex: 0
   m_LockOn: 0
   m_TurnToEnemySpeed: 0
   m_MaxDistanceAllowed: 25
   m_TargetableEnemies: []
   m_Layer:
     serializedVersion: 2
-    m_Bits: 72
+    m_Bits: 264
   m_TargetToLook: {fileID: 1343191694}
   m_CameraMovement: {fileID: 3382758903527361518}
   m_Player: {fileID: 3142202214008486164}
@@ -392,7 +391,7 @@ GameObject:
   - component: {fileID: 9099689607135665240}
   - component: {fileID: 555628667}
   - component: {fileID: 555628668}
-  - component: {fileID: 4314367972499868178}
+  - component: {fileID: 842493988}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -439,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6866e4972a057bd42b79b642e030a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &4314367972499868178
+--- !u!114 &842493988
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -448,7 +447,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4943754815482095059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: efb8db06eed2c464bac100f0135fa0dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 106f204ffc887eb4bbb89529281ed709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   uiMask:

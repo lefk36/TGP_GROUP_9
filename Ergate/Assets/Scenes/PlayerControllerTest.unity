@@ -671,6 +671,16 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &742637942 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5768684351786273167, guid: 349421032d42c3347a909baa0939dd5c, type: 3}
+  m_PrefabInstance: {fileID: 117080880}
+  m_PrefabAsset: {fileID: 0}
+--- !u!224 &796353910 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 6216765813408574671, guid: 349421032d42c3347a909baa0939dd5c, type: 3}
+  m_PrefabInstance: {fileID: 117080880}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &833135128
 GameObject:
   m_ObjectHideFlags: 0
@@ -769,29 +779,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &842493986 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4943754815482095059, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-  m_PrefabInstance: {fileID: 4314367972499868176}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &842493988
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 842493986}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 106f204ffc887eb4bbb89529281ed709, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  uiMask:
-    serializedVersion: 2
-    m_Bits: 32
-  buttonHoldingTimeRequired: 0.1
-  cursorHolderUI: {fileID: 0}
-  weaponWheelUI: {fileID: 0}
 --- !u!1 &1040220113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1481,18 +1468,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1343191698, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_Layer.m_Bits
-      value: 264
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314367972499868178, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+    - target: {fileID: 842493988, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: weaponWheelUI
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4314367972499868178, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      objectReference: {fileID: 742637942}
+    - target: {fileID: 842493988, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: cursorHolderUI
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 796353910}
     - target: {fileID: 7208981455675459386, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1541,6 +1524,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4314367972499868178, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
