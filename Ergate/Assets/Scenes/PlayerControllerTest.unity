@@ -238,7 +238,7 @@ PrefabInstance:
     - target: {fileID: 362959674195289670, guid: 349421032d42c3347a909baa0939dd5c, type: 3}
       propertyPath: wheelControllerScript
       value: 
-      objectReference: {fileID: 4314367972499868177}
+      objectReference: {fileID: 0}
     - target: {fileID: 2570584519808584558, guid: 349421032d42c3347a909baa0939dd5c, type: 3}
       propertyPath: m_Name
       value: InGameOverlay
@@ -1394,6 +1394,14 @@ PrefabInstance:
       propertyPath: cursorHolderUI
       value: 
       objectReference: {fileID: 796353910}
+    - target: {fileID: 445114830460704509, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: weaponWheelUI
+      value: 
+      objectReference: {fileID: 742637942}
+    - target: {fileID: 445114830460704509, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: cursorHolderUI
+      value: 
+      objectReference: {fileID: 796353910}
     - target: {fileID: 3921597003961212630, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: weaponWheelUI
       value: 
@@ -1450,16 +1458,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6063128630130948120, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
---- !u!114 &4314367972499868177 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3921597003961212630, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-  m_PrefabInstance: {fileID: 4314367972499868176}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 17cb8bdd97811264cbcbe8e57e9e31f7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

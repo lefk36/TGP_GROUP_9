@@ -391,7 +391,8 @@ GameObject:
   - component: {fileID: 9099689607135665240}
   - component: {fileID: 555628667}
   - component: {fileID: 555628668}
-  - component: {fileID: 6063128630130948120}
+  - component: {fileID: 3831884657713093452}
+  - component: {fileID: 445114830460704509}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -438,21 +439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6866e4972a057bd42b79b642e030a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6063128630130948120
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4943754815482095059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc2e9391f1cc554794a1baa6344e5b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttonHoldingTimeRequired: 0
-  cursorHolderUI: {fileID: 0}
-  weaponWheelUI: {fileID: 0}
 --- !u!114 &3831884657713093452
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -465,6 +451,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 722b245966f2657459279f8435e8650e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &445114830460704509
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4943754815482095059}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 17cb8bdd97811264cbcbe8e57e9e31f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttonHoldingTimeRequired: 0.1
+  cursorHolderUI: {fileID: 0}
+  weaponWheelUI: {fileID: 0}
+  buttonName: 
 --- !u!136 &414501707
 CapsuleCollider:
   m_ObjectHideFlags: 0
