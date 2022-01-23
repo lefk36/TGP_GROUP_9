@@ -31,29 +31,33 @@ public class Camera_Movement : MonoBehaviour
     private Vector3 m_InitialRotation;
     //Turn Smooth rotation
     [SerializeField] private float m_TurnSmoothRotation;
+    private bool m_UsingController;
+    
 
     private void Start()
     {
         //Makes the camera start on that rotation
         transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
+       
     }
     private void OnEnable()
     {
         transform.localRotation = Quaternion.Euler(0, 0, 0);
         //vector of the camera holder rotation
-        Vector3 rotation = transform.localRotation.eulerAngles;
+        m_InitialRotation = transform.localRotation.eulerAngles;
         //Set the x and y rotation to the variables made for that
-        m_MouseRotationX = rotation.x;
-        m_MouseRotationY = rotation.y;
+        m_MouseRotationX = m_InitialRotation.x;
+        m_MouseRotationY = m_InitialRotation.y;
 
-        m_ControllerRotationX = rotation.x;
-        m_ControllerRotationY = rotation.y;
+        m_ControllerRotationX = m_InitialRotation.x;
+        m_ControllerRotationY = m_InitialRotation.y;
 
         //Lock the cursor to not make the camera go around crazy
         Cursor.lockState = CursorLockMode.Locked;
         //Makes the cursor invisible
         Cursor.visible = false;
     }
+
 
     private void LateUpdate()
     {
@@ -74,40 +78,45 @@ public class Camera_Movement : MonoBehaviour
         //Limits the rotation on the x axis
         m_MouseRotationX = Mathf.Clamp(m_MouseRotationX, -m_ClampAngle, m_ClampAngle);
         m_ControllerRotationX = Mathf.Clamp(m_ControllerRotationX, -m_ClampAngle, m_ClampAngle);
-
-        //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller
-        if (Mathf.Abs(m_MouseRotationX) > 0f || Mathf.Abs(m_MouseRotationY) > 0f)
-        {
-            transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
-        }
         
+        Debug.Log("Mouse Input Y" + m_MouseRotationX);
+        Debug.Log("Mouse Input X" + m_MouseRotationY);
+        Debug.Log("Controller Input Y" + m_ControllerRotationX);
+        Debug.Log("Controller Input X" + m_ControllerRotationY);
+
         if (Mathf.Abs(m_ControllerRotationX) > 0f || Mathf.Abs(m_ControllerRotationY) > 0f)
         {
+            
+            if(m_UsingController)
+            {
+                m_MouseRotationX = 0f;
+                m_MouseRotationY = 0f;
+                m_UsingController = false;
+            }
+            
             transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
+            
+
         }
+        
+        //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller 
+         
+        if (Mathf.Abs(m_MouseRotationX) > 0f || Mathf.Abs(m_MouseRotationY) > 0f)
+        { 
+           
+           if(!m_UsingController)
+           {
+                m_ControllerRotationX = 0f;
+                m_ControllerRotationY = 0f;
+                m_UsingController = true;
+           }
+            
+           transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
+            
+            
+        }
+       
+
     }
-
-    ////I put it on FixedUpdate because in Late it makes the camera jittery
-    //private void FixedUpdate()
-    //{
-    //    //AutoCamera
-    //    float worldYRotInRad = m_Camera.rotation.eulerAngles.y * Mathf.Deg2Rad; //The y rotation of the camera in radians
-    //    //Current position of the camera
-    //    Vector3 currentCameraPosition = m_Camera.position - new Vector3(m_LocalCameraOffSet.z * Mathf.Sin(worldYRotInRad) + m_LocalCameraOffSet.x * Mathf.Cos(worldYRotInRad),
-    //                                                                m_LocalCameraOffSet.y,
-    //                                                                m_LocalCameraOffSet.z * Mathf.Cos(worldYRotInRad) - m_LocalCameraOffSet.x * Mathf.Sin(worldYRotInRad));
-
-    //    //Position of the offSetCamera
-    //    Vector3 cameraOffSetPosition = m_Camera.position - currentCameraPosition;
-
-    //    //Distance from the camera to the target
-    //    float distToTarget = (m_TrackedObjectTransform.position - currentCameraPosition).magnitude;
-
-    //    //Makes the camera follow the player
-    //    m_Camera.position = Vector3.MoveTowards(currentCameraPosition, m_TrackedObjectTransform.position, distToTarget * m_AutoCamSpeed * Time.fixedDeltaTime) + cameraOffSetPosition;
-
-
-    //}
-
 
 }
