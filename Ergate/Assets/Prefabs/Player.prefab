@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 9099689607135665240}
   - component: {fileID: 555628667}
   - component: {fileID: 555628668}
-  - component: {fileID: 842493988}
+  - component: {fileID: 3921597003961212630}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6866e4972a057bd42b79b642e030a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &842493988
+--- !u!114 &3921597003961212630
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -447,12 +447,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 4943754815482095059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 106f204ffc887eb4bbb89529281ed709, type: 3}
+  m_Script: {fileID: 11500000, guid: 17cb8bdd97811264cbcbe8e57e9e31f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiMask:
-    serializedVersion: 2
-    m_Bits: 32
   buttonHoldingTimeRequired: 0.1
   cursorHolderUI: {fileID: 0}
   weaponWheelUI: {fileID: 0}
