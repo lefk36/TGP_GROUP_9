@@ -517,6 +517,7 @@ MonoBehaviour:
   m_MouseSensitivity: 1000
   m_ControllerSensitivity: 300
   m_ClampAngle: 60
+  m_TurnSmoothRotation: 0
 --- !u!136 &979723894
 CapsuleCollider:
   m_ObjectHideFlags: 0

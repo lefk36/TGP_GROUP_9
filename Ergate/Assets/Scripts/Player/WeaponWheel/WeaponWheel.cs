@@ -17,6 +17,7 @@ public class WeaponWheel : MonoBehaviour
     //game scripts
     private PlayerController playerControllerScript;
     private Camera_Movement cameraMovementScript;
+    private EnemiesCameraLock cameraLockScript;
 
     //private values
     private bool mouseCursorState = false;
@@ -27,6 +28,7 @@ public class WeaponWheel : MonoBehaviour
     {
         playerControllerScript = transform.parent.gameObject.GetComponent<PlayerController>();
         cameraMovementScript = transform.parent.Find("Camera Centre").GetComponent<Camera_Movement>();
+        cameraLockScript = cameraMovementScript.transform.Find("Main Camera").GetComponent<EnemiesCameraLock>();
         canvas = weaponWheelUI.transform.parent as RectTransform;
 
     }
@@ -93,7 +95,15 @@ public class WeaponWheel : MonoBehaviour
     {
         Time.timeScale = Convert.ToInt32(!state);
         weaponWheelUI.SetActive(state);
-        cameraMovementScript.enabled = !state;
+        if(!cameraLockScript.m_LockOn)
+        {
+            cameraLockScript.enabled = !state;
+            cameraMovementScript.enabled = !state;
+        }
+        else
+        {
+            cameraLockScript.enabled = !state;
+        }
         playerControllerScript.readyForAction = !state; //disable player movement, disable camera movement, turn the weapon wheel UI on and pause the game
         playerControllerScript.lockMovement = state;
         playerControllerScript.lockAttackDirection = state;

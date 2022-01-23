@@ -87,7 +87,6 @@ public class EnemiesCameraLock : MonoBehaviour
             //Mouse Controller
             //Sets a value for the scrollwheel input
             m_ScrollWheelInputValue += m_ScrollWheelInput;
-            Debug.Log(m_ControllerHorizontal);
             //If the camera movement is active, then disenable it
             if (m_CameraMovementActive)
             {
@@ -223,7 +222,6 @@ public class EnemiesCameraLock : MonoBehaviour
                     {
                         //Gets the index of the object/s that are about to be removed and removes them
                         int indexOfGameObjectToRemove = m_TargetableEnemies.FindIndex(x => x.Equals(hit.collider.gameObject));
-                        Debug.Log("IndexToRemove" + indexOfGameObjectToRemove);
                         m_TargetableEnemies.Remove(hit.collider.gameObject);
 
                         //Updates the List and theindex of the enemies
