@@ -10,6 +10,7 @@ public class WeaponWheelButtonSegmenter : MonoBehaviour
     public float segmentAngle;
     public RectTransform cursor;
     public WeaponWheelController wheelControllerScript;
+    public EventSystem wheelEventSystem;
 
     void Start()
     {
@@ -29,7 +30,7 @@ public class WeaponWheelButtonSegmenter : MonoBehaviour
             float maxAngle = (segmentAngle * i) + (segmentAngle / 2);
             if (cursorAngle > minAngle && cursorAngle < maxAngle)
             {
-                EventSystem.current.SetSelectedGameObject(buttons[i].transform.GetChild(0).gameObject);
+                wheelEventSystem.SetSelectedGameObject(buttons[i].transform.GetChild(0).gameObject);
             }
         }
     }

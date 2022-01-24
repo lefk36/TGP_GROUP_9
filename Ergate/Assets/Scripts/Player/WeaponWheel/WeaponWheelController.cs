@@ -11,6 +11,7 @@ public class WeaponWheelController : MonoBehaviour
     public float buttonHoldingTimeRequired;
 
     //UI Objects
+    public EventSystem wheelEventSystem;
     public RectTransform cursorHolderUI;
     private RectTransform canvas;
     public GameObject weaponWheelUI;
@@ -57,10 +58,10 @@ public class WeaponWheelController : MonoBehaviour
         }
         if (Input.GetButtonUp("WeaponWheel"))
         {
-            GameObject buttonObj = EventSystem.current.currentSelectedGameObject;
-            Button button;
+            GameObject buttonObj = wheelEventSystem.currentSelectedGameObject;
             if(buttonObj != null)
             {
+                Button button;
                 button = buttonObj.GetComponent<Button>();
                 button.onClick.Invoke();
                 Debug.Log(buttonName);

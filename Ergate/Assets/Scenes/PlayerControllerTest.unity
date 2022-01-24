@@ -508,72 +508,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 615517492}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &661867878
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 661867881}
-  - component: {fileID: 661867880}
-  - component: {fileID: 661867879}
-  m_Layer: 0
-  m_Name: EventSystem
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &661867879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661867878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4f231c4fb786f3946a6b90b886c48677, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalAxis: Horizontal
-  m_VerticalAxis: Vertical
-  m_SubmitButton: Submit
-  m_CancelButton: Cancel
-  m_InputActionsPerSecond: 10
-  m_RepeatDelay: 0.5
-  m_ForceModuleActive: 0
---- !u!114 &661867880
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661867878}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_FirstSelected: {fileID: 0}
-  m_sendNavigationEvents: 1
-  m_DragThreshold: 10
---- !u!4 &661867881
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 661867878}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &820136644 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
@@ -683,6 +617,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1023128587 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 661867880, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+  m_PrefabInstance: {fileID: 1954430075}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76c392e42b5098c458856cdf6ecaaaa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1040220113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1288,7 +1233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2570584519808584562, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 2570584519808584562, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: m_AnchorMax.x
@@ -1362,6 +1307,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: cursor
+      value: 
+      objectReference: {fileID: 1954430076}
+    - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: wheelEventSystem
+      value: 
+      objectReference: {fileID: 1023128587}
+    - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: wheelControllerScript
+      value: 
+      objectReference: {fileID: 820136644}
     m_RemovedComponents:
     - {fileID: 362959674195289670, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
@@ -1370,45 +1327,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6216765813408574671, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
   m_PrefabInstance: {fileID: 1954430075}
   m_PrefabAsset: {fileID: 0}
---- !u!224 &1954430077 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 1793274223933112386, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-  m_PrefabInstance: {fileID: 1954430075}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1954430078 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 5761044718206878705, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-  m_PrefabInstance: {fileID: 1954430075}
-  m_PrefabAsset: {fileID: 0}
---- !u!224 &1954430079 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 9062413285106005917, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-  m_PrefabInstance: {fileID: 1954430075}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1954430080 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5768684351786273167, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
   m_PrefabInstance: {fileID: 1954430075}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1954430081
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1954430080}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc41c7f2a87121e46b718e9759c37c0f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  buttons:
-  - {fileID: 1954430079}
-  - {fileID: 1954430078}
-  - {fileID: 1954430077}
-  segmentAngle: 36
-  cursor: {fileID: 1954430076}
-  wheelControllerScript: {fileID: 820136644}
 --- !u!1001 &4314367972499868176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1440,6 +1363,14 @@ PrefabInstance:
       propertyPath: cursorHolderUI
       value: 
       objectReference: {fileID: 1954430076}
+    - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: wheelEventSystem
+      value: 
+      objectReference: {fileID: 1023128587}
+    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: doubleJumpForce
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 3921597003961212630, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: weaponWheelUI
       value: 

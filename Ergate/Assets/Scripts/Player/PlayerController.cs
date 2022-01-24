@@ -11,8 +11,10 @@ public class PlayerController : MonoBehaviour
     [Min(0f)] public float targetSpeed;
     [Min(0f)] public float rotationTime;
     [Min(0f)] public float jumpForce;
+    [Min(0f)] public float doubleJumpForce;
     [Min(1.0f)] public float jumpingGravityScale;
     [Min(1.0f)] public float fallingMultiplier;
+    [SerializeField] private bool doubleJumpUnlocked;
 
     public bool lockMovement; //Access these properties from other scripts whenever they move them instead
     public bool lockFalling;
@@ -50,7 +52,7 @@ public class PlayerController : MonoBehaviour
 
     //private bools
     bool jumping = false;
-
+    bool doubleJumped = false;
     
 
     void Start()
@@ -124,11 +126,19 @@ public class PlayerController : MonoBehaviour
         {
             movementDirection = new Vector3(0, 0, 0);
         }
-
-        if(Input.GetButtonDown("Jump") && !lockMovement && isOnGround)
+        if (isOnGround)
+        {
+            doubleJumped = false;
+        }
+        if(Input.GetButtonDown("Jump") && !lockMovement && (isOnGround || !doubleJumped))
         {
             animator.SetTrigger("Jump");
+            if(!doubleJumped && !isOnGround)
+            {
+                doubleJumped = true;
+            }
             jumping = true;
+            
         }
         if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f || inputDirection.magnitude > 0.1f) && isOnGround && !lockMovement)
         {
@@ -188,6 +198,14 @@ public class PlayerController : MonoBehaviour
         {
             jumping = false;
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
+        }
+        if(jumping && !isOnGround)
+        {
+            jumping = false;
+            Vector3 directionChange = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+            directionChange = character.transform.localRotation * directionChange;
+            rigidbody.velocity = new Vector3(directionChange.x, rigidbody.velocity.y, directionChange.z);
+            rigidbody.AddForce(Vector3.up * doubleJumpForce, ForceMode.Impulse);
         }
         if(rigidbody.velocity.y > 0.2f) //when rising
         {
