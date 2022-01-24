@@ -574,6 +574,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &820136644 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+  m_PrefabInstance: {fileID: 4314367972499868176}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dbb66deb018a7a4f99d7df2be2e4ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &833135128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1397,7 +1408,7 @@ MonoBehaviour:
   - {fileID: 1954430077}
   segmentAngle: 36
   cursor: {fileID: 1954430076}
-  wheelControllerScript: {fileID: 0}
+  wheelControllerScript: {fileID: 820136644}
 --- !u!1001 &4314367972499868176
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1421,6 +1432,14 @@ PrefabInstance:
       propertyPath: cursorHolderUI
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: weaponWheelUI
+      value: 
+      objectReference: {fileID: 1954430080}
+    - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: cursorHolderUI
+      value: 
+      objectReference: {fileID: 1954430076}
     - target: {fileID: 3921597003961212630, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: weaponWheelUI
       value: 
