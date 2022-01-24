@@ -1308,14 +1308,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-      propertyPath: cursor
-      value: 
-      objectReference: {fileID: 1954430076}
-    - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-      propertyPath: wheelEventSystem
-      value: 
-      objectReference: {fileID: 1023128587}
-    - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: wheelControllerScript
       value: 
       objectReference: {fileID: 820136644}
@@ -1339,22 +1331,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 842493988, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: weaponWheelUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 842493988, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: cursorHolderUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 445114830460704509, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: weaponWheelUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 445114830460704509, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: cursorHolderUI
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: weaponWheelUI
       value: 
@@ -1367,18 +1343,6 @@ PrefabInstance:
       propertyPath: wheelEventSystem
       value: 
       objectReference: {fileID: 1023128587}
-    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: doubleJumpForce
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921597003961212630, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: weaponWheelUI
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 3921597003961212630, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: cursorHolderUI
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 7208981455675459386, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -1427,6 +1391,5 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6063128630130948120, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}

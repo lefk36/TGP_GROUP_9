@@ -130,10 +130,10 @@ public class PlayerController : MonoBehaviour
         {
             doubleJumped = false;
         }
-        if(Input.GetButtonDown("Jump") && !lockMovement && (isOnGround || !doubleJumped))
+        if(Input.GetButtonDown("Jump") && !lockMovement && (isOnGround || (!doubleJumped && doubleJumpUnlocked)))
         {
             
-            if(!doubleJumped && !isOnGround)
+            if((!doubleJumped && doubleJumpUnlocked)&& !isOnGround)
             {
                 animator.SetTrigger("DoubleJump");
                 doubleJumped = true;
@@ -210,12 +210,12 @@ public class PlayerController : MonoBehaviour
             jumping = false;
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
-        if(jumping && !isOnGround)
+        if(jumping && !isOnGround && doubleJumpUnlocked)
         {
             jumping = false;
             Debug.Log("Velocity pre change" + rigidbody.velocity);
             Vector3 characterForward = character.transform.forward.normalized;
-            rigidbody.velocity = new Vector3(characterForward.x * Mathf.Abs(rigidbody.velocity.x), 0, characterForward.z * Mathf.Abs(rigidbody.velocity.z));
+            rigidbody.velocity = Vector3.zero;
             Debug.Log("Velocity post change" + rigidbody.velocity);
             rigidbody.AddForce((Vector3.up * jumpForce) + (characterForward * doubleJumpForwardForce), ForceMode.Impulse);
         }

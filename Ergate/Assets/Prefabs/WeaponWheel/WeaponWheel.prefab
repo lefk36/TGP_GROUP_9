@@ -57,8 +57,9 @@ MonoBehaviour:
   - {fileID: 331821925537053135}
   - {fileID: 6020033465480329852}
   segmentAngle: 36
-  cursor: {fileID: 0}
+  cursor: {fileID: 2103157371777603313}
   wheelControllerScript: {fileID: 0}
+  wheelEventSystem: {fileID: 0}
 --- !u!1001 &1108457912827586063
 PrefabInstance:
   m_ObjectHideFlags: 0

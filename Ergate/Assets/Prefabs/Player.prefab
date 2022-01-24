@@ -352,6 +352,8 @@ MonoBehaviour:
   m_TargetToLook: {fileID: 1343191694}
   m_CameraMovement: {fileID: 3382758903527361518}
   m_Player: {fileID: 3142202214008486164}
+  m_PlayerLockOnAnimator: {fileID: 0}
+  m_DefaultAnimatorController: {fileID: 0}
 --- !u!136 &558449382
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -451,6 +453,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonHoldingTimeRequired: 0.1
+  wheelEventSystem: {fileID: 0}
   cursorHolderUI: {fileID: 0}
   weaponWheelUI: {fileID: 0}
   buttonName: 
@@ -515,7 +518,6 @@ MonoBehaviour:
   m_MouseSensitivity: 1000
   m_ControllerSensitivity: 300
   m_ClampAngle: 60
-  m_TurnSmoothRotation: 0
 --- !u!136 &979723894
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -621,8 +623,10 @@ MonoBehaviour:
   targetSpeed: 6.5
   rotationTime: 0.05
   jumpForce: 14
+  doubleJumpForwardForce: 10
   jumpingGravityScale: 3
   fallingMultiplier: 2
+  doubleJumpUnlocked: 1
   lockMovement: 0
   lockFalling: 0
   lockAttackDirection: 0
