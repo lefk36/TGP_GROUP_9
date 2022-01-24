@@ -132,11 +132,17 @@ public class PlayerController : MonoBehaviour
         }
         if(Input.GetButtonDown("Jump") && !lockMovement && (isOnGround || !doubleJumped))
         {
-            animator.SetTrigger("Jump");
+            
             if(!doubleJumped && !isOnGround)
             {
+                animator.SetTrigger("DoubleJump");
                 doubleJumped = true;
             }
+            else
+            {
+                animator.SetTrigger("Jump");
+            }
+
             jumping = true;
             
         }
@@ -147,6 +153,11 @@ public class PlayerController : MonoBehaviour
         else
         {
             animator.SetBool("IsRunning", false);
+        }
+
+        if(rigidbody.velocity.y < 0f && !isOnGround)
+        {
+            animator.SetTrigger("Falling");
         }
     }
     private void FixedUpdate()
@@ -213,6 +224,7 @@ public class PlayerController : MonoBehaviour
         }
         if(rigidbody.velocity.y < 0) //when falling
         {
+
             gravityScaleScript.gravityScale = jumpingGravityScale*fallingMultiplier;
         }
         
