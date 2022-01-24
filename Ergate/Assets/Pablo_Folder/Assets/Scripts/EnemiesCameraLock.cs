@@ -7,7 +7,7 @@ public class EnemiesCameraLock : MonoBehaviour
     //Variable that will hold the input of the scrollwheel
     private float m_ScrollWheelInputValue = 0;
     //Index of the enemies in the targetable enemies list
-    private int m_TargetableEnemyIndex = 0;
+    private int m_TargetableEnemyIndex;
 
     private bool m_ControllerHorizontalInputDone = false;
 
@@ -53,10 +53,16 @@ public class EnemiesCameraLock : MonoBehaviour
     [SerializeField] private AnimatorOverrideController m_PlayerLockOnAnimator;
     [SerializeField] private AnimatorOverrideController m_DefaultAnimatorController;
 
-    
+    private float m_ShortestDistance = Mathf.Infinity;
 
+    private void Awake()
+    {
+        //Coroutine that happens every 0.1 seconds
+        StartCoroutine(EnemyListChange());
+    }
     private void Start()
     {
+        
         m_Character = GameObject.Find("Character");
         if(m_Character != null)
         {
@@ -67,8 +73,7 @@ public class EnemiesCameraLock : MonoBehaviour
 
             }
         }
-        //Coroutine that happens every 0.1 seconds
-        StartCoroutine(EnemyListChange());    
+        
     }
     private void OnEnable()
     {
@@ -82,12 +87,14 @@ public class EnemiesCameraLock : MonoBehaviour
     {
         if(m_LockOn)
         {
+            
             //Sets the object to look at and the smooth rotation of the camera center in Y
             m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
             Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
             Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
             Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
             m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+
         }
     }
 
@@ -105,8 +112,12 @@ public class EnemiesCameraLock : MonoBehaviour
             //If the lock mode is not active
             if (!m_LockOn)
             {
+                if(m_TargetableEnemies.Count > 0)
+                {
+                    m_TargetableEnemyIndex = 0;
+                }
                 //If the list of targetable enemies is different than 0 then set the lock mode to true
-                if (m_TargetableEnemies.Count != 0)
+                if (m_TargetableEnemies.Count != 0 && m_TargetableEnemyIndex >= 0)
                 {
                     m_LockOn = true;
                     m_PlayerAnimator.runtimeAnimatorController = m_PlayerLockOnAnimator;
@@ -136,8 +147,6 @@ public class EnemiesCameraLock : MonoBehaviour
                 m_CameraMovement.enabled = false;
                 m_CameraMovementActive = false;
             }
-
-            
 
             //If the scrollWheel input is not 0 means that we go up or down on the targetable enemies list
             if (m_ScrollWheelInputValue != 0f)
@@ -203,7 +212,7 @@ public class EnemiesCameraLock : MonoBehaviour
             //If there is only 1 item in the list, the index if the list is 0
             if (m_TargetableEnemies.Count == 1)
             {
-                m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                m_TargetableEnemyIndex = 0;
             }
 
             //If the player is not visible the lock mode turns off
@@ -251,9 +260,30 @@ public class EnemiesCameraLock : MonoBehaviour
                             if (!m_TargetableEnemies.Contains(hit.collider.gameObject))
                             {
                                 m_TargetableEnemies.Add(hit.collider.gameObject);
+
+                                
+                                
                             }
+
+                            Vector3 playerToEnemy = enemy.transform.position - transform.position;
+                            Debug.Log(hit.collider.gameObject + "camera to enemy" + playerToEnemy.magnitude);
+                            GameObject nearestEnemy = null;
+
+                            if (playerToEnemy.magnitude < m_ShortestDistance)
+                            {
+                                m_ShortestDistance = playerToEnemy.magnitude;
+                                nearestEnemy = hit.collider.gameObject;
+                                Debug.Log(nearestEnemy);
+                            }
+
+                            if (nearestEnemy != null)
+                            {
+                                m_TargetableEnemies[0] = nearestEnemy;
+                            }
+
                         }
                     }
+                    
                 }
                 else
                 {
