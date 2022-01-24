@@ -78,10 +78,6 @@ public class Camera_Movement : MonoBehaviour
         m_MouseRotationX = Mathf.Clamp(m_MouseRotationX, -m_ClampAngle, m_ClampAngle);
         m_ControllerRotationX = Mathf.Clamp(m_ControllerRotationX, -m_ClampAngle, m_ClampAngle);
         
-        Debug.Log("Mouse Input Y" + m_MouseRotationX);
-        Debug.Log("Mouse Input X" + m_MouseRotationY);
-        Debug.Log("Controller Input Y" + m_ControllerRotationX);
-        Debug.Log("Controller Input X" + m_ControllerRotationY);
 
         if (Mathf.Abs(m_ControllerRotationX) > 0f || Mathf.Abs(m_ControllerRotationY) > 0f)
         {

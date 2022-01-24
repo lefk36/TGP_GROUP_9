@@ -11,7 +11,7 @@ public class PlayerController : MonoBehaviour
     [Min(0f)] public float targetSpeed;
     [Min(0f)] public float rotationTime;
     [Min(0f)] public float jumpForce;
-    [Min(0f)] public float doubleJumpForce;
+    [Min(0f)] public float doubleJumpForwardForce;
     [Min(1.0f)] public float jumpingGravityScale;
     [Min(1.0f)] public float fallingMultiplier;
     [SerializeField] private bool doubleJumpUnlocked;
@@ -213,10 +213,11 @@ public class PlayerController : MonoBehaviour
         if(jumping && !isOnGround)
         {
             jumping = false;
-            Vector3 directionChange = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
-            directionChange = character.transform.localRotation * directionChange;
-            rigidbody.velocity = new Vector3(directionChange.x, rigidbody.velocity.y, directionChange.z);
-            rigidbody.AddForce(Vector3.up * doubleJumpForce, ForceMode.Impulse);
+            Debug.Log("Velocity pre change" + rigidbody.velocity);
+            Vector3 characterForward = character.transform.forward.normalized;
+            rigidbody.velocity = new Vector3(characterForward.x * Mathf.Abs(rigidbody.velocity.x), 0, characterForward.z * Mathf.Abs(rigidbody.velocity.z));
+            Debug.Log("Velocity post change" + rigidbody.velocity);
+            rigidbody.AddForce((Vector3.up * jumpForce) + (characterForward * doubleJumpForwardForce), ForceMode.Impulse);
         }
         if(rigidbody.velocity.y > 0.2f) //when rising
         {
