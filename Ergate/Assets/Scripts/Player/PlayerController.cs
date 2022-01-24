@@ -51,6 +51,8 @@ public class PlayerController : MonoBehaviour
     //private bools
     bool jumping = false;
 
+    
+
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
@@ -91,6 +93,8 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        
+
         //update handles logic. Actual Physics calculations are done in fixed update
 
         //find if player is on ground. small modifications to the collider are made to make the result more accurate
@@ -213,4 +217,6 @@ public class PlayerController : MonoBehaviour
         // implementation for taking damage. Interrupt attacking, calculate if the hit has knocked the player down. If it did, calculate how far they fly, if at all.
         //Perhaps this will be edited to make a damage script with similar functionality between the player and the enemies.
     }
+
+    
 }
