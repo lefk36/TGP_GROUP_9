@@ -44,11 +44,15 @@ public class EnemiesCameraLock : MonoBehaviour
     private Vector3 m_RayDirection;
     //Bool to set camera movement to true or false
     private bool m_CameraMovementActive = true;
+    //Animator of the player
     private Animator m_PlayerAnimator;
+    //Character and model of the character
     private GameObject m_Character;
     private GameObject m_Model;
+    //Override Animator Controller
     [SerializeField] private AnimatorOverrideController m_PlayerLockOnAnimator;
     [SerializeField] private AnimatorOverrideController m_DefaultAnimatorController;
+
     
 
     private void Start()
