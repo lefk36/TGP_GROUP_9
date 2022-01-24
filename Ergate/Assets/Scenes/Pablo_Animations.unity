@@ -231,6 +231,22 @@ PrefabInstance:
       propertyPath: m_Layer.m_Bits
       value: 520
       objectReference: {fileID: 0}
+    - target: {fileID: 1343191698, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_TurnToEnemySpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: weaponWheelUI
+      value: 
+      objectReference: {fileID: 1153318139}
+    - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: cursorHolderUI
+      value: 
+      objectReference: {fileID: 1502854535}
+    - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: wheelEventSystem
+      value: 
+      objectReference: {fileID: 2048559509}
     - target: {fileID: 7208981455675459386, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -484,9 +500,14 @@ PrefabInstance:
     - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: wheelControllerScript
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1244064762}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+--- !u!1 &1153318139 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5768684351786273167, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+  m_PrefabInstance: {fileID: 757804501}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1235314807
 GameObject:
   m_ObjectHideFlags: 0
@@ -584,6 +605,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1244064762 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+  m_PrefabInstance: {fileID: 577730951}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2dbb66deb018a7a4f99d7df2be2e4ec3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &1502854535 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6216765813408574671, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}

@@ -73,7 +73,7 @@ public class EnemiesCameraLock : MonoBehaviour
         //Makes the cursor invisible
         Cursor.visible = false;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         //Holders of the input that we are going to use for the camera lock
         m_ScrollWheelInput = Input.mouseScrollDelta.y;
