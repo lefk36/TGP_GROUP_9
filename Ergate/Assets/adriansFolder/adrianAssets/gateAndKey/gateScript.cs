@@ -18,7 +18,7 @@ public class gateScript : MonoBehaviour
 
     private void Awake()
     {
-        m_player = FindObjectOfType<playerController>().gameObject;
+        m_player = FindObjectOfType<PlayerController>().gameObject;
         m_keyStats = m_key.GetComponent<keyStats>();
         keyID = m_keyStats.itemID;
         keyInstance = m_keyStats.keyInstance;
