@@ -873,7 +873,7 @@ GameObject:
   - component: {fileID: 1471036811}
   - component: {fileID: 1471036810}
   - component: {fileID: 1471036813}
-  m_Layer: 8
+  m_Layer: 9
   m_Name: Enemy Target
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -1382,6 +1382,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1343191698, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_TurnToEnemySpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 681302972768268160, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: spikeScript
       value: 
