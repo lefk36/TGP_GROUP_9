@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -53,6 +54,14 @@ public class PlayerController : MonoBehaviour
     //private bools
     bool jumping = false;
     bool doubleJumped = false;
+
+    //variables for audio
+    private GameObject m_audioController;
+    private bool m_runAudio;
+
+    //variables for UI
+    public GameObject pauseMenu;
+
     
 
     void Start()
@@ -60,6 +69,7 @@ public class PlayerController : MonoBehaviour
         rigidbody = GetComponent<Rigidbody>();
         movementCollider = GetComponent<CapsuleCollider>();
         gravityScaleScript = GetComponent<GravityScaler>();
+        m_audioController = FindObjectOfType<audioController>().gameObject;
         //load character information
         character = transform.Find("Character").gameObject;
         if (character != null)
@@ -149,10 +159,34 @@ public class PlayerController : MonoBehaviour
         if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f || inputDirection.magnitude > 0.1f) && isOnGround && !lockMovement)
         {
             animator.SetBool("IsRunning", true);
+            if(!m_runAudio)
+            {
+                m_runAudio = true;
+                m_audioController.GetComponent<audioController>().play("playerRunning");
+                
+
+
+            }
+           
+            
+
         }
         else
         {
             animator.SetBool("IsRunning", false);
+            if(m_runAudio)
+            {
+                m_audioController.GetComponent<audioController>().pauseClip("playerRunning");
+                m_runAudio = false;
+            }
+            
+        }
+
+        if(Input.GetButtonDown("Pause"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
         }
 
         if((rigidbody.velocity.y < 0f || doubleJumped) && !isOnGround)
