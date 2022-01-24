@@ -155,9 +155,13 @@ public class PlayerController : MonoBehaviour
             animator.SetBool("IsRunning", false);
         }
 
-        if(rigidbody.velocity.y < 0f && !isOnGround)
+        if((rigidbody.velocity.y < 0f || doubleJumped) && !isOnGround)
         {
             animator.SetTrigger("Falling");
+        }
+        else
+        {
+            animator.SetTrigger("BackToIdle");
         }
     }
     private void FixedUpdate()
