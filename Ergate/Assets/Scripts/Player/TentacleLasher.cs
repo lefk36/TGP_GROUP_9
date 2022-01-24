@@ -8,12 +8,4 @@ public class TentacleLasher : Weapon
     {
 
     }
-    protected override void Start()
-    {
-        
-    }
-    protected override void Update()
-    {
-        Debug.Log("tentacle active");
-    }
 }

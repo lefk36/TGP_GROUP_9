@@ -8,12 +8,4 @@ public class SpikeCannon : Weapon
     {
         
     }
-    protected override void Start()
-    {
-
-    }
-    protected override void Update()
-    {
-        Debug.Log("Spike cannon active");
-    }
 }

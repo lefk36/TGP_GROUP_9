@@ -9,7 +9,7 @@ public class WeaponWheelController : MonoBehaviour
 {
     //Inspector values
     public float buttonHoldingTimeRequired;
-    public List<Weapon> weaponScripts;
+   
 
     //UI Objects
     public EventSystem wheelEventSystem;
@@ -28,6 +28,11 @@ public class WeaponWheelController : MonoBehaviour
     private bool mouseCursorState = false;
     private bool weaponWheelState = false;
     private float timeButtonIsHeld = 0;
+
+
+    //public non-inspector values
+    [HideInInspector] public Type activeWeaponType;
+    [HideInInspector] public List<Weapon> weaponScripts;
 
     void Start()
     {
@@ -149,13 +154,9 @@ public class WeaponWheelController : MonoBehaviour
         {
             for(int i =0; i<weaponScripts.Count; i++)
             {
-                if(weaponScripts[i].GetType() != typeof(MantisBlades))
+                if(weaponScripts[i].GetType() == typeof(MantisBlades))
                 {
-                    weaponScripts[i].enabled = false;
-                }
-                else
-                {
-                    weaponScripts[i].enabled = true;
+                    activeWeaponType = typeof(MantisBlades);
                 }
             }
         }
@@ -163,13 +164,9 @@ public class WeaponWheelController : MonoBehaviour
         {
             for (int i = 0; i < weaponScripts.Count; i++)
             {
-                if (weaponScripts[i].GetType() != typeof(TentacleLasher))
+                if (weaponScripts[i].GetType() == typeof(TentacleLasher))
                 {
-                    weaponScripts[i].enabled = false;
-                }
-                else
-                {
-                    weaponScripts[i].enabled = true;
+                    activeWeaponType = typeof(TentacleLasher);
                 }
             }
         }
@@ -177,13 +174,9 @@ public class WeaponWheelController : MonoBehaviour
         {
             for (int i = 0; i < weaponScripts.Count; i++)
             {
-                if (weaponScripts[i].GetType() != typeof(SpikeCannon))
+                if (weaponScripts[i].GetType() == typeof(SpikeCannon))
                 {
-                    weaponScripts[i].enabled = false;
-                }
-                else
-                {
-                    weaponScripts[i].enabled = true;
+                    activeWeaponType = typeof(SpikeCannon);
                 }
             }
         }
