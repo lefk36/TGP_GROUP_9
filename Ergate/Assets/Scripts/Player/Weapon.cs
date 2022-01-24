@@ -1,0 +1,20 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Weapon : MonoBehaviour
+{
+    public virtual void Attack(string button)
+    {
+
+    }
+    protected virtual void Start()
+    {
+
+    }
+    protected virtual void Update()
+    {
+
+    }
+
+}

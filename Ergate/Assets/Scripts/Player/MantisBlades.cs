@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MantisBlades : MonoBehaviour
+public class MantisBlades : Weapon
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Attack(string button)
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+    }
+    protected override void Start()
     {
-        
+
+    }
+    protected override void Update()
+    {
+        Debug.Log("blades active");
     }
 }

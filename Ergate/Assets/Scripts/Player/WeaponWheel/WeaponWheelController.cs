@@ -9,9 +9,7 @@ public class WeaponWheelController : MonoBehaviour
 {
     //Inspector values
     public float buttonHoldingTimeRequired;
-    public MantisBlades bladesScript;
-    public SpikeCannon spikeScript;
-    public TentacleLasher lasherScript;
+    public List<Weapon> weaponScripts;
 
     //UI Objects
     public EventSystem wheelEventSystem;
@@ -33,6 +31,9 @@ public class WeaponWheelController : MonoBehaviour
 
     void Start()
     {
+        weaponScripts.Add(transform.GetComponent<MantisBlades>());
+        weaponScripts.Add(transform.GetComponent<TentacleLasher>());
+        weaponScripts.Add(transform.GetComponent<SpikeCannon>());
         playerControllerScript = transform.parent.gameObject.GetComponent<PlayerController>();
         cameraMovementScript = transform.parent.Find("Camera Centre").GetComponent<Camera_Movement>();
         cameraLockScript = cameraMovementScript.transform.Find("Main Camera").GetComponent<EnemiesCameraLock>();
@@ -146,21 +147,45 @@ public class WeaponWheelController : MonoBehaviour
     {
         if(weaponName == "Blades")
         {
-            bladesScript.enabled = true;
-            lasherScript.enabled = false;
-            spikeScript.enabled = false;
+            for(int i =0; i<weaponScripts.Count; i++)
+            {
+                if(weaponScripts[i].GetType() != typeof(MantisBlades))
+                {
+                    weaponScripts[i].enabled = false;
+                }
+                else
+                {
+                    weaponScripts[i].enabled = true;
+                }
+            }
         }
         else if(weaponName == "Lasher")
         {
-            bladesScript.enabled = false;
-            lasherScript.enabled = true;
-            spikeScript.enabled = false;
+            for (int i = 0; i < weaponScripts.Count; i++)
+            {
+                if (weaponScripts[i].GetType() != typeof(TentacleLasher))
+                {
+                    weaponScripts[i].enabled = false;
+                }
+                else
+                {
+                    weaponScripts[i].enabled = true;
+                }
+            }
         }
         else if(weaponName == "Spike")
         {
-            bladesScript.enabled = false;
-            lasherScript.enabled = false;
-            spikeScript.enabled = true;
+            for (int i = 0; i < weaponScripts.Count; i++)
+            {
+                if (weaponScripts[i].GetType() != typeof(SpikeCannon))
+                {
+                    weaponScripts[i].enabled = false;
+                }
+                else
+                {
+                    weaponScripts[i].enabled = true;
+                }
+            }
         }
     }
 }

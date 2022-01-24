@@ -467,9 +467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonHoldingTimeRequired: 0.1
-  bladesScript: {fileID: 555628668}
-  spikeScript: {fileID: 4478890024887751681}
-  lasherScript: {fileID: 555628667}
+  weaponScripts: []
   wheelEventSystem: {fileID: 0}
   cursorHolderUI: {fileID: 0}
   weaponWheelUI: {fileID: 0}
@@ -648,7 +646,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   acceleration: 18
-  deceleration: 10
+  deceleration: 30
   targetSpeed: 6.5
   rotationTime: 0.05
   jumpForce: 14
