@@ -41,7 +41,7 @@ public class Camera_Movement : MonoBehaviour
     }
     private void OnEnable()
     {
-        transform.localRotation = Quaternion.Euler(0, 0, 0);
+        //transform.localRotation = Quaternion.Euler(0f, 0f, 0f);
         //vector of the camera holder rotation
         m_InitialRotation = transform.localRotation.eulerAngles;
         //Set the x and y rotation to the variables made for that
@@ -89,14 +89,14 @@ public class Camera_Movement : MonoBehaviour
                 m_UsingController = false;
             }
             
-            transform.rotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
+            transform.localRotation = Quaternion.Euler(m_ControllerRotationX, m_ControllerRotationY, 0f);
             
 
         }
         
         //Sets the rotation of the camera holder to the rotation on the x and y axis depending on if the player is using the mouse or a controller 
          
-        if (Mathf.Abs(m_MouseRotationX) > 0f || Mathf.Abs(m_MouseRotationY) > 0f)
+         if (Mathf.Abs(m_MouseRotationX) > 0f || Mathf.Abs(m_MouseRotationY) > 0f)
         { 
            
            if(!m_UsingController)
@@ -105,8 +105,8 @@ public class Camera_Movement : MonoBehaviour
                 m_ControllerRotationY = 0f;
                 m_UsingController = true;
            }
-            
-           transform.rotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
+
+            transform.localRotation = Quaternion.Euler(m_MouseRotationX, m_MouseRotationY, 0f);
             
             
         }
