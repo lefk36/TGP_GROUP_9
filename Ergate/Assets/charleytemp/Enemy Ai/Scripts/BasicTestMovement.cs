@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasicTestMovement : MonoBehaviour
 { 
-    public float movementSpeed = 500f;
+    public float movementSpeed = 5f;
     //super brain dead ez pz movement for testing the AI
     void Update()
     {

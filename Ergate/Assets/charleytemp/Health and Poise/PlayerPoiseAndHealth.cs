@@ -13,22 +13,18 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     private int defaultMaxPoise = 100;
     private bool hasRegenedHealth;
     private bool hasRegenedPoise;
-    [SerializeField] private int currentPlayerHealth;
-    [SerializeField] private int currentPlayerPoise;
-    [SerializeField] private int timeBetweenHealthRegen; //time in seconds before health regen
-    [SerializeField] private int timeBetweenPoiseRegen; //time in seconds before Poise regen
-    [SerializeField] private bool isKnockedDown;
+    [SerializeField] private int currentPlayerHealth;       //
+    [SerializeField] private int currentPlayerPoise;        // Variables Serialized for testing purposes
+    [SerializeField] private int timeBetweenHealthRegen;    //time in seconds before health regen
+    [SerializeField] private int timeBetweenPoiseRegen;     //time in seconds before Poise regen
+    [SerializeField] private bool isKnockedDown;            //
     #endregion
 
     public int maximumPoise = 100;  //temp numbers. might be changed with items 
     public int maximumHealth = 100; //
 
-    public int currentPlayerPoiseRegen;  //May be changed with items in future
-<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
+    [Min(0)]public int currentPlayerPoiseRegen;  //May be changed with items in future
     public int currentPlayerHealthRegen;       //
-=======
-    public int currentHealthPlayerRegen;       //
->>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
 
     
     void Awake()
@@ -40,11 +36,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         currentPlayerPoise = maximumPoise;      //
 
         currentPlayerPoiseRegen = defaultPoiseRegen;
-<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
         currentPlayerHealthRegen = defaultHealthRegen;
-=======
-        currentHealthPlayerRegen = defaultHealthRegen;
->>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
     }
     private void Start()
     {
@@ -67,10 +59,6 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             PlayerDie();
 
         if (currentPlayerHealth <= maximumHealth && hasRegenedHealth == false)
-<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
-        {
-=======
->>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
             StartCoroutine(RegenHealth()); // only regens when health is below full
         #endregion
 
@@ -95,7 +83,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         //play an animation
     }
-    void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
+    public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
         rb.AddForce(attackDirection, ForceMode.Impulse);
         currentPlayerHealth -= healthDamageAmount;
@@ -103,30 +91,24 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     void PlayerDie()
     {
-        //do whatever dead people do
+        Debug.LogError("you are dead now. RIP");
+        gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're DEAD
+        gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
+        StopAllCoroutines(); // stops regen
+        //do whatever else dead people do
     }
     IEnumerator RegenHealth()
     {
-<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
         currentPlayerHealth += currentPlayerHealthRegen;
         hasRegenedHealth = true;
         yield return new WaitForSeconds(timeBetweenHealthRegen);
-=======
-        currentPlayerHealth += currentHealthPlayerRegen;
-        hasRegenedHealth = true;
-        yield return new WaitForSeconds(timeBetweenRegen);
->>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
         hasRegenedHealth = false;
     }
     IEnumerator RegenPoise()
     {
         currentPlayerPoise += currentPlayerPoiseRegen;
         hasRegenedPoise = true;
-<<<<<<< Updated upstream:Ergate/Assets/charleytemp/PlayerPoiseAndHealth.cs
         yield return new WaitForSeconds(timeBetweenPoiseRegen);
-=======
-        yield return new WaitForSeconds(timeBetweenRegen);
->>>>>>> Stashed changes:Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
         hasRegenedPoise = false;
     }
 }
