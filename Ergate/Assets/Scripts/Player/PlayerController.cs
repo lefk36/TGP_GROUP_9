@@ -213,10 +213,8 @@ public class PlayerController : MonoBehaviour
         if(jumping && !isOnGround && doubleJumpUnlocked)
         {
             jumping = false;
-            Debug.Log("Velocity pre change" + rigidbody.velocity);
             Vector3 characterForward = character.transform.forward.normalized;
             rigidbody.velocity = Vector3.zero;
-            Debug.Log("Velocity post change" + rigidbody.velocity);
             rigidbody.AddForce((Vector3.up * jumpForce) + (characterForward * doubleJumpForwardForce), ForceMode.Impulse);
         }
         if(rigidbody.velocity.y > 0.2f) //when rising
