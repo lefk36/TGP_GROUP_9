@@ -9,13 +9,16 @@ public class WeaponWheelController : MonoBehaviour
 {
     //Inspector values
     public float buttonHoldingTimeRequired;
+    public MantisBlades bladesScript;
+    public SpikeCannon spikeScript;
+    public TentacleLasher lasherScript;
 
     //UI Objects
     public EventSystem wheelEventSystem;
     public RectTransform cursorHolderUI;
     private RectTransform canvas;
     public GameObject weaponWheelUI;
-    [HideInInspector] public string buttonName;
+    [HideInInspector] public string buttonString;
     
 
     //game scripts
@@ -64,7 +67,7 @@ public class WeaponWheelController : MonoBehaviour
                 Button button;
                 button = buttonObj.GetComponent<Button>();
                 button.onClick.Invoke();
-                Debug.Log(buttonName);
+                SwitchWeapons(buttonString);
             }
             mouseCursorState = false;
             cursorHolderUI.rotation = Quaternion.Euler(0, 0, 0);
@@ -139,8 +142,25 @@ public class WeaponWheelController : MonoBehaviour
         angle = ClampTo360(angle);
         return angle;
     }
-    void SwitchWeapons()
+    void SwitchWeapons(string weaponName)
     {
-
+        if(weaponName == "Blades")
+        {
+            bladesScript.enabled = true;
+            lasherScript.enabled = false;
+            spikeScript.enabled = false;
+        }
+        else if(weaponName == "Lasher")
+        {
+            bladesScript.enabled = false;
+            lasherScript.enabled = true;
+            spikeScript.enabled = false;
+        }
+        else if(weaponName == "Spike")
+        {
+            bladesScript.enabled = false;
+            lasherScript.enabled = false;
+            spikeScript.enabled = true;
+        }
     }
 }

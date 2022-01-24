@@ -9,8 +9,8 @@ public class WheelButtonReturnFunction : MonoBehaviour
     {   
         uiSegmenterScript = transform.parent.parent.GetComponent<WeaponWheelButtonSegmenter>();
     }
-    public void ReturnName()
+    public void ReturnString(string stringToReturn)
     {
-        uiSegmenterScript.SendButtonNameToWheel(gameObject.name);
+        uiSegmenterScript.SendStringToWheelController(stringToReturn);
     }
 }

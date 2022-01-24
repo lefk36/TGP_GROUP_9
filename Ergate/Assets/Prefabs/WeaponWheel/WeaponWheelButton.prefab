@@ -158,13 +158,13 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4492338125526021831}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 7785248569543653843}
+        m_TargetAssemblyTypeName: WheelButtonReturnFunction, Assembly-CSharp
+        m_MethodName: ReturnString
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
@@ -182,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 715d6aa884b68e34d8b03aa0b5f6072d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiSegmenterScript: {fileID: 0}
 --- !u!1 &5857596069103608609
 GameObject:
   m_ObjectHideFlags: 0

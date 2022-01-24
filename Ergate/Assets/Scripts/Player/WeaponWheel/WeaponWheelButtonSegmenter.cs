@@ -34,8 +34,8 @@ public class WeaponWheelButtonSegmenter : MonoBehaviour
             }
         }
     }
-    public void SendButtonNameToWheel(string name)
+    public void SendStringToWheelController(string sentString)
     {
-        wheelControllerScript.buttonName = name;
+        wheelControllerScript.buttonString = sentString;
     }
 }
