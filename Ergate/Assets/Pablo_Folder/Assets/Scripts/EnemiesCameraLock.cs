@@ -73,7 +73,7 @@ public class EnemiesCameraLock : MonoBehaviour
         //Makes the cursor invisible
         Cursor.visible = false;
     }
-    private void Update()
+    private void FixedUpdate()
     {
         //Holders of the input that we are going to use for the camera lock
         m_ScrollWheelInput = Input.mouseScrollDelta.y;
@@ -108,6 +108,7 @@ public class EnemiesCameraLock : MonoBehaviour
         //If the lock mode is active
         if (m_LockOn)
         {
+            
             //Mouse Controller
             //Sets a value for the scrollwheel input
             m_ScrollWheelInputValue += m_ScrollWheelInput;
@@ -117,6 +118,13 @@ public class EnemiesCameraLock : MonoBehaviour
                 m_CameraMovement.enabled = false;
                 m_CameraMovementActive = false;
             }
+
+            //Sets the object to look at and the smooth rotation of the camera center in Y
+            m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
+            Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
+            Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
+            Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
+            m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
             //If the scrollWheel input is not 0 means that we go up or down on the targetable enemies list
             if (m_ScrollWheelInputValue != 0f)
@@ -191,12 +199,7 @@ public class EnemiesCameraLock : MonoBehaviour
                 m_LockOn = false;
             }
 
-            //Sets the object to look at and the smooth rotation of the camera center in Y
-            m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
-            Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
-            Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
-            Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
-            m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
+            
         }
         else
         {

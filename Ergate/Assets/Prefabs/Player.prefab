@@ -343,17 +343,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_LockOn: 0
-  m_TurnToEnemySpeed: 0
+  m_TurnToEnemySpeed: 0.3
   m_MaxDistanceAllowed: 25
   m_TargetableEnemies: []
   m_Layer:
     serializedVersion: 2
-    m_Bits: 264
+    m_Bits: 520
   m_TargetToLook: {fileID: 1343191694}
   m_CameraMovement: {fileID: 3382758903527361518}
   m_Player: {fileID: 3142202214008486164}
-  m_PlayerLockOnAnimator: {fileID: 0}
-  m_DefaultAnimatorController: {fileID: 0}
+  m_PlayerLockOnAnimator: {fileID: 22100000, guid: b003f1035cdd9254e8bd8ba3e4befb6f, type: 2}
+  m_DefaultAnimatorController: {fileID: 22100000, guid: b64d5d960ebcb3c4f92bcc5c2e2c56cf, type: 2}
 --- !u!136 &558449382
 CapsuleCollider:
   m_ObjectHideFlags: 0
