@@ -8,13 +8,4 @@ public class Weapon : MonoBehaviour
     {
 
     }
-    protected virtual void Start()
-    {
-
-    }
-    protected virtual void Update()
-    {
-
-    }
-
 }

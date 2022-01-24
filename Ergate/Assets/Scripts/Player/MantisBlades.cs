@@ -8,12 +8,4 @@ public class MantisBlades : Weapon
     {
 
     }
-    protected override void Start()
-    {
-
-    }
-    protected override void Update()
-    {
-        Debug.Log("blades active");
-    }
 }
