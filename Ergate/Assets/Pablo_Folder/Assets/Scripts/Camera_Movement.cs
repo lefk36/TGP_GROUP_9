@@ -29,8 +29,7 @@ public class Camera_Movement : MonoBehaviour
     private float m_ControllerRotationY;
     //Initial Rotation
     private Vector3 m_InitialRotation;
-    //Turn Smooth rotation
-    [SerializeField] private float m_TurnSmoothRotation;
+    //bool to
     private bool m_UsingController;
     
 

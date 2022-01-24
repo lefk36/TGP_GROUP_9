@@ -44,9 +44,25 @@ public class EnemiesCameraLock : MonoBehaviour
     private Vector3 m_RayDirection;
     //Bool to set camera movement to true or false
     private bool m_CameraMovementActive = true;
+    private Animator m_PlayerAnimator;
+    private GameObject m_Character;
+    private GameObject m_Model;
+    [SerializeField] private AnimatorOverrideController m_PlayerLockOnAnimator;
+    [SerializeField] private AnimatorOverrideController m_DefaultAnimatorController;
+    
 
     private void Start()
     {
+        m_Character = GameObject.Find("Character");
+        if(m_Character != null)
+        {
+            m_Model = GameObject.Find("Model");
+            if(m_Model != null)
+            {
+                m_PlayerAnimator = m_Model.GetComponent<Animator>();
+
+            }
+        }
         //Coroutine that happens every 0.1 seconds
         StartCoroutine(EnemyListChange());    
     }
@@ -75,12 +91,14 @@ public class EnemiesCameraLock : MonoBehaviour
                 if (m_TargetableEnemies.Count != 0)
                 {
                     m_LockOn = true;
+                    m_PlayerAnimator.runtimeAnimatorController = m_PlayerLockOnAnimator;
                 }
             }
             else if (m_LockOn)
             {
                 //If the lock mode is active set it to false
                 m_LockOn = false;
+                m_PlayerAnimator.runtimeAnimatorController = m_DefaultAnimatorController;
             }
 
 

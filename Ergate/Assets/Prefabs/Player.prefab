@@ -352,6 +352,8 @@ MonoBehaviour:
   m_TargetToLook: {fileID: 1343191694}
   m_CameraMovement: {fileID: 3382758903527361518}
   m_Player: {fileID: 3142202214008486164}
+  m_PlayerLockOnAnimator: {fileID: 22100000, guid: b003f1035cdd9254e8bd8ba3e4befb6f, type: 2}
+  m_DefaultAnimatorController: {fileID: 22100000, guid: b64d5d960ebcb3c4f92bcc5c2e2c56cf, type: 2}
 --- !u!136 &558449382
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -391,7 +393,7 @@ GameObject:
   - component: {fileID: 9099689607135665240}
   - component: {fileID: 555628667}
   - component: {fileID: 555628668}
-  - component: {fileID: 6063128630130948120}
+  - component: {fileID: 3508337469253699551}
   m_Layer: 0
   m_Name: Character
   m_TagString: Untagged
@@ -438,7 +440,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6866e4972a057bd42b79b642e030a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6063128630130948120
+--- !u!114 &3508337469253699551
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -447,7 +449,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4943754815482095059}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbc2e9391f1cc554794a1baa6344e5b5, type: 3}
+  m_Script: {fileID: 11500000, guid: 91272fda246176149ba73ec6c3579a46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   buttonHoldingTimeRequired: 0
@@ -514,7 +516,6 @@ MonoBehaviour:
   m_MouseSensitivity: 1000
   m_ControllerSensitivity: 300
   m_ClampAngle: 60
-  m_TurnSmoothRotation: 0
 --- !u!136 &979723894
 CapsuleCollider:
   m_ObjectHideFlags: 0
