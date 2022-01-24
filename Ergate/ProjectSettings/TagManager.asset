@@ -6,7 +6,6 @@ TagManager:
   tags:
   - barrel
   - slippery
-  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -14,14 +13,14 @@ TagManager:
   - Terrain
   - Water
   - UI
+  - UI
   - door
   - slipperyGround
   - checkpoint
   - Enemy
-  - 
-  - 
-  - 
-  - 
+  - Player
+  - LineOfSight
+  - Floor
   - 
   - 
   - 

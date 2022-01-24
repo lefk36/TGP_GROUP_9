@@ -13,17 +13,17 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     private int defaultMaxPoise = 100;
     private bool hasRegenedHealth;
     private bool hasRegenedPoise;
-    [SerializeField] private int currentPlayerHealth;
-    [SerializeField] private int currentPlayerPoise;
-    [SerializeField] private int timeBetweenHealthRegen; //time in seconds before health regen
-    [SerializeField] private int timeBetweenPoiseRegen; //time in seconds before Poise regen
-    [SerializeField] private bool isKnockedDown;
+    [SerializeField] private int currentPlayerHealth;       //
+    [SerializeField] private int currentPlayerPoise;        // Variables Serialized for testing purposes
+    [SerializeField] private int timeBetweenHealthRegen;    //time in seconds before health regen
+    [SerializeField] private int timeBetweenPoiseRegen;     //time in seconds before Poise regen
+    [SerializeField] private bool isKnockedDown;            //
     #endregion
 
     public int maximumPoise = 100;  //temp numbers. might be changed with items 
     public int maximumHealth = 100; //
 
-    public int currentPlayerPoiseRegen;  //May be changed with items in future
+    [Min(0)]public int currentPlayerPoiseRegen;  //May be changed with items in future
     public int currentPlayerHealthRegen;       //
 
     
@@ -59,9 +59,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             PlayerDie();
 
         if (currentPlayerHealth <= maximumHealth && hasRegenedHealth == false)
-        {
             StartCoroutine(RegenHealth()); // only regens when health is below full
-        }
         #endregion
 
         #region Poise Stuff
@@ -69,19 +67,23 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             StartCoroutine(RegenPoise());
         if (currentPlayerPoise < minimumPoise)
             currentPlayerPoise = minimumPoise;
+
         if (currentPlayerPoise <= 0)
             isKnockedDown = true;
+        else
+            isKnockedDown = false;
+
         if (isKnockedDown == true)
             KnockedDown();
         #endregion
     }
     public void KnockedDown()
     {
-        gameObject.GetComponent<PlayerController>().lockMovement = true;
-        gameObject.GetComponent<PlayerController>().lockAttackDirection = true;
+        gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
+        gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         //play an animation
     }
-    void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
+    public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
         rb.AddForce(attackDirection, ForceMode.Impulse);
         currentPlayerHealth -= healthDamageAmount;
@@ -89,7 +91,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     void PlayerDie()
     {
-        //do whatever dead people do
+        Debug.LogError("you are dead now. RIP");
+        gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're DEAD
+        gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
+        StopAllCoroutines(); // stops regen
+        //do whatever else dead people do
     }
     IEnumerator RegenHealth()
     {
