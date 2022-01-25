@@ -36,14 +36,19 @@ public class WeaponWheelController : MonoBehaviour
 
     void Start()
     {
+        playerControllerScript = transform.parent.gameObject.GetComponent<PlayerController>();
         weaponScripts.Add(transform.GetComponent<MantisBlades>());
         weaponScripts.Add(transform.GetComponent<TentacleLasher>());
         weaponScripts.Add(transform.GetComponent<SpikeCannon>());
-        playerControllerScript = transform.parent.gameObject.GetComponent<PlayerController>();
+        for(int i =0; i<weaponScripts.Count; i++)
+        {
+            weaponScripts[i].SetPlayerController(playerControllerScript);
+        }
+
         cameraMovementScript = transform.parent.Find("Camera Centre").GetComponent<Camera_Movement>();
         cameraLockScript = cameraMovementScript.transform.Find("Main Camera").GetComponent<EnemiesCameraLock>();
         canvas = weaponWheelUI.transform.parent as RectTransform;
-
+        activeWeaponType = typeof(MantisBlades);
     }
 
     // Update is called once per frame

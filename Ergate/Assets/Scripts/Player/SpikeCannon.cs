@@ -6,6 +6,7 @@ public class SpikeCannon : Weapon
 {
     public override void Attack(string button)
     {
-        
+        Debug.Log("Spike Cannon attacks with: " + button);
     }
+
 }

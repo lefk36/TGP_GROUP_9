@@ -6,6 +6,6 @@ public class TentacleLasher : Weapon
 {
     public override void Attack(string button)
     {
-
+        Debug.Log("Tentacle Lasher attacks with: " + button);
     }
 }
