@@ -266,14 +266,14 @@ public class EnemiesCameraLock : MonoBehaviour
                             }
 
                             Vector3 playerToEnemy = enemy.transform.position - transform.position;
-                            Debug.Log(hit.collider.gameObject + "camera to enemy" + playerToEnemy.magnitude);
+                            //Debug.Log(hit.collider.gameObject + "camera to enemy" + playerToEnemy.magnitude);
                             GameObject nearestEnemy = null;
 
                             if (playerToEnemy.magnitude < m_ShortestDistance)
                             {
                                 m_ShortestDistance = playerToEnemy.magnitude;
                                 nearestEnemy = hit.collider.gameObject;
-                                Debug.Log(nearestEnemy);
+                                //Debug.Log(nearestEnemy);
                             }
 
                             if (nearestEnemy != null)
