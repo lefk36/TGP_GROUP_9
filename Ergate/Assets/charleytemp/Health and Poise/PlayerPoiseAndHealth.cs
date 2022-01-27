@@ -8,7 +8,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     [HideInInspector] public Rigidbody rb;
     private int minimumPoise = -100;
     private int defaultHealthRegen = 3;
-    private int defaultPoiseRegen = 5;
+    private int defaultPoiseRegen = 10;
     private int defaultMaxHealth = 100;
     private int defaultMaxPoise = 100;
     private bool hasRegenedHealth;
@@ -74,7 +74,8 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         #region health stuff
         if (currentPlayerHealth <= 0)
             PlayerDie();
-
+        if (currentPlayerHealth < maximumHealth)
+            currentPlayerHealth = maximumHealth;
         if (currentPlayerHealth <= maximumHealth && timeBetweenHealthRegen <= 0)
         {
             currentPlayerHealth += currentPlayerHealthRegen;
@@ -97,7 +98,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         if (currentPlayerPoise <= 0)
             isKnockedDown = true;
         else if (currentPlayerPoise > 0)
+        {
             isKnockedDown = false;
+            Debug.Log("should get up");
+        }
+            //isKnockedDown = false;
 
         if (isKnockedDown == true)
             KnockedDown();
@@ -111,18 +116,13 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         gameObject.GetComponent<PlayerController>().readyForAction = false; //
         //play an animation
         m_PlayerAnimator.SetTrigger("KnockedDown");
-
-        if(m_PlayerAnimator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
-        {
-            
-        }
     }
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
         m_PlayerAnimator.SetTrigger("TakeDamage");
         rb.AddForce(attackDirection, ForceMode.Impulse);
         currentPlayerHealth -= healthDamageAmount;
-        currentPlayerPoiseRegen -= poiseDamageAmount;
+        currentPlayerPoise -= poiseDamageAmount;
     }
     void PlayerDie()
     {
