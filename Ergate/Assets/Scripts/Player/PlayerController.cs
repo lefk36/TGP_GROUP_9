@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public bool lockFalling;
     public bool lockAttackDirection;
 
-    [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
+    public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
     [HideInInspector] public bool isOnGround = true;
     public bool cameraLockedToTarget; //edit this in camera script to determine whether
 
@@ -140,7 +140,7 @@ public class PlayerController : MonoBehaviour
         {
             doubleJumped = false;
         }
-        if(Input.GetButtonDown("Jump") && !lockMovement && (isOnGround || (!doubleJumped && doubleJumpUnlocked)))
+        if((Input.GetButtonDown("Jump")) && !lockMovement && (isOnGround || (!doubleJumped && doubleJumpUnlocked)))
         {
             
             if((!doubleJumped && doubleJumpUnlocked)&& !isOnGround)
@@ -277,12 +277,6 @@ public class PlayerController : MonoBehaviour
     {
         float angle = Mathf.SmoothDampAngle(target.eulerAngles.y, targetAngle, ref outVelocity, timeToRotate); // Function to smooth the angle movement
         target.rotation = Quaternion.Euler(0f, angle, 0f);
-    }
-    public void TakeDamage(Vector3 impactDirection, int damage, int poiseDamage)
-    {
-        impactDirection = impactDirection.normalized;
-        // implementation for taking damage. Interrupt attacking, calculate if the hit has knocked the player down. If it did, calculate how far they fly, if at all.
-        //Perhaps this will be edited to make a damage script with similar functionality between the player and the enemies.
     }
 
     

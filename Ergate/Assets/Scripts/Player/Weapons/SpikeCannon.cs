@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class SpikeCannon : Weapon
 {
-    public override void Attack(string button)
+    public override void Attack(ButtonType button)
     {
         Debug.Log("Spike Cannon attacks with: " + button);
     }

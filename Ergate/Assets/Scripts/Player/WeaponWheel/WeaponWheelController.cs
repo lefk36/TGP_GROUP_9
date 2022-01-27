@@ -31,7 +31,7 @@ public class WeaponWheelController : MonoBehaviour
 
 
     //public non-inspector values
-    [HideInInspector] public Type activeWeaponType;
+    [HideInInspector] public int activeWeaponIndex;
     [HideInInspector] public List<Weapon> weaponScripts;
 
     void Start()
@@ -48,7 +48,7 @@ public class WeaponWheelController : MonoBehaviour
         cameraMovementScript = transform.parent.Find("Camera Centre").GetComponent<Camera_Movement>();
         cameraLockScript = cameraMovementScript.transform.Find("Main Camera").GetComponent<EnemiesCameraLock>();
         canvas = weaponWheelUI.transform.parent as RectTransform;
-        activeWeaponType = typeof(MantisBlades);
+        activeWeaponIndex = 0;
     }
 
     // Update is called once per frame
@@ -161,7 +161,7 @@ public class WeaponWheelController : MonoBehaviour
             {
                 if(weaponScripts[i].GetType() == typeof(MantisBlades))
                 {
-                    activeWeaponType = typeof(MantisBlades);
+                    activeWeaponIndex = i;
                 }
             }
         }
@@ -171,7 +171,7 @@ public class WeaponWheelController : MonoBehaviour
             {
                 if (weaponScripts[i].GetType() == typeof(TentacleLasher))
                 {
-                    activeWeaponType = typeof(TentacleLasher);
+                    activeWeaponIndex = i;
                 }
             }
         }
@@ -181,7 +181,7 @@ public class WeaponWheelController : MonoBehaviour
             {
                 if (weaponScripts[i].GetType() == typeof(SpikeCannon))
                 {
-                    activeWeaponType = typeof(SpikeCannon);
+                    activeWeaponIndex = i;
                 }
             }
         }
