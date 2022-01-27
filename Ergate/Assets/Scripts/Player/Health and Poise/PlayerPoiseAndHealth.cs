@@ -89,9 +89,9 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     public void KnockedDown()
     {
-        gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
-        gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
-        gameObject.GetComponent<PlayerController>().readyForAction = false; //
+        //gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
+        //gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
+        //gameObject.GetComponent<PlayerController>().readyForAction = false; //
         //play an animation
     }
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)

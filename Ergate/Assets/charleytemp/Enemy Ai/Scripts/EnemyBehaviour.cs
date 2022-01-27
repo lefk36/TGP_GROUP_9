@@ -10,6 +10,8 @@ public class EnemyBehaviour : MonoBehaviour
     public GameObject m_firingPoint;
     bool m_hasAttacked;
     float m_timeBetweenAttacks = 3f;
+    private NavMeshAgent agent = null;
+    public float movementSpeed = 3.5f;
     #endregion
     #region targetting
     public NavMeshAgent m_agent;
@@ -22,7 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
     {
         m_player = GameObject.Find("Player").transform;
         m_agent = GetComponent<NavMeshAgent>();
-
+        agent.speed = movementSpeed;
     }
     private void Update()
     {
