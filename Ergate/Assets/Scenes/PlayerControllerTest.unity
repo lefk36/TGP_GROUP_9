@@ -2462,6 +2462,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 555628668, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_Moves.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1343191698, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_TurnToEnemySpeed
       value: 5
@@ -2490,6 +2494,14 @@ PrefabInstance:
       propertyPath: wheelEventSystem
       value: 
       objectReference: {fileID: 1023128587}
+    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: lockFalling
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_Ground.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 4478890024887751681, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_Enabled
       value: 0

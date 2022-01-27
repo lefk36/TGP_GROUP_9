@@ -13,6 +13,9 @@ MonoBehaviour:
   m_Name: MantisBladesX1
   m_EditorClassIdentifier: 
   buttonType: 0
-  attackLength: 0
-  chainableMoves: []
+  attackLength: 0.5
+  chainableMoves:
+  - {fileID: 11400000, guid: 1c6207e20d32acb4299baeea792d521d, type: 2}
+  - {fileID: 11400000, guid: 55b0788b503e67d47a674cc7b92d7e2f, type: 2}
+  - {fileID: 11400000, guid: 220cbf804dfd38540a6bbd55f34d229e, type: 2}
   done: 0

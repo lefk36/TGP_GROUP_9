@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f1b3a2524f65c74fae368e583579293, type: 3}
   m_Name: BladesPause
   m_EditorClassIdentifier: 
-  buttonType: 0
+  buttonType: 4
   attackLength: 0
   chainableMoves: []
   done: 0

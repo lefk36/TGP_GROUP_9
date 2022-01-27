@@ -12,6 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3986a250b314093489882ee02980105c, type: 3}
   m_Name: Lunge
   m_EditorClassIdentifier: 
-  buttonType: 0
+  buttonType: 2
+  attackLength: 0
   chainableMoves: []
   done: 0
+  buttonHeld: 0
+  ready: 0
