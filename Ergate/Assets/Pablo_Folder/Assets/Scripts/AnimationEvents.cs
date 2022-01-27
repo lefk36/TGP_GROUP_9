@@ -24,7 +24,8 @@ public class AnimationEvents : MonoBehaviour
     {
         if (check.Equals("KnockedDownAnimationFinished"))
         {
-            m_PlayerAnimator.SetBool("KnockedDown", false);
+            m_PlayerAnimator.SetTrigger("GettingUp");
+            
             Debug.Log("Up");
         }
     }

@@ -135,6 +135,10 @@ PrefabInstance:
       value: Zombie
       objectReference: {fileID: 0}
     - target: {fileID: 8250406156762565601, guid: 4d2da1e1be1199742a72cda81387448b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250406156762565601, guid: 4d2da1e1be1199742a72cda81387448b, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -1775,6 +1779,10 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4052588984476346053, guid: ec61153204de3344aaaa39b8df08a5c3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4052588984476346053, guid: ec61153204de3344aaaa39b8df08a5c3, type: 3}
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
@@ -2040,15 +2048,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  currentPlayerHealth: 0
-  currentPlayerPoise: 0
-  isKnockedDown: 0
-  timeBetweenHealthRegen: 5
-  timeBetweenPoiseRegen: 5
-  maximumPoise: 100
-  maximumHealth: 100
-  currentPlayerPoiseRegen: 0
-  currentPlayerHealthRegen: 0
+  m_currentPlayerHealth: 0
+  m_currentPlayerPoise: 0
+  m_isKnockedDown: 0
+  m_timeBetweenHealthRegen: 5
+  m_timeBetweenPoiseRegen: 5
+  m_maximumPoise: 100
+  m_maximumHealth: 100
+  m_currentPlayerPoiseRegen: 0
+  m_currentPlayerHealthRegen: 0
 --- !u!114 &2048559509 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 661867880, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
