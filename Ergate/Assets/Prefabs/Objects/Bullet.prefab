@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 9074544789274501730}
   - component: {fileID: 9074544789274501731}
   - component: {fileID: 9074544789274501732}
-  - component: {fileID: 9074544789274501733}
   - component: {fileID: 3605094720888009879}
+  - component: {fileID: 4525317021097756359}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4f6940e871e799442a4afddac59b7ab7, type: 2}
+  - {fileID: 2100000, guid: cad400bf1ccbb9d448043f04b8d3dc4c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,21 +98,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &9074544789274501733
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9074544789274501734}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a5bec6e0e84b504288a5d3b048e0e56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 0}
-  damageToHealth: 0
-  damageToPoise: 0
 --- !u!54 &3605094720888009879
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -129,3 +114,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &4525317021097756359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9074544789274501734}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d91125e301f69a4399cd53d746f9e29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 0}
+  damageToHealth: 30
+  damageToPoise: 30

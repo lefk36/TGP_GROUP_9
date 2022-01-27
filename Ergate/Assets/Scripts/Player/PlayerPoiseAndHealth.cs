@@ -7,7 +7,8 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     #region inaccessable stuff
     [HideInInspector] public Rigidbody rb;
     private int m_minimumPoise = -100;
-
+    private int m_minimumHealth = 0;
+    
     private int m_defaultMaxHealth = 100;
     private int m_defaultMaxPoise = 100;
     private bool m_isKnockedDown;                               //
@@ -41,13 +42,13 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //StartCoroutine(RegenHealth()); //restores health every 5 seconds so that we don't have to mess around with floats
     }
     private void Update()
     {
         m_timeBetweenHealthRegen -= Time.deltaTime;
         m_timeBetweenPoiseRegen -= Time.deltaTime;
-
+        if (m_currentPlayerHealth <= m_minimumHealth)
+            m_currentPlayerHealth = m_minimumHealth;
         if (m_currentPlayerHealth > m_maximumHealth)
             m_currentPlayerHealth = m_maximumHealth;
         if (m_currentPlayerPoise > m_maximumPoise)
@@ -87,19 +88,21 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             KnockedDown();
         #endregion
     }
-    public void KnockedDown()
-    {
-        //gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
-        //gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
-        //gameObject.GetComponent<PlayerController>().readyForAction = false; //
-        //play an animation
-    }
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
         Debug.Log("damage taken");
-        //rb.AddForce(attackDirection, ForceMode.Impulse);
+        rb.AddForce(attackDirection, ForceMode.Impulse); // can be used to stagger the player.
         m_currentPlayerHealth -= healthDamageAmount;        // I cannot figure out why this doesn't work
         m_currentPlayerPoiseRegen -= poiseDamageAmount;     // but if I use =- it works correctly
+    }
+    public void KnockedDown()
+    {
+
+        //--------------UNBLOCK THESE WHEN ON THE REAL PLAYER SCRIPT-------------------------------
+        //gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
+        //gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
+        //gameObject.GetComponent<PlayerController>().readyForAction = false;       //
+        //play an animation
     }
     void PlayerDie()
     {
@@ -112,14 +115,4 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         //gameObject.GetComponent<PlayerController>().readyForAction = false; //
         //do whatever dead people do
     }
-    //IEnumerator RegenHealth()
-    //{
-    //    m_currentPlayerHealth += m_currentPlayerHealthRegen;
-    //    yield return new WaitForSeconds(5);
-    //}
-    //IEnumerator RegenPoise()
-    //{
-    //    m_currentPlayerPoise += m_currentPlayerPoiseRegen;
-    //    yield return new WaitForSeconds(5);
-    //}
 }

@@ -6,7 +6,7 @@ public class EnemyPoiseAndHealth : MonoBehaviour
 {
     #region inaccessable stuff
     [HideInInspector] public Rigidbody rb;
-    private int minimumPoise = -100;
+    private int minimumEnemyPoise = -100;
     //private int defaultHealthRegen = 3;
     private int defaultPoiseRegen = 5;
     private int defaultMaxHealth = 100;
@@ -40,6 +40,29 @@ public class EnemyPoiseAndHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if (currentEnemyHealth >= maximumEnemyHealth)
+            currentEnemyHealth = maximumEnemyHealth;
+        if (currentEnemyPoise <= minimumEnemyPoise)
+            currentEnemyPoise = minimumEnemyPoise;
+        if (currentEnemyPoise >= maximumEnemyPoise)
+            currentEnemyPoise = maximumEnemyPoise;
+        if (currentEnemyHealth <= 0)
+            EnemyDie();
+    }
+    void EnemyDie()
+    {
+        //death animation
+        Destroy(gameObject);
+    }
+    public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
+    {
+        Debug.Log("damage taken");
+        rb.AddForce(attackDirection, ForceMode.Impulse); // can be used to stagger the player.
+        currentEnemyHealth -= healthDamageAmount;        // I cannot figure out why this doesn't work
+        currentEnemyPoise -= poiseDamageAmount;     // but if I use =- it works correctly
+    }
+    public void Stunned()
+    {
+        //Put knocked down animation or something in here.
     }
 }

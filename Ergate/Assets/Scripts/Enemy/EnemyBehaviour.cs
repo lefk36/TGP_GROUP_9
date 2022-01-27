@@ -19,26 +19,37 @@ public class EnemyBehaviour : MonoBehaviour
     public LayerMask m_whatIsGround, m_whatIsPlayer;
     public float m_sightRange, m_attackRange;
     public bool m_playerInSightRange, m_playerInAttackRange;
+    public GameObject m_healthAndPoise;
     #endregion
+    public bool isKnockedDown;
     void Awake()
     {
         m_player = GameObject.Find("Player").transform;
         m_agent = GetComponent<NavMeshAgent>();
-        agent.speed = movementSpeed;
+        isKnockedDown = false;
+        m_healthAndPoise = GetComponent<EnemyPoiseAndHealth>();
+        //agent.speed = movementSpeed;
     }
     private void Update()
     {
         m_playerInSightRange = Physics.CheckSphere(transform.position, m_sightRange, m_whatIsPlayer);
         m_playerInAttackRange = Physics.CheckSphere(transform.position, m_attackRange, m_whatIsPlayer);
 
-        if (!m_playerInSightRange && !m_playerInAttackRange)
-            Patrolling();
+        if (isKnockedDown == false)
+        {
+            if (!m_playerInSightRange && !m_playerInAttackRange)
+                Patrolling();
 
-        if (m_playerInSightRange && !m_playerInAttackRange)
-            FollowPlayer();
+            if (m_playerInSightRange && !m_playerInAttackRange)
+                FollowPlayer();
 
-        if (m_playerInSightRange && m_playerInAttackRange)
-            AttackPlayer();
+            if (m_playerInSightRange && m_playerInAttackRange)
+                AttackPlayer();
+        }
+        else if(isKnockedDown == true)
+        {
+            
+        }
 
     }
     void Patrolling()
@@ -67,6 +78,10 @@ public class EnemyBehaviour : MonoBehaviour
     void ResetAttack()
     {
         m_hasAttacked = false;
+    }
+    void Stunned()
+    {
+        //Put knocked down animation or something in here.
     }
     public void Shoot()
     {

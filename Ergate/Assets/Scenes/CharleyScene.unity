@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 08401bc5df039b54cb22d6173e4c4eef, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 16e237eddecc4d24c8c06c2f1c0fdce7, type: 2}
 --- !u!1 &36714991
 GameObject:
   m_ObjectHideFlags: 0
@@ -234,7 +234,7 @@ Transform:
   m_LocalScale: {x: 300, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &485073346
 GameObject:
@@ -377,7 +377,7 @@ Transform:
   m_LocalScale: {x: 300, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!1 &788219804
 GameObject:
@@ -490,7 +490,7 @@ Transform:
   m_LocalScale: {x: 300, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &812124299
 GameObject:
@@ -603,7 +603,7 @@ Transform:
   m_LocalScale: {x: 300, y: 50, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &827815947
 GameObject:
@@ -659,7 +659,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a9256146e8319b74c84e74cdd3ba30f0, type: 2}
+  - {fileID: 2100000, guid: f889d04c5527d464b91f87520184e51c, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -716,7 +716,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d27d8f0b0887aae4a8d991d43156f175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bullet: {fileID: 9074544789274501734, guid: 47306595cee6bf646a7f4429344ce0f2, type: 3}
+  m_bullet: {fileID: 9074544789274501734, guid: c12053bab20084648910623e4e30ed57, type: 3}
   m_firingPoint: {fileID: 485073346}
   movementSpeed: 3.5
   m_agent: {fileID: 827815954}
@@ -731,6 +731,7 @@ MonoBehaviour:
   m_attackRange: 10
   m_playerInSightRange: 0
   m_playerInAttackRange: 0
+  isKnockedDown: 0
 --- !u!195 &827815954
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -861,6 +862,7 @@ GameObject:
   - component: {fileID: 859038549}
   - component: {fileID: 859038554}
   - component: {fileID: 859038555}
+  - component: {fileID: 859038556}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -880,7 +882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20a81b167cffdcc4db543decdee4c27a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementSpeed: 5
 --- !u!65 &859038550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -914,7 +915,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 349ca648af86b58498bdbeb4aa478a41, type: 2}
+  - {fileID: 2100000, guid: 384f334a22b1e3640825375595be6fa7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -954,7 +955,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5.78, y: 0.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 939219352}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -995,6 +997,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &859038556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 859038548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 79aa74c03c82a23429b119078f05e255, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movementSpeed: 5
 --- !u!1 &939219349
 GameObject:
   m_ObjectHideFlags: 0
@@ -1072,11 +1087,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 939219349}
   m_LocalRotation: {x: 0.13453425, y: -0, z: -0, w: 0.9909089}
-  m_LocalPosition: {x: -2.96, y: 5.09, z: -16.7}
+  m_LocalPosition: {x: -8.74, y: 4.59, z: -16.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_Father: {fileID: 859038553}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 15.463, y: 0, z: 0}
 --- !u!1 &1714273912
 GameObject:
@@ -1107,8 +1122,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ccf02171b63ae44f835fe4b37199f68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerTransform: {fileID: 859038553}
-  playerObject: {fileID: 859038548}
 --- !u!4 &1714273914
 Transform:
   m_ObjectHideFlags: 0
@@ -1166,7 +1179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1775730889}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a68721e69c53049847224728ea28f9, type: 3}
+  m_Script: {fileID: 11500000, guid: d08f9f3205d271e4ebfea17c8636374c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   healthDamageAmount: 20
@@ -1251,7 +1264,7 @@ GameObject:
   - component: {fileID: 1780755506}
   - component: {fileID: 1780755510}
   - component: {fileID: 1780755511}
-  m_Layer: 13
+  m_Layer: 12
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1292,7 +1305,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: bf5dcb9660aa94f478f23192c2f5c8f6, type: 2}
+  - {fileID: 2100000, guid: bfc363d61722f8741b743ea409f81159, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1378,8 +1391,8 @@ GameObject:
   - component: {fileID: 2092379766}
   - component: {fileID: 2092379765}
   - component: {fileID: 2092379769}
-  - component: {fileID: 2092379770}
-  m_Layer: 0
+  - component: {fileID: 2092379771}
+  m_Layer: 9
   m_Name: Zombie
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1419,7 +1432,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3350dfea00a12074389c9323f2e0b52d, type: 2}
+  - {fileID: 2100000, guid: 30796c37d83e2e746b74dbc6a3ca3721, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1486,7 +1499,7 @@ NavMeshAgent:
   m_BaseOffset: 0.5
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!114 &2092379770
+--- !u!114 &2092379771
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1495,7 +1508,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2092379764}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35fac6405e450c443a38ab422c4748bb, type: 3}
+  m_Script: {fileID: 11500000, guid: 5ffd2ff775482a749be7bd8187bf469b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 0}
