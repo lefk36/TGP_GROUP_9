@@ -19,7 +19,7 @@ public class EnemyBehaviour : MonoBehaviour
     public LayerMask m_whatIsGround, m_whatIsPlayer;
     public float m_sightRange, m_attackRange;
     public bool m_playerInSightRange, m_playerInAttackRange;
-    public GameObject m_healthAndPoise;
+    //public GameObject m_healthAndPoise;
     #endregion
     public bool isKnockedDown;
     void Awake()
@@ -27,7 +27,7 @@ public class EnemyBehaviour : MonoBehaviour
         m_player = GameObject.Find("Player").transform;
         m_agent = GetComponent<NavMeshAgent>();
         isKnockedDown = false;
-        m_healthAndPoise = GetComponent<EnemyPoiseAndHealth>();
+        //m_healthAndPoise = GetComponent<PlayerPoiseAndHealth>();
         //agent.speed = movementSpeed;
     }
     private void Update()
