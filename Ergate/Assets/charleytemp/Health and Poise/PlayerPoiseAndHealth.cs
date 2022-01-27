@@ -54,7 +54,6 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             if (m_Model != null)
             {
                 m_PlayerAnimator = m_Model.GetComponent<Animator>();
-
             }
         }
         m_hasRegenedHealth = false;
