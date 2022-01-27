@@ -72,7 +72,6 @@ public class Camera_Movement : MonoBehaviour
         //Limits the rotation on the x axis
         m_MixedRotationX = Mathf.Clamp(m_MixedRotationX, -m_ClampAngle, m_ClampAngle);
 
-
         if (Mathf.Abs(m_MixedInputX) > 0f || Mathf.Abs(m_MixedInputY) > 0)
         {
             transform.localRotation = Quaternion.Euler(m_MixedRotationX, m_MixedRotationY, 0f);

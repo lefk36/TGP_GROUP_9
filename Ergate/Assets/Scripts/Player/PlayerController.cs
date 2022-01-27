@@ -62,7 +62,8 @@ public class PlayerController : MonoBehaviour
     //variables for UI
     public GameObject pauseMenu;
 
-    
+    private float m_MaxRunAnimSpeed = 7f;
+
 
     void Start()
     {
@@ -105,8 +106,6 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
-        
-
         //update handles logic. Actual Physics calculations are done in fixed update
 
         //find if player is on ground. small modifications to the collider are made to make the result more accurate
@@ -148,7 +147,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetTrigger("DoubleJump");
                 doubleJumped = true;
             }
-            else
+            else if(isOnGround)
             {
                 animator.SetTrigger("Jump");
             }
@@ -156,30 +155,28 @@ public class PlayerController : MonoBehaviour
             jumping = true;
             
         }
-        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f || inputDirection.magnitude > 0.1f) && isOnGround && !lockMovement)
+        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f && Mathf.Abs(rigidbody.velocity.z) > 0.1f && inputDirection.magnitude > 0.2f) && isOnGround && !doubleJumped && !lockMovement)
         {
             animator.SetBool("IsRunning", true);
-            if(!m_runAudio)
+            
+            if (!m_runAudio)
             {
                 m_runAudio = true;
                 m_audioController.GetComponent<audioController>().play("playerRunning");
-                
-
 
             }
-           
-            
 
         }
-        else
+        else 
         {
+            
             animator.SetBool("IsRunning", false);
-            if(m_runAudio)
+            if (m_runAudio)
             {
                 m_audioController.GetComponent<audioController>().pauseClip("playerRunning");
                 m_runAudio = false;
             }
-            
+
         }
 
         if(Input.GetButtonDown("Pause"))
@@ -189,7 +186,7 @@ public class PlayerController : MonoBehaviour
             Time.timeScale = 0f;
         }
 
-        if((rigidbody.velocity.y < 0f || doubleJumped) && !isOnGround)
+        if((rigidbody.velocity.y < 0.1f || doubleJumped) && !isOnGround)
         {
             animator.SetTrigger("Falling");
         }
@@ -197,6 +194,8 @@ public class PlayerController : MonoBehaviour
         {
             animator.SetTrigger("BackToIdle");
         }
+
+        animator.SetFloat("RunSpeed", rigidbody.velocity.magnitude / m_MaxRunAnimSpeed);
     }
     private void FixedUpdate()
     {

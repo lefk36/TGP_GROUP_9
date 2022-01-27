@@ -108,8 +108,6 @@ public class EnemiesCameraLock : MonoBehaviour
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
 
         
-
-        Debug.Log(m_ShortestDistance);
         //If the player press the mouse middle button or presses the right stick
         if (m_MiddleButtonPressed || m_RightStickPressed)
         {
