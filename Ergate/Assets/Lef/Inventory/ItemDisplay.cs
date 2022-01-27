@@ -2,68 +2,127 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class ItemDisplay : MonoBehaviour
 {
-    
+
+    [SerializeField] private GameObject inventoryPrefab;
+    [SerializeField] private ItemClick m_ItemClick;
+
+
+    //values of startinf position for inventory item Icons
+    public int startX_item;
+    public int startY_item;
     // variables to calculate space between the icons in the inventory
     public int spaceBetwwenX;
-    public int spaceBetwwenY;
+    public int spaceBetweenY;
     public int columnNumber;
 
-    Dictionary<InventorySpot, GameObject> itemsDisplayed = new Dictionary<InventorySpot, GameObject>();
+    public Button iButton; 
+
+    Dictionary<GameObject, InventorySpot> itemsDisplayed = new Dictionary<GameObject, InventorySpot>();
     public InventoryItems inventory;
-    ItemScript Item_n;
+    
+    
 
-    //// Start is called before the first frame update
-    //void Start()
-    //{
-    //    CreateDisplay();
-    //}
+    //Start is called before the first frame update
+    void Awake()
+    {
+        CreateDisplaySpot();
+    }
 
-    //// Update is called once per frame
-    //void Update()
-    //{
-    //    UpdateDisplay();
-    //}
+   // Update is called once per frame
+    void Update()
+    {
+        UpdateSpots();
+    }
 
-    //// Displays each item icon on the screen
-    //public void CreateDisplay()
-    //{
-    //    for(int i=0; i< inventory.Container.Items.Count; i++)
-    //    {
-    //        var obj = Instantiate(inventory.Container.Items[i].item.itemPrefab, Vector3.zero,Quaternion.identity, transform);
-    //        //obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = 
-    //        obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-    //        obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
-    //    }
-    //}
+    public void UpdateSpots()
+    {
+        
+        foreach(KeyValuePair<GameObject,InventorySpot> m_spot in itemsDisplayed)
+        {
+            if (m_spot.Value.ID >= 0)
+            {
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.dataBase.GetItem[m_spot.Value.item.Id].ItemIcon;
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                m_spot.Key.GetComponentInChildren<TextMeshProUGUI>().text = m_spot.Value.amount == 1 ? "" : m_spot.Value.amount.ToString("n0");
+            }
+            else
+            {
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                //Changing Alpha to 0 
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                m_spot.Key.GetComponentInChildren<TextMeshProUGUI>().text =  "";
+            }
+        }
+    }
 
-    //// Calculates the variables of the distance between each icon
-    //public Vector3 GetPosition(int i)
-    //{
-    //    return new Vector3(spaceBetwwenX * (i % columnNumber), (-spaceBetwwenY * (i / columnNumber)), 0f);
-    //}
+    //Displays each item icon on the screen
+    public void CreateDisplaySpot()
+    {
+        itemsDisplayed = new Dictionary<GameObject, InventorySpot>();
+        for(int i = 0;i<inventory.Container.ObjectItems.Length; i++)
+        {
+            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
-    //// Updates the display of item icons on the UI panel of the inventory
-    //public void UpdateDisplay()
-    //{
+            //AddEvent(obj, EventTriggerType.PointerEnter, delegate {OnEnter(obj); });
+            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnExit(obj); });
+            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDragStart(obj); });
+            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDragEnd(obj); });
+            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDrag(obj); });
 
-    //    for (int i = 0; i < inventory.Container.Items.Count; i++)
-    //    {
-    //        if (itemsDisplayed.ContainsKey(inventory.Container.Items[i]))
-    //        { 
-    //        itemsDisplayed[inventory.Container.Items[i]].GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
-    //        }
-    //        else
-    //        {
-    //            var obj = Instantiate(inventory.Container.Items[i].item.itemPrefab, Vector3.zero, Quaternion.identity, transform);
-    //            obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-    //            obj.GetComponentInChildren<TextMeshProUGUI>().text = inventory.Container.Items[i].amount.ToString("n0");
+            itemsDisplayed.Add(obj, inventory.Container.ObjectItems[i]);
+        }
+    }
 
-    //            itemsDisplayed.Add(inventory.Container.Items[i], obj);
-    //        }
-    //    }
-    //}
+    public void Dosmth()
+    {
+        Debug.Log("Did something");
+    }
+
+    private void AddEvent(GameObject obj,EventTriggerType type,UnityAction<BaseEventData> action)
+    {
+        EventTrigger trigger = obj.GetComponent<EventTrigger>();
+        var eventTrigger = new EventTrigger.Entry();
+        eventTrigger.eventID = type;
+        eventTrigger.callback.AddListener(action);
+        trigger.triggers.Add(eventTrigger);
+    }
+
+    //Calculates the variables of the distance between each icon
+    public Vector3 GetPosition(int i)
+    {
+        return new Vector3(startX_item +(spaceBetwwenX * (i % columnNumber)),startY_item + (-spaceBetweenY * (i / columnNumber)), 0f);
+    }
+
+    public class MouseItem
+    {
+        public GameObject obj;
+        public InventorySpot item;
+        public InventorySpot hoverItem;
+        public GameObject hoverObj;
+
+    }
+
+    public void OnEnter(GameObject obj){}
+    public void OnExit(GameObject obj) { }
+    public void OnDragStart(GameObject obj) { }
+    public void OnDragEnd(GameObject obj) { }
+    public void OnDrag(GameObject obj)
+    {
+        
+        
+
+        
+    }
+
+
+ 
+
 
 }

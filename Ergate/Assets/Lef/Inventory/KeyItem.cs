@@ -1,12 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [CreateAssetMenu(fileName = "new Weapon Object", menuName = "Inventory System/Items/KeyItem")]
 public class KeyItem : ItemScript
 {
-    void Awake()
+
+
+    void OnButtonClick(string img_name)
     {
-        type = Item.Key;
+        Debug.Log("Player has the key" + img_name);
+        
     }
 }

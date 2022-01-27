@@ -7,103 +7,110 @@ using System.IO;
 using UnityEditor;
 
 [CreateAssetMenu(fileName = "New Inventory",menuName = "Inventory System/Inventory")]
-public class InventoryItems : ScriptableObject, ISerializationCallbackReceiver
+public class InventoryItems : ScriptableObject
 {
 
     public string savePath;
    
-    private ItemDataBase dataBase;
+    public ItemDataBase dataBase;
     /// <summary>
     /// A list that creates spots for use for each item in the game 
     /// </summary>
+
+    // instance of the ObjectItems class
     public Inventory Container;
-    
+
 
     // function that adds item based on a count of the list and creates a spot for each number accordingly.Also counts the amount of each item
-    public void AddItem(ItemObject m_item, int m_amount)
+    public void AddItem(my_Item m_item, int m_amount)
     {
-        bool itemIsHeld = false;
-        for(int i = 0; i < Container.Items.Count; i++)
+        if(m_item.buffs.Length > 0)
         {
-            if(Container.Items[i].item == m_item)
+            SetEmptySpot(m_item, m_amount);
+            return;
+        }
+        bool itemIsHeld = false;
+        for (int i = 0; i < Container.ObjectItems.Length; i++)
+        {
+            if (Container.ObjectItems[i].ID == m_item.Id)
             {
-                Container.Items[i].AddAmount(m_amount);                
+                Container.ObjectItems[i].AddAmount(m_amount);
                 itemIsHeld = true;
                 return;
             }
         }
+        SetEmptySpot(m_item, m_amount);
         if (!itemIsHeld)
         {
-            Container.Items.Add(new InventorySpot(m_item.id,m_item, m_amount));
+            
         }
     }
 
+    public InventorySpot SetEmptySpot(my_Item m_item, int m_amount)
+    {
+        for(int i =0;i< Container.ObjectItems.Length; i++)
+        {
+            if(Container.ObjectItems[i].ID <= -1)
+            {
+                Container.ObjectItems[i].UpdateSpot(m_item.Id, m_item, m_amount);
+                return Container.ObjectItems[i];
+            }
+        }// set up functionality for full inventory
+        return null;
+    }
+
+    [ContextMenu("Save")]
     public void Save()
     {
-        //string saveData = JsonUtility.ToJson(this, true);
-        //BinaryFormatter binFor = new BinaryFormatter();
-        //FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
-        //binFor.Serialize(file, saveData);
-        //file.Close();
-
+        
         IFormatter formatter = new BinaryFormatter();
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
         formatter.Serialize(stream, Container);
         stream.Close();
     }
 
+    [ContextMenu("Load")]
     public void Load()
     {
-        if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
-        {
-            //BinaryFormatter binFor = new BinaryFormatter();
-            //FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
-            //JsonUtility.FromJsonOverwrite(binFor.Deserialize(file).ToString(), this);
-            //file.Close();
-
-            IFormatter formatter = new BinaryFormatter();
-            Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
-            Container = (Inventory)formatter.Deserialize(stream);
-            stream.Close();
-        }
+       
+        IFormatter formatter = new BinaryFormatter();
+        Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
+        Container = (Inventory)formatter.Deserialize(stream);
+        stream.Close();
     }
 
+    [ContextMenu("Clear")]
     public void Clear()
     {
         Container = new Inventory();
-
-    }
-
-    public void OnAfterDeserialize()
-    {
-        for (int i = 0; i < Container.Items.Count; i++) 
-
-            Container.Items[i].item = dataBase.GetItem[Container.Items[i].ID];
-
-    }
-
-    public void OnBeforeSerialize()
-    {
-
     }
 }
+
 
 [System.Serializable]
-public class Inventory
+public class Inventory 
 {
-    public List<InventorySpot> Items = new List<InventorySpot>();
+    public InventorySpot[] ObjectItems = new InventorySpot[24];
 }
+
 
 // Creates the individual spot 
 [System.Serializable]
 public class InventorySpot
 {
-    public int ID;
-    public ItemObject item;
+    public int ID = -1;
+    public my_Item item;
     public int amount;
-    public InventorySpot(int m_ID,ItemObject m_item, int m_amount)
+    public InventorySpot()
     {
-        ID = m_ID;
+        ID = -1;
+        item = null;
+        amount = 0;
+    }
+
+    public void UpdateSpot(int m_id, my_Item m_item, int m_amount)
+    {
+        ID = m_id;
         item = m_item;
         amount = m_amount;
     }
