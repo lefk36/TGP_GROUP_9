@@ -112,10 +112,6 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         //play an animation
         m_PlayerAnimator.SetTrigger("KnockedDown");
 
-        if(m_PlayerAnimator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
-        {
-            
-        }
     }
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
@@ -131,6 +127,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         gameObject.GetComponent<PlayerController>().readyForAction = false; //
         StopAllCoroutines(); // stops regen
+        m_PlayerAnimator.SetTrigger("KnockedDown");
         //do whatever else dead people do
     }
 
