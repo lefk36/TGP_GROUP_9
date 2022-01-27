@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 4314367972261544403}
   - component: {fileID: 1343191694}
   - component: {fileID: 1343191696}
-  - component: {fileID: 1343191698}
+  - component: {fileID: 7585562462241441966}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Ground:
     serializedVersion: 2
     m_Bits: 8
---- !u!114 &1343191698
+--- !u!114 &7585562462241441966
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -348,9 +348,9 @@ MonoBehaviour:
   m_TargetableEnemies: []
   m_Layer:
     serializedVersion: 2
-    m_Bits: 520
+    m_Bits: 1032
   m_TargetToLook: {fileID: 1343191694}
-  m_CameraMovement: {fileID: 3382758903527361518}
+  m_CameraMovement: {fileID: 7509194238839589480}
   m_Player: {fileID: 3142202214008486164}
   m_PlayerLockOnAnimator: {fileID: 22100000, guid: b003f1035cdd9254e8bd8ba3e4befb6f, type: 2}
   m_DefaultAnimatorController: {fileID: 22100000, guid: b64d5d960ebcb3c4f92bcc5c2e2c56cf, type: 2}
@@ -467,11 +467,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buttonHoldingTimeRequired: 0.1
-  weaponScripts: []
   wheelEventSystem: {fileID: 0}
   cursorHolderUI: {fileID: 0}
   weaponWheelUI: {fileID: 0}
   buttonString: 
+  weaponScripts: []
 --- !u!114 &8607139372323033758
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -507,7 +507,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2733710092824440312}
-  - component: {fileID: 3382758903527361518}
+  - component: {fileID: 7509194238839589480}
   m_Layer: 0
   m_Name: Camera Centre
   m_TagString: Untagged
@@ -530,7 +530,7 @@ Transform:
   m_Father: {fileID: 7208981455675459386}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &3382758903527361518
+--- !u!114 &7509194238839589480
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -542,8 +542,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db6482140c9f0a64f9a2e30147e88197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_MouseSensitivity: 1000
-  m_ControllerSensitivity: 300
+  m_MouseSensitivity: 90
+  m_ControllerSensitivity: 10
   m_ClampAngle: 60
 --- !u!136 &979723894
 CapsuleCollider:
@@ -664,6 +664,7 @@ MonoBehaviour:
   animator: {fileID: 0}
   cameraCentre: {fileID: 0}
   camera: {fileID: 0}
+  pauseMenu: {fileID: 0}
 --- !u!114 &1031727961
 MonoBehaviour:
   m_ObjectHideFlags: 0
