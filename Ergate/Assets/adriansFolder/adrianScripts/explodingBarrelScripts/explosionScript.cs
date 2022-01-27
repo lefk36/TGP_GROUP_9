@@ -26,10 +26,7 @@ public class explosionScript : MonoBehaviour
             }
         }
 
-        /*if(transform.gameObject.GetComponent<destructibleObject>() != null)
-        {
-            transform.gameObject.GetComponent<destructibleObject>().destroyObject();
-        }*/
+        
         
         colliders = Physics.OverlapSphere(transform.position, m_radius);
         for(int i = 0; i < colliders.Length; i++)
@@ -58,6 +55,8 @@ public class explosionScript : MonoBehaviour
             
 
         }
+
+        FindObjectOfType<audioController>().play("explosion");
 
        
 

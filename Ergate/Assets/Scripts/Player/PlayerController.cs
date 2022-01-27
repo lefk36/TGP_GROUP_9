@@ -57,13 +57,16 @@ public class PlayerController : MonoBehaviour
 
     //variables for audio
     private GameObject m_audioController;
-    private bool m_runAudio;
+    private bool m_runAudio = false;
 
     //variables for UI
     public GameObject pauseMenu;
 
     private float m_MaxRunAnimSpeed = 7f;
 
+    //variable to control dash length
+    public float m_dashForce;
+    
 
     void Start()
     {
@@ -135,6 +138,8 @@ public class PlayerController : MonoBehaviour
         {
             movementDirection = new Vector3(0, 0, 0);
         }
+
+        dash();
         if (isOnGround)
         {
             doubleJumped = false;
@@ -282,6 +287,18 @@ public class PlayerController : MonoBehaviour
         impactDirection = impactDirection.normalized;
         // implementation for taking damage. Interrupt attacking, calculate if the hit has knocked the player down. If it did, calculate how far they fly, if at all.
         //Perhaps this will be edited to make a damage script with similar functionality between the player and the enemies.
+    }
+
+
+
+    private void dash()
+    {
+        if(Input.GetButtonDown("dash"))
+        {
+            rigidbody.AddForce(character.transform.forward * m_dashForce, ForceMode.Impulse);
+        }
+
+
     }
 
     

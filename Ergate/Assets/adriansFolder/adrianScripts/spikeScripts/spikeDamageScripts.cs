@@ -38,7 +38,7 @@ public class spikeDamageScripts : MonoBehaviour
     {
         if(damageNeed)
         {
-            player.GetComponent<playerController>().takeDamage(spikeDamage);
+            player.GetComponent<playerStats>().takeDamage(spikeDamage);
             damageNeed = false;
         }
         

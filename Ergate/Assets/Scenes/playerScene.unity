@@ -134,6 +134,22 @@ PrefabInstance:
       propertyPath: pauseMenu
       value: 
       objectReference: {fileID: 58479357}
+    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_dashForce
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_player
+      value: 
+      objectReference: {fileID: 18877943}
+    - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_doorMask.m_Bits
+      value: 128
+      objectReference: {fileID: 0}
+    - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_checkpointMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7208981455675459386, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -186,8 +202,17 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7393055299828996669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+--- !u!1 &18877943 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7393055299828996669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+  m_PrefabInstance: {fileID: 18877942}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &58479357
 GameObject:
   m_ObjectHideFlags: 0
