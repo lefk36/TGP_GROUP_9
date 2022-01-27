@@ -66,6 +66,7 @@ public class PlayerController : MonoBehaviour
 
     //variable to control dash length
     public float m_dashForce;
+    private bool m_hasDashed = false;
     
 
     void Start()
@@ -139,7 +140,7 @@ public class PlayerController : MonoBehaviour
             movementDirection = new Vector3(0, 0, 0);
         }
 
-        dash();
+        dashControl();
         if (isOnGround)
         {
             doubleJumped = false;
@@ -289,14 +290,23 @@ public class PlayerController : MonoBehaviour
         //Perhaps this will be edited to make a damage script with similar functionality between the player and the enemies.
     }
 
-
-
-    private void dash()
+    private void dashControl()
     {
-        if(Input.GetButtonDown("dash"))
+        if (Input.GetButtonDown("dash") && !m_hasDashed)
         {
-            rigidbody.AddForce(character.transform.forward * m_dashForce, ForceMode.Impulse);
+            StartCoroutine(dash());
         }
+    }
+
+    private IEnumerator dash()
+    {
+        
+            m_hasDashed = true;
+            rigidbody.AddForce(character.transform.forward * m_dashForce, ForceMode.Impulse);
+
+            yield return new WaitForSeconds(2f);
+            m_hasDashed = false;
+        
 
 
     }
