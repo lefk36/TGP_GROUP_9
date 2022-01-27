@@ -16,8 +16,8 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     private int m_defaultMaxPoise = 100;
     private bool m_hasRegenedHealth;
     private bool m_hasRegenedPoise;
-    [SerializeField] private int m_currentPlayerHealth;       //
-    [SerializeField] private int m_currentPlayerPoise;        // Variables Serialized for testing purposes
+    [SerializeField] public int m_currentPlayerHealth;       //
+    [SerializeField] public int m_currentPlayerPoise;        // Variables Serialized for testing purposes
     [SerializeField] private bool m_isKnockedDown;            //
 
     [SerializeField] private float m_timeBetweenHealthRegen = 5f;    //time in seconds before health regen
@@ -129,6 +129,9 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         StopAllCoroutines(); // stops regen
         m_PlayerAnimator.SetTrigger("KnockedDown");
         //do whatever else dead people do
+        gameObject.GetComponent<playerSpawn>().onDeath();
     }
+
+    
 
 }

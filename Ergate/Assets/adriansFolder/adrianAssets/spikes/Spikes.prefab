@@ -50386,7 +50386,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 983419158a2d5a1458a1b0d99d75bf1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spikeDamage: 10
+  spikeDamage: 100
 --- !u!54 &8960623705849173722
 Rigidbody:
   m_ObjectHideFlags: 0
