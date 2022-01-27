@@ -12,7 +12,7 @@ public class keyCollision : MonoBehaviour
     {
 
         
-        m_player = FindObjectOfType<playerController>().gameObject;
+        m_player = FindObjectOfType<PlayerController>().gameObject;
         m_keyID = m_keyStats.itemID;
         m_keyInstance = m_keyStats.keyInstance;
 

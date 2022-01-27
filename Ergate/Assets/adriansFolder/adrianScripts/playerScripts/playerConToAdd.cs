@@ -1,0 +1,47 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class playerConToAdd : MonoBehaviour
+{
+    //layermask for interaction
+    public LayerMask m_checkpointMask;
+    public LayerMask m_doorMask;
+
+    private GameObject m_doorToOpen;
+    public Transform camera;
+    private void interact()
+    {
+        RaycastHit hit;
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            if (Physics.Raycast(transform.position, camera.forward, out hit, 2f, m_checkpointMask))
+            {
+                hit.transform.gameObject.GetComponent<playerCheckpoint>().setSpawnLocation(transform.gameObject);
+                Debug.Log("did hit the checkpoint");
+            }
+            else
+            {
+                Debug.Log("did not hit the checkpoint");
+            }
+
+            if (Physics.Raycast(transform.position, camera.forward, out hit, Mathf.Infinity, m_doorMask))
+            {
+                m_doorToOpen = hit.collider.gameObject;
+                m_doorToOpen.GetComponent<gateScript>().openGate();
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            gameObject.GetComponent<playerStats>().takeDamage(10f);
+
+        }
+    }
+
+    private void Update()
+    {
+        interact();
+    }
+
+}

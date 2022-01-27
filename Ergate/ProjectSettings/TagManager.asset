@@ -10,17 +10,17 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - mine
+  - Terrain
   - Water
   - UI
   - UI
   - door
   - slipperyGround
+  - checkpoint
   - Enemy
   - Player
   - LineOfSight
   - Floor
-  - 
   - 
   - 
   - 

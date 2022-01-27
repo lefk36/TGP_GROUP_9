@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,8 +12,10 @@ public class PlayerController : MonoBehaviour
     [Min(0f)] public float targetSpeed;
     [Min(0f)] public float rotationTime;
     [Min(0f)] public float jumpForce;
+    [Min(0f)] public float doubleJumpForwardForce;
     [Min(1.0f)] public float jumpingGravityScale;
     [Min(1.0f)] public float fallingMultiplier;
+    [SerializeField] private bool doubleJumpUnlocked;
 
     public bool lockMovement; //Access these properties from other scripts whenever they move them instead
     public bool lockFalling;
@@ -50,12 +53,23 @@ public class PlayerController : MonoBehaviour
 
     //private bools
     bool jumping = false;
+    bool doubleJumped = false;
+
+    //variables for audio
+    private GameObject m_audioController;
+    private bool m_runAudio;
+
+    //variables for UI
+    public GameObject pauseMenu;
+
+    
 
     void Start()
     {
         rigidbody = GetComponent<Rigidbody>();
         movementCollider = GetComponent<CapsuleCollider>();
         gravityScaleScript = GetComponent<GravityScaler>();
+        m_audioController = FindObjectOfType<audioController>().gameObject;
         //load character information
         character = transform.Find("Character").gameObject;
         if (character != null)
@@ -91,6 +105,8 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+        
+
         //update handles logic. Actual Physics calculations are done in fixed update
 
         //find if player is on ground. small modifications to the collider are made to make the result more accurate
@@ -120,19 +136,66 @@ public class PlayerController : MonoBehaviour
         {
             movementDirection = new Vector3(0, 0, 0);
         }
-
-        if(Input.GetButtonDown("Jump") && !lockMovement && isOnGround)
+        if (isOnGround)
         {
-            animator.SetTrigger("Jump");
+            doubleJumped = false;
+        }
+        if(Input.GetButtonDown("Jump") && !lockMovement && (isOnGround || (!doubleJumped && doubleJumpUnlocked)))
+        {
+            
+            if((!doubleJumped && doubleJumpUnlocked)&& !isOnGround)
+            {
+                animator.SetTrigger("DoubleJump");
+                doubleJumped = true;
+            }
+            else
+            {
+                animator.SetTrigger("Jump");
+            }
+
             jumping = true;
+            
         }
         if((Mathf.Abs(rigidbody.velocity.x) > 0.1f || Mathf.Abs(rigidbody.velocity.z) > 0.1f || inputDirection.magnitude > 0.1f) && isOnGround && !lockMovement)
         {
             animator.SetBool("IsRunning", true);
+            if(!m_runAudio)
+            {
+                m_runAudio = true;
+                m_audioController.GetComponent<audioController>().play("playerRunning");
+                
+
+
+            }
+           
+            
+
         }
         else
         {
             animator.SetBool("IsRunning", false);
+            if(m_runAudio)
+            {
+                m_audioController.GetComponent<audioController>().pauseClip("playerRunning");
+                m_runAudio = false;
+            }
+            
+        }
+
+        if(Input.GetButtonDown("Pause"))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            pauseMenu.SetActive(true);
+            Time.timeScale = 0f;
+        }
+
+        if((rigidbody.velocity.y < 0f || doubleJumped) && !isOnGround)
+        {
+            animator.SetTrigger("Falling");
+        }
+        else
+        {
+            animator.SetTrigger("BackToIdle");
         }
     }
     private void FixedUpdate()
@@ -185,12 +248,20 @@ public class PlayerController : MonoBehaviour
             jumping = false;
             rigidbody.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+        if(jumping && !isOnGround && doubleJumpUnlocked)
+        {
+            jumping = false;
+            Vector3 characterForward = character.transform.forward.normalized;
+            rigidbody.velocity = Vector3.zero;
+            rigidbody.AddForce((Vector3.up * jumpForce) + (characterForward * doubleJumpForwardForce), ForceMode.Impulse);
+        }
         if(rigidbody.velocity.y > 0.2f) //when rising
         {
             gravityScaleScript.gravityScale = jumpingGravityScale;
         }
         if(rigidbody.velocity.y < 0) //when falling
         {
+
             gravityScaleScript.gravityScale = jumpingGravityScale*fallingMultiplier;
         }
         
@@ -213,4 +284,6 @@ public class PlayerController : MonoBehaviour
         // implementation for taking damage. Interrupt attacking, calculate if the hit has knocked the player down. If it did, calculate how far they fly, if at all.
         //Perhaps this will be edited to make a damage script with similar functionality between the player and the enemies.
     }
+
+    
 }
