@@ -127,7 +127,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         gameObject.GetComponent<PlayerController>().readyForAction = false; //
         StopAllCoroutines(); // stops regen
-        m_PlayerAnimator.SetTrigger("KnockedDown");
+        m_PlayerAnimator.SetTrigger("IsDead");
         //do whatever else dead people do
     }
 
