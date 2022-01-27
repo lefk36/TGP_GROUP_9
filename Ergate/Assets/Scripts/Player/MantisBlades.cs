@@ -14,6 +14,6 @@ public class MantisBlades : Weapon
     }
     protected override void Update()
     {
-        Debug.Log("blades active");
+        //Debug.Log("blades active");
     }
 }

@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class gameManager : MonoBehaviour
 {
     public audioController m_audioController;
@@ -9,15 +9,19 @@ public class gameManager : MonoBehaviour
 
     private void Awake()
     {
-        //m_audioManager = FindObjectOfType<audioController>().gameObject;
-        //m_audioController = m_audioManager.GetComponent<audioController>();
-
-       // m_audioController.playMusic("musicOne");
+        SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
+        m_audioManager = FindObjectOfType<audioController>().gameObject;
+        m_audioController = m_audioManager.GetComponent<audioController>();
+        inGameMusic();
     }
 
     private void Start()
     {
-        inGameMusic();
+        
+        //SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
+        //m_audioManager = FindObjectOfType<audioController>().gameObject;
+        //m_audioController = m_audioManager.GetComponent<audioController>();
+        //inGameMusic();
     }
 
     public void inGameMusic()
