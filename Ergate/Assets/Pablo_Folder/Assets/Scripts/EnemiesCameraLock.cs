@@ -107,11 +107,7 @@ public class EnemiesCameraLock : MonoBehaviour
         m_RightStickPressed = Input.GetButtonDown("RightStick");
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
 
-        if (!m_ResetShortest)
-        {
-            m_ShortestDistance = Mathf.Infinity;
-            m_ResetShortest = true;
-        }
+        
 
         Debug.Log(m_ShortestDistance);
         //If the player press the mouse middle button or presses the right stick
@@ -142,8 +138,6 @@ public class EnemiesCameraLock : MonoBehaviour
         //If the lock mode is active
         if (m_LockOn)
         {
-            m_ResetShortest = false;
-
             //Mouse Controller
             //Sets a value for the scrollwheel input
             m_ScrollWheelInputValue += m_ScrollWheelInput;
@@ -226,30 +220,11 @@ public class EnemiesCameraLock : MonoBehaviour
         }
         else
         {
+
             if (nearestEnemy != null && m_TargetableEnemies.Count > 0)
             {
                 m_TargetableEnemies[0] = nearestEnemy;
-
             }
-
-            foreach (GameObject enemy in m_Enemies)
-            {
-                
-                Vector3 cameraToEnemy = enemy.transform.position - m_CameraMovement.gameObject.transform.position;
-                Debug.DrawLine(m_CameraMovement.gameObject.transform.position, enemy.transform.position, Color.red);
-                
-                if (cameraToEnemy.magnitude < m_ShortestDistance)
-                {
-                    m_ShortestDistance = cameraToEnemy.magnitude;
-                    nearestEnemy = enemy;
-                    m_TargetableEnemies.Remove(nearestEnemy);
-                 
-                }
-                //Debug.Log(nearestEnemy);
-
-                
-            }
-            
             //If the lock mode is off, then the camera comes back to the initial position and the camera movement gets enable
             m_TargetToLook.targetObj = null;
             if (!m_CameraMovementActive)
@@ -269,7 +244,13 @@ public class EnemiesCameraLock : MonoBehaviour
         {
             //Gets all the enemies in the game and puts them in an array
             m_Enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            
+
+            if (!m_ResetShortest)
+            {
+                m_ShortestDistance = Mathf.Infinity;
+                
+            }
+
             //Foreach enemy in the array
             foreach (GameObject enemy in m_Enemies)
             {
@@ -280,7 +261,6 @@ public class EnemiesCameraLock : MonoBehaviour
                 //If the enemies are visible
                 if (enemy.GetComponent<Renderer>().isVisible)
                 {
-                    
                     //Foreach hit in the raycasts crated if the tag of the collider is enemy, then add that gameObject in the list if it wasnt before
                     foreach (RaycastHit hit in m_Hits)
                     {
@@ -289,16 +269,33 @@ public class EnemiesCameraLock : MonoBehaviour
                             if (!m_TargetableEnemies.Contains(hit.collider.gameObject))
                             {
                                 m_TargetableEnemies.Add(hit.collider.gameObject);
-
                             }
 
+                            //If the lock mode is not active then it calculates the vector between the player and the enemy, if the magnitude of that vector is less than the shortest distance, then the shortest distance is that one
+                            //the nearest enemy will be the enemy that correspond to the cameraToEnemy vector and if that object is already in the list but in another position that is not 0, then it removes that enemy from the list
+                            if (!m_LockOn)
+                            {
+                                Vector3 cameraToEnemy = enemy.transform.position - m_CameraMovement.gameObject.transform.position;
+                                Debug.DrawLine(m_CameraMovement.gameObject.transform.position, enemy.transform.position, Color.red);
 
+                                if (cameraToEnemy.magnitude < m_ShortestDistance)
+                                {
+                                    m_ShortestDistance = cameraToEnemy.magnitude;
+                                    nearestEnemy = enemy;
+                                    if (nearestEnemy != m_TargetableEnemies[0])
+                                    {
+                                        m_TargetableEnemies.Remove(nearestEnemy);
+                                    }
+                                }
+
+                                if (nearestEnemy != null && m_TargetableEnemies.Count > 0)
+                                {
+                                    m_TargetableEnemies[0] = nearestEnemy;
+                                }
+                            }
                         }
                         
                     }
-
-
-                    
 
 
                 }
