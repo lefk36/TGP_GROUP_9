@@ -25,8 +25,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     public int maximumHealth = 100; //
 
     [Min(0)] public int currentPlayerPoiseRegen;  //May be changed with items in future
-    public int currentPlayerHealthRegen;       //
-
+    public int currentPlayerHealthRegen;//
+    private Animator m_PlayerAnimator; //Animator of the player
+    //Character and model of the character
+    private GameObject m_Character;
+    private GameObject m_Model;
 
     void Awake()
     {
@@ -41,6 +44,16 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     private void Start()
     {
+        m_Character = GameObject.Find("Character");
+        if (m_Character != null)
+        {
+            m_Model = GameObject.Find("Model");
+            if (m_Model != null)
+            {
+                m_PlayerAnimator = m_Model.GetComponent<Animator>();
+
+            }
+        }
         hasRegenedHealth = false;
         hasRegenedPoise = false;
         rb = GetComponent<Rigidbody>();
@@ -92,13 +105,21 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     public void KnockedDown()
     {
+        
         gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
         gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         gameObject.GetComponent<PlayerController>().readyForAction = false; //
         //play an animation
+        m_PlayerAnimator.SetTrigger("KnockedDown");
+
+        if(m_PlayerAnimator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
+        {
+            
+        }
     }
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
+        m_PlayerAnimator.SetTrigger("TakeDamage");
         rb.AddForce(attackDirection, ForceMode.Impulse);
         currentPlayerHealth -= healthDamageAmount;
         currentPlayerPoiseRegen -= poiseDamageAmount;
@@ -112,6 +133,8 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         StopAllCoroutines(); // stops regen
         //do whatever else dead people do
     }
+
+    
     //IEnumerator RegenHealth()
     //{
     //    currentPlayerHealth += currentPlayerHealthRegen;
