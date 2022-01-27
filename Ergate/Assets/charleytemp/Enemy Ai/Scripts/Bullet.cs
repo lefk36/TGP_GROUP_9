@@ -4,58 +4,51 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Transform target;
-    
-    public int damageToHealth;
-    public int damageToPoise;
-    public float speed = 20f;
-    #region hideden stuff
-    private Rigidbody rb;
+    //private Transform target;
+    public Rigidbody rb;
+    public int damageToHealth = 30;
+    public int damageToPoise = 30;
+    #region hidden stuff
     private int tempHealthDamage = 5;
     private int tempPoiseDamage = 5;
     private float selfDestruct = 5f;
     #endregion
-
-    //void Start()
-    //{
-    //    rb = GetComponent<Rigidbody>();
-    //    damageToPoise = tempPoiseDamage;
-    //    damageToHealth = tempHealthDamage;
-    //}
-    public void AimForTarget(Transform _target)
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        target = _target;
-        
-        //transform.position = Vector3.MoveTowards(transform.position, target.position, speed);
-        //rb.velocity =  new Vector3(gameObject.transform.position + target.position * Time.deltaTime * speed, 0f);
-        rb.AddForce(transform.position - target.position * speed, ForceMode.Impulse);
-        damageToPoise = tempPoiseDamage;
-        damageToHealth = tempHealthDamage;
     }
     void Update()
     {
         selfDestruct -= Time.deltaTime;
-        if (target == null)
-        {
-            Destroy(gameObject);
-            return;
-        }
+        //if (target == null)
+        //{
+        //    Destroy(gameObject);
+        //    return;
+        //}
         if (selfDestruct <= 0)
         {
             Destroy(gameObject);
             return;
         }
     }
-    public void OnCollision(Collision collision)
+    public void OnCollisionEnter(Collision other)
     {
-        if (collision.gameObject.transform.position == target.transform.position)
-            HitTarget();
-        else
+        //if (other.collider.tag == "Player")
+        //{
+        //    Debug.Log("hit the player");
+        //    other.gameObject.GetComponent<PlayerPoiseAndHealth>().TakeDamage(Vector3.zero, damageToHealth, damageToPoise);
+        //    Destroy(gameObject);
+        //}
+        if (other.collider.tag != "Player")
             Destroy(gameObject);
     }
-    void HitTarget()
+    private void OnTriggerEnter(Collider other)
     {
-        target.GetComponent<PlayerPoiseAndHealth>().TakeDamage(new Vector3(0f,0f,0f),damageToHealth, damageToPoise);
+        if (other.GetComponent<Collider>().CompareTag("Player"))
+        {
+            Debug.Log("hit the player");
+            other.GetComponent<PlayerPoiseAndHealth>().TakeDamage(Vector3.zero, damageToHealth, damageToPoise);
+            Destroy(gameObject);
+        }
     }
 }
