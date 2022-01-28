@@ -9,7 +9,6 @@ public class playerConToAdd : MonoBehaviour
     public LayerMask m_doorMask;
 
     private GameObject m_doorToOpen;
-    public GameObject m_player;
     public Transform camera;
     private void interact()
     {
@@ -18,9 +17,8 @@ public class playerConToAdd : MonoBehaviour
         {
             if (Physics.Raycast(transform.position, camera.forward, out hit, 2f, m_checkpointMask))
             {
+                hit.transform.gameObject.GetComponent<playerCheckpoint>().setSpawnLocation(transform.gameObject);
                 Debug.Log("did hit the checkpoint");
-                hit.transform.gameObject.GetComponent<playerCheckpoint>().setSpawnLocation(m_player);
-                
             }
             else
             {
@@ -32,7 +30,6 @@ public class playerConToAdd : MonoBehaviour
                 m_doorToOpen = hit.collider.gameObject;
                 m_doorToOpen.GetComponent<gateScript>().openGate();
             }
-            
         }
 
         if (Input.GetKeyDown(KeyCode.Q))

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class spikeDamageScripts : MonoBehaviour
 {
-    public int spikeDamage;
+    public float spikeDamage;
     private bool damageNeed = true;
     private bool inSpike = false;
     private GameObject player;
@@ -38,7 +38,7 @@ public class spikeDamageScripts : MonoBehaviour
     {
         if(damageNeed)
         {
-            player.GetComponent<PlayerPoiseAndHealth>().TakeDamage(Vector3.zero, spikeDamage, 0);
+            player.GetComponent<playerController>().takeDamage(spikeDamage);
             damageNeed = false;
         }
         

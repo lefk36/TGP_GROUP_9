@@ -7,7 +7,7 @@ public class playerCheckpoint : MonoBehaviour
     public Vector3 m_spawnLocation;    
     private GameObject m_player;
 
-    private void Start()
+    private void Awake()
     {
         m_player = FindObjectOfType<PlayerController>().gameObject;
         m_spawnLocation = transform.position;
@@ -16,7 +16,7 @@ public class playerCheckpoint : MonoBehaviour
     public void setSpawnLocation(GameObject player)
     {
         m_player = player;
-        m_player.GetComponent<playerSpawn>().setSpawnLoc(m_player.transform.position);
+        m_player.GetComponent<playerSpawn>().setSpawnLoc(m_spawnLocation);
 
     }
 

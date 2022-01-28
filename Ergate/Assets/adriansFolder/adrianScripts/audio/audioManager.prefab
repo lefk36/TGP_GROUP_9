@@ -47,23 +47,16 @@ MonoBehaviour:
   - m_name: playerRunning
     m_clip: {fileID: 8300000, guid: 398a631f92a5b2e4fbbf36e67e05e653, type: 3}
     m_volume: 1
-    m_pitch: 0.1
-    m_loop: 1
-    m_mixerGroup: {fileID: 4418148483034529696, guid: 7f24bb53c89324848a8f23b299144668, type: 2}
+    m_pitch: 3
+    m_loop: 0
+    m_mixerGroup: {fileID: 0}
     m_source: {fileID: 0}
   - m_name: ambientMusic
     m_clip: {fileID: 8300000, guid: ea709ed2866131526a2ff511bdb6dd48, type: 3}
     m_volume: 1
     m_pitch: 3
-    m_loop: 1
-    m_mixerGroup: {fileID: 1491125371365556877, guid: 7f24bb53c89324848a8f23b299144668, type: 2}
-    m_source: {fileID: 0}
-  - m_name: explosion
-    m_clip: {fileID: 8300000, guid: 8524588a69a4f3e40bb597b6221138f1, type: 3}
-    m_volume: 1
-    m_pitch: 0.1
     m_loop: 0
-    m_mixerGroup: {fileID: 4418148483034529696, guid: 7f24bb53c89324848a8f23b299144668, type: 2}
+    m_mixerGroup: {fileID: 1491125371365556877, guid: 7f24bb53c89324848a8f23b299144668, type: 2}
     m_source: {fileID: 0}
   m_soundEffects: {fileID: 4418148483034529696, guid: 7f24bb53c89324848a8f23b299144668, type: 2}
   m_music: {fileID: 1491125371365556877, guid: 7f24bb53c89324848a8f23b299144668, type: 2}

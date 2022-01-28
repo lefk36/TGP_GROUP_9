@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class menuManager : MonoBehaviour
 {
@@ -49,15 +48,5 @@ public class menuManager : MonoBehaviour
     {
         Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
-    }
-
-    public void startGame()
-    {
-        SceneManager.LoadScene("basicLevelTestScene", LoadSceneMode.Single);
-    }
-
-    public void quitGame()
-    {
-        Application.Quit();
     }
 }

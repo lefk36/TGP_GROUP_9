@@ -6,119 +6,102 @@ public class PlayerPoiseAndHealth : MonoBehaviour
 {
     #region inaccessable stuff
     [HideInInspector] public Rigidbody rb;
-    private int m_minimumPoise = -100;
-    private int m_minimumHealth = 0;
+    private int minimumPoise = -100;
+    private int defaultHealthRegen = 3;
+    private int defaultPoiseRegen = 5;
+    private int defaultMaxHealth = 100;
+    private int defaultMaxPoise = 100;
+    private bool hasRegenedHealth;
+    private bool hasRegenedPoise;
+    [SerializeField] private int currentPlayerHealth;       //
+    [SerializeField] private int currentPlayerPoise;        // Variables Serialized for testing purposes
+    [SerializeField] private bool isKnockedDown;            //
 
-    private int m_defaultHealthRegen = 3;
-    private int m_defaultPoiseRegen = 10;
-
-    private int m_defaultMaxHealth = 100;
-    private int m_defaultMaxPoise = 100;
-    private bool m_hasRegenedHealth;
-    private bool m_hasRegenedPoise;
-    [SerializeField] public int m_currentPlayerHealth;       //
-    [SerializeField] public int m_currentPlayerPoise;        // Variables Serialized for testing purposes
-    [SerializeField] private bool m_isKnockedDown;            //
-
-    [SerializeField] private float m_timeBetweenHealthRegen = 5f;    //time in seconds before health regen
-    [SerializeField] private float m_timeBetweenPoiseRegen = 5f;     //POISE VALUE NEEDS TO BE HIGHER WHEN PLAYING
+    [SerializeField] private float timeBetweenHealthRegen = 5f;    //time in seconds before health regen
+    [SerializeField] private float timeBetweenPoiseRegen = 5f;     //POISE VALUE NEEDS TO BE HIGHER WHEN PLAYING
     #endregion
 
-    public int m_maximumPoise = 100;  //temp numbers. might be changed with items 
-    public int m_maximumHealth = 100; //
+    public int maximumPoise = 100;  //temp numbers. might be changed with items 
+    public int maximumHealth = 100; //
 
-    [Min(0)] public int m_currentPlayerPoiseRegen;  //May be changed with items in future
-    public int m_currentPlayerHealthRegen;//
-    private Animator m_PlayerAnimator; //Animator of the player
-    //Character and model of the character
-    private GameObject m_Character;
-    private GameObject m_Model;
+    [Min(0)] public int currentPlayerPoiseRegen;  //May be changed with items in future
+    public int currentPlayerHealthRegen;       //
+
 
     void Awake()
     {
-        m_maximumPoise = m_defaultMaxPoise;     //sets the current max to the default max
-        m_maximumHealth = m_defaultMaxHealth;   //
+        maximumPoise = defaultMaxPoise;     //sets the current max to the default max
+        maximumHealth = defaultMaxHealth;   //
 
-        m_currentPlayerHealth = m_maximumHealth;    //Sets the current health to the current max health
-        m_currentPlayerPoise = m_maximumPoise;      //
+        currentPlayerHealth = maximumHealth;    //Sets the current health to the current max health
+        currentPlayerPoise = maximumPoise;      //
 
-        m_currentPlayerPoiseRegen = m_defaultPoiseRegen;
-        m_currentPlayerHealthRegen = m_defaultHealthRegen;
+        currentPlayerPoiseRegen = defaultPoiseRegen;
+        currentPlayerHealthRegen = defaultHealthRegen;
     }
     private void Start()
     {
-        m_Character = GameObject.Find("Character");
-        if (m_Character != null)
-        {
-            m_Model = GameObject.Find("Model");
-            if (m_Model != null)
-            {
-                m_PlayerAnimator = m_Model.GetComponent<Animator>();
-            }
-        }
-        m_hasRegenedHealth = false;
-        m_hasRegenedPoise = false;
+        hasRegenedHealth = false;
+        hasRegenedPoise = false;
         rb = GetComponent<Rigidbody>();
         //StartCoroutine(RegenHealth()); //restores health every 5 seconds so that we don't have to mess around with floats
     }
     private void Update()
     {
-        m_timeBetweenHealthRegen -= Time.deltaTime;
-        m_timeBetweenPoiseRegen -= Time.deltaTime;
-        if (m_currentPlayerHealth <= m_minimumHealth)
-            m_currentPlayerHealth = m_minimumHealth;
-        if (m_currentPlayerHealth > m_maximumHealth)
-            m_currentPlayerHealth = m_maximumHealth;
-        if (m_currentPlayerPoise > m_maximumPoise)
-            m_currentPlayerPoise = m_maximumPoise;
+        timeBetweenHealthRegen -= Time.deltaTime;
+        timeBetweenPoiseRegen -= Time.deltaTime;
+
+        if (currentPlayerHealth > maximumHealth)
+            currentPlayerHealth = maximumHealth;
+        if (currentPlayerPoise > maximumPoise)
+            currentPlayerPoise = maximumPoise;
     }
     void FixedUpdate()
     {
         #region health stuff
-        if (m_currentPlayerHealth <= 0)
+        if (currentPlayerHealth <= 0)
             PlayerDie();
-        
-        if (m_currentPlayerHealth <= m_maximumHealth && m_timeBetweenHealthRegen <= 0)
+
+        if (currentPlayerHealth <= maximumHealth && timeBetweenHealthRegen <= 0)
         {
-            m_currentPlayerHealth += m_currentPlayerHealthRegen;
-            m_timeBetweenHealthRegen = 5f;
+            currentPlayerHealth += currentPlayerHealthRegen;
+            timeBetweenHealthRegen = 5f;
         }
+        //StartCoroutine(RegenHealth()); // only regens when health is below full
         #endregion
 
         #region Poise Stuff
-        if (m_currentPlayerPoise <= m_maximumPoise && m_timeBetweenPoiseRegen <= 0)
+        if (currentPlayerPoise <= maximumPoise && timeBetweenPoiseRegen <= 0)
         {
-            m_currentPlayerPoise += m_currentPlayerPoiseRegen;
-            m_timeBetweenPoiseRegen = 5f;
+            currentPlayerPoise += currentPlayerPoiseRegen;
+            timeBetweenPoiseRegen = 5f;
         }
-        if (m_currentPlayerPoise < m_minimumPoise)
-            m_currentPlayerPoise = m_minimumPoise;
+        //  && hasRegenedPoise == false
+        //StartCoroutine(RegenPoise());
+        if (currentPlayerPoise < minimumPoise)
+            currentPlayerPoise = minimumPoise;
 
-        if (m_currentPlayerPoise <= 0)
-            m_isKnockedDown = true;
-        else if (m_currentPlayerPoise > 0)
-            m_isKnockedDown = false;
+        if (currentPlayerPoise <= 0)
+            isKnockedDown = true;
+        else if (currentPlayerPoise > 0)
+            isKnockedDown = false;
 
-        if (m_isKnockedDown == true)
+        if (isKnockedDown == true)
             KnockedDown();
         #endregion
     }
     public void KnockedDown()
     {
-        
         gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
         gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         gameObject.GetComponent<PlayerController>().readyForAction = false; //
         //play an animation
-        m_PlayerAnimator.SetTrigger("KnockedDown");
     }
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
-        m_PlayerAnimator.SetTrigger("TakeDamage");
-        Debug.Log("okayer damage taken");
         rb.AddForce(attackDirection, ForceMode.Impulse);
-        m_currentPlayerHealth -= healthDamageAmount;
-        m_currentPlayerPoise -= poiseDamageAmount;
+        currentPlayerHealth -= healthDamageAmount;
+        currentPlayerPoiseRegen -= poiseDamageAmount;
     }
     void PlayerDie()
     {
@@ -127,11 +110,16 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         gameObject.GetComponent<PlayerController>().readyForAction = false; //
         StopAllCoroutines(); // stops regen
-        m_PlayerAnimator.SetTrigger("IsDead");
         //do whatever else dead people do
-        gameObject.GetComponent<playerSpawn>().onDeath();
     }
-
-    
-
+    //IEnumerator RegenHealth()
+    //{
+    //    currentPlayerHealth += currentPlayerHealthRegen;
+    //    yield return new WaitForSeconds(5);
+    //}
+    //IEnumerator RegenPoise()
+    //{
+    //    currentPlayerPoise += currentPlayerPoiseRegen;
+    //    yield return new WaitForSeconds(5);
+    //}
 }

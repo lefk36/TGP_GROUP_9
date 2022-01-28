@@ -6,7 +6,7 @@ public class gateScript : MonoBehaviour
 {
     public GameObject m_key;
     private keyStats m_keyStats;
-    private bool m_gateOpen = false;
+    private bool m_gateOpen;
     private GameObject m_player;
     private int keyID;
     private int keyInstance;
@@ -14,30 +14,28 @@ public class gateScript : MonoBehaviour
     private playerInventory m_playerInventory;
 
     public List<int[]> inventoryToCheck = new List<int[]>();
+    
 
-    private void Start()
+    private void Awake()
     {
+        m_player = FindObjectOfType<PlayerController>().gameObject;
         m_keyStats = m_key.GetComponent<keyStats>();
         keyID = m_keyStats.itemID;
         keyInstance = m_keyStats.keyInstance;
-
-        m_player = FindObjectOfType<PlayerController>().gameObject;
-
-
         m_playerInventory = m_player.GetComponent<playerInventory>();
         keyCheck = new int[2];
         keyCheck[0] = keyID;
         keyCheck[1] = keyInstance;
 
-    }
 
-    
+
+
+    }
 
     public void openGate()
     {
-        inventoryToCheck = m_playerInventory.inventory;
-
-        if (!m_gateOpen)
+        inventoryToCheck = new List<int[]>(m_playerInventory.inventory);
+        if(!m_gateOpen)
         {
             //checks through the inventory to see if you have the correct key for the gate
             for(int i = 0; i < inventoryToCheck.Count; i++)
@@ -58,14 +56,14 @@ public class gateScript : MonoBehaviour
             }
             else
             {
-                Debug.LogError("you do not have the key");
+                Debug.Log("you do not have the key");
 
             }
            
         }
-        //else
-        //{
-        //    transform.parent.RotateAround(transform.parent.position, transform.parent.up, transform.parent.rotation.y + 90f);
-        //}
+        else
+        {
+            transform.parent.RotateAround(transform.parent.position, transform.parent.up, transform.parent.rotation.y + 90f);
+        }
     }
 }
