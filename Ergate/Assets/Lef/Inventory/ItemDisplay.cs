@@ -8,10 +8,8 @@ using UnityEngine.EventSystems;
 
 public class ItemDisplay : MonoBehaviour
 {
-
+    
     [SerializeField] private GameObject inventoryPrefab;
-    [SerializeField] private ItemClick m_ItemClick;
-
 
     //values of startinf position for inventory item Icons
     public int startX_item;
@@ -21,7 +19,9 @@ public class ItemDisplay : MonoBehaviour
     public int spaceBetweenY;
     public int columnNumber;
 
-    public Button iButton; 
+    
+
+    private Button iButton; 
 
     Dictionary<GameObject, InventorySpot> itemsDisplayed = new Dictionary<GameObject, InventorySpot>();
     public InventoryItems inventory;
@@ -31,6 +31,7 @@ public class ItemDisplay : MonoBehaviour
     //Start is called before the first frame update
     void Awake()
     {
+        iButton = inventoryPrefab.GetComponent<Button>();
         CreateDisplaySpot();
     }
 
@@ -50,6 +51,7 @@ public class ItemDisplay : MonoBehaviour
                 m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.dataBase.GetItem[m_spot.Value.item.Id].ItemIcon;
                 m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
                 m_spot.Key.GetComponentInChildren<TextMeshProUGUI>().text = m_spot.Value.amount == 1 ? "" : m_spot.Value.amount.ToString("n0");
+
             }
             else
             {
@@ -67,15 +69,16 @@ public class ItemDisplay : MonoBehaviour
         itemsDisplayed = new Dictionary<GameObject, InventorySpot>();
         for(int i = 0;i<inventory.Container.ObjectItems.Length; i++)
         {
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform) as GameObject;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
-            //AddEvent(obj, EventTriggerType.PointerEnter, delegate {OnEnter(obj); });
+            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
             //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnExit(obj); });
             //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDragStart(obj); });
-            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDragEnd(obj); });
+            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDragEnd(obj);
+            //});
             //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDrag(obj); });
-
+            obj.GetComponent<Button>().onClick.AddListener(delegate { OnButtonClick(); });
             itemsDisplayed.Add(obj, inventory.Container.ObjectItems[i]);
         }
     }
@@ -85,14 +88,14 @@ public class ItemDisplay : MonoBehaviour
         Debug.Log("Did something");
     }
 
-    private void AddEvent(GameObject obj,EventTriggerType type,UnityAction<BaseEventData> action)
-    {
-        EventTrigger trigger = obj.GetComponent<EventTrigger>();
-        var eventTrigger = new EventTrigger.Entry();
-        eventTrigger.eventID = type;
-        eventTrigger.callback.AddListener(action);
-        trigger.triggers.Add(eventTrigger);
-    }
+    //private void AddEvent(GameObject obj,EventTriggerType type,UnityAction<BaseEventData> action)
+    //{
+    //    EventTrigger trigger = obj.GetComponent<EventTrigger>();
+    //    var eventTrigger = new EventTrigger.Entry();
+    //    eventTrigger.eventID = type;
+    //    eventTrigger.callback.AddListener(action);
+    //    trigger.triggers.Add(eventTrigger);
+    //}
 
     //Calculates the variables of the distance between each icon
     public Vector3 GetPosition(int i)
@@ -109,20 +112,27 @@ public class ItemDisplay : MonoBehaviour
 
     }
 
-    public void OnEnter(GameObject obj){}
-    public void OnExit(GameObject obj) { }
-    public void OnDragStart(GameObject obj) { }
-    public void OnDragEnd(GameObject obj) { }
-    public void OnDrag(GameObject obj)
-    {
-        
-        
-
-        
+    public void OnDragStart(GameObject obj) {
+        var mouseObject = new GameObject();
+        var rt = mouseObject.AddComponent<RectTransform>();
+        // The sprite is the same size as the item in inventory
+        rt.sizeDelta = new Vector2(50, 50);
+        mouseObject.transform.SetParent(transform.parent);
+        if(itemsDisplayed[obj].ID >= 0) {
+            var img = mouseObject.AddComponent<Image>();
+            img.sprite = inventory.dataBase.GetItem[itemsDisplayed[obj].ID].ItemIcon;
+            img.raycastTarget = false;
+        }
     }
 
+    private void ShowSmth()
+    {
+        Debug.Log(" Item pressed");
+    }
 
- 
-
+   public void OnButtonClick()
+    {
+        Debug.Log("Pressed");
+    }
 
 }
