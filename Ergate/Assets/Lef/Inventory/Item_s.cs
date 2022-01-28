@@ -16,6 +16,6 @@ public class Item_s : MonoBehaviour, ISerializationCallbackReceiver
     public void OnBeforeSerialize()
     {
         GetComponentInChildren<SpriteRenderer>().sprite = s_item.ItemIcon;
-        EditorUtility.SetDirty(GetComponentInChildren<SpriteRenderer>());
+        //EditorUtility.SetDirty(GetComponentInChildren<SpriteRenderer>());
     }
 }

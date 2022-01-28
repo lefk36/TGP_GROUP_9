@@ -119,6 +119,17 @@ public class PlayerController : MonoBehaviour
         Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); //first the character's direction is defined by the inputs
         Quaternion cameraYRotation = Quaternion.Euler(0, cameraCentre.transform.rotation.eulerAngles.y, 0);
         inputDirection = cameraYRotation * inputDirection; //transform the direction vector by camera centre's quaternion to make the direction relative to camera
+
+        if(pauseMenu.active == false)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
         if (cameraLockedToTarget)
         {
             RotateObjectToDirection(cameraYRotation.eulerAngles.y, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
@@ -187,7 +198,7 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetButtonDown("Pause"))
         {
-            Cursor.lockState = CursorLockMode.None;
+            //Cursor.lockState = CursorLockMode.None;
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
         }
