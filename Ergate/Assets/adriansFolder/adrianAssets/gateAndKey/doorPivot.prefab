@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2121543200914664853}
   - component: {fileID: 2121543200914664854}
   - component: {fileID: 2121543200914664842}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: Door
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,7 +119,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2121543201388786277}
-  m_Layer: 9
+  m_Layer: 7
   m_Name: doorPivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}

@@ -48,8 +48,7 @@ public class EnemyTargeting : MonoBehaviour
     {
         GameObject bulletGO = (GameObject)Instantiate(bulletPrefab, firepoint.position, firepoint.rotation);
         Bullet bullet = bulletGO.GetComponent<Bullet>();
-        if (bullet != null)
-            bullet.AimForTarget(Target);
+        
     }
     private void OnDrawGizmosSelected()
     {

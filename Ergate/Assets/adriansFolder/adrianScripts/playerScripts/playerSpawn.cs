@@ -17,6 +17,11 @@ public class playerSpawn : MonoBehaviour
     public void onDeath()
     {
         transform.position = m_spawnLocation;
-        gameObject.GetComponent<playerStats>().m_health = gameObject.GetComponent<playerStats>().m_maxHealth;
+        gameObject.GetComponent<PlayerPoiseAndHealth>().m_currentPlayerHealth = gameObject.GetComponent<PlayerPoiseAndHealth>().m_maximumHealth;
+        gameObject.GetComponent<PlayerPoiseAndHealth>().m_currentPlayerPoise = gameObject.GetComponent<PlayerPoiseAndHealth>().m_maximumPoise;
+
+        gameObject.GetComponent<PlayerController>().lockMovement = false;        //stuns the player while they're DEAD
+        gameObject.GetComponent<PlayerController>().lockAttackDirection = false; //
+        gameObject.GetComponent<PlayerController>().readyForAction = true;
     }
 }

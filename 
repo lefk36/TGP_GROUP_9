@@ -1,0 +1,535 @@
+Merge branch 'main' into EnemyAI
+
+# Conflicts:
+#	Ergate/Assets/Prefabs/Objects/Bullet.prefab.meta
+#	Ergate/Assets/Prefabs/Player.prefab
+#	Ergate/Assets/Scripts/Enemy/EnemyPoiseAndHealth.cs.meta
+#	Ergate/Assets/Scripts/Enemy/PlayerPoiseAndHealth.cs.meta
+#	Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please run
+#	git update-ref -d MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch EnemyAI
+# Your branch is up to date with 'origin/EnemyAI'.
+#
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   .gitignore
+#	renamed:    Ergate/Assets/Pablo_Folder/Assets/Scripts/ForCameraTest_Character_Movement.cs.meta -> Ergate/Assets/FacingItem.cs.meta
+#	new file:   Ergate/Assets/Lef/Inventory/ScriptableObjects/Items/healthPotion.asset.meta
+#	new file:   Ergate/Assets/Lef/Inventory/ScriptableObjects/Items/key.asset.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/IThfVr.png.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/bossKey.png.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/health_potion.png.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/insect_egg.png.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/inventory_prefab.prefab.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/key1.png.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/key2.png.meta
+#	new file:   Ergate/Assets/Lef/UI/Resources/old-vintage-map-blank-260nw-296629862(1).jpg.meta
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/DoubleJump.anim
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/DoubleJump.anim.meta
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/Falling.anim
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/Falling.anim.meta
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/FightIdle.anim
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/FightIdle.anim.meta
+#	modified:   Ergate/Assets/Pablo_Folder/Assets/Animations/Jumping.anim
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/Landing.anim
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Animations/Landing.anim.meta
+#	modified:   Ergate/Assets/Pablo_Folder/Assets/AnimatorController/Player.controller
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/AnimatorOverrides.meta
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/AnimatorOverrides/DefaultPlayer.overrideController
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/AnimatorOverrides/DefaultPlayer.overrideController.meta
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/AnimatorOverrides/PlayerLockOn.overrideController
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/AnimatorOverrides/PlayerLockOn.overrideController.meta
+#	deleted:    Ergate/Assets/Pablo_Folder/Assets/Scripts/Camera.cs
+#	new file:   Ergate/Assets/Pablo_Folder/Assets/Scripts/Camera.cs.meta
+#	modified:   Ergate/Assets/Pablo_Folder/Assets/Scripts/CameraTerrainCollision.cs
+#	modified:   Ergate/Assets/Pablo_Folder/Assets/Scripts/Camera_Movement.cs
+#	modified:   Ergate/Assets/Pablo_Folder/Assets/Scripts/EnemiesCameraLock.cs
+#	deleted:    Ergate/Assets/Pablo_Folder/Assets/Scripts/ForCameraTest_Character_Movement.cs
+#	new file:   Ergate/Assets/Prefabs/Objects.meta
+#	new file:   Ergate/Assets/Prefabs/Objects/Bullet.prefab.meta
+#	new file:   Ergate/Assets/Prefabs/Player.prefab
+#	new file:   Ergate/Assets/Prefabs/UI.meta
+#	modified:   Ergate/Assets/Prefabs/UI/InGameOverlay.prefab
+#	new file:   Ergate/Assets/Prefabs/UI/InGameOverlay.prefab.meta
+#	modified:   Ergate/Assets/Prefabs/WeaponWheel/WeaponWheel.prefab
+#	modified:   Ergate/Assets/Prefabs/WeaponWheel/WeaponWheelButton.prefab
+#	modified:   Ergate/Assets/Scenes/Camera.unity
+#	new file:   Ergate/Assets/Scenes/CharleyScene.meta
+#	new file:   Ergate/Assets/Scenes/CharleyScene.unity.meta
+#	new file:   Ergate/Assets/Scenes/CharleyScene/NavMesh.asset.meta
+#	new file:   Ergate/Assets/Scenes/Enemy AI Testing.meta
+#	new file:   Ergate/Assets/Scenes/Enemy AI Testing.unity.meta
+#	new file:   Ergate/Assets/Scenes/Enemy AI Testing/NavMesh.asset.meta
+#	new file:   Ergate/Assets/Scenes/Health and Poise testing.unity.meta
+#	new file:   Ergate/Assets/Scenes/Pablo_Animations.unity
+#	new file:   Ergate/Assets/Scenes/Pablo_Animations.unity.meta
+#	modified:   Ergate/Assets/Scenes/PlayerControllerTest.unity
+#	new file:   Ergate/Assets/Scenes/basicLevelTestScene.unity
+#	new file:   Ergate/Assets/Scenes/basicLevelTestScene.unity.meta
+#	new file:   Ergate/Assets/Scenes/playerScene.unity
+#	new file:   Ergate/Assets/Scenes/playerScene.unity.meta
+#	modified:   Ergate/Assets/Scripts/Camera/SimpleLookAt.cs
+#	new file:   Ergate/Assets/Scripts/Enemy.meta
+#	new file:   Ergate/Assets/Scripts/Enemy/Bullet.cs.meta
+#	new file:   Ergate/Assets/Scripts/Enemy/EnemyBehaviour.cs.meta
+#	new file:   Ergate/Assets/Scripts/Enemy/EnemyMeleeAttack.cs.meta
+#	new file:   Ergate/Assets/Scripts/Enemy/EnemyPoiseAndHealth.cs.meta
+#	new file:   Ergate/Assets/Scripts/Enemy/MeleeEnemyController.cs.meta
+#	new file:   Ergate/Assets/Scripts/Enemy/PlayerPoiseAndHealth.cs.meta
+#	new file:   Ergate/Assets/Scripts/Generic/GameManager.cs.meta
+#	new file:   Ergate/Assets/Scripts/Player/AttackInput.cs
+#	new file:   Ergate/Assets/Scripts/Player/AttackInput.cs.meta
+#	modified:   Ergate/Assets/Scripts/Player/MantisBlades.cs
+#	modified:   Ergate/Assets/Scripts/Player/PlayerController.cs
+#	new file:   Ergate/Assets/Scripts/Player/PlayerPoiseAndHealth.cs.meta
+#	new file:   Ergate/Assets/Scripts/Player/SpikeCannon.cs
+#	new file:   Ergate/Assets/Scripts/Player/SpikeCannon.cs.meta
+#	modified:   Ergate/Assets/Scripts/Player/TentacleLasher.cs
+#	new file:   Ergate/Assets/Scripts/Player/Weapon.cs
+#	new file:   Ergate/Assets/Scripts/Player/Weapon.cs.meta
+#	new file:   Ergate/Assets/Scripts/Player/WeaponWheel.meta
+#	new file:   Ergate/Assets/Scripts/Player/WeaponWheel/WeaponWheel.cs.meta
+#	modified:   Ergate/Assets/Scripts/Player/WeaponWheel/WeaponWheelButtonSegmenter.cs
+#	new file:   Ergate/Assets/Scripts/Player/WeaponWheel/WeaponWheelButtonSegmenter.cs.meta
+#	renamed:    Ergate/Assets/Scripts/Player/WeaponWheel/WeaponWheel.cs -> Ergate/Assets/Scripts/Player/WeaponWheel/WeaponWheelController.cs
+#	new file:   Ergate/Assets/Scripts/Player/WeaponWheel/WeaponWheelController.cs.meta
+#	new file:   Ergate/Assets/Scripts/Player/WeaponWheel/WheelButtonReturnFunction.cs
+#	new file:   Ergate/Assets/Scripts/Player/WeaponWheel/WheelButtonReturnFunction.cs.meta
+#	modified:   Ergate/Assets/adriansFolder/adrianAssets/gateAndKey/doorPivot.prefab
+#	modified:   Ergate/Assets/adriansFolder/adrianAssets/gateAndKey/gateScript.cs
+#	modified:   Ergate/Assets/adriansFolder/adrianAssets/gateAndKey/keyCollision.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianAssets/respawn.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianAssets/respawn/respawnCheckpoint.prefab
+#	new file:   Ergate/Assets/adriansFolder/adrianAssets/respawn/respawnCheckpoint.prefab.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/Sound.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/Sound.cs.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/audioController.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/audioController.cs.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/audioManager.prefab
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/audioManager.prefab.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/mainMixer.mixer
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/mainMixer.mixer.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 01 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 01 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 02 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 02 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 03 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 03 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 04 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 04 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 05 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Ambient-Perc - 05 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 01 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 01 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 02 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 02 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 03 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 03 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 04 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 04 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 05 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Choir - 05 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 01 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 01 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 02 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 02 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 03 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 03 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 04 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 04 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 05 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 05 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 06 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 06 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 07 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Dongxiao - 07 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 01 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 01 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 02 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 02 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 03 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 03 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 04 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 04 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 05 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 05 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 06 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 06 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 07 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 07 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 08 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 08 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 09 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Guitar - 09 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 01 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 01 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 02 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 02 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 03 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 03 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 04 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 04 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 05 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 05 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 06 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 06 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 07 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Harp - 07 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 01 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 01 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 02 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 02 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 03 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 03 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 04 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 04 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 05 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Orchestra - 05 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 01 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 01 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 02 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 02 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 03 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 03 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 04 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 04 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 05 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 05 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 06 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 06 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 07 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 07 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 08 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 08 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 09 - loopeable.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/Loops/DavidKBD - The Last Pack - Piano - 09 - loopeable.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 01.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 01.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 02.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 02.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 03.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 03.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 04.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 04.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 05.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Choir - 05.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 01.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 01.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 02.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 02.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 03.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 03.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 04.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 04.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 05.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 05.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 06.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 06.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 07.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Dongxiao - 07.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 01.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 01.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 02.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 02.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 03.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 03.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 04.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 04.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 05.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 05.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 06.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 06.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 07.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 07.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 08.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 08.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 09.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Guitar - 09.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 01.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 01.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 02.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 02.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 03.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 03.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 04.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 04.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 05.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 05.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 06.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 06.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 07.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Harp - 07.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 01.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 01.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 02.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 02.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 03.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 03.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 04.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 04.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 05.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Orchestra - 05.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 01.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 01.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 02.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 02.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 03.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 03.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 04.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 04.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 05.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 05.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 06.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 06.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 07.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 07.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 08.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 08.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 09.ogg
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/Music/TheLast-post-apocalyptic-ambient-pack/One-Shot/DavidKBD - The Last Pack - Piano - 09.ogg.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step0.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step0.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step10.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step10.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step11.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step11.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step12.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step12.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step13.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step13.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step14.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step14.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step15.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step15.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step16.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step16.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step17.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step17.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step18.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step18.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step19.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step19.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step20.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step20.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step3.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step3.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step4.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step4.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step5.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step5.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step6.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step6.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step7.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step7.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step8.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step8.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step9.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Floor/Floor_step9.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_custom_1.mp3
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_custom_1.mp3.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_loop1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_loop1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_loop2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_loop2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_loop3.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Running_loop3.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step0.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step0.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step3.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step3.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step4.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_Step4.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_running_loop0.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Ground/Ground_running_loop0.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_jump0.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_jump0.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_jump1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_jump1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_running_loop0.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_running_loop0.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_running_loop1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_running_loop1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_running_loop2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_running_loop2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step0.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step0.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step3.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step3.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step4.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step4.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step5.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step5.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step6.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step6.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step7.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_step7.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_walking_loop.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Rocky_ground/Rocky_ground_walking_loop.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground0.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground0.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground3.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground3.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground4.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground4.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground5.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Classic Footstep SFX/Sliding_on_ground5.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact Grenade.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact Grenade.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Concrete.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Concrete.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Dirt.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Dirt.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Glass.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Glass.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Grass.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Grass.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Metal.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Metal.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Sand.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Sand.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Snow.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Snow.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Stones.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Stones.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Wood.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Impact on Wood.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw10.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw10.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw3.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw3.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw4.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw4.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw5.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw5.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw6.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw6.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw7.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw7.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw8.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw8.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw9.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Different sounds/Throw9.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade1.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade1.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade10.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade10.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade10Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade10Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade1Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade1Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade2.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade2.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade2Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade2Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade3.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade3.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade3Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade3Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade4.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade4.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade4Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade4Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade5.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade5.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade5Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade5Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade6.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade6.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade6Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade6Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade7.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade7.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade7Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade7Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade8.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade8.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade8Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade8Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade9.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade9.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade9Short.wav
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/audio/sounds/soundEffects/Grenade Sound FX/Grenade/Grenade9Short.wav.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/generalScripts/gameManager.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/generalScripts/gameManager.cs.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/menuScripts.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/menuScripts/menuManager.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/menuScripts/menuManager.cs.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerCheckpoint.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerCheckpoint.cs.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerConToAdd.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerConToAdd.cs.meta
+#	renamed:    Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerController.cs -> Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerControllerAdrian.cs
+#	renamed:    Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerController.cs.meta -> Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerControllerAdrian.cs.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerSpawn.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerSpawn.cs.meta
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerStats.cs
+#	new file:   Ergate/Assets/adriansFolder/adrianScripts/playerScripts/playerStats.cs.meta
+#	new file:   Ergate/Assets/charleytemp.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Materials.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Materials/BulletMat.mat.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Materials/Test Enemy.mat.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Materials/Test Player.mat.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Materials/Test obstacles.mat.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Materials/TestEnemy2.mat.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Materials/default.mat.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Prefabs.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Scripts.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Scripts/BasicTestMovement.cs.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Scripts/Bullet.cs.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Scripts/Confusing ai stuff.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Scripts/Confusing ai stuff/EnemyLOSCheck.cs.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Scripts/Confusing ai stuff/EnemyMovement.cs.meta
+#	new file:   Ergate/Assets/charleytemp/Enemy Ai/Scripts/EnemyTargeting.cs.meta
+#	new file:   Ergate/Assets/charleytemp/Health and Poise.meta
+#	new file:   Ergate/Assets/charleytemp/Health and Poise/PlayerPoiseAndHealth.cs
+#	new file:   Ergate/Assets/icon_scaler.cs.meta
+#	modified:   Ergate/ProjectSettings/InputManager.asset
+#	modified:   Ergate/ProjectSettings/TagManager.asset
+#	modified:   Ergate/UserSettings/EditorUserSettings.asset
+#
