@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class WeaponWheelController : MonoBehaviour
+public class UIController : MonoBehaviour
 {
     //Inspector values
     public float buttonHoldingTimeRequired;

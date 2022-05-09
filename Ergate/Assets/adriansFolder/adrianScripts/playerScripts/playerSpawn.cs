@@ -5,10 +5,29 @@ using UnityEngine;
 public class playerSpawn : MonoBehaviour
 {
     public Vector3 m_spawnLocation;
+    private GameObject m_Character;
+    private Animator m_Animator;
+    [HideInInspector] public GameObject m_Model;
+
+
+    private void Start()
+    {
+        m_Character = transform.Find("Character").gameObject;
+        if (m_Character != null)
+        {
+            m_Model = m_Character.transform.Find("Model").gameObject;
+            if (m_Model != null)
+            {
+                m_Animator = m_Model.GetComponent<Animator>();
+            }
+            else Debug.Log("No child object with the name 'Model' was found");
+        }
+    }
 
     public void setSpawnLoc(Vector3 spawnLoc)
     {
         m_spawnLocation = spawnLoc;
+        m_Animator.SetTrigger("HasRespawn");
         Debug.Log("your new spawn location is: " + m_spawnLocation);
     }
 

@@ -9,19 +9,10 @@ public class gameManager : MonoBehaviour
 
     private void Awake()
     {
-        SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
+        SceneManager.LoadScene("playerScene", LoadSceneMode.Additive);
         m_audioManager = FindObjectOfType<audioController>().gameObject;
         m_audioController = m_audioManager.GetComponent<audioController>();
         inGameMusic();
-    }
-
-    private void Start()
-    {
-        
-        //SceneManager.LoadScene("PlayerScene", LoadSceneMode.Additive);
-        //m_audioManager = FindObjectOfType<audioController>().gameObject;
-        //m_audioController = m_audioManager.GetComponent<audioController>();
-        //inGameMusic();
     }
 
     public void inGameMusic()
