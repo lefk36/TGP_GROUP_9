@@ -18,7 +18,7 @@ public class EnemyMeleeAttack : MonoBehaviour
     {
         if (collider.tag == "Player" && m_canAttack == true)
         {
-            var healthComponent = collider.GetComponent<PlayerPoiseAndHealth>();
+            PlayerPoiseAndHealth healthComponent = collider.GetComponent<PlayerPoiseAndHealth>();
             Debug.Log("damage almost taken?");
             if (healthComponent != null)
             {
