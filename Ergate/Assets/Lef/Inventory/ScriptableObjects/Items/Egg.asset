@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Egg
   m_EditorClassIdentifier: 
   id: 0
-  ItemIcon: {fileID: 21300000, guid: 636d35724d1f54a4687fd94be5dd1d07, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 725eee98882998b468278cf3712b5ad0, type: 3}
   type: 3
   description: A peculiar egg. Makes you wonder what will hatch from it.

@@ -24,31 +24,45 @@ public class InventoryItems : ScriptableObject
     // function that adds item based on a count of the list and creates a spot for each number accordingly.Also counts the amount of each item
     public void AddItem(my_Item m_item, int m_amount)
     {
-        bool itemIsHeld = false;
-        for(int i = 0; i < Container.ObjectItems.Count; i++)
+        if(m_item.buffs.Length > 0)
         {
-            if(Container.ObjectItems[i].item.Id == m_item.Id)
+            SetEmptySpot(m_item, m_amount);
+            return;
+        }
+        bool itemIsHeld = false;
+        for (int i = 0; i < Container.ObjectItems.Length; i++)
+        {
+            if (Container.ObjectItems[i].ID == m_item.Id)
             {
-                Container.ObjectItems[i].AddAmount(m_amount);                
+                Container.ObjectItems[i].AddAmount(m_amount);
                 itemIsHeld = true;
                 return;
             }
         }
+        SetEmptySpot(m_item, m_amount);
         if (!itemIsHeld)
         {
-            Container.ObjectItems.Add(new InventorySpot(m_item.Id,m_item, m_amount));
+            
         }
+    }
+
+    public InventorySpot SetEmptySpot(my_Item m_item, int m_amount)
+    {
+        for(int i =0;i< Container.ObjectItems.Length; i++)
+        {
+            if(Container.ObjectItems[i].ID <= -1)
+            {
+                Container.ObjectItems[i].UpdateSpot(m_item.Id, m_item, m_amount);
+                return Container.ObjectItems[i];
+            }
+        }// set up functionality for full inventory
+        return null;
     }
 
     [ContextMenu("Save")]
     public void Save()
     {
-        //string saveData = JsonUtility.ToJson(this, true);
-        //BinaryFormatter binFor = new BinaryFormatter();
-        //FileStream file = File.Create(string.Concat(Application.persistentDataPath, savePath));
-        //binFor.Serialize(file, saveData);
-        //file.Close();
-
+        
         IFormatter formatter = new BinaryFormatter();
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Create, FileAccess.Write);
         formatter.Serialize(stream, Container);
@@ -58,14 +72,7 @@ public class InventoryItems : ScriptableObject
     [ContextMenu("Load")]
     public void Load()
     {
-        //if (File.Exists(string.Concat(Application.persistentDataPath, savePath)))
-        //{
-        //    BinaryFormatter binFor = new BinaryFormatter();
-        //    FileStream file = File.Open(string.Concat(Application.persistentDataPath, savePath), FileMode.Open);
-        //    JsonUtility.FromJsonOverwrite(binFor.Deserialize(file).ToString(), this);
-        //    file.Close();
-        //}
-
+       
         IFormatter formatter = new BinaryFormatter();
         Stream stream = new FileStream(string.Concat(Application.persistentDataPath, savePath), FileMode.Open, FileAccess.Read);
         Container = (Inventory)formatter.Deserialize(stream);
@@ -83,7 +90,7 @@ public class InventoryItems : ScriptableObject
 [System.Serializable]
 public class Inventory 
 {
-    public List<InventorySpot> ObjectItems = new List<InventorySpot>();
+    public InventorySpot[] ObjectItems = new InventorySpot[24];
 }
 
 
@@ -91,13 +98,20 @@ public class Inventory
 [System.Serializable]
 public class InventorySpot
 {
-    public int ID;
+    public int ID = -1;
     public my_Item item;
     public int amount;
-    public InventorySpot(int m_ID,my_Item m_Item, int m_amount)
+    public InventorySpot()
     {
-        ID = m_ID;
-        item = m_Item;
+        ID = -1;
+        item = null;
+        amount = 0;
+    }
+
+    public void UpdateSpot(int m_id, my_Item m_item, int m_amount)
+    {
+        ID = m_id;
+        item = m_item;
         amount = m_amount;
     }
 
