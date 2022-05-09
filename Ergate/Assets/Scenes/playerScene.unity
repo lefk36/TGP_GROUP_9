@@ -250,6 +250,7 @@ MonoBehaviour:
   pauseMenu: {fileID: 58479357}
   buttonString: 
   pauseMenuState: 0
+  activeWeaponIndex: 0
   weaponScripts: []
 --- !u!114 &18877946
 MonoBehaviour:
@@ -1340,6 +1341,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 388580686316543005, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Spike
+      objectReference: {fileID: 0}
     - target: {fileID: 2570584519808584558, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: m_Name
       value: InGameOverlay
@@ -1444,6 +1449,14 @@ PrefabInstance:
       propertyPath: wheelControllerScript
       value: 
       objectReference: {fileID: 18877945}
+    - target: {fileID: 3986806522186508401, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Blades
+      objectReference: {fileID: 0}
+    - target: {fileID: 5941706760107646894, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: Lasher
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
 --- !u!114 &622315772 stripped
