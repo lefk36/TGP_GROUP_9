@@ -11,10 +11,9 @@ public class ItemDataBase : ScriptableObject, ISerializationCallbackReceiver
     // callback for when Unity deserializes our object
     public void OnAfterDeserialize()
     {
-     
-
         for (int i = 0; i < Items.Length; i++)
         {
+            
             Items[i].id = i;
             GetItem.Add(i, Items[i]);
         }

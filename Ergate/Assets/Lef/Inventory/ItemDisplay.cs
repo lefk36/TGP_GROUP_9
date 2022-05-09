@@ -11,6 +11,8 @@ public class ItemDisplay : MonoBehaviour
     
     [SerializeField] private GameObject inventoryPrefab;
 
+     
+
     //values of startinf position for inventory item Icons
     public int startX_item;
     public int startY_item;
@@ -19,20 +21,22 @@ public class ItemDisplay : MonoBehaviour
     public int spaceBetweenY;
     public int columnNumber;
 
-    
+    bool keyCheck;
 
     private Button iButton; 
 
     Dictionary<GameObject, InventorySpot> itemsDisplayed = new Dictionary<GameObject, InventorySpot>();
     public InventoryItems inventory;
-    
-    
+
+   
+    private ItemDataBase data;
 
     //Start is called before the first frame update
     void Awake()
     {
         iButton = inventoryPrefab.GetComponent<Button>();
         CreateDisplaySpot();
+        
     }
 
    // Update is called once per frame
@@ -72,12 +76,6 @@ public class ItemDisplay : MonoBehaviour
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform) as GameObject;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
-            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnEnter(obj); });
-            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnExit(obj); });
-            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDragStart(obj); });
-            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDragEnd(obj);
-            //});
-            //AddEvent(obj, EventTriggerType.PointerEnter, delegate { OnDrag(obj); });
             obj.GetComponent<Button>().onClick.AddListener(delegate { OnButtonClick(); });
             itemsDisplayed.Add(obj, inventory.Container.ObjectItems[i]);
         }
@@ -87,15 +85,6 @@ public class ItemDisplay : MonoBehaviour
     {
         Debug.Log("Did something");
     }
-
-    //private void AddEvent(GameObject obj,EventTriggerType type,UnityAction<BaseEventData> action)
-    //{
-    //    EventTrigger trigger = obj.GetComponent<EventTrigger>();
-    //    var eventTrigger = new EventTrigger.Entry();
-    //    eventTrigger.eventID = type;
-    //    eventTrigger.callback.AddListener(action);
-    //    trigger.triggers.Add(eventTrigger);
-    //}
 
     //Calculates the variables of the distance between each icon
     public Vector3 GetPosition(int i)
@@ -132,7 +121,13 @@ public class ItemDisplay : MonoBehaviour
 
    public void OnButtonClick()
     {
-        Debug.Log("Pressed");
+      
+
+       
+          
+        
+           
+
     }
 
 }
