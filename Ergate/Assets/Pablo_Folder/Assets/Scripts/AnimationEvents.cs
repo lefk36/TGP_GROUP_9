@@ -24,7 +24,7 @@ public class AnimationEvents : MonoBehaviour
     {
         if (check.Equals("KnockedDownAnimationFinished"))
         {
-            m_PlayerAnimator.SetTrigger("GettingUp");
+            m_PlayerAnimator.SetTrigger("HasRespawn");
             
             Debug.Log("Up");
         }

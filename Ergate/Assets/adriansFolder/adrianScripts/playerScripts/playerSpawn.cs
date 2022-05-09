@@ -27,7 +27,6 @@ public class playerSpawn : MonoBehaviour
     public void setSpawnLoc(Vector3 spawnLoc)
     {
         m_spawnLocation = spawnLoc;
-        m_Animator.SetTrigger("HasRespawn");
         Debug.Log("your new spawn location is: " + m_spawnLocation);
     }
 
