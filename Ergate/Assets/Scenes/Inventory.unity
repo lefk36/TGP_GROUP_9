@@ -1177,7 +1177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f2c16afc6f79714da64c12b3127e161, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  inventoryPrefab: {fileID: 7935231964758116734, guid: ba20c7e563a0a72448ed53e8022c26ee, type: 3}
+  inventoryPrefab: {fileID: 488067250839786311, guid: 12a09a73b874335408f2cf15506f3278, type: 3}
   startX_item: -75
   startY_item: 130
   spaceBetwwenX: 55
