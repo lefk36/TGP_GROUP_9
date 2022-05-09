@@ -18,7 +18,7 @@ public class playerConToAdd : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Physics.SphereCast(gameObject.transform.position, 5f, camera.forward, out hit, 5f, m_checkpointMask))
+            if (Physics.SphereCast(gameObject.transform.position, 2f, camera.forward, out hit, 4f, m_checkpointMask))
             {
                 
                 Debug.Log("did hit the checkpoint");

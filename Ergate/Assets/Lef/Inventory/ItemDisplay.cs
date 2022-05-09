@@ -3,12 +3,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+using UnityEngine.Events;
+using UnityEngine.EventSystems;
 
 public class ItemDisplay : MonoBehaviour
 {
+    
+    [SerializeField] private GameObject inventoryPrefab;
 
-    public GameObject inventoryPrefab;
+     
 
     //values of startinf position for inventory item Icons
     public int startX_item;
@@ -18,36 +21,69 @@ public class ItemDisplay : MonoBehaviour
     public int spaceBetweenY;
     public int columnNumber;
 
-    Dictionary<InventorySpot, GameObject> itemsDisplayed = new Dictionary<InventorySpot, GameObject>();
+    bool keyCheck;
+
+    private Button iButton; 
+
+    Dictionary<GameObject, InventorySpot> itemsDisplayed = new Dictionary<GameObject, InventorySpot>();
     public InventoryItems inventory;
 
+   
+    private ItemDataBase data;
+
     //Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        CreateDisplay();
+        iButton = inventoryPrefab.GetComponent<Button>();
+        CreateDisplaySpot();
+        
     }
 
    // Update is called once per frame
     void Update()
     {
-        UpdateDisplay();
+        UpdateSpots();
+    }
+
+    public void UpdateSpots()
+    {
+        
+        foreach(KeyValuePair<GameObject,InventorySpot> m_spot in itemsDisplayed)
+        {
+            if (m_spot.Value.ID >= 0)
+            {
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.dataBase.GetItem[m_spot.Value.item.Id].ItemIcon;
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                m_spot.Key.GetComponentInChildren<TextMeshProUGUI>().text = m_spot.Value.amount == 1 ? "" : m_spot.Value.amount.ToString("n0");
+
+            }
+            else
+            {
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                //Changing Alpha to 0 
+                m_spot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                m_spot.Key.GetComponentInChildren<TextMeshProUGUI>().text =  "";
+            }
+        }
     }
 
     //Displays each item icon on the screen
-    public void CreateDisplay()
+    public void CreateDisplaySpot()
     {
-        for (int i = 0; i < inventory.Container.ObjectItems.Count; i++)
+        itemsDisplayed = new Dictionary<GameObject, InventorySpot>();
+        for(int i = 0;i<inventory.Container.ObjectItems.Length; i++)
         {
-            //Creating a variable for clearing up some code
-            InventorySpot Spot = inventory.Container.ObjectItems[i];
-            // Creates a gameobject prefab for each item that gets included in the database
-            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.dataBase.GetItem[Spot.item.Id].ItemIcon;
+            var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform) as GameObject;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-            obj.GetComponentInChildren<TextMeshProUGUI>().text = Spot.amount.ToString("n0");
 
-            itemsDisplayed.Add(Spot, obj);
+            obj.GetComponent<Button>().onClick.AddListener(delegate {OnButtonClick();});
+            itemsDisplayed.Add(obj, inventory.Container.ObjectItems[i]);
         }
+    }
+
+    public void Dosmth()
+    {
+        Debug.Log("Did something");
     }
 
     //Calculates the variables of the distance between each icon
@@ -56,28 +92,42 @@ public class ItemDisplay : MonoBehaviour
         return new Vector3(startX_item +(spaceBetwwenX * (i % columnNumber)),startY_item + (-spaceBetweenY * (i / columnNumber)), 0f);
     }
 
-    //Updates the display of item icons on the UI panel of the inventory
-    public void UpdateDisplay()
+    public class MouseItem
     {
-        // Updates the gameobject prefab that gets included in the database(sprite and numbers)
-        for (int i = 0; i < inventory.Container.ObjectItems.Count; i++)
-        {
-            //Creating a variable for clearing up some code
-            InventorySpot Spot = inventory.Container.ObjectItems[i];
+        public GameObject obj;
+        public InventorySpot item;
+        public InventorySpot hoverItem;
+        public GameObject hoverObj;
 
-            if (itemsDisplayed.ContainsKey(Spot))
-            {
-                itemsDisplayed[Spot].GetComponentInChildren<TextMeshProUGUI>().text = Spot.amount.ToString("n0");
-            }
-            else
-            {
-                var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-                obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = inventory.dataBase.GetItem[Spot.item.Id].ItemIcon;
-                obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
-                obj.GetComponentInChildren<TextMeshProUGUI>().text = Spot.amount.ToString("n0");
+    }
 
-                itemsDisplayed.Add(Spot, obj);
-            }
+    public void OnDragStart(GameObject obj) {
+        var mouseObject = new GameObject();
+        var rt = mouseObject.AddComponent<RectTransform>();
+        // The sprite is the same size as the item in inventory
+        rt.sizeDelta = new Vector2(50, 50);
+        mouseObject.transform.SetParent(transform.parent);
+        if(itemsDisplayed[obj].ID >= 0) {
+            var img = mouseObject.AddComponent<Image>();
+            img.sprite = inventory.dataBase.GetItem[itemsDisplayed[obj].ID].ItemIcon;
+            img.raycastTarget = false;
         }
     }
+
+    private void ShowSmth()
+    {
+        Debug.Log(" Item pressed");
+    }
+
+   public void OnButtonClick()
+    {
+
+
+
+        Debug.Log(" Item pressed");
+
+
+
+    }
+
 }
