@@ -12,13 +12,6 @@ public class playerConToAdd : MonoBehaviour
     public GameObject m_player;
     public Transform camera;
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, 10f);
-        Gizmos.DrawRay(transform.position, camera.forward);
-    }
-
     private void interact()
     {
         RaycastHit hit;

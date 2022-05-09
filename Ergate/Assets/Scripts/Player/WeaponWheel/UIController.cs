@@ -25,6 +25,7 @@ public class UIController : MonoBehaviour
     private PlayerController playerControllerScript;
     private Camera_Movement cameraMovementScript;
     private EnemiesCameraLock cameraLockScript;
+    private AttackInput inputScript;
 
     //private values
     private bool mouseCursorState = false;
@@ -34,6 +35,7 @@ public class UIController : MonoBehaviour
 
     //public non-inspector values
     [HideInInspector] public Type activeWeaponType;
+    [HideInInspector] public int activeWeaponIndex = 0;
     [HideInInspector] public List<Weapon> weaponScripts;
 
     void Start()
@@ -44,6 +46,7 @@ public class UIController : MonoBehaviour
         playerControllerScript = transform.parent.gameObject.GetComponent<PlayerController>();
         cameraMovementScript = transform.parent.Find("Camera Centre").GetComponent<Camera_Movement>();
         cameraLockScript = cameraMovementScript.transform.Find("Main Camera").GetComponent<EnemiesCameraLock>();
+        inputScript = GetComponent<AttackInput>();
         canvas = weaponWheelUI.transform.parent as RectTransform;
 
     }
@@ -53,6 +56,10 @@ public class UIController : MonoBehaviour
     {
         if (pauseMenuState == false)
         {
+            if(weaponWheelState == false && inputScript.enabled == false)
+            {
+                inputScript.enabled = true;
+            }
             if (Input.GetButton("WeaponWheel"))
             {
                 timeButtonIsHeld += Time.deltaTime;
@@ -88,6 +95,8 @@ public class UIController : MonoBehaviour
             {
                 if (Input.GetButtonDown("Pause"))
                 {
+                    inputScript.CancelAttacks();
+                    inputScript.enabled = false;
                     pauseMenuState = true;
                     pauseMenu.SetActive(true);
                     Cursor.lockState = CursorLockMode.None;
@@ -133,6 +142,8 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = Convert.ToInt32(!state);
         weaponWheelUI.SetActive(state);
+        inputScript.CancelAttacks();
+        inputScript.enabled = !state;
         if (!cameraLockScript.m_LockOn)
         {
             cameraLockScript.enabled = !state;
@@ -172,6 +183,7 @@ public class UIController : MonoBehaviour
             {
                 if(weaponScripts[i].GetType() == typeof(MantisBlades))
                 {
+                    activeWeaponIndex = i;
                     activeWeaponType = typeof(MantisBlades);
                 }
             }
@@ -182,6 +194,7 @@ public class UIController : MonoBehaviour
             {
                 if (weaponScripts[i].GetType() == typeof(TentacleLasher))
                 {
+                    activeWeaponIndex = i;
                     activeWeaponType = typeof(TentacleLasher);
                 }
             }
@@ -192,6 +205,7 @@ public class UIController : MonoBehaviour
             {
                 if (weaponScripts[i].GetType() == typeof(SpikeCannon))
                 {
+                    activeWeaponIndex = i;
                     activeWeaponType = typeof(SpikeCannon);
                 }
             }
