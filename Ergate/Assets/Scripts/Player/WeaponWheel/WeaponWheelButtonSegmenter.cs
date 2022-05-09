@@ -9,7 +9,7 @@ public class WeaponWheelButtonSegmenter : MonoBehaviour
     public List<RectTransform> buttons;
     public float segmentAngle;
     public RectTransform cursor;
-    public WeaponWheelController wheelControllerScript;
+    public UIController wheelControllerScript;
     public EventSystem wheelEventSystem;
 
     void Start()
