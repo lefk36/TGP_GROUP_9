@@ -110,7 +110,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
         gameObject.GetComponent<PlayerController>().readyForAction = false; //
         //play an animation
-        m_PlayerAnimator.SetTrigger("KnockedDown");
+        //m_PlayerAnimator.SetTrigger("KnockedDown");
     }
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {

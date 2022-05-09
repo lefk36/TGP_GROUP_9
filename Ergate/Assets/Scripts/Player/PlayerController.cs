@@ -59,8 +59,6 @@ public class PlayerController : MonoBehaviour
     private GameObject m_audioController;
     private bool m_runAudio = false;
 
-    //variables for UI
-    public GameObject pauseMenu;
 
     private float m_MaxRunAnimSpeed = 7f;
 
@@ -120,16 +118,17 @@ public class PlayerController : MonoBehaviour
         Quaternion cameraYRotation = Quaternion.Euler(0, cameraCentre.transform.rotation.eulerAngles.y, 0);
         inputDirection = cameraYRotation * inputDirection; //transform the direction vector by camera centre's quaternion to make the direction relative to camera
 
-        if(pauseMenu.active == false)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-        }
-        else
-        {
-            Cursor.lockState = CursorLockMode.None;
-            Cursor.visible = true;
-        }
+        //if(pauseMenu.active == false)
+        //{
+        //    Cursor.lockState = CursorLockMode.Locked;
+        //    Cursor.visible = false;
+        //}
+        //else
+        //{
+        //    Cursor.lockState = CursorLockMode.None;
+        //    Cursor.visible = true;
+        //}
+
         if (cameraLockedToTarget)
         {
             RotateObjectToDirection(cameraYRotation.eulerAngles.y, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
@@ -196,12 +195,12 @@ public class PlayerController : MonoBehaviour
 
         }
 
-        if(Input.GetButtonDown("Pause"))
-        {
-            //Cursor.lockState = CursorLockMode.None;
-            pauseMenu.SetActive(true);
-            Time.timeScale = 0f;
-        }
+        //if(Input.GetButtonDown("Pause"))
+        //{
+        //    //Cursor.lockState = CursorLockMode.None;
+        //    pauseMenu.SetActive(true);
+        //    Time.timeScale = 0f;
+        //}
 
         if((rigidbody.velocity.y < 0.1f || doubleJumped) && !isOnGround)
         {
