@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+
+    //variables for grapple hook
+    public bool m_isSwinging;
     //public variables
     [SerializeField] private LayerMask m_Ground; //Ground layr mask
     [Min(0f)] public float acceleration;
@@ -216,7 +219,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (lockFalling)
+        if (lockFalling && !m_isSwinging)
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
             gravityScaleScript.gravityScale = 0;
@@ -253,7 +256,7 @@ public class PlayerController : MonoBehaviour
                 rigidbody.AddForce(movementDirection * acceleration, ForceMode.Acceleration); //this line moves the player          
             }
         }
-        else if (movementDirection.magnitude < 0.1f && rigidbody.velocity.magnitude > 0.1f && isOnGround) //if no input but still moving then decelerate
+        else if (movementDirection.magnitude < 0.1f && rigidbody.velocity.magnitude > 0.1f && isOnGround && !m_isSwinging) //if no input but still moving then decelerate
         {
             rigidbody.AddForce(-rigidbody.velocity.normalized * deceleration, ForceMode.Acceleration);
         }
@@ -271,11 +274,11 @@ public class PlayerController : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             rigidbody.AddForce((Vector3.up * jumpForce) + (characterForward * doubleJumpForwardForce), ForceMode.Impulse);
         }
-        if(rigidbody.velocity.y > 0.2f) //when rising
+        if(rigidbody.velocity.y > 0.2f && !m_isSwinging) //when rising
         {
             gravityScaleScript.gravityScale = jumpingGravityScale;
         }
-        if(rigidbody.velocity.y < 0) //when falling
+        if(rigidbody.velocity.y < 0 && !m_isSwinging) //when falling
         {
 
             gravityScaleScript.gravityScale = jumpingGravityScale*fallingMultiplier;

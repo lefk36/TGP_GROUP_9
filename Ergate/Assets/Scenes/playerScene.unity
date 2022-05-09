@@ -138,10 +138,18 @@ PrefabInstance:
       propertyPath: m_dashForce
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 3309844868546162398, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_player
       value: 
       objectReference: {fileID: 18877943}
+    - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_swingYAmount
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_doorMask.m_Bits
       value: 128
