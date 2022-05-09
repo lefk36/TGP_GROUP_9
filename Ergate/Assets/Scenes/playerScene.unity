@@ -218,24 +218,39 @@ PrefabInstance:
       propertyPath: wheelEventSystem
       value: 
       objectReference: {fileID: 622315772}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7805692116510882628, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
 --- !u!1 &18877943 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7393055299828996669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
   m_PrefabInstance: {fileID: 18877942}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &18877945 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7805692116510882628, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+--- !u!1 &18877944 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4943754815482095059, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
   m_PrefabInstance: {fileID: 18877942}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+--- !u!114 &18877945
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 18877944}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2dbb66deb018a7a4f99d7df2be2e4ec3, type: 3}
+  m_Script: {fileID: 11500000, guid: 334361f58dc2afd49876888130d16147, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  buttonHoldingTimeRequired: 0.1
+  wheelEventSystem: {fileID: 622315772}
+  cursorHolderUI: {fileID: 622315773}
+  weaponWheelUI: {fileID: 622315774}
+  pauseMenu: {fileID: 58479357}
+  buttonString: 
+  pauseMenuState: 0
+  weaponScripts: []
 --- !u!1 &58479357
 GameObject:
   m_ObjectHideFlags: 0
@@ -1380,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: wheelControllerScript
       value: 
-      objectReference: {fileID: 18877945}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
 --- !u!114 &622315772 stripped
@@ -1520,6 +1535,7 @@ MonoBehaviour:
   soundEffectSlider: {fileID: 1243017628}
   musicSlider: {fileID: 2142173873}
   audioMixer: {fileID: 24100000, guid: 7f24bb53c89324848a8f23b299144668, type: 2}
+  uiControllerScript: {fileID: 18877945}
 --- !u!4 &719428981
 Transform:
   m_ObjectHideFlags: 0

@@ -17,6 +17,8 @@ public class menuManager : MonoBehaviour
 
     public AudioMixer audioMixer;
 
+    public UIController uiControllerScript;
+
 
     private void Start()
     {
@@ -47,8 +49,10 @@ public class menuManager : MonoBehaviour
 
     public void unPause()
     {
-        Time.timeScale = 1f;
         Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        Time.timeScale = 1f;
+        uiControllerScript.pauseMenuState = false; ;
     }
 
     public void startGame()

@@ -16,8 +16,10 @@ public class UIController : MonoBehaviour
     public RectTransform cursorHolderUI;
     private RectTransform canvas;
     public GameObject weaponWheelUI;
+    public GameObject pauseMenu;
     [HideInInspector] public string buttonString;
-    
+    [HideInInspector] public bool pauseMenuState = false;
+
 
     //game scripts
     private PlayerController playerControllerScript;
@@ -49,36 +51,50 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetButton("WeaponWheel"))
+        if (pauseMenuState == false)
         {
-            timeButtonIsHeld += Time.deltaTime;
-            if (timeButtonIsHeld > 0.1f) //the button needs to be held for 0.1 seconds for the weapon wheel to trigger
+            if (Input.GetButton("WeaponWheel"))
             {
-                if (weaponWheelState == false && playerControllerScript.readyForAction == true)
+                timeButtonIsHeld += Time.deltaTime;
+                if (timeButtonIsHeld > 0.1f) //the button needs to be held for 0.1 seconds for the weapon wheel to trigger
                 {
-                    WheelActive(true);
-                }
-                if (weaponWheelState == true)
-                {
-                    RotateCursor();
-                }
+                    if (weaponWheelState == false && playerControllerScript.readyForAction == true)
+                    {
+                        WheelActive(true);
+                    }
+                    if (weaponWheelState == true)
+                    {
+                        RotateCursor();
+                    }
 
+                }
             }
-        }
-        if (Input.GetButtonUp("WeaponWheel"))
-        {
-            GameObject buttonObj = wheelEventSystem.currentSelectedGameObject;
-            if(buttonObj != null)
+            if (Input.GetButtonUp("WeaponWheel"))
             {
-                Button button;
-                button = buttonObj.GetComponent<Button>();
-                button.onClick.Invoke();
-                SwitchWeapons(buttonString);
+                GameObject buttonObj = wheelEventSystem.currentSelectedGameObject;
+                if (buttonObj != null)
+                {
+                    Button button;
+                    button = buttonObj.GetComponent<Button>();
+                    button.onClick.Invoke();
+                    SwitchWeapons(buttonString);
+                }
+                mouseCursorState = false;
+                cursorHolderUI.rotation = Quaternion.Euler(0, 0, 0);
+                timeButtonIsHeld = 0;
+                WheelActive(false);
             }
-            mouseCursorState = false;
-            cursorHolderUI.rotation = Quaternion.Euler(0, 0, 0);
-            timeButtonIsHeld = 0;
-            WheelActive(false);
+            if (weaponWheelState == false)
+            {
+                if (Input.GetButtonDown("Pause"))
+                {
+                    pauseMenuState = true;
+                    pauseMenu.SetActive(true);
+                    Cursor.lockState = CursorLockMode.None;
+                    Cursor.visible = true;
+                    Time.timeScale = 0;
+                }
+            }
         }
     }
     void RotateCursor()
