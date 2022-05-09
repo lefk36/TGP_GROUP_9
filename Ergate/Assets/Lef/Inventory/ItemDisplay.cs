@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using System;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -116,18 +117,15 @@ public class ItemDisplay : MonoBehaviour
 
     private void ShowSmth()
     {
-        Debug.Log(" Item pressed");
+        Debug.Log("Item pressed");
     }
 
    public void OnButtonClick()
     {
-
-
-
-        Debug.Log(" Item pressed");
-
-
-
+        if (data.GetItem.ContainsKey(0))
+        {
+            Debug.Log("rt");
+        }
     }
 
 }
