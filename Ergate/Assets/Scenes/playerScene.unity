@@ -1395,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 2900731098417813179, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: wheelControllerScript
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 18877945}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
 --- !u!114 &622315772 stripped
