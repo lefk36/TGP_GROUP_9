@@ -12,12 +12,6 @@ public class playerConToAdd : MonoBehaviour
     public GameObject m_player;
     public Transform camera;
 
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawSphere(transform.position, 10f);
-        Gizmos.DrawRay(transform.position, camera.forward);
-    }
 
     private void interact()
     {
@@ -25,7 +19,7 @@ public class playerConToAdd : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.F))
         {
-            if (Physics.SphereCast(gameObject.transform.position, 5f, camera.forward, out hit, 5f, m_checkpointMask))
+            if (Physics.SphereCast(gameObject.transform.position, 2f, camera.forward, out hit, 4f, m_checkpointMask))
             {
                 
                 Debug.Log("did hit the checkpoint");
