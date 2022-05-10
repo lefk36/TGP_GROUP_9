@@ -129,13 +129,13 @@ public class PlayerController : MonoBehaviour
         //    Cursor.visible = true;
         //}
 
-        if (cameraLockedToTarget)
+        if (cameraLockedToTarget || lockAttackDirection)
         {
             RotateObjectToDirection(cameraYRotation.eulerAngles.y, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
         }
         if (inputDirection.magnitude >= 0.1f) //if user is pressing a movement button
         {
-            if (!cameraLockedToTarget && !lockAttackDirection)
+            if (!cameraLockedToTarget || lockAttackDirection)
             {
                 RotateObjectToDirection(inputDirection, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
             }

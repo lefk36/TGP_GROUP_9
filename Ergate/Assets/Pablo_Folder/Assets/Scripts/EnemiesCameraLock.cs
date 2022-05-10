@@ -52,6 +52,8 @@ public class EnemiesCameraLock : MonoBehaviour
     //Override Animator Controller
     [SerializeField] private AnimatorOverrideController m_PlayerLockOnAnimator;
     [SerializeField] private AnimatorOverrideController m_DefaultAnimatorController;
+    //Player Controller
+    private PlayerController playerControllerScript;
 
     private float m_ShortestDistance = Mathf.Infinity;
     private bool m_ResetShortest;
@@ -64,7 +66,7 @@ public class EnemiesCameraLock : MonoBehaviour
     }
     private void Start()
     {
-        
+        playerControllerScript = transform.parent.parent.GetComponent<PlayerController>();
         m_Character = GameObject.Find("Character");
         if(m_Character != null)
         {
@@ -121,6 +123,7 @@ public class EnemiesCameraLock : MonoBehaviour
                 //If the list of targetable enemies is different than 0 then set the lock mode to true
                 if (m_TargetableEnemies.Count != 0 && m_TargetableEnemyIndex >= 0)
                 {
+                    playerControllerScript.cameraLockedToTarget = true;
                     m_LockOn = true;
                     m_PlayerAnimator.runtimeAnimatorController = m_PlayerLockOnAnimator;
                 }
@@ -128,6 +131,7 @@ public class EnemiesCameraLock : MonoBehaviour
             else if (m_LockOn)
             {
                 //If the lock mode is active set it to false
+                playerControllerScript.cameraLockedToTarget = false;
                 m_LockOn = false;
                 m_PlayerAnimator.runtimeAnimatorController = m_DefaultAnimatorController;
             }

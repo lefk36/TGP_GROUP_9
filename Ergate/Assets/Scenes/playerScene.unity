@@ -146,18 +146,6 @@ PrefabInstance:
       propertyPath: wheelEventSystem
       value: 
       objectReference: {fileID: 622315772}
-    - target: {fileID: 1427165005, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.3892385
-      objectReference: {fileID: 0}
-    - target: {fileID: 1427165005, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.3892385
-      objectReference: {fileID: 0}
-    - target: {fileID: 1427165005, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.3892385
-      objectReference: {fileID: 0}
     - target: {fileID: 7208981455675459386, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -206,9 +194,7 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1427165006, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-    - {fileID: 1427165007, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
 --- !u!114 &18877945 stripped
 MonoBehaviour:
