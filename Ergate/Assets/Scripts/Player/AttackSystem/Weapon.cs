@@ -4,11 +4,22 @@ using UnityEngine;
 
 public class Weapon : MonoBehaviour
 {
+    [HideInInspector] public bool attackInitiated;
     protected AttackState currentAttackState;
-    public virtual void Attack(string button)
-    {
-        //process the button string, if current attack state exists then send it there, if not then create a new one
 
+    protected virtual void Start()
+    {
+
+    }
+
+    public virtual void ReadInput(string button, float timeHeld)
+    {
+        //process the button string
+    }
+    protected virtual void Attack()
+    {
+        //if current attack state exists then send the button string there, if not then create a new one
+        attackInitiated = true;
     }
     protected virtual void Update()
     {
@@ -17,13 +28,17 @@ public class Weapon : MonoBehaviour
         {
             if (currentAttackState.completed)
             {
-                currentAttackState.CancelAttack(this);
-                currentAttackState = null;
+                Cancel();
             }
         }
     }
     public virtual void Cancel()
     {
-
+        if (currentAttackState != null)
+        {
+            currentAttackState.CancelAttack(this);
+            attackInitiated = false;
+            currentAttackState = null;
+        }
     }
 }

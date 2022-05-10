@@ -4,25 +4,19 @@ using UnityEngine;
 
 public class MantisBlades : Weapon
 {
-    public override void Attack(string button)
+    public override void ReadInput(string button, float timeHeld)
     {
-        //process the button string, if current attack state exists then send it there, if not then create a new one
+        //process the button string
         if (button == "BasicAttack")
         {
             currentAttackState = new AttackState();
-            currentAttackState.StartAttack(this);
-        }
-        else if (button == "AlternativeAttack")
-        {
-
+            currentAttackState.StartAttack(this, AttackState.AttackType.BasicPress);
         }
     }
-    public override void Cancel()
+    protected override void Attack()
     {
-        if(currentAttackState != null)
-        {
-            currentAttackState.CancelAttack(this);
-        }
+        base.Attack();
+         //if current attack state exists then send the button string there there, if not then create a new one
     }
 
 }

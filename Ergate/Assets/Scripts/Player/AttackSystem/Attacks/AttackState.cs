@@ -5,7 +5,15 @@ using UnityEngine;
 public class AttackState : MonoBehaviour
 {
     public bool completed = false;
-    public virtual void StartAttack(MonoBehaviour caller)
+    public float timeHeldRequired;
+    //enum used as a flag to send through an AttackState object
+    public enum AttackType
+    {
+        Null,
+        BasicPress, BasicHold,
+        AlternativePress, AlternativeHold,
+    }
+    public virtual void StartAttack(MonoBehaviour caller, AttackType buttonResponse)
     {
         caller.StartCoroutine(AttackCoroutine());
     }
