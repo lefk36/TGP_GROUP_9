@@ -34,14 +34,15 @@ public class playerSpawn : MonoBehaviour
 
     public void onDeath()
     {
-        Debug.Log("Coroutine Runnning");
         StartCoroutine(PlayerRespawnDelay());
     }
 
     IEnumerator PlayerRespawnDelay()
     {
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(2.2f);
         transform.position = m_spawnLocation;
+        m_Animator.SetTrigger("GettingUp");
+        Debug.Log("Coroutine done");
         gameObject.GetComponent<PlayerPoiseAndHealth>().m_currentPlayerHealth = gameObject.GetComponent<PlayerPoiseAndHealth>().m_maximumHealth;
         gameObject.GetComponent<PlayerPoiseAndHealth>().m_currentPlayerPoise = gameObject.GetComponent<PlayerPoiseAndHealth>().m_maximumPoise;
         gameObject.GetComponent<PlayerController>().lockMovement = false;        //stuns the player while they're DEAD
