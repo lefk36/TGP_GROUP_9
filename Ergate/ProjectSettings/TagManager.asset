@@ -6,6 +6,8 @@ TagManager:
   tags:
   - barrel
   - slippery
+  - Enemy
+  - Spawner
   layers:
   - Default
   - TransparentFX

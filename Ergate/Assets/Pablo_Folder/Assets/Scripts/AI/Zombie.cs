@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Zombie : BaseEnemy
 {
-    
     private void Start()
     {
         m_Health = 100f;
