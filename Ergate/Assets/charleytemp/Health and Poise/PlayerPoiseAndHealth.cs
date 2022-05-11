@@ -33,7 +33,9 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     //Character and model of the character
     private GameObject m_Character;
     private GameObject m_Model;
-
+    private PlayerController m_PlayerController;
+    private playerSpawn m_PlayerSpawn;
+    public bool m_IsDead = false;
     void Awake()
     {
         m_maximumPoise = m_defaultMaxPoise;     //sets the current max to the default max
@@ -47,6 +49,8 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     }
     private void Start()
     {
+        m_PlayerSpawn = GetComponent<playerSpawn>();
+        m_PlayerController = GetComponent<PlayerController>();
         m_Character = GameObject.Find("Character");
         if (m_Character != null)
         {
@@ -71,13 +75,19 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             m_currentPlayerHealth = m_maximumHealth;
         if (m_currentPlayerPoise > m_maximumPoise)
             m_currentPlayerPoise = m_maximumPoise;
+
+        
     }
     void FixedUpdate()
     {
         #region health stuff
-        if (m_currentPlayerHealth <= 0)
+        if (m_currentPlayerHealth <= 0 && !m_IsDead)
+        {
             PlayerDie();
-        
+            m_PlayerSpawn.onDeath();
+        }
+            
+
         if (m_currentPlayerHealth <= m_maximumHealth && m_timeBetweenHealthRegen <= 0)
         {
             m_currentPlayerHealth += m_currentPlayerHealthRegen;
@@ -86,32 +96,32 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         #endregion
 
         #region Poise Stuff
-        if (m_currentPlayerPoise <= m_maximumPoise && m_timeBetweenPoiseRegen <= 0)
-        {
-            m_currentPlayerPoise += m_currentPlayerPoiseRegen;
-            m_timeBetweenPoiseRegen = 5f;
-        }
-        if (m_currentPlayerPoise < m_minimumPoise)
-            m_currentPlayerPoise = m_minimumPoise;
+        //if (m_currentPlayerPoise <= m_maximumPoise && m_timeBetweenPoiseRegen <= 0)
+        //{
+        //    m_currentPlayerPoise += m_currentPlayerPoiseRegen;
+        //    m_timeBetweenPoiseRegen = 5f;
+        //}
+        //if (m_currentPlayerPoise < m_minimumPoise)
+        //    m_currentPlayerPoise = m_minimumPoise;
 
-        if (m_currentPlayerPoise <= 0)
-            m_isKnockedDown = true;
-        else if (m_currentPlayerPoise > 0)
-            m_isKnockedDown = false;
+        //if (m_currentPlayerPoise <= 0)
+        //    m_isKnockedDown = true;
+        //else if (m_currentPlayerPoise > 0)
+        //    m_isKnockedDown = false;
 
-        if (m_isKnockedDown == true)
-            KnockedDown();
+        //if (m_isKnockedDown == true)
+        //    KnockedDown();
         #endregion
     }
-    public void KnockedDown()
-    {
-        
-        gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're knocked down
-        gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
-        gameObject.GetComponent<PlayerController>().readyForAction = false; //
-        //play an animation
-        //m_PlayerAnimator.SetTrigger("KnockedDown");
-    }
+    //public void KnockedDown()
+    //{
+
+    //    m_PlayerController.lockMovement = true;        //stuns the player while they're knocked down
+    //    m_PlayerController.lockAttackDirection = true; //
+    //    m_PlayerController.readyForAction = false; //
+    //    //play an animation
+    //    //m_PlayerAnimator.SetTrigger("KnockedDown");
+    //}
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
         m_PlayerAnimator.SetTrigger("TakeDamage");
@@ -123,13 +133,16 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     void PlayerDie()
     {
         Debug.LogError("you are dead now. RIP");
-        gameObject.GetComponent<PlayerController>().lockMovement = true;        //stuns the player while they're DEAD
-        gameObject.GetComponent<PlayerController>().lockAttackDirection = true; //
-        gameObject.GetComponent<PlayerController>().readyForAction = false; //
-        StopAllCoroutines(); // stops regen
+        m_PlayerController.lockMovement = true;        //stuns the player while they're DEAD
+        m_PlayerController.lockAttackDirection = true; //
+        m_PlayerController.readyForAction = false; //
+        /*StopAllCoroutines(); */// stops regen
         m_PlayerAnimator.SetTrigger("IsDead");
+        m_IsDead = true;
+        
+        
         //do whatever else dead people do
-        gameObject.GetComponent<playerSpawn>().onDeath();
+        
     }
 
     

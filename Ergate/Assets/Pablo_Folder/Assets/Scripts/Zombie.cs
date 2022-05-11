@@ -58,6 +58,11 @@ public class Zombie : BaseEnemy
         }
     }
 
+    public override BaseEnemy Clone()
+    {
+        return this.MemberwiseClone() as BaseEnemy;
+    }
+
     public void ShouldDealDamage(string check)
     {
         if(check.Equals("DealDamage"))

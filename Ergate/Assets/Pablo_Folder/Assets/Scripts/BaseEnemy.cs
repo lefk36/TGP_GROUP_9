@@ -49,6 +49,8 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         }
     }
 
+    public abstract BaseEnemy Clone();
+
 }
 
 
@@ -58,6 +60,4 @@ interface IEnemy
     void DealDamage(Vector3 attackDirection, int healthDamageDealt, int poiseDamageDealt);
     void FacePlayer();
     void SetEnemyPath();
-
-
 }
