@@ -8,10 +8,13 @@ public class playerSpawn : MonoBehaviour
     private GameObject m_Character;
     private Animator m_Animator;
     [HideInInspector] public GameObject m_Model;
-
+    private PlayerPoiseAndHealth m_PlayerStats;
+    private PlayerController m_PlayerController;
 
     private void Start()
     {
+        m_PlayerController = GetComponent<PlayerController>();
+        m_PlayerStats = GetComponent<PlayerPoiseAndHealth>();
         m_Character = transform.Find("Character").gameObject;
         if (m_Character != null)
         {
@@ -34,19 +37,25 @@ public class playerSpawn : MonoBehaviour
 
     public void onDeath()
     {
-        StartCoroutine(PlayerRespawnDelay());
+        if(m_PlayerStats.m_IsDead)
+        {
+            StartCoroutine(PlayerRespawnDelay());
+        }
     }
 
+   
     IEnumerator PlayerRespawnDelay()
     {
         yield return new WaitForSeconds(2.2f);
+        m_PlayerStats.m_currentPlayerHealth = m_PlayerStats.m_maximumHealth;
+        m_PlayerStats.m_currentPlayerPoise = m_PlayerStats.m_maximumPoise;
+        m_PlayerController.lockMovement = false;        //stuns the player while they're DEAD
+        m_PlayerController.lockAttackDirection = false; //
+        m_PlayerController.readyForAction = true;
         transform.position = m_spawnLocation;
         m_Animator.SetTrigger("GettingUp");
+        m_PlayerStats.m_IsDead = false;
         Debug.Log("Coroutine done");
-        gameObject.GetComponent<PlayerPoiseAndHealth>().m_currentPlayerHealth = gameObject.GetComponent<PlayerPoiseAndHealth>().m_maximumHealth;
-        gameObject.GetComponent<PlayerPoiseAndHealth>().m_currentPlayerPoise = gameObject.GetComponent<PlayerPoiseAndHealth>().m_maximumPoise;
-        gameObject.GetComponent<PlayerController>().lockMovement = false;        //stuns the player while they're DEAD
-        gameObject.GetComponent<PlayerController>().lockAttackDirection = false; //
-        gameObject.GetComponent<PlayerController>().readyForAction = true;
+        
     }
 }
