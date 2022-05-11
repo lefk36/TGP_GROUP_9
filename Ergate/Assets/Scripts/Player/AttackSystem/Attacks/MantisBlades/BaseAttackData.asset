@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
+  m_Name: BaseAttackData
+  m_EditorClassIdentifier: 
+  thisAttackState: {fileID: 11500000, guid: 70620e428f800e3419199b5b24a0d9f7, type: 3}
+  chainableAttacks:
+  - {fileID: 11400000, guid: c4ff90ddcb96e42488bfdb5dad11730b, type: 2}
+  - {fileID: 11400000, guid: 5f4a712df86d43346b2f2e36c72fd0c6, type: 2}
+  holdingRequired: 0
+  timeHeldRequired: 0
+  buttonRequired: 

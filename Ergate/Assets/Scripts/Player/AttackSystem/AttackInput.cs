@@ -5,20 +5,40 @@ using UnityEngine;
 public class AttackInput : MonoBehaviour
 {
     private UIController weaponWheelController;
+    private float basicHoldTime = 0;
+    private float alternativeHoldTime = 0;
     private void Start()
     {
         weaponWheelController = GetComponent<UIController>();
     }
     void Update()
     {
-        //if input is detected, send the input to currently selected weapon
-        if (Input.GetButtonDown("BasicAttack"))
+        Weapon activeWeapon = weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex];
+        if (Input.GetButton("BasicAttack"))
         {
-            weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].Attack("BasicAttack");
+            basicHoldTime += Time.deltaTime;
+            if (activeWeapon.ReadInput("BasicAttack", basicHoldTime))//if input matched an attack
+            {
+                basicHoldTime = 0;
+            }
         }
-        else if (Input.GetButtonDown("AlternativeAttack"))
+        else if (Input.GetButton("AlternativeAttack"))
         {
-            weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].Attack("AlternativeAttack");
+            alternativeHoldTime += Time.deltaTime;
+            if (activeWeapon.ReadInput("AlternativeAttack", alternativeHoldTime))
+            {
+                alternativeHoldTime = 0;
+            }
+        }
+        if (Input.GetButtonUp("BasicAttack"))
+        {
+            basicHoldTime = 0;
+            activeWeapon.ReadInputUp("BasicAttack");
+        }
+        else if (Input.GetButtonUp("AlternativeAttack"))
+        {
+            alternativeHoldTime = 0;
+            activeWeapon.ReadInputUp("AlternativeAttack");
         }
 
     }

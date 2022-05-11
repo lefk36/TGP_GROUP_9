@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class TentacleLasher : Weapon
 {
-    public override void Attack(string button)
-    {
 
-    }
 }

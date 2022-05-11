@@ -183,8 +183,12 @@ public class UIController : MonoBehaviour
             {
                 if(weaponScripts[i].GetType() == typeof(MantisBlades))
                 {
-                    activeWeaponIndex = i;
-                    activeWeaponType = typeof(MantisBlades);
+                    if (i != activeWeaponIndex)
+                    {
+                        inputScript.CancelAttacks();
+                        activeWeaponIndex = i;
+                        activeWeaponType = typeof(MantisBlades);
+                    }
                 }
             }
         }
@@ -194,8 +198,12 @@ public class UIController : MonoBehaviour
             {
                 if (weaponScripts[i].GetType() == typeof(TentacleLasher))
                 {
-                    activeWeaponIndex = i;
-                    activeWeaponType = typeof(TentacleLasher);
+                    if (i != activeWeaponIndex)
+                    {
+                        inputScript.CancelAttacks();
+                        activeWeaponIndex = i;
+                        activeWeaponType = typeof(TentacleLasher);
+                    }
                 }
             }
         }
@@ -205,8 +213,12 @@ public class UIController : MonoBehaviour
             {
                 if (weaponScripts[i].GetType() == typeof(SpikeCannon))
                 {
-                    activeWeaponIndex = i;
-                    activeWeaponType = typeof(SpikeCannon);
+                    if (i != activeWeaponIndex)
+                    {
+                        inputScript.CancelAttacks();
+                        activeWeaponIndex = i;
+                        activeWeaponType = typeof(SpikeCannon);
+                    }
                 }
             }
         }
