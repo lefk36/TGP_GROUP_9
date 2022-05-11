@@ -15,6 +15,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     [HideInInspector] public Animator m_Animator;
     [HideInInspector] public bool m_CanAttack;
     public float m_AttackRate;
+    [HideInInspector] public bool m_IsAttacking;
 
 
     public void TakeDamage(float damageTaken)
@@ -29,6 +30,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public void DealDamage(Vector3 attackDirection, int healthDamageDealt, int poiseDamageDealt)
     {
         m_PlayerStats.TakeDamage(attackDirection, healthDamageDealt, poiseDamageDealt);
+        
     }
 
     public void FacePlayer()
@@ -41,7 +43,10 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public void SetEnemyPath()
     {
-        m_Agent.SetDestination(m_Target.transform.position);
+        if(!m_IsAttacking)
+        {
+            m_Agent.SetDestination(m_Target.transform.position);
+        }
     }
 
 }
