@@ -4,8 +4,5 @@ using UnityEngine;
 
 public class SpikeCannon : Weapon
 {
-    protected override void Attack()
-    {
-        
-    }
+
 }

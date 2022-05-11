@@ -2,20 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AttackState : MonoBehaviour
+
+public class AttackState
 {
-    public bool completed = false;
-    public float timeHeldRequired;
-    //enum used as a flag to send through an AttackState object
-    public enum AttackType
+    [HideInInspector] public bool completed = false;
+
+    public virtual void StartAttack(Weapon caller)
     {
-        Null,
-        BasicPress, BasicHold,
-        AlternativePress, AlternativeHold,
-    }
-    public virtual void StartAttack(MonoBehaviour caller, AttackType buttonResponse)
-    {
-        caller.StartCoroutine(AttackCoroutine());
+        //start the coroutine on the caller MonoBehaviour
     }
     public virtual void ChainCombo(string button)
     {
@@ -28,12 +22,10 @@ public class AttackState : MonoBehaviour
     }
     public virtual void CancelAttack(MonoBehaviour caller)
     {
-        caller.StopCoroutine(AttackCoroutine());
+        //stop the coroutine reference on the caller;
     }
     protected virtual IEnumerator AttackCoroutine()
     {
-        Debug.Log("Attack Happened!");
-        completed = true;
         yield return null;
     }
 }

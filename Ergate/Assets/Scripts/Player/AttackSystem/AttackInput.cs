@@ -13,25 +13,34 @@ public class AttackInput : MonoBehaviour
     }
     void Update()
     {
-        //weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].Attack("BasicAttack");
+        Weapon activeWeapon = weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex];
         if (Input.GetButton("BasicAttack"))
         {
             basicHoldTime += Time.deltaTime;
-            weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].ReadInput("BasicAttack", basicHoldTime);
-        }
-        else
-        {
-            basicHoldTime = 0;
-            if (Input.GetButton("AlternativeAttack"))
+            if (activeWeapon.ReadInput("BasicAttack", basicHoldTime))//if input matched an attack
             {
-                alternativeHoldTime += Time.deltaTime;
-                weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].ReadInput("AlternativeAttack", alternativeHoldTime);
+                basicHoldTime = 0;
             }
-            else
+        }
+        else if (Input.GetButton("AlternativeAttack"))
+        {
+            alternativeHoldTime += Time.deltaTime;
+            if (activeWeapon.ReadInput("AlternativeAttack", alternativeHoldTime))
             {
                 alternativeHoldTime = 0;
             }
         }
+        if (Input.GetButtonUp("BasicAttack"))
+        {
+            basicHoldTime = 0;
+            activeWeapon.ReadInputUp("BasicAttack");
+        }
+        else if (Input.GetButtonUp("AlternativeAttack"))
+        {
+            alternativeHoldTime = 0;
+            activeWeapon.ReadInputUp("AlternativeAttack");
+        }
+
     }
     public void CancelAttacks()
     {

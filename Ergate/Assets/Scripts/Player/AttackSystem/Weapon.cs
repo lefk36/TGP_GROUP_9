@@ -1,32 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
+
+
 
 public class Weapon : MonoBehaviour
 {
     [HideInInspector] public bool attackInitiated;
-    protected AttackState currentAttackState;
+    protected bool inCombo = false;
+    protected AttackData currentAttackData;
 
-    protected virtual void Start()
+    //base data - input is sent to this state when not in combo
+    [SerializeField] AttackData baseAttackData;
+
+    private void Start()
     {
-
+        currentAttackData = baseAttackData;
     }
+    public virtual bool ReadInput(string button, float timeHeld)
+    {
+        //process the button string and time its held
 
-    public virtual void ReadInput(string button, float timeHeld)
-    {
-        //process the button string
+        //returns true if input matched an attack
+        bool inputDetected = false;
+
+        //if the current attack state is not matching the base, then the player is inside a combo
+        bool inCombo = false;
+        if (currentAttackData.state.GetType() != baseAttackData.state.GetType())
+        {
+            inCombo = true;
+        }
+
+        //get the attack data of each of the state's chainable attacks and determine whether there are holding buttons present
+        bool holdingAttacksPresent = false;
+        foreach (AttackData possibleAttack in currentAttackData.chainableAttacks)
+        {
+            //this input detection applies to attacks which require holding.
+            if (!holdingAttacksPresent)
+            {
+                holdingAttacksPresent = possibleAttack.holdingRequired;
+            }
+        }
+        //now that it's determined whether a holding attack was present or not, check if input matches the attack
+        foreach (AttackData possibleAttack in currentAttackData.chainableAttacks)
+        {
+            if (!holdingAttacksPresent) //If no buttons require holding, then the input is detected on instant buttons too.
+            {
+                if (button == possibleAttack.buttonRequired)
+                {
+                    //input matches, start the attack.
+                    inputDetected = true;
+                }
+            }
+            else if (possibleAttack.holdingRequired)
+            {
+                if (button == possibleAttack.buttonRequired && timeHeld > possibleAttack.timeHeldRequired)
+                {
+                    // input matches, start the attack
+                    inputDetected = true;
+                }
+            }
+        }
+        return inputDetected;
     }
-    protected virtual void Attack()
+    public virtual void ReadInputUp(string button)
     {
-        //if current attack state exists then send the button string there, if not then create a new one
-        attackInitiated = true;
+        //process the button string, for attacks which happen when the button is released
+        foreach (AttackData possibleAttack in currentAttackData.chainableAttacks)
+        {
+            if (button == possibleAttack.buttonRequired)
+            {
+                //input matches, start the attack.
+                bool lol123 = false;
+            }
+        }
     }
     protected virtual void Update()
     {
         //if the attack state is flagged as completed, stop the attack
-        if (currentAttackState != null)
+        if (currentAttackData.state.GetType() != baseAttackData.state.GetType())
         {
-            if (currentAttackState.completed)
+            if (currentAttackData.state.completed)
             {
                 Cancel();
             }
@@ -34,11 +89,11 @@ public class Weapon : MonoBehaviour
     }
     public virtual void Cancel()
     {
-        if (currentAttackState != null)
+        if (currentAttackData.GetType() != baseAttackData.GetType())
         {
-            currentAttackState.CancelAttack(this);
+            currentAttackData.state.CancelAttack(this);
             attackInitiated = false;
-            currentAttackState = null;
+            currentAttackData = baseAttackData;
         }
     }
 }
