@@ -7,16 +7,19 @@ using UnityEditor;
 
 public class Weapon : MonoBehaviour
 {
-    [HideInInspector] public bool attackInitiated;
     protected bool inCombo = false;
     protected AttackData currentAttackData;
 
     //base data - input is sent to this state when not in combo
     [SerializeField] AttackData baseAttackData;
 
+    //Player Object -> Sent to the attack behaviours
+    GameObject player;
+
     private void Start()
     {
         currentAttackData = baseAttackData;
+        player = transform.parent.gameObject;
     }
     public virtual bool ReadInput(string button, float timeHeld)
     {
@@ -27,38 +30,85 @@ public class Weapon : MonoBehaviour
 
         //if the current attack state is not matching the base, then the player is inside a combo
         bool inCombo = false;
-        if (currentAttackData.state.GetType() != baseAttackData.state.GetType())
+        if (currentAttackData.name != baseAttackData.name)
         {
             inCombo = true;
         }
 
         //get the attack data of each of the state's chainable attacks and determine whether there are holding buttons present
-        bool holdingAttacksPresent = false;
+        bool holdingAttacksPresentBasic = false;
+        bool holdingAttacksPresentAlternative = false;
         foreach (AttackData possibleAttack in currentAttackData.chainableAttacks)
         {
-            //this input detection applies to attacks which require holding.
-            if (!holdingAttacksPresent)
+            //this input detection applies to attacks which require holding, so the check if any buttons require it is made first
+            if(possibleAttack.buttonRequired == "BasicAttack")
             {
-                holdingAttacksPresent = possibleAttack.holdingRequired;
+                if (!holdingAttacksPresentBasic)
+                {
+                    holdingAttacksPresentBasic = possibleAttack.holdingRequired;
+                }
             }
+            else if(possibleAttack.buttonRequired == "AlternativeAttack")
+            {
+                if (!holdingAttacksPresentAlternative)
+                {
+                    holdingAttacksPresentAlternative = possibleAttack.holdingRequired;
+                }
+            }
+
         }
         //now that it's determined whether a holding attack was present or not, check if input matches the attack
         foreach (AttackData possibleAttack in currentAttackData.chainableAttacks)
         {
-            if (!holdingAttacksPresent) //If no buttons require holding, then the input is detected on instant buttons too.
+            if(possibleAttack.buttonRequired == "BasicAttack") //If no buttons require holding, then the input is detected on instant buttons too.
             {
-                if (button == possibleAttack.buttonRequired)
+                if (!holdingAttacksPresentBasic && button == possibleAttack.buttonRequired)
                 {
                     //input matches, start the attack.
                     inputDetected = true;
+                    if (!inCombo)
+                    {
+                        currentAttackData = possibleAttack;
+                        currentAttackData.state.StartAttack(this, player);
+                    }
+                    else
+                    {
+                        currentAttackData.ChainCombo(possibleAttack);
+                    }
                 }
             }
-            else if (possibleAttack.holdingRequired)
+            else if(possibleAttack.buttonRequired == "AlternativeAttack")
+            {
+                if (!holdingAttacksPresentAlternative && button == possibleAttack.buttonRequired)
+                {
+                    //input matches, start the attack.
+                    inputDetected = true;
+                    if (!inCombo)
+                    {
+                        currentAttackData = possibleAttack;
+                        currentAttackData.state.StartAttack(this, player);
+                    }
+                    else
+                    {
+                        currentAttackData.ChainCombo(possibleAttack);
+                    }
+                }
+            }
+            if (possibleAttack.holdingRequired)
             {
                 if (button == possibleAttack.buttonRequired && timeHeld > possibleAttack.timeHeldRequired)
                 {
                     // input matches, start the attack
                     inputDetected = true;
+                    if (!inCombo)
+                    {
+                        currentAttackData = possibleAttack;
+                        currentAttackData.state.StartAttack(this, player);
+                    }
+                    else
+                    {
+                        currentAttackData.ChainCombo(possibleAttack);
+                    }
                 }
             }
         }
@@ -67,33 +117,54 @@ public class Weapon : MonoBehaviour
     public virtual void ReadInputUp(string button)
     {
         //process the button string, for attacks which happen when the button is released
+        inCombo = false;
+        if (currentAttackData.name != baseAttackData.name)
+        {
+            inCombo = true;
+        }
         foreach (AttackData possibleAttack in currentAttackData.chainableAttacks)
         {
             if (button == possibleAttack.buttonRequired)
             {
                 //input matches, start the attack.
-                bool lol123 = false;
+                if (!inCombo)
+                {
+                    currentAttackData = possibleAttack;
+                    currentAttackData.state.StartAttack(this, player);
+                }
+                else
+                {
+                    currentAttackData.ChainCombo(possibleAttack);
+                }
             }
         }
     }
     protected virtual void Update()
     {
-        //if the attack state is flagged as completed, stop the attack
-        if (currentAttackData.state.GetType() != baseAttackData.state.GetType())
+        //if the attack state is flagged as completed, check the transitions. If transitions present, go to new attack, If no transitions, call cancel.
+        if (currentAttackData.name != baseAttackData.name)
         {
             if (currentAttackData.state.completed)
             {
-                Cancel();
+                if(currentAttackData.CheckTransitions() == null)
+                {
+                    Cancel();
+                }
+                else
+                {
+                    currentAttackData = currentAttackData.CheckTransitions();
+                    currentAttackData.state.StartAttack(this, player);
+                }
             }
         }
     }
     public virtual void Cancel()
     {
-        if (currentAttackData.GetType() != baseAttackData.GetType())
+        if (currentAttackData.name != baseAttackData.name)
         {
             currentAttackData.state.CancelAttack(this);
-            attackInitiated = false;
             currentAttackData = baseAttackData;
+            inCombo = false;
         }
     }
 }

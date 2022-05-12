@@ -6,26 +6,27 @@ using UnityEngine;
 public class AttackState
 {
     [HideInInspector] public bool completed = false;
-
-    public virtual void StartAttack(Weapon caller)
+    GameObject player;
+    GameObject attackObject;
+    public void SetAttackObject(GameObject p_attackObject)
+    {
+        attackObject = p_attackObject;
+    }
+    public virtual void StartAttack(Weapon caller, GameObject p_player)
     {
         //start the coroutine on the caller MonoBehaviour
-    }
-    public virtual void ChainCombo(string button)
-    {
-        //process the button string. If the attack allows for a chain combo with the button, prepare the program to change states
-    }
-    public virtual AttackState CheckTransitions()
-    {
-        //when the attack is finished, it changes the variable returned in this function (if a combo chain happened)
-        return null;
+        player = p_player;
+        caller.StartCoroutine(AttackCoroutine());
     }
     public virtual void CancelAttack(MonoBehaviour caller)
     {
         //stop the coroutine reference on the caller;
+        completed = false;
+        caller.StopCoroutine(AttackCoroutine());
     }
     protected virtual IEnumerator AttackCoroutine()
     {
+        completed = true;
         yield return null;
     }
 }
