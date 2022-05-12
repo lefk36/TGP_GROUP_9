@@ -11,7 +11,6 @@ public class EnterRoomCheck : MonoBehaviour
     {
 
         m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
-        //}
         
     }
     private void Update()
