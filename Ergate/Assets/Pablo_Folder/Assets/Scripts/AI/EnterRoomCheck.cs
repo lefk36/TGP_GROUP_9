@@ -5,6 +5,22 @@ using UnityEngine;
 public class EnterRoomCheck : MonoBehaviour
 {
     public List<BaseSpawner> m_SpawnerList;
+    private PlayerPoiseAndHealth m_PlayerStats;
+
+    private void Start()
+    {
+
+        m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        //}
+        
+    }
+    private void Update()
+    {
+        if(m_PlayerStats.m_IsDead)
+        {
+            StartCoroutine(SpawnerResetDelay());
+        }
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -14,6 +30,15 @@ public class EnterRoomCheck : MonoBehaviour
             {
                 spawner.gameObject.SetActive(true);
             }
+        }
+    }
+
+    IEnumerator SpawnerResetDelay()
+    {
+        yield return new WaitForSeconds(2.2f);
+        foreach(BaseSpawner spawner in m_SpawnerList)
+        {
+            spawner.ResetSpawner();
         }
     }
 }

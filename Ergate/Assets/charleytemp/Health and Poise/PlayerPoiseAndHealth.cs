@@ -38,13 +38,13 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     public bool m_IsDead = false;
     void Awake()
     {
-        m_maximumPoise = m_defaultMaxPoise;     //sets the current max to the default max
+        /*m_maximumPoise = m_defaultMaxPoise; */    //sets the current max to the default max
         m_maximumHealth = m_defaultMaxHealth;   //
 
         m_currentPlayerHealth = m_maximumHealth;    //Sets the current health to the current max health
-        m_currentPlayerPoise = m_maximumPoise;      //
+        /*m_currentPlayerPoise = m_maximumPoise;   */   //
 
-        m_currentPlayerPoiseRegen = m_defaultPoiseRegen;
+        //m_currentPlayerPoiseRegen = m_defaultPoiseRegen;
         m_currentPlayerHealthRegen = m_defaultHealthRegen;
     }
     private void Start()
@@ -61,32 +61,28 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             }
         }
         m_hasRegenedHealth = false;
-        m_hasRegenedPoise = false;
+        //m_hasRegenedPoise = false;
         rb = GetComponent<Rigidbody>();
         //StartCoroutine(RegenHealth()); //restores health every 5 seconds so that we don't have to mess around with floats
     }
     private void Update()
     {
         m_timeBetweenHealthRegen -= Time.deltaTime;
-        m_timeBetweenPoiseRegen -= Time.deltaTime;
+        //m_timeBetweenPoiseRegen -= Time.deltaTime;
         if (m_currentPlayerHealth <= m_minimumHealth)
             m_currentPlayerHealth = m_minimumHealth;
         if (m_currentPlayerHealth > m_maximumHealth)
             m_currentPlayerHealth = m_maximumHealth;
-        if (m_currentPlayerPoise > m_maximumPoise)
-            m_currentPlayerPoise = m_maximumPoise;
+        //if (m_currentPlayerPoise > m_maximumPoise)
+        //    m_currentPlayerPoise = m_maximumPoise;
 
-        
-    }
-    void FixedUpdate()
-    {
         #region health stuff
         if (m_currentPlayerHealth <= 0 && !m_IsDead)
         {
             PlayerDie();
             m_PlayerSpawn.onDeath();
         }
-            
+
 
         if (m_currentPlayerHealth <= m_maximumHealth && m_timeBetweenHealthRegen <= 0)
         {
@@ -94,6 +90,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
             m_timeBetweenHealthRegen = 5f;
         }
         #endregion
+
+    }
+    void FixedUpdate()
+    {
+        
 
         #region Poise Stuff
         //if (m_currentPlayerPoise <= m_maximumPoise && m_timeBetweenPoiseRegen <= 0)

@@ -7,11 +7,17 @@ public class ZombieSpawner : BaseSpawner
     private Zombie m_ZombieInstance;
     private Zombie m_ZombieCopy;
 
+    private void Start()
+    {
+        m_EnemiesToBeSpawnedHold = m_EnemiesToBeSpawned;
+    }
     private void OnEnable()
     {
         m_ZombieInstance = m_Prefab.GetComponent<Zombie>();
         m_ZombieCopy = m_ZombieInstance.Clone() as Zombie;
-        Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
+        GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
+        m_EnemiesToBeDeleted.Add(instantiatedEnemy);
+        m_EnemiesToBeSpawned--;
         EnemiesSpawning();
     }
 
@@ -26,9 +32,20 @@ public class ZombieSpawner : BaseSpawner
         {
             yield return new WaitForSeconds(m_SpawnRate);
             m_EnemiesToBeSpawned--;
-            Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
+            GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
+            m_EnemiesToBeDeleted.Add(instantiatedEnemy);
         }
         
+    }
+
+    public override void ResetSpawner()
+    {
+        m_EnemiesToBeSpawned = m_EnemiesToBeSpawnedHold;
+        foreach(GameObject enemyToDelete in m_EnemiesToBeDeleted)
+        {
+            Destroy(enemyToDelete);
+        }
+        gameObject.SetActive(false);
     }
 
 }

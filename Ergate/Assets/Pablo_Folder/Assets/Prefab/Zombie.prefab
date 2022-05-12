@@ -73,6 +73,7 @@ GameObject:
   - component: {fileID: 4508399769897430802}
   - component: {fileID: 5012151619338897377}
   - component: {fileID: 2374682308417394831}
+  - component: {fileID: 5947274340115514348}
   m_Layer: 10
   m_Name: parasiteZombie
   m_TagString: Enemy
@@ -219,13 +220,26 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 989218353777777064}
-  m_Material: {fileID: 13400000, guid: b930db8ad712adf4f9f2bed653311a47, type: 2}
+  m_Material: {fileID: 13400000, guid: f8bc94c3c701a1c43bb114bc16fbf77b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3970887
-  m_Height: 2.4259708
+  m_Height: 1.738707
   m_Direction: 1
-  m_Center: {x: 0, y: -0.41, z: -0.02534026}
+  m_Center: {x: 0, y: -0.06636804, z: -0.02534026}
+--- !u!135 &5947274340115514348
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 989218353777777064}
+  m_Material: {fileID: 13400000, guid: eddce3376dff38149b1381118189f8fe, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.25262487
+  m_Center: {x: 0.00000023841858, y: -1.2053336, z: -0.014696002}
 --- !u!1 &1009854177177480102
 GameObject:
   m_ObjectHideFlags: 0
