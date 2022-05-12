@@ -407,13 +407,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4943754815482095059}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fedbb0ce976049f47a88449904ddbaad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackInitiated: 0
-  baseAttackStateEditor: {fileID: 0}
+  baseAttackData: {fileID: 11400000, guid: 1acb3a1f788ab9f499f132ff03551072, type: 2}
 --- !u!114 &18877947
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -421,13 +420,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4943754815482095059}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f61adc776b2f1c446bb24e1a52a1ce92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackInitiated: 0
-  baseAttackStateEditor: {fileID: 0}
+  baseAttackData: {fileID: 11400000, guid: 1acb3a1f788ab9f499f132ff03551072, type: 2}
 --- !u!114 &18877948
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -440,8 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6866e4972a057bd42b79b642e030a1fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackInitiated: 0
-  baseAttackStateEditor: {fileID: 11500000, guid: 52081271d95c57c429d8be92556cc4b3, type: 3}
+  baseAttackData: {fileID: 11400000, guid: 1acb3a1f788ab9f499f132ff03551072, type: 2}
 --- !u!114 &18877949
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -681,7 +678,7 @@ MonoBehaviour:
   m_doorMask:
     serializedVersion: 2
     m_Bits: 128
-  m_player: {fileID: 7393055299828996669}
+  m_player: {fileID: 0}
   camera: {fileID: 4314367972261544405}
 --- !u!114 &9120400051296225466
 MonoBehaviour:
@@ -707,8 +704,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9668c247e911ce04bbf53b2c16b8a262, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 100
-  m_maxHealth: 100
+  m_CurrentHealth: 0
+  m_MaxHealth: 100
   m_alive: 1
 --- !u!114 &8759917491035486813
 MonoBehaviour:
@@ -732,6 +729,7 @@ MonoBehaviour:
   m_maximumHealth: 100
   m_currentPlayerPoiseRegen: 0
   m_currentPlayerHealthRegen: 0
+  m_IsDead: 0
 --- !u!136 &1728936750
 CapsuleCollider:
   m_ObjectHideFlags: 0

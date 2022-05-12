@@ -13,9 +13,13 @@ public class Weapon : MonoBehaviour
     //base data - input is sent to this state when not in combo
     [SerializeField] AttackData baseAttackData;
 
+    //Player Object -> Sent to the attack behaviours
+    GameObject player;
+
     private void Start()
     {
         currentAttackData = baseAttackData;
+        player = transform.parent.gameObject;
     }
     public virtual bool ReadInput(string button, float timeHeld)
     {
@@ -26,7 +30,7 @@ public class Weapon : MonoBehaviour
 
         //if the current attack state is not matching the base, then the player is inside a combo
         bool inCombo = false;
-        if (currentAttackData.state.GetType() != baseAttackData.state.GetType())
+        if (currentAttackData.name != baseAttackData.name)
         {
             inCombo = true;
         }
@@ -65,7 +69,7 @@ public class Weapon : MonoBehaviour
                     if (!inCombo)
                     {
                         currentAttackData = possibleAttack;
-                        currentAttackData.state.StartAttack(this);
+                        currentAttackData.state.StartAttack(this, player);
                     }
                     else
                     {
@@ -82,7 +86,7 @@ public class Weapon : MonoBehaviour
                     if (!inCombo)
                     {
                         currentAttackData = possibleAttack;
-                        currentAttackData.state.StartAttack(this);
+                        currentAttackData.state.StartAttack(this, player);
                     }
                     else
                     {
@@ -99,7 +103,7 @@ public class Weapon : MonoBehaviour
                     if (!inCombo)
                     {
                         currentAttackData = possibleAttack;
-                        currentAttackData.state.StartAttack(this);
+                        currentAttackData.state.StartAttack(this, player);
                     }
                     else
                     {
@@ -113,8 +117,8 @@ public class Weapon : MonoBehaviour
     public virtual void ReadInputUp(string button)
     {
         //process the button string, for attacks which happen when the button is released
-        bool inCombo = false;
-        if (currentAttackData.state.GetType() != baseAttackData.state.GetType())
+        inCombo = false;
+        if (currentAttackData.name != baseAttackData.name)
         {
             inCombo = true;
         }
@@ -126,7 +130,7 @@ public class Weapon : MonoBehaviour
                 if (!inCombo)
                 {
                     currentAttackData = possibleAttack;
-                    currentAttackData.state.StartAttack(this);
+                    currentAttackData.state.StartAttack(this, player);
                 }
                 else
                 {
@@ -138,7 +142,7 @@ public class Weapon : MonoBehaviour
     protected virtual void Update()
     {
         //if the attack state is flagged as completed, check the transitions. If transitions present, go to new attack, If no transitions, call cancel.
-        if (currentAttackData.state.GetType() != baseAttackData.state.GetType())
+        if (currentAttackData.name != baseAttackData.name)
         {
             if (currentAttackData.state.completed)
             {
@@ -148,20 +152,19 @@ public class Weapon : MonoBehaviour
                 }
                 else
                 {
-                    currentAttackData.state.CancelAttack(this);
                     currentAttackData = currentAttackData.CheckTransitions();
-                    currentAttackData.state.StartAttack(this);
+                    currentAttackData.state.StartAttack(this, player);
                 }
-                
             }
         }
     }
     public virtual void Cancel()
     {
-        if (currentAttackData.GetType() != baseAttackData.GetType())
+        if (currentAttackData.name != baseAttackData.name)
         {
             currentAttackData.state.CancelAttack(this);
             currentAttackData = baseAttackData;
+            inCombo = false;
         }
     }
 }

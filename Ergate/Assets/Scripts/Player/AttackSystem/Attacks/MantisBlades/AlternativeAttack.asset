@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: AlternativeAttack
   m_EditorClassIdentifier: 
   thisAttackState: {fileID: 0}
+  attackObject: {fileID: 0}
   chainableAttacks: []
   holdingRequired: 0
   timeHeldRequired: 0

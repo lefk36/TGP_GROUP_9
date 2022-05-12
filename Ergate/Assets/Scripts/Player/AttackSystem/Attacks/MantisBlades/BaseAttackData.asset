@@ -12,10 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: BaseAttackData
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 70620e428f800e3419199b5b24a0d9f7, type: 3}
-  chainableAttacks:
-  - {fileID: 11400000, guid: c4ff90ddcb96e42488bfdb5dad11730b, type: 2}
-  - {fileID: 11400000, guid: 5f4a712df86d43346b2f2e36c72fd0c6, type: 2}
+  thisAttackState: {fileID: 11500000, guid: 3c5b615c01c50864d92429a49925c38b, type: 3}
+  attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
+  chainableAttacks: []
   holdingRequired: 0
   timeHeldRequired: 0
   buttonRequired: 

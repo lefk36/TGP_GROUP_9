@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: HoldingBasicAttack
+  m_Name: BasicAttack
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 70620e428f800e3419199b5b24a0d9f7, type: 3}
+  thisAttackState: {fileID: 0}
+  attackObject: {fileID: 0}
   chainableAttacks: []
   holdingRequired: 0
   timeHeldRequired: 0
-  buttonRequired: AlternativeAttack
+  buttonRequired: 
