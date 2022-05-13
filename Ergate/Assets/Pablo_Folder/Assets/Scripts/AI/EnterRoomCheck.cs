@@ -6,6 +6,7 @@ public class EnterRoomCheck : MonoBehaviour
 {
     public List<BaseSpawner> m_SpawnerList;
     private PlayerPoiseAndHealth m_PlayerStats;
+    [SerializeField] private GameObject m_WallWeb;
 
     private void Start()
     {
@@ -29,6 +30,8 @@ public class EnterRoomCheck : MonoBehaviour
             {
                 spawner.gameObject.SetActive(true);
             }
+
+            m_WallWeb.SetActive(true);
         }
     }
 
@@ -39,5 +42,8 @@ public class EnterRoomCheck : MonoBehaviour
         {
             spawner.ResetSpawner();
         }
+
+        m_WallWeb.SetActive(false);
+
     }
 }

@@ -89,7 +89,7 @@ public class EnemiesCameraLock : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(m_LockOn)
+        if(m_LockOn && m_TargetableEnemies[m_TargetableEnemyIndex] != null)
         {
             //Sets the object to look at and the smooth rotation of the camera center in Y
             m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
