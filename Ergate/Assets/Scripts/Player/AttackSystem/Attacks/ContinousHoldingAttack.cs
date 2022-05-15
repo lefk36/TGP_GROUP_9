@@ -10,6 +10,10 @@ public class ContinousHoldingAttack : AttackState
         while (!Input.GetButtonUp("AlternativeAttack"))
         {
             Debug.Log("Shredding..");
+            if (!Input.GetButton("AlternativeAttack"))
+            {
+                break;
+            }
             yield return null;
         }
         completed = true;

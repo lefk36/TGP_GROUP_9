@@ -11,6 +11,10 @@ public class HoldingState : AttackState
         while (!Input.GetButtonUp("BasicAttack"))
         {
             Debug.Log("Holding..");
+            if (!Input.GetButton("BasicAttack"))
+            {
+                break;
+            }
             yield return null;
         }
         completed = true;
