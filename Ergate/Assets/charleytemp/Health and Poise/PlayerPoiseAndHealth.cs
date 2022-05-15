@@ -129,7 +129,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         Debug.Log("okayer damage taken");
         rb.AddForce(attackDirection, ForceMode.Impulse);
         m_currentPlayerHealth -= healthDamageAmount;
-        m_currentPlayerPoise -= poiseDamageAmount;
+        //m_currentPlayerPoise -= poiseDamageAmount;
     }
     void PlayerDie()
     {

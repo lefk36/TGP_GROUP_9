@@ -20,10 +20,12 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public void TakeDamage(float damageTaken)
     {
+        m_Animator.SetTrigger("TakeDamage");
         m_Health -= damageTaken;
         if (m_Health <= 0f)
         {
-            Destroy(gameObject);
+            m_Animator.SetTrigger("IsDead");
+            StartCoroutine(EnemyDeath());
         }
     }
 
@@ -50,6 +52,12 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     }
 
     public abstract BaseEnemy Clone();
+
+    IEnumerator EnemyDeath()
+    {
+        yield return new WaitForSeconds(3f);
+        Destroy(gameObject);
+    }
 
 }
 
