@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Shredder
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 0}
-  attackObject: {fileID: 0}
+  thisAttackState: {fileID: 11500000, guid: e50e41d29a23ba24882cda6bca455c74, type: 3}
+  attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
   attackName: 
   chainableAttacks: []
   airRequired: 0
