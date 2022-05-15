@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: BasicAttack
+  m_Name: ChargeFull
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 3c5b615c01c50864d92429a49925c38b, type: 3}
+  thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
-  attackName: BasicAttack
+  attackName: Stinger
   chainableAttacks: []
-  holdingRequired: 0
-  timeHeldRequired: 0
-  buttonRequired: BasicAttack
+  airRequired: 0
+  timeHeldRequired: 0.75
+  buttonRequired: BasicHold

@@ -19,25 +19,66 @@ public class AttackData : ScriptableObject
         state = this_stateInstance;
         state.SetAttackObject(attackObject);
     }
-    public bool holdingRequired;
+    public bool airRequired;
     public float timeHeldRequired;
     public string buttonRequired;
 
-    public virtual void ChainCombo(AttackData p_transitionAttackData)
+    public virtual bool ChainCombo(string button, bool air)
     {
-        transitionAttackData = p_transitionAttackData;
+        foreach(AttackData possibleAttack in chainableAttacks)
+        {
+            if(button == possibleAttack.buttonRequired && air == airRequired)
+            {
+                if(transitionAttackData == null)
+                {
+                    transitionAttackData = possibleAttack;
+                }
+                return true;
+            }
+        }
+        return false;
+    }
+    public virtual bool ChainCombo(string button, float length, bool air)
+    {
+        foreach (AttackData possibleAttack in chainableAttacks)
+        {
+            if(length > possibleAttack.timeHeldRequired && button == possibleAttack.buttonRequired && air == airRequired)
+            {
+                if (transitionAttackData == null)
+                {
+                    transitionAttackData = possibleAttack;
+                }
+                return true;
+            }
+        }
+        return false;
     }
     public virtual AttackData CheckTransitions()
     {
         //when the attack is finished, it changes the variable returned in this function (if a combo chain happened)
+        AttackData returnValue;
         if(!state.completed)
         {
             return null;
         }
         else
         {
-            return transitionAttackData;
+            if(transitionAttackData != null)
+            {
+                returnValue = transitionAttackData;
+                transitionAttackData = null;
+                return returnValue;
+            }
+            else
+            {
+                return null;
+            }
         }
+    }
+    public virtual void CancelAttack(Weapon caller)
+    {
+        state.CancelAttack(caller);
+        transitionAttackData = null;
     }
 
 }

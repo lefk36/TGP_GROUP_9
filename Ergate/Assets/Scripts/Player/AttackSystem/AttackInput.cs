@@ -5,19 +5,25 @@ using UnityEngine;
 public class AttackInput : MonoBehaviour
 {
     private UIController weaponWheelController;
+    private PlayerController playerControllerScript;
     private float basicHoldTime = 0;
     private float alternativeHoldTime = 0;
+    private float noInputTime = 0;
+    bool inAir = false;
+    bool lastInAir = false;
     private void Start()
     {
         weaponWheelController = GetComponent<UIController>();
+        playerControllerScript = transform.parent.GetComponent<PlayerController>();
     }
     void Update()
     {
+        UpdateInAir();
         Weapon activeWeapon = weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex];
         if (Input.GetButton("BasicAttack"))
         {
             basicHoldTime += Time.deltaTime;
-            if (activeWeapon.ReadInput("BasicAttack", basicHoldTime))//if input matched an attack
+            if (activeWeapon.ReadInput("BasicHold", basicHoldTime, inAir))//if input matched an attack
             {
                 basicHoldTime = 0;
             }
@@ -25,26 +31,62 @@ public class AttackInput : MonoBehaviour
         else if (Input.GetButton("AlternativeAttack"))
         {
             alternativeHoldTime += Time.deltaTime;
-            if (activeWeapon.ReadInput("AlternativeAttack", alternativeHoldTime))
+            if (activeWeapon.ReadInput("AlternativeHold", alternativeHoldTime, inAir))
             {
                 alternativeHoldTime = 0;
             }
         }
-        if (Input.GetButtonUp("BasicAttack"))
+        if(!Input.GetButton("AlternativeAttack") && !Input.GetButton("BasicAttack"))
+        {
+            noInputTime += Time.deltaTime;
+            if (activeWeapon.ReadInput("No Input", noInputTime, inAir))
+            {
+                noInputTime = 0;
+            }
+        }
+        else
+        {
+            noInputTime = 0;
+        }
+        if (Input.GetButtonDown("BasicAttack"))
+        {
+            activeWeapon.ReadInputInstant("BasicDown", inAir);
+        }
+        else if (Input.GetButtonDown("AlternativeAttack"))
+        {
+            activeWeapon.ReadInputInstant("AlternativeDown", inAir);
+        }
+        else if (Input.GetButtonUp("BasicAttack"))
         {
             basicHoldTime = 0;
-            activeWeapon.ReadInputUp("BasicAttack");
+            activeWeapon.ReadInputInstant("BasicUp", inAir);
         }
         else if (Input.GetButtonUp("AlternativeAttack"))
         {
             alternativeHoldTime = 0;
-            activeWeapon.ReadInputUp("AlternativeAttack");
+            activeWeapon.ReadInputInstant("AlternativeUp", inAir);
         }
 
+    }
+    private void UpdateInAir()
+    {
+        inAir = !playerControllerScript.isOnGround;
+        if(lastInAir != inAir)
+        {
+            ResetHoldingTimes();
+            lastInAir = inAir;
+        }
     }
     public void CancelAttacks()
     {
         weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].Cancel();
+        ResetHoldingTimes();
+    }
+    public void ResetHoldingTimes()
+    {
+        basicHoldTime = 0;
+        alternativeHoldTime = 0;
+        noInputTime = 0;
     }
 }
  

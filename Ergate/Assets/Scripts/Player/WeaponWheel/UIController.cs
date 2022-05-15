@@ -142,7 +142,10 @@ public class UIController : MonoBehaviour
     {
         Time.timeScale = Convert.ToInt32(!state);
         weaponWheelUI.SetActive(state);
-        inputScript.CancelAttacks();
+        if (state == true)
+        {
+            inputScript.CancelAttacks();
+        }
         inputScript.enabled = !state;
         if (!cameraLockScript.m_LockOn)
         {

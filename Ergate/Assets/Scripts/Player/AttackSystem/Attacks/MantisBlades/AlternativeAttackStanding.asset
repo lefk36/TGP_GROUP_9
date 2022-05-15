@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: BaseAttackData
+  m_Name: AlternativeAttackStanding
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 3c5b615c01c50864d92429a49925c38b, type: 3}
+  thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
-  attackName: MantisBase
+  attackName: Launcher
   chainableAttacks:
-  - {fileID: 11400000, guid: 60324730250b08b459589ab8c9c04e70, type: 2}
-  - {fileID: 11400000, guid: 0cae995d79083f642afe9526a45681ef, type: 2}
+  - {fileID: 11400000, guid: ef3e77da822e7714ba0175b711e68b24, type: 2}
+  airRequired: 0
   timeHeldRequired: 0
-  buttonRequired: 
+  buttonRequired: AlternativeDown
