@@ -635,6 +635,8 @@ MonoBehaviour:
   cameraCentre: {fileID: 0}
   camera: {fileID: 0}
   m_dashForce: 15
+  stickToAttack: 0
+  m_AttackInput: {fileID: 18877949}
 --- !u!114 &1031727961
 MonoBehaviour:
   m_ObjectHideFlags: 0
