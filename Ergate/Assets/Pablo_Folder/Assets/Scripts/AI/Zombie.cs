@@ -9,7 +9,7 @@ public class Zombie : BaseEnemy
 
     private void Awake()
     {
-        EventManager.current.onEnemyDestroy += OnZombieKilled;
+        //EventManager.current.onEnemyDestroy += OnZombieKilled;
     }
 
     private void Start()

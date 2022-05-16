@@ -16,8 +16,15 @@ public class NormalStandingAttack : AttackState
     protected override IEnumerator AttackCoroutine()
     {
         completed = false;
-        Debug.Log("Normal Attack");
-        yield return new WaitForSeconds(1.0f);
+        playerScript.lockAttackDirection = true;
+        playerScript.lockMovement = true;
+        playerScript.stickToAttack = true;
+        yield return new WaitForSeconds(attackBeginningTime);
+        Object.Instantiate(attackObject, attackParentObj);
+        yield return new WaitForSeconds(attackTime);
+        playerScript.stickToAttack = false;
+        playerScript.lockAttackDirection = false;
+        playerScript.lockMovement = false;
         completed = true;
         yield return null;
     }

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: Shredder
+  m_Name: Slash2
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: e50e41d29a23ba24882cda6bca455c74, type: 3}
-  attackObject: {fileID: 8136630375735949724, guid: 00a8d55027eab6b47868bfa0fc20b602, type: 3}
-  attackName: shredder
+  thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
+  attackObject: {fileID: 2568402339028432046, guid: 7fdaf02a1e0b41240a21ed0254fef96a, type: 3}
+  attackName: Slash2
   chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5
@@ -23,4 +23,4 @@ MonoBehaviour:
   attackDirection: {x: 0, y: 0, z: 0}
   airRequired: 0
   timeHeldRequired: 0
-  buttonRequired: AlternativeDown
+  buttonRequired: BasicDown

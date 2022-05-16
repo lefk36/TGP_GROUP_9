@@ -6,14 +6,14 @@ using UnityEngine;
 public class AttackState
 {
     [HideInInspector] public bool completed = false;
-    PlayerController playerScript;
-    Transform attackParentObj;
-    Vector3 targetPos;
-    GameObject attackObject;
+    protected PlayerController playerScript;
+    protected Transform attackParentObj;
+    protected Vector3 targetPos;
+    protected GameObject attackObject;
     Coroutine thisAttackRoutine;
-    private float attackBeginningTime;
-    private float attackTime;
-    private float attackRange;
+    protected float attackBeginningTime;
+    protected float attackTime;
+    protected float attackRange;
     public void SetAttackObject(GameObject p_attackObject)
     {
         attackObject = p_attackObject;

@@ -10,17 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: ChargeFull
+  m_Name: ShredderPause
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
+  thisAttackState: {fileID: 11500000, guid: e2918a05c58beef44a59d8ea99e758e0, type: 3}
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
-  attackName: Stinger
-  chainableAttacks: []
+  attackName: pause
+  chainableAttacks:
+  - {fileID: 11400000, guid: 16f361be628b0c44887838cb4b5110f8, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
-  attackRange: 5
+  attackRange: 1
   toEnemy: 1
-  attackDirection: {x: 0, y: 0, z: 1}
+  attackDirection: {x: 0, y: 0, z: 0}
   airRequired: 0
-  timeHeldRequired: 0.75
-  buttonRequired: BasicHold
+  timeHeldRequired: 0.5
+  buttonRequired: No Input

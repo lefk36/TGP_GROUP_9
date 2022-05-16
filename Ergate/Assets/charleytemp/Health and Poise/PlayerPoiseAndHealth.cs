@@ -40,7 +40,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     void Awake()
     {
         //subcscribing taking damage
-        EventManager.current.onPlayerDamage += TakeDamage;
+        //EventManager.current.onPlayerDamage += TakeDamage;
         
         /*m_maximumPoise = m_defaultMaxPoise; */    //sets the current max to the default max
         m_maximumHealth = m_defaultMaxHealth;   //

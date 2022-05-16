@@ -200,23 +200,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
---- !u!1 &18877943 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7393055299828996669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-  m_PrefabInstance: {fileID: 18877942}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &18877944
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 18877943}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2d218f812f82e149b54e31c52af4f36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &18877945 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 18877945, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
@@ -316,6 +299,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 719428980}
+    - target: {fileID: 661867878, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: m_Name
+      value: EventSystem
+      objectReference: {fileID: 0}
     - target: {fileID: 1004695949, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
@@ -328,18 +315,6 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 719428980}
-    - target: {fileID: 1522817873966152527, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.36573732
-      objectReference: {fileID: 0}
-    - target: {fileID: 1522817873966152527, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.36573732
-      objectReference: {fileID: 0}
-    - target: {fileID: 1522817873966152527, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.36573732
-      objectReference: {fileID: 0}
     - target: {fileID: 2570584519808584558, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: m_Name
       value: InGameOverlay
@@ -432,10 +407,6 @@ PrefabInstance:
       propertyPath: wheelControllerScript
       value: 
       objectReference: {fileID: 18877945}
-    - target: {fileID: 5768684351786273167, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
 --- !u!114 &622315772 stripped

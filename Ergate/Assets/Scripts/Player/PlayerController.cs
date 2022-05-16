@@ -65,7 +65,10 @@ public class PlayerController : MonoBehaviour
     //variable to control dash length
     public float m_dashForce;
     private bool m_hasDashed = false;
-    
+
+    //other scripts
+    EnemiesCameraLock lockScript;
+    public bool stickToAttack = false;
 
     void Start()
     {
@@ -73,6 +76,7 @@ public class PlayerController : MonoBehaviour
         movementCollider = GetComponent<CapsuleCollider>();
         gravityScaleScript = GetComponent<GravityScaler>();
         m_audioController = FindObjectOfType<audioController>().gameObject;
+        lockScript = transform.Find("Camera Centre").GetChild(0).GetComponent<EnemiesCameraLock>();
         //load character information
         character = transform.Find("Character").gameObject;
         if (character != null)
@@ -131,7 +135,8 @@ public class PlayerController : MonoBehaviour
 
         if (cameraLockedToTarget && !lockAttackDirection)
         {
-            RotateObjectToDirection(cameraYRotation.eulerAngles.y, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
+            Vector3 dirToEnemy = lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex].transform.position - transform.position;
+            RotateObjectToDirectionInstant(dirToEnemy, attackDirectionObject);
         }
         if (inputDirection.magnitude >= 0.1f) //if user is pressing a movement button
         {
@@ -148,6 +153,10 @@ public class PlayerController : MonoBehaviour
         else
         {
             movementDirection = new Vector3(0, 0, 0);
+        }
+        if (stickToAttack)
+        {
+            RotateToAttackDirection();
         }
 
         dashControl();
@@ -292,6 +301,21 @@ public class PlayerController : MonoBehaviour
     {
         float angle = Mathf.SmoothDampAngle(target.eulerAngles.y, targetAngle, ref outVelocity, timeToRotate); // Function to smooth the angle movement
         target.rotation = Quaternion.Euler(0f, angle, 0f);
+    }
+    void RotateObjectToDirectionInstant(Vector3 direction, Transform target)
+    {
+        float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg; //Calculates the angle on which to rotate the character
+        target.rotation = Quaternion.Euler(0f, angle, 0f);
+    }
+    void RotateObjectToDirectionInstant(float targetAngle, Transform target)
+    {
+        target.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+    }
+    void RotateToAttackDirection()
+    {
+        float targetAngle = attackDirectionObject.localRotation.eulerAngles.y;
+        float angle = Mathf.SmoothDampAngle(character.transform.localRotation.eulerAngles.y, targetAngle, ref angularVelocity, rotationTime);
+        character.transform.localRotation = Quaternion.Euler(0f, angle, 0f);
     }
     public void TakeDamage(Vector3 impactDirection, int damage, int poiseDamage)
     {
