@@ -32,7 +32,6 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public void DealDamage(Vector3 attackDirection, int healthDamageDealt, int poiseDamageDealt)
     {
         m_PlayerStats.TakeDamage(attackDirection, healthDamageDealt, poiseDamageDealt);
-        
     }
 
     public void FacePlayer()

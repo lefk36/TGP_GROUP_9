@@ -4,6 +4,14 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Zombie : BaseEnemy
 {
+
+  
+
+    private void Awake()
+    {
+        EventManager.current.onEnemyDestroy += OnZombieKilled;
+    }
+
     private void Start()
     {
         m_Health = 100f;
@@ -17,7 +25,15 @@ public class Zombie : BaseEnemy
         m_IsAttacking = false;
     }
 
-   
+
+    private void OnZombieKilled()
+    {
+        if (m_Health <= 100f)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     private void Update()
     {
         FacePlayer();
@@ -78,6 +94,8 @@ public class Zombie : BaseEnemy
             m_IsAttacking = false;
         }
     }
+
+
 
     IEnumerator AttackReset()
     {

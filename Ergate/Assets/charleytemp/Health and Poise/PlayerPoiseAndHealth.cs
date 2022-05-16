@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PlayerPoiseAndHealth : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     public bool m_IsDead = false;
     void Awake()
     {
+        //subcscribing taking damage
+        EventManager.current.onPlayerDamage += TakeDamage;
+        
         /*m_maximumPoise = m_defaultMaxPoise; */    //sets the current max to the default max
         m_maximumHealth = m_defaultMaxHealth;   //
 
@@ -47,6 +51,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         //m_currentPlayerPoiseRegen = m_defaultPoiseRegen;
         m_currentPlayerHealthRegen = m_defaultHealthRegen;
     }
+
     private void Start()
     {
         m_PlayerSpawn = GetComponent<playerSpawn>();
@@ -65,6 +70,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         //StartCoroutine(RegenHealth()); //restores health every 5 seconds so that we don't have to mess around with floats
     }
+
     private void Update()
     {
         m_timeBetweenHealthRegen -= Time.deltaTime;
@@ -125,12 +131,14 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     //}
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
+      
         m_PlayerAnimator.SetTrigger("TakeDamage");
         Debug.Log("okayer damage taken");
         rb.AddForce(attackDirection, ForceMode.Impulse);
         m_currentPlayerHealth -= healthDamageAmount;
         //m_currentPlayerPoise -= poiseDamageAmount;
     }
+
     void PlayerDie()
     {
         Debug.LogError("you are dead now. RIP");

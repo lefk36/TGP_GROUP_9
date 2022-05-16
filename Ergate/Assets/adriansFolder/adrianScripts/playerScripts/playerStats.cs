@@ -24,6 +24,7 @@ public class playerStats : MonoBehaviour
             }
         }
     }
+
     public void takeDamage(float damage)
     {
         m_CurrentHealth -= damage;
