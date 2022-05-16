@@ -18,6 +18,11 @@ MonoBehaviour:
   chainableAttacks:
   - {fileID: 11400000, guid: ef3e77da822e7714ba0175b711e68b24, type: 2}
   - {fileID: 11400000, guid: b03423e837af14341a6f89a81186274f, type: 2}
+  attackBeginningTime: 0.3
+  attackTime: 0.5
+  attackRange: 1
+  toEnemy: 1
+  attackDirection: {x: 0, y: 0, z: 1}
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: AlternativeDown

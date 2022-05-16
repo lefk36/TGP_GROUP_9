@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: RisingAttack
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
+  thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
   attackName: riser
   chainableAttacks: []
+  attackBeginningTime: 0.3
+  attackTime: 0.5
+  attackRange: 1
+  toEnemy: 0
+  attackDirection: {x: 0, y: 1, z: 0}
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: AlternativeDown

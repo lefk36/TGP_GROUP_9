@@ -7,7 +7,7 @@ public class EnemiesCameraLock : MonoBehaviour
     //Variable that will hold the input of the scrollwheel
     private float m_ScrollWheelInputValue = 0;
     //Index of the enemies in the targetable enemies list
-    private int m_TargetableEnemyIndex;
+    public int m_TargetableEnemyIndex;
 
     private bool m_ControllerHorizontalInputDone = false;
 
@@ -31,7 +31,7 @@ public class EnemiesCameraLock : MonoBehaviour
     //List of enemies
     private GameObject[] m_Enemies;
     //List of enemies located
-    [SerializeField] private List<GameObject> m_TargetableEnemies = new List<GameObject>();
+    [SerializeField] public List<GameObject> m_TargetableEnemies = new List<GameObject>();
     //LayerMask for the enemies
     [SerializeField] private LayerMask m_Layer;
     //Target that the camera will be looking at

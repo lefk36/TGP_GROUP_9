@@ -146,38 +146,6 @@ PrefabInstance:
       propertyPath: wheelEventSystem
       value: 
       objectReference: {fileID: 622315772}
-    - target: {fileID: 18877946, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 18877946, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: baseAttackData
-      value: 
-      objectReference: {fileID: 11400000, guid: 1acb3a1f788ab9f499f132ff03551072, type: 2}
-    - target: {fileID: 18877947, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 18877947, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: baseAttackData
-      value: 
-      objectReference: {fileID: 11400000, guid: 1acb3a1f788ab9f499f132ff03551072, type: 2}
-    - target: {fileID: 18877948, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: baseAttackData
-      value: 
-      objectReference: {fileID: 11400000, guid: 1acb3a1f788ab9f499f132ff03551072, type: 2}
-    - target: {fileID: 18877948, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: baseAttackStateEditor
-      value: 
-      objectReference: {fileID: 11500000, guid: 70620e428f800e3419199b5b24a0d9f7, type: 3}
-    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_dashForce
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 3309844868546162398, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-      propertyPath: m_Constraints
-      value: 112
-      objectReference: {fileID: 0}
     - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_player
       value: 

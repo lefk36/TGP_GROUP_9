@@ -12,12 +12,26 @@ public class AttackData : ScriptableObject
     public string attackName;
     private AttackData transitionAttackData;
     public List<AttackData> chainableAttacks;
+    public float attackBeginningTime = 0;
+    public float attackTime = 0;
+    public float attackRange = 1;
+    public bool toEnemy;
+    public Vector3 attackDirection;
     private void OnEnable()
     {
-        System.Type type = thisAttackState.GetClass();
-        var this_stateInstance = (AttackState)System.Activator.CreateInstance(type);
-        state = this_stateInstance;
-        state.SetAttackObject(attackObject);
+        if (thisAttackState != null)
+        {
+            System.Type type = thisAttackState.GetClass();
+            var this_stateInstance = (AttackState)System.Activator.CreateInstance(type);
+            state = this_stateInstance;
+        }
+        if (state != null) {
+            if (attackObject != null)
+            {
+                state.SetAttackObject(attackObject);
+            }
+            state.SetFloats(attackBeginningTime, attackTime, attackRange);
+        }
     }
     public bool airRequired;
     public float timeHeldRequired;

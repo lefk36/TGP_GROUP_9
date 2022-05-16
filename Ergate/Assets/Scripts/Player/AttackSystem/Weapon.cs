@@ -13,16 +13,18 @@ public class Weapon : MonoBehaviour
     [SerializeField] AttackData baseAttackData;
 
     //Player Object -> Sent to the attack behaviours
-    GameObject player;
+    Transform attackDirectionObj;
     PlayerController controllerScript;
+    EnemiesCameraLock lockScript;
     AttackInput inputComponent;
 
     private void Start()
     {
         currentAttackData = baseAttackData;
         baseAttackData.state.completed = true;
-        player = transform.parent.gameObject;
-        controllerScript = player.GetComponent<PlayerController>();
+        attackDirectionObj = transform.parent.Find("Attack Direction");
+        controllerScript = transform.parent.GetComponent<PlayerController>();
+        lockScript = transform.parent.Find("Camera Centre").GetChild(0).GetComponent<EnemiesCameraLock>();
         inputComponent = GetComponent<AttackInput>();
     }
     public virtual bool ReadInput(string button, float timeHeld, bool air)
@@ -57,7 +59,9 @@ public class Weapon : MonoBehaviour
             {
                 currentAttackData = newData;
                 StopAttack();
-                currentAttackData.state.StartAttack(this, player);
+                Vector3 targetPos = FindTargetPosition(currentAttackData);
+                currentAttackData.state.SetVariables(controllerScript, attackDirectionObj, targetPos);
+                currentAttackData.state.StartAttack(this);
                 inputComponent.ResetHoldingTimes();
             }
         }
@@ -76,6 +80,17 @@ public class Weapon : MonoBehaviour
             currentAttackData.CancelAttack(this);
             currentAttackData = baseAttackData;
             inputComponent.ResetHoldingTimes();
+        }
+    }
+    protected virtual Vector3 FindTargetPosition(AttackData data)
+    {
+        if (data.toEnemy && controllerScript.cameraLockedToTarget)
+        {
+            return lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex].transform.position;
+        }
+        else
+        {
+            return attackDirectionObj.position + (attackDirectionObj.rotation * data.attackDirection);
         }
     }
 }

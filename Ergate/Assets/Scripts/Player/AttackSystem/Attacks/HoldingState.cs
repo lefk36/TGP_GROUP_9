@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class HoldingState : AttackState
 {
-
+    public override void StartAttack(Weapon caller)
+    {
+        base.StartAttack(caller);
+    }
+    public override void CancelAttack(MonoBehaviour caller)
+    {
+        base.CancelAttack(caller);
+    }
     protected override IEnumerator AttackCoroutine()
     {
         completed = false;

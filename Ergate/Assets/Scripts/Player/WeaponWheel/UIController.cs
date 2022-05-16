@@ -178,6 +178,20 @@ public class UIController : MonoBehaviour
         angle = ClampTo360(angle);
         return angle;
     }
+    void DisableInactiveWeapons()
+    {
+        for (int i = 0; i < weaponScripts.Count; i++)
+        {
+            if (i != activeWeaponIndex)
+            {
+                weaponScripts[i].enabled = false;
+            }
+            else
+            {
+                weaponScripts[i].enabled = true;
+            }
+        }
+    }
     void SwitchWeapons(string weaponName)
     {
         if(weaponName == "Blades")
@@ -191,6 +205,7 @@ public class UIController : MonoBehaviour
                         inputScript.CancelAttacks();
                         activeWeaponIndex = i;
                         activeWeaponType = typeof(MantisBlades);
+                        DisableInactiveWeapons();
                     }
                 }
             }
@@ -206,6 +221,7 @@ public class UIController : MonoBehaviour
                         inputScript.CancelAttacks();
                         activeWeaponIndex = i;
                         activeWeaponType = typeof(TentacleLasher);
+                        DisableInactiveWeapons();
                     }
                 }
             }
@@ -221,6 +237,7 @@ public class UIController : MonoBehaviour
                         inputScript.CancelAttacks();
                         activeWeaponIndex = i;
                         activeWeaponType = typeof(SpikeCannon);
+                        DisableInactiveWeapons();
                     }
                 }
             }

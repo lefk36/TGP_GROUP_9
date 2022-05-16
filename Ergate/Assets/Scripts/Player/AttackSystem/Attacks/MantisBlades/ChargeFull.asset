@@ -16,6 +16,11 @@ MonoBehaviour:
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
   attackName: Stinger
   chainableAttacks: []
+  attackBeginningTime: 0.3
+  attackTime: 0.5
+  attackRange: 5
+  toEnemy: 1
+  attackDirection: {x: 0, y: 0, z: 1}
   airRequired: 0
   timeHeldRequired: 0.75
   buttonRequired: BasicHold
