@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool lockMovement; //Access these properties from other scripts whenever they move them instead
     public bool lockFalling;
     public bool lockAttackDirection;
+    private bool m_VelocityStopped;
 
     [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
     [HideInInspector] public bool isOnGround = true;
@@ -69,6 +70,8 @@ public class PlayerController : MonoBehaviour
     //other scripts
     EnemiesCameraLock lockScript;
     public bool stickToAttack = false;
+
+    [SerializeField] private AttackInput m_AttackInput;
 
     void Start()
     {
@@ -160,6 +163,7 @@ public class PlayerController : MonoBehaviour
         }
 
         dashControl();
+
         if (isOnGround)
         {
             doubleJumped = false;
@@ -224,6 +228,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         if (lockFalling)
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
@@ -238,12 +243,32 @@ public class PlayerController : MonoBehaviour
         {
             gravityScaleScript.gravityScale = 1;
         }
+
+        if(m_hasDashed)
+        {
+
+            lockMovement = true;
+            rigidbody.useGravity = false;
+            rigidbody.velocity = character.transform.forward * m_dashForce;
+            StartCoroutine(dash());
+        }
+
         //if movement is locked, stop the player
         if (lockMovement)
         {
-            movementDirection = Vector3.zero;
-            rigidbody.velocity = new Vector3 (0, rigidbody.velocity.y, 0);
+            if(!m_VelocityStopped)
+            {
+                movementDirection = Vector3.zero;
+                rigidbody.velocity = new Vector3(0, rigidbody.velocity.y, 0);
+                m_VelocityStopped = true;
+            }
+           
         }
+        else
+        {
+            m_VelocityStopped = false;
+        }
+
         if (movementDirection.magnitude >= 0.1f && isOnGround) //if input detected
         {
             if (Mathf.Sign(movementDirection.x) != Mathf.Sign(rigidbody.velocity.x))
@@ -326,24 +351,33 @@ public class PlayerController : MonoBehaviour
 
     private void dashControl()
     {
+        if(m_hasDashed)
+        {
+            animator.SetBool("IsDashing", true);
+        }
+        else
+        {
+            animator.SetBool("IsDashing", false);
+        }
+
         if (Input.GetButtonDown("dash") && !m_hasDashed)
         {
-            StartCoroutine(dash());
+            
+            m_hasDashed = true;
+            m_AttackInput.CancelAttacks();
         }
     }
 
     private IEnumerator dash()
     {
+
+        //rigidbody.AddForce(character.transform.forward * m_dashForce, ForceMode.VelocityChange);
         
-            m_hasDashed = true;
-            rigidbody.AddForce(character.transform.forward * m_dashForce, ForceMode.Impulse);
-
-            yield return new WaitForSeconds(2f);
-            m_hasDashed = false;
-        
-
-
+        yield return new WaitForSeconds(0.5f);
+        m_hasDashed = false;
+        rigidbody.useGravity = true;
+        lockMovement = false;
     }
 
-    
+
 }

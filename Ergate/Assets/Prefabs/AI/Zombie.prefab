@@ -842,13 +842,13 @@ GameObject:
   - component: {fileID: 2374682309085751627}
   - component: {fileID: 2374682309085751626}
   - component: {fileID: 2374682309085751631}
-  - component: {fileID: 2374682309085751624}
   - component: {fileID: 2374682309085751625}
   - component: {fileID: -6536254424049255970}
   - component: {fileID: -8306371561402608744}
+  - component: {fileID: 3682693730583560538}
   m_Layer: 0
   m_Name: Zombie
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -917,29 +917,6 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &2374682309085751624
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3185726276918342703}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d9c6a371f07be014c8849db023ff2617, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Health: 0
-  m_HealthDamage: 0
-  m_PoiseDamage: 0
-  m_RotationRate: 10
-  m_Target: {fileID: 0}
-  m_Agent: {fileID: 0}
-  m_PlayerStats: {fileID: 0}
-  m_Animator: {fileID: 0}
-  m_CanAttack: 0
-  m_AttackRate: 0.5
-  m_IsAttacking: 0
 --- !u!195 &2374682309085751625
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -986,7 +963,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7648aebe186d3ec45ad5380ac78713e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  id: 0
+--- !u!114 &3682693730583560538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185726276918342703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d9c6a371f07be014c8849db023ff2617, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Health: 0
+  m_HealthDamage: 0
+  m_PoiseDamage: 0
+  m_RotationRate: 10
+  m_Target: {fileID: 0}
+  m_Agent: {fileID: 0}
+  m_PlayerStats: {fileID: 0}
+  m_Animator: {fileID: 0}
+  m_CanAttack: 0
+  m_AttackRate: 0.5
+  m_IsAttacking: 0
 --- !u!1 &3192325217610335777
 GameObject:
   m_ObjectHideFlags: 0
