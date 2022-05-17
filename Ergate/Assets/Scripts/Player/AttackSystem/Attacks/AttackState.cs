@@ -7,6 +7,7 @@ public class AttackState
 {
     [HideInInspector] public bool completed = false;
     protected PlayerController playerScript;
+    protected Animator playerAnimator;
     protected Transform attackParentObj;
     protected Vector3 targetPos;
     protected GameObject attackObject;
@@ -14,11 +15,12 @@ public class AttackState
     protected float attackBeginningTime;
     protected float attackTime;
     protected float attackRange;
+    protected string animationTrigger;
     public void SetAttackObject(GameObject p_attackObject)
     {
         attackObject = p_attackObject;
     }
-    public void SetFloats(float p_beginningTime, float p_attackTime, float p_range)
+    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string animationTrigger)
     {
         attackBeginningTime = p_beginningTime;
         attackTime = p_attackTime;
@@ -27,6 +29,7 @@ public class AttackState
     public virtual void SetVariables(PlayerController p_playerScript, Transform p_attackParentObj, Vector3 p_targetPos)
     {
         playerScript = p_playerScript;
+        playerScript.transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         attackParentObj = p_attackParentObj;
         targetPos = p_targetPos;
     }

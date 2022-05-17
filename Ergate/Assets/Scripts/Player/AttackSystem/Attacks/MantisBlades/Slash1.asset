@@ -17,6 +17,7 @@ MonoBehaviour:
   attackName: Slash1
   chainableAttacks:
   - {fileID: 11400000, guid: 429f91d90650e1e42839a9793ef30c14, type: 2}
+  - {fileID: 11400000, guid: b5443d76bebdb7746acdf0a78ff1c13e, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
   attackRange: 1

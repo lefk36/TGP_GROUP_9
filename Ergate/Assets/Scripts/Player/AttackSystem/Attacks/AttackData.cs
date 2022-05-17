@@ -17,6 +17,9 @@ public class AttackData : ScriptableObject
     public float attackRange = 1;
     public bool toEnemy;
     public Vector3 attackDirection;
+    protected Animator playerAnimator;
+    public string animationTriggerName;
+    
     private void OnEnable()
     {
         if (thisAttackState != null)
@@ -30,7 +33,7 @@ public class AttackData : ScriptableObject
             {
                 state.SetAttackObject(attackObject);
             }
-            state.SetFloats(attackBeginningTime, attackTime, attackRange);
+            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName);
         }
     }
     public bool airRequired;
