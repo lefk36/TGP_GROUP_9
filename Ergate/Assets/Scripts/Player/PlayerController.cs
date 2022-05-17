@@ -7,16 +7,19 @@ public class PlayerController : MonoBehaviour
 {
     //public variables
     [SerializeField] private LayerMask m_Ground; //Ground layr mask
+    [Header("Running")]
     [Min(0f)] public float acceleration;
     [Min(0f)] public float deceleration;
     [Min(0f)] public float targetSpeed;
     [Min(0f)] public float rotationTime;
+    [Header("Jumping")]
     [Min(0f)] public float jumpForce;
     [Min(0f)] public float doubleJumpForwardForce;
     [Min(1.0f)] public float jumpingGravityScale;
     [Min(1.0f)] public float fallingMultiplier;
     [SerializeField] private bool doubleJumpUnlocked;
 
+    [Header("Logic")]
     public bool lockMovement; //Access these properties from other scripts whenever they move them instead
     public bool lockFalling;
     public bool lockAttackDirection;
@@ -27,7 +30,7 @@ public class PlayerController : MonoBehaviour
     public bool cameraLockedToTarget; //edit this in camera script to determine whether
 
     //this object's components
-    private new Rigidbody rigidbody;
+    [HideInInspector] public new Rigidbody rigidbody;
     private CapsuleCollider movementCollider;
     private GravityScaler gravityScaleScript;
 
@@ -64,12 +67,16 @@ public class PlayerController : MonoBehaviour
     private float m_MaxRunAnimSpeed = 7f;
 
     //variable to control dash length
-    public float m_dashForce;
-    private bool m_hasDashed = false;
+    [Header("Dash")]
+    public float m_dashSpeed;
+    public float dashTime;
+    public float dashStoppingPower;
+    [HideInInspector] public bool m_hasDashed = false;
+
 
     //other scripts
     EnemiesCameraLock lockScript;
-    public bool stickToAttack = false;
+    [HideInInspector] public bool stickToAttack = false;
 
     [SerializeField] private AttackInput m_AttackInput;
 
@@ -249,7 +256,7 @@ public class PlayerController : MonoBehaviour
 
             lockMovement = true;
             rigidbody.useGravity = false;
-            rigidbody.velocity = character.transform.forward * m_dashForce;
+            rigidbody.velocity = character.transform.forward * m_dashSpeed;
             StartCoroutine(dash());
         }
 
@@ -370,13 +377,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator dash()
     {
-
-        //rigidbody.AddForce(character.transform.forward * m_dashForce, ForceMode.VelocityChange);
-        
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(dashTime);
         m_hasDashed = false;
         rigidbody.useGravity = true;
         lockMovement = false;
+        rigidbody.velocity = rigidbody.velocity / dashStoppingPower;
     }
 
 

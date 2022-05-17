@@ -15,8 +15,11 @@ public class AttackData : ScriptableObject
     public float attackBeginningTime = 0;
     public float attackTime = 0;
     public float attackRange = 1;
+    [Header("Travelling Attacks")]
     public bool toEnemy;
     public Vector3 attackDirection;
+    public float speed;
+    [Header("Animation")]
     protected Animator playerAnimator;
     public string animationTriggerName;
     
@@ -33,7 +36,8 @@ public class AttackData : ScriptableObject
             {
                 state.SetAttackObject(attackObject);
             }
-            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName);
+            attackDirection = attackDirection.normalized;
+            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName, attackDirection, toEnemy, speed);
         }
     }
     public bool airRequired;

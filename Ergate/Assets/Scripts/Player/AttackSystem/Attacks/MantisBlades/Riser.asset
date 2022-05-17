@@ -13,14 +13,16 @@ MonoBehaviour:
   m_Name: Riser
   m_EditorClassIdentifier: 
   thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
-  attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
+  attackObject: {fileID: 286232789824516609, guid: d702666d3e5477c42afa795c8eaa2591, type: 3}
   attackName: riser
   chainableAttacks: []
-  attackBeginningTime: 0.3
-  attackTime: 0.5
-  attackRange: 1
+  attackBeginningTime: 0.1
+  attackTime: 0.35
+  attackRange: 3.5
   toEnemy: 0
   attackDirection: {x: 0, y: 1, z: 0}
+  speed: 20
+  animationTriggerName: 
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: AlternativeDown

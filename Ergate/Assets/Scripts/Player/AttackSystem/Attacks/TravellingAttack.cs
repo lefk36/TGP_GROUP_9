@@ -15,8 +15,66 @@ public class TravellingAttack : AttackState
     protected override IEnumerator AttackCoroutine()
     {
         completed = false;
-        Debug.Log("Travelling attack");
+        playerScript.lockAttackDirection = true;
+        playerScript.lockMovement = true;
+        playerScript.stickToAttack = true;
+        yield return new WaitForSeconds(attackBeginningTime);
+        if (animationTrigger != null)
+        {
+            playerAnimator.SetTrigger(animationTrigger);
+        }
+        Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
+        attackInstance.transform.parent = null;
+        Vector3 newAttackDirection = attackParentObj.rotation * attackDirection;
+        float distanceTravelled = 0;
+        Vector3 startPosition = playerScript.transform.position;
+        float newAttackRange = attackRange;
+        if (toEnemy)
+        {
+            newAttackRange = FindNewRange();
+        }
+        while(distanceTravelled < newAttackRange)
+        {
+            rb.velocity = newAttackDirection * speed;
+            yield return null;
+            Vector3 currentPosition = playerScript.transform.position;
+            distanceTravelled = (startPosition - currentPosition).magnitude;
+        }
+        rb.velocity = rb.velocity / 2;
+        rb.useGravity = true;
+        playerScript.stickToAttack = false;
+        playerScript.lockAttackDirection = false;
+        playerScript.lockMovement = false;
         completed = true;
-        yield return null;
+    }
+    protected float FindNewRange()
+    {
+        //if the enemy is past the range, return attack range. if the enemy is close, return 0. if the enemy is closer than range, return distance.
+        float distanceToEnemy = (playerScript.transform.position - targetPos).magnitude;
+        if(distanceToEnemy < 1)
+        {
+            distanceToEnemy = 0;
+        }
+        else
+        {
+            distanceToEnemy -= 1;
+        }
+        if(distanceToEnemy > 0.1f)
+        {
+            if(distanceToEnemy < attackRange)
+            {
+                return distanceToEnemy;
+            }
+            else
+            {
+                return attackRange;
+            }
+        }
+        else
+        {
+            return 0;
+        }
     }
 }

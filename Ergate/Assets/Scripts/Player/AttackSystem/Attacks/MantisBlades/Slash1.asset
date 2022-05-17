@@ -19,10 +19,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 429f91d90650e1e42839a9793ef30c14, type: 2}
   - {fileID: 11400000, guid: b5443d76bebdb7746acdf0a78ff1c13e, type: 2}
   attackBeginningTime: 0.3
-  attackTime: 0.5
+  attackTime: 0.3
   attackRange: 1
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}
+  speed: 0
+  animationTriggerName: 
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: BasicUp

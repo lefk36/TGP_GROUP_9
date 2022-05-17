@@ -41,8 +41,8 @@ public class Weapon : MonoBehaviour
     }
     protected virtual void LateUpdate()
     {
-        //if air state does not match the current attacks, call cancel
-        if(currentAttackData.airRequired != !controllerScript.isOnGround)
+        //if player is on ground and attack's air is required, call cancel
+        if(currentAttackData.airRequired && controllerScript.isOnGround)
         {
             Cancel();
         }

@@ -12,15 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Slash1Masher
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 0}
-  attackObject: {fileID: 0}
-  attackName: 
-  chainableAttacks: []
-  attackBeginningTime: 0
-  attackTime: 0
+  thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
+  attackObject: {fileID: 8293648546519496879, guid: 0d7da74c98996cf4ab392db11093fc73, type: 3}
+  attackName: masher
+  chainableAttacks:
+  - {fileID: 11400000}
+  attackBeginningTime: 0.1
+  attackTime: 0.5
   attackRange: 1
   toEnemy: 0
   attackDirection: {x: 0, y: 0, z: 0}
+  speed: 0
+  animationTriggerName: 
   airRequired: 0
   timeHeldRequired: 0
-  buttonRequired: 
+  buttonRequired: BasicDown

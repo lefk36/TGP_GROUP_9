@@ -15,12 +15,15 @@ MonoBehaviour:
   thisAttackState: {fileID: 11500000, guid: e2918a05c58beef44a59d8ea99e758e0, type: 3}
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
   attackName: s1pause
-  chainableAttacks: []
+  chainableAttacks:
+  - {fileID: 11400000, guid: 3b4c3c19ac1e2984ab7aca2123970adb, type: 2}
   attackBeginningTime: 0
-  attackTime: 1
+  attackTime: 0.1
   attackRange: 1
   toEnemy: 0
   attackDirection: {x: 0, y: 0, z: 0}
+  speed: 0
+  animationTriggerName: 
   airRequired: 0
-  timeHeldRequired: 0.5
+  timeHeldRequired: 0.3
   buttonRequired: No Input

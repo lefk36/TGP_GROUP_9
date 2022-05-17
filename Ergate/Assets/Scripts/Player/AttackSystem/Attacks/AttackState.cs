@@ -16,15 +16,21 @@ public class AttackState
     protected float attackTime;
     protected float attackRange;
     protected string animationTrigger;
+    protected Vector3 attackDirection;
+    protected bool toEnemy;
+    protected float speed;
     public void SetAttackObject(GameObject p_attackObject)
     {
         attackObject = p_attackObject;
     }
-    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string animationTrigger)
+    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed)
     {
         attackBeginningTime = p_beginningTime;
         attackTime = p_attackTime;
         attackRange = p_range;
+        toEnemy = p_toEnemy;
+        attackDirection = p_attackDirection;
+        speed = p_speed;
     }
     public virtual void SetVariables(PlayerController p_playerScript, Transform p_attackParentObj, Vector3 p_targetPos)
     {

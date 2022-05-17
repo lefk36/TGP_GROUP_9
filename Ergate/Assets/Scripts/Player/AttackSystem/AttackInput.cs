@@ -20,58 +20,61 @@ public class AttackInput : MonoBehaviour
     {
         UpdateInAir();
         Weapon activeWeapon = weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex];
-        if (Input.GetButton("BasicAttack"))
+        if (!playerControllerScript.m_hasDashed)
         {
-            basicHoldTime += Time.deltaTime;
-            if (activeWeapon.ReadInput("BasicHold", basicHoldTime, inAir))//if input matched an attack
+            if (Input.GetButton("BasicAttack"))
             {
-                basicHoldTime = 0;
+                basicHoldTime += Time.deltaTime;
+                if (activeWeapon.ReadInput("BasicHold", basicHoldTime, inAir))//if input matched an attack
+                {
+                    basicHoldTime = 0;
+                }
             }
-        }
-        else if (Input.GetButton("AlternativeAttack"))
-        {
-            alternativeHoldTime += Time.deltaTime;
-            if (activeWeapon.ReadInput("AlternativeHold", alternativeHoldTime, inAir))
+            else if (Input.GetButton("AlternativeAttack"))
             {
-                alternativeHoldTime = 0;
+                alternativeHoldTime += Time.deltaTime;
+                if (activeWeapon.ReadInput("AlternativeHold", alternativeHoldTime, inAir))
+                {
+                    alternativeHoldTime = 0;
+                }
             }
-        }
-        if(!Input.GetButton("AlternativeAttack") && !Input.GetButton("BasicAttack"))
-        {
-            noInputTime += Time.deltaTime;
-            if (activeWeapon.ReadInput("No Input", noInputTime, inAir))
+            if (!Input.GetButton("AlternativeAttack") && !Input.GetButton("BasicAttack"))
+            {
+                noInputTime += Time.deltaTime;
+                if (activeWeapon.ReadInput("No Input", noInputTime, inAir))
+                {
+                    noInputTime = 0;
+                }
+            }
+            else
             {
                 noInputTime = 0;
             }
-        }
-        else
-        {
-            noInputTime = 0;
-        }
-        if (Input.GetButtonDown("BasicAttack"))
-        {
-            activeWeapon.ReadInputInstant("BasicDown", inAir);
-        }
-        else if (Input.GetButtonDown("AlternativeAttack"))
-        {
-            activeWeapon.ReadInputInstant("AlternativeDown", inAir);
-        }
-        else if (Input.GetButtonUp("BasicAttack"))
-        {
-            basicHoldTime = 0;
-            activeWeapon.ReadInputInstant("BasicUp", inAir);
-        }
-        else if (Input.GetButtonUp("AlternativeAttack"))
-        {
-            alternativeHoldTime = 0;
-            activeWeapon.ReadInputInstant("AlternativeUp", inAir);
+            if (Input.GetButtonDown("BasicAttack"))
+            {
+                activeWeapon.ReadInputInstant("BasicDown", inAir);
+            }
+            else if (Input.GetButtonDown("AlternativeAttack"))
+            {
+                activeWeapon.ReadInputInstant("AlternativeDown", inAir);
+            }
+            else if (Input.GetButtonUp("BasicAttack"))
+            {
+                basicHoldTime = 0;
+                activeWeapon.ReadInputInstant("BasicUp", inAir);
+            }
+            else if (Input.GetButtonUp("AlternativeAttack"))
+            {
+                alternativeHoldTime = 0;
+                activeWeapon.ReadInputInstant("AlternativeUp", inAir);
+            }
         }
 
     }
     private void UpdateInAir()
     {
         inAir = !playerControllerScript.isOnGround;
-        if(lastInAir != inAir)
+        if (lastInAir != inAir)
         {
             ResetHoldingTimes();
             lastInAir = inAir;
@@ -80,6 +83,12 @@ public class AttackInput : MonoBehaviour
     public void CancelAttacks()
     {
         weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].Cancel();
+        playerControllerScript.stickToAttack = false;
+        playerControllerScript.lockAttackDirection = false;
+        playerControllerScript.lockMovement = false;
+
+        playerControllerScript.rigidbody.velocity = playerControllerScript.rigidbody.velocity / 2;
+        playerControllerScript.rigidbody.useGravity = true;
         ResetHoldingTimes();
     }
     public void ResetHoldingTimes()
@@ -89,4 +98,3 @@ public class AttackInput : MonoBehaviour
         noInputTime = 0;
     }
 }
- 

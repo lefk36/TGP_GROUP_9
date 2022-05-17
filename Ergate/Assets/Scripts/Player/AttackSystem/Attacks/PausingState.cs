@@ -16,7 +16,7 @@ public class PausingState : AttackState
     {
         completed = false;
         Debug.Log("Paused..");
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(attackTime);
         completed = true;
         yield return null;
     }
