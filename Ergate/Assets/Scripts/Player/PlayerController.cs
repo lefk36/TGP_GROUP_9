@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     public bool lockMovement; //Access these properties from other scripts whenever they move them instead
     public bool lockFalling;
     public bool lockAttackDirection;
-    private bool m_VelocityStopped = false;
+    private bool m_VelocityStopped;
 
     [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
     [HideInInspector] public bool isOnGround = true;
@@ -163,6 +163,7 @@ public class PlayerController : MonoBehaviour
         }
 
         dashControl();
+
         if (isOnGround)
         {
             doubleJumped = false;
@@ -227,6 +228,7 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        
         if (lockFalling)
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
@@ -241,6 +243,16 @@ public class PlayerController : MonoBehaviour
         {
             gravityScaleScript.gravityScale = 1;
         }
+
+        if(m_hasDashed)
+        {
+
+            lockMovement = true;
+            rigidbody.useGravity = false;
+            rigidbody.velocity = character.transform.forward * m_dashForce;
+            StartCoroutine(dash());
+        }
+
         //if movement is locked, stop the player
         if (lockMovement)
         {
@@ -339,25 +351,29 @@ public class PlayerController : MonoBehaviour
 
     private void dashControl()
     {
+        if(m_hasDashed)
+        {
+            animator.SetBool("IsDashing", true);
+        }
+        else
+        {
+            animator.SetBool("IsDashing", false);
+        }
+
         if (Input.GetButtonDown("dash") && !m_hasDashed)
         {
-            StartCoroutine(dash());
+            
+            m_hasDashed = true;
+            m_AttackInput.CancelAttacks();
         }
     }
 
     private IEnumerator dash()
     {
-        
-        m_hasDashed = true;
-        m_AttackInput.CancelAttacks();
-        rigidbody.useGravity = false;
-        lockMovement = true;
 
-        rigidbody.velocity = rigidbody.velocity += character.transform.forward * m_dashForce * Time.deltaTime;
         //rigidbody.AddForce(character.transform.forward * m_dashForce, ForceMode.VelocityChange);
-
+        
         yield return new WaitForSeconds(0.5f);
-
         m_hasDashed = false;
         rigidbody.useGravity = true;
         lockMovement = false;

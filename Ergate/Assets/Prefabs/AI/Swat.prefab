@@ -1091,7 +1091,7 @@ MonoBehaviour:
   m_Health: 0
   m_HealthDamage: 0
   m_PoiseDamage: 0
-  m_RotationRate: 50
+  m_RotationRate: 60
   m_Target: {fileID: 0}
   m_Agent: {fileID: 0}
   m_PlayerStats: {fileID: 0}
