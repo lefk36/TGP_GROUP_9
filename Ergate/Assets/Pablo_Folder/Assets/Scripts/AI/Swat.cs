@@ -19,6 +19,14 @@ public class Swat : BaseEnemy
         m_IsAttacking = false;
     }
 
+    private void OnSwatKilled()
+    {
+        if (m_Health <= 0f)
+        {
+            Destroy(this.gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
