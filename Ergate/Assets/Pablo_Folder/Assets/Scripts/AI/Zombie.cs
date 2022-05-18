@@ -4,9 +4,6 @@ using UnityEngine;
 using UnityEngine.AI;
 public class Zombie : BaseEnemy
 {
-
-  
-
     private void Awake()
     {
         //EventManager.current.onEnemyDestroy += OnZombieKilled;
@@ -28,7 +25,7 @@ public class Zombie : BaseEnemy
 
     private void OnZombieKilled()
     {
-        if (m_Health <= 100f)
+        if (m_Health <= 0f)
         {
             Destroy(this.gameObject);
         }
