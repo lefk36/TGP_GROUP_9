@@ -93,7 +93,7 @@ public class Weapon : MonoBehaviour
         }
         else
         {
-            return attackDirectionObj.position + (attackDirectionObj.rotation * data.attackDirection);
+            return attackDirectionObj.position + (attackDirectionObj.rotation * data.attackDirection * data.attackRange);
         }
     }
 }

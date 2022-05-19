@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shredder
   m_EditorClassIdentifier: 
   thisAttackState: {fileID: 11500000, guid: e50e41d29a23ba24882cda6bca455c74, type: 3}
-  attackObject: {fileID: 8136630375735949724, guid: 00a8d55027eab6b47868bfa0fc20b602, type: 3}
+  attackObject: {fileID: 1253363325158376372, guid: b07c4cf3c5e30594c88bec5dba6585f9, type: 3}
   attackName: shredder
   chainableAttacks: []
   attackBeginningTime: 0.3
@@ -22,7 +22,8 @@ MonoBehaviour:
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
+  stoppingPower: 1
   animationTriggerName: 
   airRequired: 0
   timeHeldRequired: 0
-  buttonRequired: AlternativeDown
+  buttonRequired: AlternativeHold

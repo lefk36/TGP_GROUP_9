@@ -4,13 +4,19 @@ using UnityEngine;
 
 public class ContinousHoldingAttack : AttackState
 {
+    GameObject attackInstance;
     public override void StartAttack(Weapon caller)
     {
         base.StartAttack(caller);
     }
     public override void CancelAttack(MonoBehaviour caller)
     {
+        if(attackInstance != null)
+        {
+            GameObject.Destroy(attackInstance);
+        }
         base.CancelAttack(caller);
+
     }
     protected override IEnumerator AttackCoroutine()
     {
@@ -23,16 +29,16 @@ public class ContinousHoldingAttack : AttackState
         {
             playerAnimator.SetTrigger(animationTrigger);
         }
-        GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
+        attackInstance = Object.Instantiate(attackObject, attackParentObj);
         while (!Input.GetButtonUp("AlternativeAttack"))
         {
-            Debug.Log("Shredding..");
             if (!Input.GetButton("AlternativeAttack"))
             {
                 break;
             }
             yield return null;
         }
+        GameObject.Destroy(attackInstance);
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
         playerScript.stickToAttack = false;

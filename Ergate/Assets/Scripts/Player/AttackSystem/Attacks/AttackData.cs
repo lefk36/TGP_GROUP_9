@@ -19,6 +19,7 @@ public class AttackData : ScriptableObject
     public bool toEnemy;
     public Vector3 attackDirection;
     public float speed;
+    public float stoppingPower = 1;
     [Header("Animation")]
     protected Animator playerAnimator;
     public string animationTriggerName;
@@ -37,7 +38,7 @@ public class AttackData : ScriptableObject
                 state.SetAttackObject(attackObject);
             }
             attackDirection = attackDirection.normalized;
-            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName, attackDirection, toEnemy, speed);
+            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName, attackDirection, toEnemy, speed, stoppingPower);
         }
     }
     public bool airRequired;

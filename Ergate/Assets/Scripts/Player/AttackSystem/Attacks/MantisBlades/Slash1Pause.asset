@@ -23,7 +23,8 @@ MonoBehaviour:
   toEnemy: 0
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
+  stoppingPower: 1
   animationTriggerName: 
   airRequired: 0
-  timeHeldRequired: 0.3
+  timeHeldRequired: 0.4
   buttonRequired: No Input

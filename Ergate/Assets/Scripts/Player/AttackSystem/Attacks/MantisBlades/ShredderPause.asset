@@ -17,13 +17,14 @@ MonoBehaviour:
   attackName: shredpause
   chainableAttacks:
   - {fileID: 11400000, guid: 16f361be628b0c44887838cb4b5110f8, type: 2}
-  attackBeginningTime: 0.3
-  attackTime: 0.5
+  attackBeginningTime: 0
+  attackTime: 0.15
   attackRange: 1
-  toEnemy: 1
+  toEnemy: 0
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
+  stoppingPower: 1
   animationTriggerName: 
   airRequired: 0
-  timeHeldRequired: 0.5
+  timeHeldRequired: 0.3
   buttonRequired: No Input

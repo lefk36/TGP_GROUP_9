@@ -4,12 +4,17 @@ using UnityEngine;
 
 public class TravellingAttack : AttackState
 {
+    GameObject attackInstance;
     public override void StartAttack(Weapon caller)
     {
         base.StartAttack(caller);
     }
     public override void CancelAttack(MonoBehaviour caller)
     {
+        if(attackInstance != null)
+        {
+            GameObject.Destroy(attackInstance);
+        }
         base.CancelAttack(caller);
     }
     protected override IEnumerator AttackCoroutine()
@@ -25,7 +30,7 @@ public class TravellingAttack : AttackState
         }
         Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
         rb.useGravity = false;
-        GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
+        attackInstance = Object.Instantiate(attackObject, attackParentObj);
         Vector3 newAttackDirection = attackParentObj.rotation * attackDirection;
         float distanceTravelled = 0;
         Vector3 startPosition = playerScript.transform.position;
@@ -41,11 +46,12 @@ public class TravellingAttack : AttackState
             Vector3 currentPosition = playerScript.transform.position;
             distanceTravelled = (startPosition - currentPosition).magnitude;
         }
-        rb.velocity = rb.velocity / 2;
+        rb.velocity = rb.velocity / stoppingPower;
         rb.useGravity = true;
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
+        GameObject.Destroy(attackInstance);
         completed = true;
     }
     protected float FindNewRange()
