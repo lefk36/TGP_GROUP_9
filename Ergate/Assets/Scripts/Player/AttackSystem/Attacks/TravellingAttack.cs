@@ -29,7 +29,7 @@ public class TravellingAttack : AttackState
             playerAnimator.SetTrigger(animationTrigger);
         }
         Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
-        rb.useGravity = false;
+        playerScript.lockFalling = true;
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
         Vector3 newAttackDirection = attackParentObj.rotation * attackDirection;
         float distanceTravelled = 0;
@@ -46,8 +46,8 @@ public class TravellingAttack : AttackState
             Vector3 currentPosition = playerScript.transform.position;
             distanceTravelled = (startPosition - currentPosition).magnitude;
         }
+        playerScript.lockFalling = false;
         rb.velocity = rb.velocity / stoppingPower;
-        rb.useGravity = true;
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;

@@ -83,12 +83,6 @@ public class AttackInput : MonoBehaviour
     public void CancelAttacks()
     {
         weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex].Cancel();
-        playerControllerScript.stickToAttack = false;
-        playerControllerScript.lockAttackDirection = false;
-        playerControllerScript.lockMovement = false;
-
-        playerControllerScript.rigidbody.velocity = playerControllerScript.rigidbody.velocity / 2;
-        playerControllerScript.rigidbody.useGravity = true;
         ResetHoldingTimes();
     }
     public void ResetHoldingTimes()

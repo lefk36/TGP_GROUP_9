@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
     //this object's components
     [HideInInspector] public new Rigidbody rigidbody;
     private CapsuleCollider movementCollider;
-    private GravityScaler gravityScaleScript;
+    [HideInInspector] public GravityScaler gravityScaleScript;
 
     //character object and its components
     private GameObject character;
@@ -244,7 +244,10 @@ public class PlayerController : MonoBehaviour
         
         if (lockFalling)
         {
-            rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+            if(rigidbody.velocity.y < 0)
+            {
+                rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);
+            }
             gravityScaleScript.gravityScale = 0;
         }
         else
@@ -313,11 +316,11 @@ public class PlayerController : MonoBehaviour
             rigidbody.velocity = Vector3.zero;
             rigidbody.AddForce((Vector3.up * jumpForce) + (characterForward * doubleJumpForwardForce), ForceMode.Impulse);
         }
-        if(rigidbody.velocity.y > 0.2f) //when rising
+        if(rigidbody.velocity.y > 0.2f && !lockFalling) //when rising
         {
             gravityScaleScript.gravityScale = jumpingGravityScale;
         }
-        if(rigidbody.velocity.y < 0) //when falling
+        if(rigidbody.velocity.y < 0 && !lockFalling) //when falling
         {
 
             gravityScaleScript.gravityScale = jumpingGravityScale*fallingMultiplier;
@@ -381,14 +384,20 @@ public class PlayerController : MonoBehaviour
     {
         
         lockMovement = true;
-        rigidbody.useGravity = false;
-        rigidbody.velocity = inputDirection * m_dashSpeed;
-        RotateObjectToDirection(m_InputDirection, character.transform, rotationTime, ref angularVelocity);
+        lockFalling = true;
+        Vector3 dashDirection = inputDirection;
+        //if no input detected
+        if(inputDirection.magnitude < 0.2f)
+        {
+            dashDirection = Quaternion.Euler(0, cameraCentre.transform.rotation.eulerAngles.y, 0) * new Vector3(0, 0, 1);
+        }
+        rigidbody.velocity = dashDirection * m_dashSpeed;
+        RotateObjectToDirection(dashDirection, character.transform, rotationTime, ref angularVelocity);
         yield return new WaitForSeconds(dashTime);
-        m_hasDashed = false;
-        rigidbody.useGravity = true;
+        lockFalling = false;
         lockMovement = false;
         rigidbody.velocity = rigidbody.velocity / dashStoppingPower;
+        m_hasDashed = false;
     }
 
 

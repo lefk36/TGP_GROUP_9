@@ -80,6 +80,12 @@ public class Weapon : MonoBehaviour
         if (currentAttackData.name != baseAttackData.name)
         {
             currentAttackData.CancelAttack(this);
+            controllerScript.stickToAttack = false;
+            controllerScript.lockAttackDirection = false;
+            controllerScript.lockMovement = false;
+
+            controllerScript.rigidbody.velocity = controllerScript.rigidbody.velocity / 2;
+            controllerScript.lockFalling = false;
             playerAnimator.SetTrigger("StopAttacking");
             currentAttackData = baseAttackData;
             inputComponent.ResetHoldingTimes();

@@ -18,6 +18,7 @@ MonoBehaviour:
   chainableAttacks:
   - {fileID: 11400000, guid: 60324730250b08b459589ab8c9c04e70, type: 2}
   - {fileID: 11400000, guid: 0cae995d79083f642afe9526a45681ef, type: 2}
+  - {fileID: 11400000, guid: 3ce54698ba3929741b14469727bfde8d, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
   attackRange: 1

@@ -8,7 +8,7 @@ public class GravityScaler : MonoBehaviour
     // Gravity Scale editable on the inspector
     // providing a gravity scale per object
 
-    [HideInInspector] public float gravityScale = 1.0f;
+    public float gravityScale = 1.0f;
 
     // Global Gravity doesn't appear in the inspector. Modify it here in the code
     // (or via scripting) to define a different default gravity for all objects.

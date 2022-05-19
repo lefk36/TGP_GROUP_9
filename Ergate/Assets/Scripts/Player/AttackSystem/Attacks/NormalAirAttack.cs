@@ -19,20 +19,25 @@ public class NormalAirAttack : AttackState
         playerScript.lockAttackDirection = true;
         playerScript.lockMovement = true;
         playerScript.stickToAttack = true;
+        playerScript.lockFalling = true;
+        Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
+        rb.velocity = new Vector3(0, 0, 0);
         if (animationTrigger != null)
         {
             playerAnimator.SetTrigger(animationTrigger);
         }
-        Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
-        rb.useGravity = false;
         yield return new WaitForSeconds(attackBeginningTime);
+        playerScript.lockAttackDirection = true;
+        playerScript.lockMovement = true;
+        playerScript.stickToAttack = true;
+        playerScript.lockFalling = true;
         GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
         attackInstance.transform.parent = null;
         yield return new WaitForSeconds(attackTime);
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
-        rb.useGravity = true;
+        playerScript.lockFalling = false;
         completed = true;
     }
 }
