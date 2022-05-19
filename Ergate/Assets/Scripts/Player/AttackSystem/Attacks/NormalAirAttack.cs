@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HoldingState : AttackState
+public class NormalAirAttack : AttackState
 {
     public override void StartAttack(Weapon caller)
     {
@@ -12,6 +12,7 @@ public class HoldingState : AttackState
     {
         base.CancelAttack(caller);
     }
+
     protected override IEnumerator AttackCoroutine()
     {
         completed = false;
@@ -22,17 +23,16 @@ public class HoldingState : AttackState
         {
             playerAnimator.SetTrigger(animationTrigger);
         }
-        while (!Input.GetButtonUp("BasicAttack"))
-        {
-            if (!Input.GetButton("BasicAttack"))
-            {
-                break;
-            }
-            yield return null;
-        }
+        Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
+        rb.useGravity = false;
+        yield return new WaitForSeconds(attackBeginningTime);
+        GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
+        attackInstance.transform.parent = null;
+        yield return new WaitForSeconds(attackTime);
+        playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
-        playerScript.stickToAttack = false;
+        rb.useGravity = true;
         completed = true;
     }
 }

@@ -27,7 +27,7 @@ public class ContinousHoldingAttack : AttackState
         yield return new WaitForSeconds(attackBeginningTime);
         if (animationTrigger != null)
         {
-            playerAnimator.SetTrigger(animationTrigger);
+            playerAnimator.SetBool(animationTrigger, true);
         }
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
         while (!Input.GetButtonUp("AlternativeAttack"))
@@ -38,6 +38,7 @@ public class ContinousHoldingAttack : AttackState
             }
             yield return null;
         }
+        playerAnimator.SetBool(animationTrigger, false);
         GameObject.Destroy(attackInstance);
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
