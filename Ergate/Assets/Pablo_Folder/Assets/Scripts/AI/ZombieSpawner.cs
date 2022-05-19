@@ -16,9 +16,28 @@ public class ZombieSpawner : BaseSpawner
         m_ZombieInstance = m_Prefab.GetComponent<Zombie>();
         m_ZombieCopy = m_ZombieInstance.Clone() as Zombie;
         GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
-        m_EnemiesToBeDeleted.Add(instantiatedEnemy);
+        m_EnemyInstance = instantiatedEnemy;
+        m_EnemiesToBeDeleted.Add(m_EnemyInstance);
         m_EnemiesToBeSpawned--;
         EnemiesSpawning();
+    }
+
+    private void Update()
+    {
+        //foreach (GameObject enemy in m_EnemiesLeft)
+        //{
+        //    if (enemy == null)
+        //    {
+        //        m_EnemiesLeft.Remove(enemy);
+        //    }
+        //}
+        RemoveNullEnemies();
+        
+        if (killEnemies)
+        {
+            killEnemies = false;
+            KillAll();
+        }
     }
 
     private void EnemiesSpawning()
@@ -33,9 +52,11 @@ public class ZombieSpawner : BaseSpawner
             yield return new WaitForSeconds(m_SpawnRate);
             m_EnemiesToBeSpawned--;
             GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
-            m_EnemiesToBeDeleted.Add(instantiatedEnemy);
+            m_EnemyInstance = instantiatedEnemy;
+            m_EnemiesToBeDeleted.Add(m_EnemyInstance);
+
         }
-        
+
     }
 
     public override void ResetSpawner()
@@ -46,6 +67,26 @@ public class ZombieSpawner : BaseSpawner
             Destroy(enemyToDelete);
         }
         gameObject.SetActive(false);
+    }
+    public override void KillAll()
+    {
+        foreach (GameObject enemy in m_EnemiesToBeDeleted)
+        {
+            Destroy(enemy);
+        }
+    }
+    public override void RemoveNullEnemies()
+    {
+        int i;
+        for(i = 0; i < m_EnemiesToBeDeleted.Count; i++)
+        {
+            if(m_EnemiesToBeDeleted[i] == null)
+            {
+                m_EnemiesToBeDeleted.RemoveAt(i);
+                
+            }
+        }
+
     }
 
 }
