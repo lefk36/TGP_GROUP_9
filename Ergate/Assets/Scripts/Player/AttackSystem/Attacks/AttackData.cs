@@ -99,6 +99,10 @@ public class AttackData : ScriptableObject
     public virtual void CancelAttack(Weapon caller)
     {
         state.CancelAttack(caller);
+        if(this.name != "MantisBase" || this.name != "SpikeBase")
+        {
+            playerAnimator.SetTrigger("StopAttacking");
+        }
         transitionAttackData = null;
     }
 
