@@ -19,11 +19,11 @@ public class NormalStandingAttack : AttackState
         playerScript.lockAttackDirection = true;
         playerScript.lockMovement = true;
         playerScript.stickToAttack = true;
-        yield return new WaitForSeconds(attackBeginningTime);
         if (animationTrigger != null)
         {
             playerAnimator.SetTrigger(animationTrigger);
         }
+        yield return new WaitForSeconds(attackBeginningTime);
         GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
         attackInstance.transform.parent = null;
         yield return new WaitForSeconds(attackTime);
