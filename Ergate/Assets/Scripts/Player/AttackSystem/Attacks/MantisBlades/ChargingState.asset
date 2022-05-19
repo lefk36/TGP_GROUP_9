@@ -24,6 +24,7 @@ MonoBehaviour:
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
+  stoppingPower: 1
   animationTriggerName: 
   airRequired: 0
   timeHeldRequired: 0
