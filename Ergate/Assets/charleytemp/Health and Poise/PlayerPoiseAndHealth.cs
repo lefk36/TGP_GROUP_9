@@ -152,10 +152,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         m_AttackInput.CancelAttacks();
         m_PlayerAnimator.SetTrigger("IsDead");
         m_IsDead = true;
-        
-        
         //do whatever else dead people do
-        
     }
 
     
