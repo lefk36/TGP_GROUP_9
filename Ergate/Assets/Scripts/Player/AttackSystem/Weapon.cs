@@ -15,11 +15,13 @@ public class Weapon : MonoBehaviour
     //Player Object -> Sent to the attack behaviours
     Transform attackDirectionObj;
     PlayerController controllerScript;
+    Animator playerAnimator;
     EnemiesCameraLock lockScript;
     AttackInput inputComponent;
 
     private void Start()
     {
+        playerAnimator = transform.GetChild(0).GetComponent<Animator>();
         currentAttackData = baseAttackData;
         baseAttackData.state.completed = true;
         attackDirectionObj = transform.parent.Find("Attack Direction");
@@ -60,7 +62,7 @@ public class Weapon : MonoBehaviour
                 currentAttackData = newData;
                 StopAttack();
                 Vector3 targetPos = FindTargetPosition(currentAttackData);
-                currentAttackData.state.SetVariables(controllerScript, attackDirectionObj, targetPos);
+                currentAttackData.state.SetVariables(controllerScript, attackDirectionObj, targetPos, playerAnimator);
                 currentAttackData.state.StartAttack(this);
                 inputComponent.ResetHoldingTimes();
             }
@@ -78,6 +80,7 @@ public class Weapon : MonoBehaviour
         if (currentAttackData.name != baseAttackData.name)
         {
             currentAttackData.CancelAttack(this);
+            playerAnimator.SetTrigger("StopAttacking");
             currentAttackData = baseAttackData;
             inputComponent.ResetHoldingTimes();
         }
