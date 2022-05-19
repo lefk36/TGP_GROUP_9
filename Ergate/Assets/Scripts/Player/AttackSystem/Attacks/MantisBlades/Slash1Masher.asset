@@ -23,7 +23,7 @@ MonoBehaviour:
   toEnemy: 0
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
-  animationTriggerName: 
+  animationTriggerName: Punching
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: BasicDown
