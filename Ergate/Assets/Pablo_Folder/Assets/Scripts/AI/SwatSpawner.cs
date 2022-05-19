@@ -16,9 +16,27 @@ public class SwatSpawner : BaseSpawner
         m_SwatInstance = m_Prefab.GetComponent<Swat>();
         m_SwatCopy = m_SwatInstance.Clone() as Swat;
         GameObject instantiatedEnemy = Instantiate(m_SwatCopy.gameObject, transform.position, transform.rotation);
-        m_EnemiesToBeDeleted.Add(instantiatedEnemy);
+        m_EnemyInstance = instantiatedEnemy;
+        m_EnemiesToBeDeleted.Add(m_EnemyInstance);
         m_EnemiesToBeSpawned--;
         EnemiesSpawning();
+    }
+
+    private void Update()
+    {
+        //foreach (GameObject enemy in m_EnemiesLeft)
+        //{
+        //    if (enemy == null)
+        //    {
+        //        m_EnemiesLeft.Remove(enemy);
+        //    }
+        //}
+        RemoveNullEnemies();
+        if (killEnemies)
+        {
+            killEnemies = false;
+            KillAll();
+        }
     }
 
     private void EnemiesSpawning()
@@ -33,7 +51,8 @@ public class SwatSpawner : BaseSpawner
             yield return new WaitForSeconds(m_SpawnRate);
             m_EnemiesToBeSpawned--;
             GameObject instantiatedEnemy = Instantiate(m_SwatCopy.gameObject, transform.position, transform.rotation);
-            m_EnemiesToBeDeleted.Add(instantiatedEnemy);
+            m_EnemyInstance = instantiatedEnemy;
+            m_EnemiesToBeDeleted.Add(m_EnemyInstance);
         }
 
     }
@@ -42,9 +61,29 @@ public class SwatSpawner : BaseSpawner
     {
         m_EnemiesToBeSpawned = m_EnemiesToBeSpawnedHold;
         foreach (GameObject enemyToDelete in m_EnemiesToBeDeleted)
-        {
+        { 
             Destroy(enemyToDelete);
         }
         gameObject.SetActive(false);
+    }
+    public override void KillAll()
+    {
+        foreach (GameObject enemy in m_EnemiesToBeDeleted)
+        {
+            Destroy(enemy);
+        }
+    }
+    public override void RemoveNullEnemies()
+    {
+        int i;
+        for (i = 0; i < m_EnemiesToBeDeleted.Count; i++)
+        {
+            if (m_EnemiesToBeDeleted[i] == null)
+            {
+                m_EnemiesToBeDeleted.RemoveAt(i);
+
+            }
+        }
+
     }
 }

@@ -12,10 +12,21 @@ public abstract class BaseSpawner : MonoBehaviour
     public GameObject m_Prefab;
     //List of the enemies to kill
     public List<GameObject> m_EnemiesToBeDeleted;
+
     //Hold of the enemies spawned
     [HideInInspector] public int m_EnemiesToBeSpawnedHold;
 
+    public GameObject m_EnemyInstance;
+
+    public GameObject m_BeginWeb;
+
+    public GameObject m_EndWeb;
+
+    public bool killEnemies = false;
+
     public abstract void ResetSpawner();
+    public abstract void KillAll();
+    public abstract void RemoveNullEnemies();
 }
 
 
