@@ -22,15 +22,6 @@ public class Zombie : BaseEnemy
         m_IsAttacking = false;
     }
 
-
-    private void OnZombieKilled()
-    {
-        if (m_Health <= 0f)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
     private void Update()
     {
         FacePlayer();

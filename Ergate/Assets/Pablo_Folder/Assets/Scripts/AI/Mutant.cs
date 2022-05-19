@@ -25,14 +25,6 @@ public class Mutant : BaseEnemy
         m_IsAttacking = false;
     }
 
-    private void OnMutantKilled()
-    {
-        if (m_Health <= 0f)
-        {
-            Destroy(this.gameObject);
-        }
-    }
-
     private void Update()
     {
         FacePlayer();

@@ -37,6 +37,8 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     private PlayerController m_PlayerController;
     private playerSpawn m_PlayerSpawn;
     public bool m_IsDead = false;
+    private AttackInput m_AttackInput;
+
     void Awake()
     {
         //subcscribing taking damage
@@ -57,6 +59,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         m_PlayerSpawn = GetComponent<playerSpawn>();
         m_PlayerController = GetComponent<PlayerController>();
         m_Character = GameObject.Find("Character");
+        m_AttackInput = transform.GetChild(0).GetComponent<AttackInput>();
         if (m_Character != null)
         {
             m_Model = GameObject.Find("Model");
@@ -146,6 +149,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         m_PlayerController.lockAttackDirection = true; //
         m_PlayerController.readyForAction = false; //
         /*StopAllCoroutines(); */// stops regen
+        m_AttackInput.CancelAttacks();
         m_PlayerAnimator.SetTrigger("IsDead");
         m_IsDead = true;
         
