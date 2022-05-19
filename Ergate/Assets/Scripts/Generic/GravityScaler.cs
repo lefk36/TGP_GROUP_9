@@ -9,7 +9,7 @@ public class GravityScaler : MonoBehaviour
     // providing a gravity scale per object
 
     [HideInInspector] public float gravityScale = 1.0f;
-
+    public bool m_isSwinging = false;
     // Global Gravity doesn't appear in the inspector. Modify it here in the code
     // (or via scripting) to define a different default gravity for all objects.
 
@@ -28,6 +28,10 @@ public class GravityScaler : MonoBehaviour
     }
     void FixedUpdate()
     {
+        if(m_isSwinging)
+        {
+            return;
+        }
         Vector3 gravity = globalGravity * gravityScale * Vector3.up;
         m_rb.AddForce(gravity, ForceMode.Acceleration);
     }

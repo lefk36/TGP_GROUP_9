@@ -59,6 +59,8 @@ public class PlayerController : MonoBehaviour
     bool jumping = false;
     bool doubleJumped = false;
 
+    public bool m_isSwinging = false;
+
     //variables for audio
     private GameObject m_audioController;
     private bool m_runAudio = false;
@@ -124,6 +126,8 @@ public class PlayerController : MonoBehaviour
     }
     void Update()
     {
+
+        
         //update handles logic. Actual Physics calculations are done in fixed update
 
         //find if player is on ground. small modifications to the collider are made to make the result more accurate
@@ -241,7 +245,11 @@ public class PlayerController : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        
+        if(m_isSwinging)
+        {
+            return;
+        }
+
         if (lockFalling)
         {
             rigidbody.velocity = new Vector3(rigidbody.velocity.x, 0, rigidbody.velocity.z);

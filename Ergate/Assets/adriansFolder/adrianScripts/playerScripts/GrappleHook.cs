@@ -2,18 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playerConToAdd : MonoBehaviour
+public class GrappleHook : MonoBehaviour
 {
-    //layermask for interaction
-    public LayerMask m_checkpointMask;
-    public LayerMask m_doorMask;
-
-    private GameObject m_doorToOpen;
-    public GameObject m_player;
-    public Transform camera;
-
-    private PlayerController m_PC;
-    private GravityScaler m_GS;
     public Vector3 m_grapplePoint;
     public Vector3 m_currentLoc;
     private bool m_yUp;
@@ -21,81 +11,30 @@ public class playerConToAdd : MonoBehaviour
     public float m_swingZAmount;
     public float m_swingXAmount;
     private Rigidbody m_RB;
-    private Rigidbody m_testRB;
     private bool flip;
     private float m_radius;
+    private GameObject m_Player;
 
-    private bool m_isSwinging;
-
-    public GameObject m_testSwing;
-
-
-    private void Start()
+    void Start()
     {
-        //m_RB = gameObject.GetComponent<Rigidbody>();
-        m_RB = gameObject.GetComponent<Rigidbody>();
+        m_currentLoc = gameObject.transform.position;
+        Vector3 tempCurrentLoc = m_currentLoc - m_grapplePoint;
+
+
+        m_radius = Vector3.Distance(m_currentLoc, m_grapplePoint);
+        //Debug.Log("the radius is: " + m_radius);
         flip = false;
+
+        m_RB = gameObject.GetComponent<Rigidbody>();
+
         m_yUp = true;
-        m_isSwinging = false;
-        m_PC = gameObject.GetComponent<PlayerController>();
-        m_GS = gameObject.GetComponent<GravityScaler>();
-        m_testRB = m_testSwing.GetComponent<Rigidbody>();
+
+
     }
 
-    private void interact()
+    private void newIdea()
     {
-        RaycastHit hit;
-
-        if (Input.GetKeyDown(KeyCode.F))
-        {
-            if (Physics.SphereCast(gameObject.transform.position, 2f, camera.forward, out hit, 4f, m_checkpointMask))
-            {
-                
-                Debug.Log("did hit the checkpoint");
-                hit.transform.gameObject.GetComponent<playerCheckpoint>().setSpawnLocation(m_player);
-                
-            }
-            else
-            {
-                Debug.Log("did not hit the checkpoint");
-            }
-
-            if (Physics.Raycast(transform.position, camera.forward, out hit, Mathf.Infinity, m_doorMask))
-            {
-                m_doorToOpen = hit.collider.gameObject;
-                m_doorToOpen.GetComponent<gateScript>().openGate();
-            }
-            
-        }
-
-        if(Input.GetKeyDown(KeyCode.E))
-        {
-
-            if(Physics.Raycast(transform.position,camera.forward,out hit, 10f))
-            {
-                m_grapplePoint = hit.point;
-                Debug.LogError("the world point is: " + hit.point);
-                m_isSwinging = true;
-                //gameObject.GetComponent<Rigidbody>().isKinematic = true;
-                m_PC.m_isSwinging = m_isSwinging;
-                m_GS.m_isSwinging = m_isSwinging;
-                m_testSwing.transform.position = gameObject.transform.position;
-                m_RB.velocity.Set(0f, 0f, 0f);
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            gameObject.GetComponent<playerStats>().takeDamage(10f);
-
-        }
-    }
-
-    private void Swinging()
-    {
-
-        m_currentLoc = m_testSwing.transform.position;
-        m_RB.isKinematic = false;
+        m_currentLoc = gameObject.transform.position;
         Vector3 tempCurrentLoc = m_currentLoc - m_grapplePoint;
         Vector3 tempGrapplePoint = m_grapplePoint - m_grapplePoint;
         float yAxisAngle;
@@ -111,7 +50,7 @@ public class playerConToAdd : MonoBehaviour
         {
             if (tempCurrentLoc.y >= 0f)
             {
-                xzAngle = 91f;
+                xzAngle = 90f;
                 xzAngle *= Mathf.Deg2Rad;
                 //m_increase = true;
                 //Debug.LogError("setting angle to 90");
@@ -119,7 +58,7 @@ public class playerConToAdd : MonoBehaviour
             }
             else if (tempCurrentLoc.y < 0f)
             {
-                xzAngle = -91f;
+                xzAngle = -90f;
                 //m_increase = false;
                 xzAngle *= Mathf.Deg2Rad;
                 //Debug.LogError("setting angle to minus 90");
@@ -177,7 +116,7 @@ public class playerConToAdd : MonoBehaviour
                 flip = true;
             }
 
-
+            
 
         }
         else if (xzAngle <= -90f)
@@ -206,7 +145,7 @@ public class playerConToAdd : MonoBehaviour
 
         if (m_yUp)
         {
-
+          
 
 
             if (flip)
@@ -235,7 +174,7 @@ public class playerConToAdd : MonoBehaviour
                 yAngleForX = Mathf.Asin(tempCurrentLoc.z / xzDistance);
                 tempCurrentLoc.x = (Mathf.Sin(yAngleForZ) * newXZDistance);
                 tempCurrentLoc.z = (Mathf.Sin(yAngleForX) * newXZDistance);
-
+          
 
             }
 
@@ -243,7 +182,7 @@ public class playerConToAdd : MonoBehaviour
         }
         else if (!m_yUp)
         {
-
+      
 
             if (flip)
             {
@@ -251,7 +190,7 @@ public class playerConToAdd : MonoBehaviour
                 yAngleForX = Mathf.Asin(tempCurrentLoc.z / xzDistance);
                 tempCurrentLoc.x = (Mathf.Sin(yAngleForZ) * newXZDistance);
                 tempCurrentLoc.z = (Mathf.Sin(yAngleForX) * newXZDistance);
-
+           
                 flip = false;
 
             }
@@ -274,40 +213,69 @@ public class playerConToAdd : MonoBehaviour
 
 
 
+        Vector3 tempDir = new Vector3(-tempCurrentLoc.x, tempCurrentLoc.y, -tempCurrentLoc.z);
+        //Debug.LogError("m_yup is: " + m_yUp);
+        if(!m_yUp)
+        {
+            if(flip)
+            {
+                tempDir.y = tempCurrentLoc.y;
+                tempDir.x = -tempCurrentLoc.x;
+                tempDir.z = -tempCurrentLoc.z;
+            }
+            else
+            {
+                tempDir.y = -tempCurrentLoc.y;
+                tempDir.x = -tempCurrentLoc.x;
+                tempDir.z = -tempCurrentLoc.z;
+            }
 
+            
+        }
+        else if(m_yUp)
+        {
+            if(flip)
+            {
+                tempDir.y = tempCurrentLoc.y;
+                tempDir.x = -tempCurrentLoc.x;
+                tempDir.z = -tempCurrentLoc.z;
+            }
+            else
+            {
+                tempDir.y = -tempCurrentLoc.y;
+                tempDir.x = -tempCurrentLoc.x;
+                tempDir.z = -tempCurrentLoc.z;
+            }
+            
+        }
         tempCurrentLoc += m_grapplePoint;
-
+        tempDir.Normalize();
 
         float oppX = -tempCurrentLoc.x;
         float oppZ = -tempCurrentLoc.z;
         float diffY = tempCurrentLoc.y - m_currentLoc.y;
-
+        
         Vector3 direction;
-        direction = new Vector3(oppX, 0f, oppZ);
-        direction = (direction - m_currentLoc);
-
+        direction = (tempCurrentLoc - m_currentLoc);
+        //direction = new Vector3(oppX, 0f, oppZ);
+        //direction = (direction - m_currentLoc);
+       
         Debug.Log("the direction is: " + direction);
-
-        m_testRB.MovePosition(tempCurrentLoc);
+        //m_RB.velocity.Set(0f,0f,0f);
+        //m_RB.AddForce(tempDir, ForceMode.Force);
         //m_RB.position = tempCurrentLoc;
-    }
+        m_RB.MovePosition(tempCurrentLoc);
+       
 
-    
-    public void stopSwinging()
-    {
-        m_isSwinging = false;
-        m_RB.isKinematic = true;
-        gameObject.GetComponent<Rigidbody>().isKinematic = false;
+
     }
-    private void Update()
+    private void FixedUpdate()
     {
-        interact();
-        if(m_isSwinging)
-        {
-            
-            Swinging();
-            gameObject.transform.position = m_testSwing.transform.position;
-        }
+        //m_RB.AddForce(transform.right * 0.1f, ForceMode.Force);
+        newIdea();
+        m_Player = FindObjectOfType<PlayerController>().gameObject;
+        //m_Player.transform.position = gameObject.transform.position;
+        
     }
 
 }
