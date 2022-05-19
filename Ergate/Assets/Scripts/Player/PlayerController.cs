@@ -78,6 +78,8 @@ public class PlayerController : MonoBehaviour
     EnemiesCameraLock lockScript;
     [HideInInspector] public bool stickToAttack = false;
 
+    private Vector3 m_InputDirection;
+
     [SerializeField] private AttackInput m_AttackInput;
 
     void Start()
@@ -128,9 +130,9 @@ public class PlayerController : MonoBehaviour
         RaycastHit hit;
         isOnGround = Physics.SphereCast(movementCollider.bounds.center, movementCollider.radius-0.2f, Vector3.down, out hit, movementCollider.bounds.extents.y-0.2f, m_Ground);
 
-        Vector3 inputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); //first the character's direction is defined by the inputs
+        m_InputDirection = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical")); //first the character's direction is defined by the inputs
         Quaternion cameraYRotation = Quaternion.Euler(0, cameraCentre.transform.rotation.eulerAngles.y, 0);
-        inputDirection = cameraYRotation * inputDirection; //transform the direction vector by camera centre's quaternion to make the direction relative to camera
+        m_InputDirection = cameraYRotation * m_InputDirection; //transform the direction vector by camera centre's quaternion to make the direction relative to camera
 
         //if(pauseMenu.active == false)
         //{
@@ -152,16 +154,16 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-        if (inputDirection.magnitude >= 0.1f) //if user is pressing a movement button
+        if (m_InputDirection.magnitude >= 0.1f) //if user is pressing a movement button
         {
             if (!cameraLockedToTarget && !lockAttackDirection)
             {
-                RotateObjectToDirection(inputDirection, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
+                RotateObjectToDirection(m_InputDirection, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
             }
             if (!lockMovement)
             {
-                RotateObjectToDirection(inputDirection, character.transform, rotationTime, ref angularVelocity);
-                movementDirection = inputDirection.normalized;
+                RotateObjectToDirection(m_InputDirection, character.transform, rotationTime, ref angularVelocity);
+                movementDirection = m_InputDirection.normalized;
             }
         }
         else
@@ -195,7 +197,7 @@ public class PlayerController : MonoBehaviour
             jumping = true;
             
         }
-        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f && Mathf.Abs(rigidbody.velocity.z) > 0.1f && inputDirection.magnitude > 0.2f) && isOnGround && !doubleJumped && !lockMovement)
+        if((Mathf.Abs(rigidbody.velocity.x) > 0.1f && Mathf.Abs(rigidbody.velocity.z) > 0.1f && m_InputDirection.magnitude > 0.2f) && isOnGround && !doubleJumped && !lockMovement)
         {
             animator.SetBool("IsRunning", true);
             
@@ -257,11 +259,7 @@ public class PlayerController : MonoBehaviour
 
         if(m_hasDashed)
         {
-
-            lockMovement = true;
-            rigidbody.useGravity = false;
-            rigidbody.velocity = character.transform.forward * m_dashSpeed;
-            StartCoroutine(dash());
+            StartCoroutine(dash(m_InputDirection));
         }
 
         //if movement is locked, stop the player
@@ -379,8 +377,13 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private IEnumerator dash()
+    private IEnumerator dash(Vector3 inputDirection)
     {
+        
+        lockMovement = true;
+        rigidbody.useGravity = false;
+        rigidbody.velocity = inputDirection * m_dashSpeed;
+        RotateObjectToDirection(m_InputDirection, character.transform, rotationTime, ref angularVelocity);
         yield return new WaitForSeconds(dashTime);
         m_hasDashed = false;
         rigidbody.useGravity = true;
