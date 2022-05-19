@@ -23,12 +23,13 @@ public class AttackState
     {
         attackObject = p_attackObject;
     }
-    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed)
+    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string p_animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed)
     {
         attackBeginningTime = p_beginningTime;
         attackTime = p_attackTime;
         attackRange = p_range;
         toEnemy = p_toEnemy;
+        animationTrigger = p_animationTrigger;
         attackDirection = p_attackDirection;
         speed = p_speed;
     }
