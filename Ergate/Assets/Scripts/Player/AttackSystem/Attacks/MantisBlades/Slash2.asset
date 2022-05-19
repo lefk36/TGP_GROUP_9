@@ -25,7 +25,7 @@ MonoBehaviour:
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
   stoppingPower: 1
-  animationTriggerName: Punching
+  animationTriggerName: Slash2
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: BasicDown

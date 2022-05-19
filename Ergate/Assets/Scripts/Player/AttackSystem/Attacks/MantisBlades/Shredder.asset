@@ -23,7 +23,7 @@ MonoBehaviour:
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
   stoppingPower: 1
-  animationTriggerName: 
+  animationTriggerName: ShredderAttack
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: AlternativeHold
