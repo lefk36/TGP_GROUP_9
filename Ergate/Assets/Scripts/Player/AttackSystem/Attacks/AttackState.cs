@@ -33,10 +33,10 @@ public class AttackState
         attackDirection = p_attackDirection;
         speed = p_speed;
     }
-    public virtual void SetVariables(PlayerController p_playerScript, Transform p_attackParentObj, Vector3 p_targetPos)
+    public virtual void SetVariables(PlayerController p_playerScript, Transform p_attackParentObj, Vector3 p_targetPos, Animator anim)
     {
         playerScript = p_playerScript;
-        playerAnimator = playerScript.transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+        playerAnimator = anim;
         attackParentObj = p_attackParentObj;
         targetPos = p_targetPos;
     }
