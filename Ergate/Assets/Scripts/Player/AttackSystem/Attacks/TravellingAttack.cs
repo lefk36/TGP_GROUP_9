@@ -26,7 +26,6 @@ public class TravellingAttack : AttackState
         Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
         rb.useGravity = false;
         GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
-        attackInstance.transform.parent = null;
         Vector3 newAttackDirection = attackParentObj.rotation * attackDirection;
         float distanceTravelled = 0;
         Vector3 startPosition = playerScript.transform.position;

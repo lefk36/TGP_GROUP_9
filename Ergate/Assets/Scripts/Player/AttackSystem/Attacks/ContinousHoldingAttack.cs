@@ -15,6 +15,15 @@ public class ContinousHoldingAttack : AttackState
     protected override IEnumerator AttackCoroutine()
     {
         completed = false;
+        playerScript.lockAttackDirection = true;
+        playerScript.lockMovement = true;
+        playerScript.stickToAttack = true;
+        yield return new WaitForSeconds(attackBeginningTime);
+        if (animationTrigger != null)
+        {
+            playerAnimator.SetTrigger(animationTrigger);
+        }
+        GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
         while (!Input.GetButtonUp("AlternativeAttack"))
         {
             Debug.Log("Shredding..");
@@ -24,6 +33,9 @@ public class ContinousHoldingAttack : AttackState
             }
             yield return null;
         }
+        playerScript.lockAttackDirection = false;
+        playerScript.lockMovement = false;
+        playerScript.stickToAttack = false;
         completed = true;
         yield return null;
     }

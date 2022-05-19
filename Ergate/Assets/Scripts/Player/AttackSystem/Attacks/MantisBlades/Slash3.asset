@@ -10,20 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: Slash1Pause
+  m_Name: Slash3
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: e2918a05c58beef44a59d8ea99e758e0, type: 3}
-  attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
-  attackName: s1pause
-  chainableAttacks:
-  - {fileID: 11400000, guid: 3b4c3c19ac1e2984ab7aca2123970adb, type: 2}
-  attackBeginningTime: 0
-  attackTime: 0.25
+  thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
+  attackObject: {fileID: 7320784251681795308, guid: 6b79c4d8fa2c3e34c9c01ddc7af8c605, type: 3}
+  attackName: slash3
+  chainableAttacks: []
+  attackBeginningTime: 0.3
+  attackTime: 0.5
   attackRange: 1
-  toEnemy: 0
+  toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
   animationTriggerName: 
   airRequired: 0
-  timeHeldRequired: 0.3
-  buttonRequired: No Input
+  timeHeldRequired: 0
+  buttonRequired: BasicDown

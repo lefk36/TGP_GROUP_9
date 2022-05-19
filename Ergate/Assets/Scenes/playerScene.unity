@@ -155,6 +155,10 @@ PrefabInstance:
       value: 38
       objectReference: {fileID: 0}
     - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_Ground.m_Bits
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1992738683311139318, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: dashStoppingPower
       value: 3
       objectReference: {fileID: 0}

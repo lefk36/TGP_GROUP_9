@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
+  m_Name: SpinRise
+  m_EditorClassIdentifier: 
+  thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
+  attackObject: {fileID: 5064823402312973434, guid: e5523370edbd1164a9b10e4d378b587c, type: 3}
+  attackName: spinrise
+  chainableAttacks: []
+  attackBeginningTime: 0.3
+  attackTime: 0.5
+  attackRange: 3.5
+  toEnemy: 0
+  attackDirection: {x: 0, y: 1, z: 0}
+  speed: 20
+  animationTriggerName: 
+  airRequired: 0
+  timeHeldRequired: 0
+  buttonRequired: AlternativeDown

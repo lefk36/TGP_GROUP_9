@@ -35,7 +35,7 @@ public class AttackState
     public virtual void SetVariables(PlayerController p_playerScript, Transform p_attackParentObj, Vector3 p_targetPos)
     {
         playerScript = p_playerScript;
-        playerScript.transform.GetChild(0).GetChild(0).GetComponent<Animator>();
+        playerAnimator = playerScript.transform.GetChild(0).GetChild(0).GetComponent<Animator>();
         attackParentObj = p_attackParentObj;
         targetPos = p_targetPos;
     }

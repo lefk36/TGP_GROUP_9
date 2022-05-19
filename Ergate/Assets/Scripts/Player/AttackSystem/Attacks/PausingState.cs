@@ -15,8 +15,17 @@ public class PausingState : AttackState
     protected override IEnumerator AttackCoroutine()
     {
         completed = false;
-        Debug.Log("Paused..");
+        playerScript.lockAttackDirection = true;
+        playerScript.lockMovement = true;
+        playerScript.stickToAttack = true;
+        if (animationTrigger != null)
+        {
+            playerAnimator.SetTrigger(animationTrigger);
+        }
         yield return new WaitForSeconds(attackTime);
+        playerScript.stickToAttack = false;
+        playerScript.lockAttackDirection = false;
+        playerScript.lockMovement = false;
         completed = true;
         yield return null;
     }
