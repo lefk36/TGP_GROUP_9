@@ -64,7 +64,7 @@ public class AttackData : ScriptableObject
     {
         foreach (AttackData possibleAttack in chainableAttacks)
         {
-            if(length > possibleAttack.timeHeldRequired && button == possibleAttack.buttonRequired && air == airRequired)
+            if(length > possibleAttack.timeHeldRequired && button == possibleAttack.buttonRequired && air == possibleAttack.airRequired)
             {
                 if (transitionAttackData == null)
                 {
