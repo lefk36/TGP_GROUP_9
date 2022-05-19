@@ -26,7 +26,7 @@ public class HealthBar : MonoBehaviour
         instance = this;
         cubeContainers = new List<GameObject>();
 
-     
+    
     }
 
     public void SetupCubes(int cubesIn)
@@ -78,7 +78,7 @@ public class HealthBar : MonoBehaviour
         }
         currentContainer.SetCube(currentCubes);
     }
-
+    
     public void AddContainer()
     {
         GameObject newContainer = Instantiate(cubeContainer, transform);

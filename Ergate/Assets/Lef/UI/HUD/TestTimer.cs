@@ -6,10 +6,13 @@ public class TestTimer : MonoBehaviour
 {
     [SerializeField] Timer m_timer;
 
+    [SerializeField] int countTime;
 
     private void Start()
     {
-        m_timer.SetTime(100).BeginTimer();
+        m_timer.SetTime(countTime).BeginTimer();
     }
+
+   
 
 }

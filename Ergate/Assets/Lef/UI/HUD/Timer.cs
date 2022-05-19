@@ -18,6 +18,14 @@ public class Timer : MonoBehaviour
         ResetTimer();
     }
 
+    private void Update()
+    {
+        if(remainingTime <= 0)
+        {
+            Debug.Log("Player Lost");
+        }
+    }
+
     private void ResetTimer()
     {
         timeText.text = "00:00";

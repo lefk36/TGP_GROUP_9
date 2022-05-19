@@ -20,11 +20,12 @@ public class testhealth : MonoBehaviour
 
     public void UpAmount(string valueInput)
     {
-        amountUp = float.Parse(valueInput);
+        //amountUp = float.Parse(valueInput);
     }
 
     public void SubmitUp()
     {
+        amountUp = 2.0f;
         HealthBar.instance.AddHealth(amountUp);
     }
 
