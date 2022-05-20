@@ -23,7 +23,7 @@ MonoBehaviour:
   attackDirection: {x: 0, y: 1, z: 0}
   speed: 20
   stoppingPower: 2
-  animationTriggerName: 
+  animationTriggerName: Uppercut
   airRequired: 0
   timeHeldRequired: 0
   buttonRequired: AlternativeDown
