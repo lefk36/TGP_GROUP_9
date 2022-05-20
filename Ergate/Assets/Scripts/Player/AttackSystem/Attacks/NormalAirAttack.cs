@@ -10,6 +10,10 @@ public class NormalAirAttack : AttackState
     }
     public override void CancelAttack(MonoBehaviour caller)
     {
+        if (attackInstance != null)
+        {
+            GameObject.Destroy(attackInstance);
+        }
         base.CancelAttack(caller);
     }
 
@@ -27,13 +31,10 @@ public class NormalAirAttack : AttackState
             playerAnimator.SetTrigger(animationTrigger);
         }
         yield return new WaitForSeconds(attackBeginningTime);
-        playerScript.lockAttackDirection = true;
-        playerScript.lockMovement = true;
-        playerScript.stickToAttack = true;
-        playerScript.lockFalling = true;
-        GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
-        attackInstance.transform.parent = null;
+        rb.AddForce(0, 1 * attackRange, 0, ForceMode.Impulse);
+        attackInstance = Object.Instantiate(attackObject, attackParentObj);
         yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(attackEndTime);
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;

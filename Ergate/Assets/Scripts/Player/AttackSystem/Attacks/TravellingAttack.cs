@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TravellingAttack : AttackState
 {
-    GameObject attackInstance;
     public override void StartAttack(Weapon caller)
     {
         base.StartAttack(caller);
@@ -48,6 +47,7 @@ public class TravellingAttack : AttackState
         }
         playerScript.lockFalling = false;
         rb.velocity = rb.velocity / stoppingPower;
+        yield return new WaitForSeconds(attackEndTime);
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;

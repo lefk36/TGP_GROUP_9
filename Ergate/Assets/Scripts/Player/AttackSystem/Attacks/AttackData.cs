@@ -14,6 +14,7 @@ public class AttackData : ScriptableObject
     public List<AttackData> chainableAttacks;
     public float attackBeginningTime = 0;
     public float attackTime = 0;
+    public float attackEndTime = 0;
     public float attackRange = 1;
     [Header("Travelling Attacks")]
     public bool toEnemy;
@@ -38,7 +39,7 @@ public class AttackData : ScriptableObject
                 state.SetAttackObject(attackObject);
             }
             attackDirection = attackDirection.normalized;
-            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName, attackDirection, toEnemy, speed, stoppingPower);
+            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName, attackDirection, toEnemy, speed, stoppingPower, attackEndTime);
         }
     }
     public bool airRequired;

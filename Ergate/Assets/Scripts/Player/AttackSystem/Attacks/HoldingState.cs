@@ -15,7 +15,6 @@ public class HoldingState : AttackState
     protected override IEnumerator AttackCoroutine()
     {
         completed = false;
-        playerScript.lockAttackDirection = true;
         playerScript.lockMovement = true;
         playerScript.stickToAttack = true;
         if (animationTrigger != null)
@@ -30,7 +29,6 @@ public class HoldingState : AttackState
             }
             yield return null;
         }
-        playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
         playerScript.stickToAttack = false;
         completed = true;

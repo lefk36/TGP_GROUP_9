@@ -10,6 +10,10 @@ public class NormalStandingAttack : AttackState
     }
     public override void CancelAttack(MonoBehaviour caller)
     {
+        if (attackInstance != null)
+        {
+            GameObject.Destroy(attackInstance);
+        }
         base.CancelAttack(caller);
     }
 
@@ -24,9 +28,10 @@ public class NormalStandingAttack : AttackState
             playerAnimator.SetTrigger(animationTrigger);
         }
         yield return new WaitForSeconds(attackBeginningTime);
-        GameObject attackInstance = Object.Instantiate(attackObject, attackParentObj);
+        attackInstance = Object.Instantiate(attackObject, attackParentObj);
         attackInstance.transform.parent = null;
         yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(attackEndTime);
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;

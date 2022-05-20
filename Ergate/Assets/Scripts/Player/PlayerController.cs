@@ -46,6 +46,7 @@ public class PlayerController : MonoBehaviour
     //camera objects to use for input calculations
     [HideInInspector] public GameObject cameraCentre;
     [HideInInspector] public new GameObject camera;
+    public Camera mainCam;
 
     //Attack direction object that rotates with input or uses the camera to rotate.
     private Transform attackDirectionObject;
@@ -72,7 +73,7 @@ public class PlayerController : MonoBehaviour
     public float dashTime;
     public float dashStoppingPower;
     [HideInInspector] public bool m_hasDashed = false;
-
+    private bool coroutineRunning = false;
 
     //other scripts
     EnemiesCameraLock lockScript;
@@ -110,6 +111,10 @@ public class PlayerController : MonoBehaviour
             if(camera == null)
             {
                 Debug.Log("No child object with the name 'Main Camera' was found");
+            }
+            else
+            {
+                mainCam = camera.GetComponent<Camera>();
             }
         }
         else Debug.Log("No child object with the name 'Camera Centre' was found");
@@ -154,17 +159,14 @@ public class PlayerController : MonoBehaviour
             }
             
         }
-        if (m_InputDirection.magnitude >= 0.1f) //if user is pressing a movement button
+        else if (!cameraLockedToTarget && !lockAttackDirection)
         {
-            if (!cameraLockedToTarget && !lockAttackDirection)
-            {
-                RotateObjectToDirection(m_InputDirection, attackDirectionObject, 0.0f, ref attackDirectionAngularVelocity);
-            }
-            if (!lockMovement)
-            {
-                RotateObjectToDirection(m_InputDirection, character.transform, rotationTime, ref angularVelocity);
-                movementDirection = m_InputDirection.normalized;
-            }
+            RotateObjectToDirectionInstant(camera.transform.forward, attackDirectionObject);
+        }
+        if (m_InputDirection.magnitude >= 0.1f && !lockMovement) //if user is pressing a movement button
+        {
+            RotateObjectToDirection(m_InputDirection, character.transform, rotationTime, ref angularVelocity);
+            movementDirection = m_InputDirection.normalized;
         }
         else
         {
@@ -260,7 +262,7 @@ public class PlayerController : MonoBehaviour
             gravityScaleScript.gravityScale = 1;
         }
 
-        if(m_hasDashed)
+        if(m_hasDashed && !coroutineRunning)
         {
             StartCoroutine(dash(m_InputDirection));
         }
@@ -382,7 +384,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator dash(Vector3 inputDirection)
     {
-        
+        coroutineRunning = true;
         lockMovement = true;
         lockFalling = true;
         Vector3 dashDirection = inputDirection;
@@ -391,13 +393,19 @@ public class PlayerController : MonoBehaviour
         {
             dashDirection = Quaternion.Euler(0, cameraCentre.transform.rotation.eulerAngles.y, 0) * new Vector3(0, 0, 1);
         }
-        rigidbody.velocity = dashDirection * m_dashSpeed;
-        RotateObjectToDirection(dashDirection, character.transform, rotationTime, ref angularVelocity);
-        yield return new WaitForSeconds(dashTime);
+        float elapsedTime = 0;
+        while(elapsedTime < dashTime)
+        {
+            elapsedTime += Time.deltaTime;
+            rigidbody.velocity = dashDirection * m_dashSpeed;
+            RotateObjectToDirection(dashDirection, character.transform, rotationTime, ref angularVelocity);
+            yield return null;
+        }
         lockFalling = false;
         lockMovement = false;
         rigidbody.velocity = rigidbody.velocity / dashStoppingPower;
         m_hasDashed = false;
+        coroutineRunning = false;
     }
 
 

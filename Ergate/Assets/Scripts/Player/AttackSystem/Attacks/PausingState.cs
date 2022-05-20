@@ -23,6 +23,7 @@ public class PausingState : AttackState
             playerAnimator.SetTrigger(animationTrigger);
         }
         yield return new WaitForSeconds(attackTime);
+        yield return new WaitForSeconds(attackEndTime);
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;

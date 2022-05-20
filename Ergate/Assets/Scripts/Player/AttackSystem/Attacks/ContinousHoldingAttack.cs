@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ContinousHoldingAttack : AttackState
 {
-    GameObject attackInstance;
+    
     public override void StartAttack(Weapon caller)
     {
         base.StartAttack(caller);
@@ -39,6 +39,7 @@ public class ContinousHoldingAttack : AttackState
             yield return null;
         }
         GameObject.Destroy(attackInstance);
+        yield return new WaitForSeconds(attackEndTime);
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
         playerScript.stickToAttack = false;

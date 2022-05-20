@@ -14,20 +14,24 @@ public class AttackState
     Coroutine thisAttackRoutine;
     protected float attackBeginningTime;
     protected float attackTime;
+    protected float attackEndTime;
     protected float attackRange;
     protected string animationTrigger;
     protected Vector3 attackDirection;
     protected bool toEnemy;
     protected float speed;
     protected float stoppingPower;
+
+    protected GameObject attackInstance;
     public void SetAttackObject(GameObject p_attackObject)
     {
         attackObject = p_attackObject;
     }
-    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string p_animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed, float p_stoppingPower)
+    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string p_animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed, float p_stoppingPower, float p_attackEndTime)
     {
         attackBeginningTime = p_beginningTime;
         attackTime = p_attackTime;
+        attackEndTime = p_attackEndTime;
         attackRange = p_range;
         toEnemy = p_toEnemy;
         animationTrigger = p_animationTrigger;
