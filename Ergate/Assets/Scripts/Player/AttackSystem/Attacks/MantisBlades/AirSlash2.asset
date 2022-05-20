@@ -10,13 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: AirSlash1
+  m_Name: AirSlash2
   m_EditorClassIdentifier: 
   thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
-  attackObject: {fileID: 5492940802310502598, guid: b5f70d76a6cf9eb48984ccfb79fa6a28, type: 3}
-  attackName: airslash1
-  chainableAttacks:
-  - {fileID: 11400000, guid: 5ef70cb822857de4aa9dbbab8f41d200, type: 2}
+  attackObject: {fileID: 4354556889291407319, guid: f69b8f2acbf0f2f439d3ca85dcfc7b20, type: 3}
+  attackName: airslash2
+  chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5
   attackEndTime: 0

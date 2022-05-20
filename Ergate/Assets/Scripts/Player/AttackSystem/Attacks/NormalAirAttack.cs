@@ -34,11 +34,11 @@ public class NormalAirAttack : AttackState
         rb.AddForce(0, 1 * attackRange, 0, ForceMode.Impulse);
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
         yield return new WaitForSeconds(attackTime);
+        playerScript.lockFalling = false;
         yield return new WaitForSeconds(attackEndTime);
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
-        playerScript.lockFalling = false;
         completed = true;
     }
 }
