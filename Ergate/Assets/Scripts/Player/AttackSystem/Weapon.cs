@@ -79,6 +79,7 @@ public class Weapon : MonoBehaviour
     {
         if (currentAttackData.name != baseAttackData.name)
         {
+            currentAttackData.state.SetPlayerController(controllerScript);
             currentAttackData.CancelAttack(this);
             controllerScript.stickToAttack = false;
             controllerScript.lockAttackDirection = false;

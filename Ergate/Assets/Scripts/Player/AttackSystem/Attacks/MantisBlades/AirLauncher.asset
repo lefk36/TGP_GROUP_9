@@ -10,23 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: AirSlash2
+  m_Name: AirLauncher
   m_EditorClassIdentifier: 
   thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
-  attackObject: {fileID: 4354556889291407319, guid: f69b8f2acbf0f2f439d3ca85dcfc7b20, type: 3}
-  attackName: airslash2
-  chainableAttacks:
-  - {fileID: 11400000, guid: 28580da66b405c1408ea921b08f3bfe2, type: 2}
-  - {fileID: 11400000, guid: fe2eec2afb5fd524ba26007e5e32adf6, type: 2}
+  attackObject: {fileID: 286232789824516609, guid: d702666d3e5477c42afa795c8eaa2591, type: 3}
+  attackName: airlauncher
+  chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5
-  attackEndTime: 0.1
-  attackRange: 0.6
+  attackEndTime: 0.25
+  attackRange: 2
   toEnemy: 1
-  attackDirection: {x: 0, y: 0, z: 0}
+  attackDirection: {x: 0, y: -1, z: 0}
   speed: 0
   stoppingPower: 1
-  animationTriggerName: FlyingKick
+  animationTriggerName: Slash3
   airRequired: 1
   timeHeldRequired: 0
-  buttonRequired: BasicDown
+  buttonRequired: AlternativeDown

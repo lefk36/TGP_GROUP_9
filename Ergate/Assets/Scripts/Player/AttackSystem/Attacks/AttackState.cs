@@ -27,6 +27,10 @@ public class AttackState
     {
         attackObject = p_attackObject;
     }
+    public void SetPlayerController(PlayerController p_playerScript)
+    {
+        playerScript = p_playerScript;
+    }
     public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string p_animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed, float p_stoppingPower, float p_attackEndTime)
     {
         attackBeginningTime = p_beginningTime;

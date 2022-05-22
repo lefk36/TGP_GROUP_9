@@ -18,7 +18,8 @@ MonoBehaviour:
   chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5
-  attackRange: 3.5
+  attackEndTime: 0
+  attackRange: 6
   toEnemy: 0
   attackDirection: {x: 0, y: 1, z: 0}
   speed: 20
