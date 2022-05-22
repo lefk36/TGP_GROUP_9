@@ -19,7 +19,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5ef70cb822857de4aa9dbbab8f41d200, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
-  attackEndTime: 0
+  attackEndTime: 0.1
   attackRange: 0.6
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}

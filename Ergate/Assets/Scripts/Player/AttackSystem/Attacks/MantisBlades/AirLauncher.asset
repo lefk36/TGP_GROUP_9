@@ -10,21 +10,21 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: Riser
+  m_Name: AirLauncher
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
+  thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
   attackObject: {fileID: 286232789824516609, guid: d702666d3e5477c42afa795c8eaa2591, type: 3}
-  attackName: riser
+  attackName: airlauncher
   chainableAttacks: []
-  attackBeginningTime: 0.1
-  attackTime: 0.35
-  attackEndTime: 0
-  attackRange: 6
-  toEnemy: 0
-  attackDirection: {x: 0, y: 1, z: 0}
-  speed: 20
-  stoppingPower: 2
-  animationTriggerName: Uppercut
-  airRequired: 0
+  attackBeginningTime: 0.3
+  attackTime: 0.5
+  attackEndTime: 0.25
+  attackRange: 2
+  toEnemy: 1
+  attackDirection: {x: 0, y: -1, z: 0}
+  speed: 0
+  stoppingPower: 1
+  animationTriggerName: Slash3
+  airRequired: 1
   timeHeldRequired: 0
   buttonRequired: AlternativeDown

@@ -15,10 +15,12 @@ MonoBehaviour:
   thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
   attackObject: {fileID: 4354556889291407319, guid: f69b8f2acbf0f2f439d3ca85dcfc7b20, type: 3}
   attackName: airslash2
-  chainableAttacks: []
+  chainableAttacks:
+  - {fileID: 11400000, guid: 28580da66b405c1408ea921b08f3bfe2, type: 2}
+  - {fileID: 11400000, guid: fe2eec2afb5fd524ba26007e5e32adf6, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
-  attackEndTime: 0
+  attackEndTime: 0.1
   attackRange: 0.6
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}
