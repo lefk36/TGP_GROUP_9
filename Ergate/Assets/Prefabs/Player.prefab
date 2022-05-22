@@ -630,11 +630,18 @@ MonoBehaviour:
   readyForAction: 1
   isOnGround: 1
   cameraLockedToTarget: 0
+  rigidbody: {fileID: 0}
+  gravityScaleScript: {fileID: 0}
+  m_PlayerStats: {fileID: 8759917491035486813}
   model: {fileID: 0}
   animator: {fileID: 0}
   cameraCentre: {fileID: 0}
   camera: {fileID: 0}
-  m_dashForce: 10
+  mainCam: {fileID: 0}
+  m_dashSpeed: 0
+  dashTime: 0
+  dashStoppingPower: 0
+  m_hasDashed: 0
   stickToAttack: 0
   m_AttackInput: {fileID: 18877949}
 --- !u!114 &1031727961
