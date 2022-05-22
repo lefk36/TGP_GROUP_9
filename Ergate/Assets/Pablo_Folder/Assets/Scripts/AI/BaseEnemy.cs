@@ -54,6 +54,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     IEnumerator EnemyDeath()
     {
+        m_Agent.SetDestination(transform.position);
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }

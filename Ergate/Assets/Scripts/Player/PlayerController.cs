@@ -33,6 +33,7 @@ public class PlayerController : MonoBehaviour
     [HideInInspector] public new Rigidbody rigidbody;
     private CapsuleCollider movementCollider;
     [HideInInspector] public GravityScaler gravityScaleScript;
+    public PlayerPoiseAndHealth m_PlayerStats;
 
     //character object and its components
     private GameObject character;
@@ -365,25 +366,30 @@ public class PlayerController : MonoBehaviour
 
     private void dashControl()
     {
-        if(m_hasDashed)
+        if(!m_PlayerStats.m_IsDead)
         {
-            animator.SetBool("IsDashing", true);
-        }
-        else
-        {
-            animator.SetBool("IsDashing", false);
-        }
+            if (m_hasDashed)
+            {
+                animator.SetBool("IsDashing", true);
+            }
+            else
+            {
+                animator.SetBool("IsDashing", false);
+            }
 
-        if (Input.GetButtonDown("dash") && !m_hasDashed)
-        {
-            
-            m_hasDashed = true;
-            m_AttackInput.CancelAttacks();
+            if (Input.GetButtonDown("dash") && !m_hasDashed)
+            {
+
+                m_hasDashed = true;
+                m_AttackInput.CancelAttacks();
+            }
         }
+        
     }
 
     private IEnumerator dash(Vector3 inputDirection)
     {
+        
         coroutineRunning = true;
         lockMovement = true;
         lockFalling = true;
