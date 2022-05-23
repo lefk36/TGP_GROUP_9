@@ -309,6 +309,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 397837941}
+  - component: {fileID: 397837942}
   m_Layer: 0
   m_Name: Credits
   m_TagString: Untagged
@@ -331,6 +332,19 @@ Transform:
   m_Father: {fileID: 112842504}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &397837942
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 397837940}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84b53886488009f44a10f5fa87e890d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 10
 --- !u!1 &910149531
 GameObject:
   m_ObjectHideFlags: 0
@@ -587,9 +601,9 @@ MonoBehaviour:
   imgShow: {fileID: 910149533}
   imageToShow:
   - {fileID: 21300000, guid: 4a5ae9910df19e547a9c098980768b84, type: 3}
-  - {fileID: 21300000, guid: 636d35724d1f54a4687fd94be5dd1d07, type: 3}
-  - {fileID: 21300000, guid: 1b2c0ef1afced654aa03e21f32a58b09, type: 3}
-  - {fileID: 21300000, guid: d44913ac4adcc1a458024cd07291d235, type: 3}
+  - {fileID: 21300000, guid: 4a5ae9910df19e547a9c098980768b84, type: 3}
+  - {fileID: 21300000, guid: dcfbe0cc0354689468d97dc7181f8687, type: 3}
+  - {fileID: 21300000, guid: 08fa44d024f13ff4f8c96cd5c0715b0b, type: 3}
 --- !u!4 &1599535678
 Transform:
   m_ObjectHideFlags: 0
@@ -674,7 +688,8 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: "CREDITS\n\nCOMBAT MECHANICS\nSzymon\n\nAI PROGRAMMING\nPablo\n\nLOCOMOTIONS\nSzymon\n\nANIMATIONS\nPablo\n\nCAMERA
+    PROGRAMMING\nPablo \n\nANIMATION SOURCES \nMixamo.com\n\n"
 --- !u!222 &1993035902
 CanvasRenderer:
   m_ObjectHideFlags: 0
