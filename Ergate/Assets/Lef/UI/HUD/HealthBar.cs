@@ -55,13 +55,13 @@ public class HealthBar : MonoBehaviour
 
     public void SetCurrentHealth(float health)
     {
-        currentCubes = (health/100);
+        currentCubes = (health/10);
         currentContainer.SetCube(currentCubes);
     }
 
     public void AddHealth(float healthUp)
     {
-        currentCubes += (healthUp/100);
+        currentCubes += (healthUp/10);
         if(currentCubes > totalCubes)
         {
             currentCubes = (float)totalCubes;
@@ -71,7 +71,7 @@ public class HealthBar : MonoBehaviour
 
     public void RemoveHealth(float healthDown)
     {
-        currentCubes -= (healthDown/100);
+        currentCubes -= (healthDown/10);
         if(currentCubes < 0)
         {
             currentCubes = 0f;

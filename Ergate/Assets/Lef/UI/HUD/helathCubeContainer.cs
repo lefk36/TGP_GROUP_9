@@ -19,7 +19,7 @@ public class helathCubeContainer : MonoBehaviour
    public void SetCube(float count)
     {
         fill = count;
-        fillImage.fillAmount = (fill*100);
+        fillImage.fillAmount = (fill*10);
         count--;
         if(next != null)
         {
