@@ -23,15 +23,17 @@ public class Swat : BaseEnemy
     void Update()
     {
         FacePlayer();
-        Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
+        Vector3 playerFloorPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z);
+        Vector3 enemyToPlayer = playerFloorPos - transform.position;
         if (enemyToPlayer.magnitude <= m_Agent.stoppingDistance)
         {
+            Debug.Log("Player in Range");
             m_Animator.SetBool("IsRunning", false);
             m_Animator.SetBool("InRange", true);
         }
         else
         {
-            
+            Debug.Log("Player not in range");
             SetEnemyPath();
             m_Animator.SetBool("IsRunning", true);
             m_Animator.SetBool("InRange", false);

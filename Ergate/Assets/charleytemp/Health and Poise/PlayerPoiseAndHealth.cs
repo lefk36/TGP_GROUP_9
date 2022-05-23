@@ -148,6 +148,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         m_PlayerController.lockMovement = true;        //stuns the player while they're DEAD
         m_PlayerController.lockAttackDirection = true; //
         m_PlayerController.readyForAction = false; //
+        m_PlayerController.lockFalling = false;
         /*StopAllCoroutines(); */// stops regen
         m_AttackInput.CancelAttacks();
         m_PlayerAnimator.SetTrigger("IsDead");

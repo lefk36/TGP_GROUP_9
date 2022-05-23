@@ -46,7 +46,8 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     {
         if(!m_IsAttacking)
         {
-            m_Agent.SetDestination(m_Target.transform.position);
+            Vector3 targetPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z);
+            m_Agent.SetDestination(targetPos);
         }
     }
 
