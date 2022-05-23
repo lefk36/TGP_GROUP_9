@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class TriggerEnemyDamage : MonoBehaviour
 {
-    
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if (other.gameObject.tag == "Player")
         {
             EventManager.current.EnemyDamage();
         }

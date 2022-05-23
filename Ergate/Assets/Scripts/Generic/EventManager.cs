@@ -41,5 +41,5 @@ public class EventManager : MonoBehaviour
             onEnemyDestroy();
         }
     }
-   
+
 }

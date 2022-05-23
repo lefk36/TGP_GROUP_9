@@ -10,10 +10,10 @@ public class TriggerPlayerDamage : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Enemy")
+        if (other.gameObject.tag == "Enemy")
         {
             Debug.Log("Player took damage");
-            EventManager.current.PlayerDamage(attackDirection,  healthDamageAmount,  poiseDamageAmount);
+            EventManager.current.PlayerDamage(attackDirection, healthDamageAmount, poiseDamageAmount);
         }
     }
 }
