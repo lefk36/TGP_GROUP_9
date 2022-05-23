@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c83bbdfa4d212847ba8d41175f6fb7e, type: 3}
   m_Name: Egg
   m_EditorClassIdentifier: 
+  myButton: {fileID: 0}
+  buttonsPrefab: {fileID: 0}
+  buttonContainer: {fileID: 0}
+  ItemIcon: {fileID: 21300000, guid: 636d35724d1f54a4687fd94be5dd1d07, type: 3}
+  buffs: []
   id: 0
-  ItemIcon: {fileID: 21300000, guid: 725eee98882998b468278cf3712b5ad0, type: 3}
   type: 3
   description: A peculiar egg. Makes you wonder what will hatch from it.

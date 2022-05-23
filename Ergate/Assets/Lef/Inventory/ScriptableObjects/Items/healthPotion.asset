@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44138fa5aebb68440b544e232e5e65ba, type: 3}
   m_Name: healthPotion
   m_EditorClassIdentifier: 
+  myButton: {fileID: 8918817312373334882, guid: 559e3ec1b441e16429cd30769061168d, type: 3}
+  buttonsPrefab: {fileID: 7935231964758116734, guid: 559e3ec1b441e16429cd30769061168d, type: 3}
+  buttonContainer: {fileID: 1656503108452640653, guid: 559e3ec1b441e16429cd30769061168d, type: 3}
+  ItemIcon: {fileID: 21300000, guid: 1b2c0ef1afced654aa03e21f32a58b09, type: 3}
+  buffs: []
   id: 1
-  ItemIcon: {fileID: 21300000, guid: 08fa44d024f13ff4f8c96cd5c0715b0b, type: 3}
   type: 1
   description: 
+  restoreHealth: 0

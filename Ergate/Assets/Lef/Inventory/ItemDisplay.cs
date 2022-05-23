@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using System;
 using UnityEngine.UI;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
@@ -77,7 +76,7 @@ public class ItemDisplay : MonoBehaviour
             var obj = Instantiate(inventoryPrefab, Vector3.zero, Quaternion.identity, transform) as GameObject;
             obj.GetComponent<RectTransform>().localPosition = GetPosition(i);
 
-            obj.GetComponent<Button>().onClick.AddListener(delegate {OnButtonClick();});
+            obj.GetComponent<Button>().onClick.AddListener(delegate { OnButtonClick(); });
             itemsDisplayed.Add(obj, inventory.Container.ObjectItems[i]);
         }
     }
