@@ -58,6 +58,7 @@ public class EnemiesCameraLock : MonoBehaviour
     private float m_ShortestDistance = Mathf.Infinity;
     private bool m_ResetShortest;
     private GameObject nearestEnemy;
+    public bool m_HasLocked = false;
 
     private void Awake()
     {
@@ -93,12 +94,32 @@ public class EnemiesCameraLock : MonoBehaviour
         {
             //Sets the object to look at and the smooth rotation of the camera center in Y
             m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
+            m_HasLocked = true;
             Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
             Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
             Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
             m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
+            
         }
+        //else
+        //{
+        //    if(m_TargetToLook.targetObj.gameObject == null)
+        //    {
+        //        m_TargetableEnemies.Remove(m_TargetToLook.targetObj.gameObject);
+        //    }
+        //}
+        if(m_HasLocked)
+        {
+            if (m_TargetableEnemies[m_TargetableEnemyIndex] == null)
+            {
+                m_TargetableEnemies.Remove(m_TargetableEnemies[m_TargetableEnemyIndex]);
+                m_HasLocked = false;
+                m_LockOn = false;
+
+            }
+        }
+        
     }
 
     private void Update()
@@ -109,12 +130,6 @@ public class EnemiesCameraLock : MonoBehaviour
         m_RightStickPressed = Input.GetButtonDown("RightStick");
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
 
-        
-            foreach (RaycastHit hit in m_Hits)
-            {
-                
-            }
-        
         //If the player press the mouse middle button or presses the right stick
         if (m_MiddleButtonPressed || m_RightStickPressed)
         {
@@ -265,18 +280,7 @@ public class EnemiesCameraLock : MonoBehaviour
                 //Creates raycasts from the camera to all the enemies
                 m_RayDirection = enemy.transform.position - transform.position;
                 m_Hits = Physics.RaycastAll(transform.position, m_RayDirection, m_MaxDistanceAllowed, m_Layer);
-
-                foreach (RaycastHit hit in m_Hits)
-                {
-                    if (hit.collider.tag == "Enemy")
-                    {
-                        if (hit.collider.gameObject == null)
-                        {
-                            m_LockOn = false;
-                            m_TargetableEnemies.Remove(hit.collider.gameObject);
-                        }
-                    }
-                }
+                
 
                 //If the enemies are visible
                 if (enemy.GetComponent<Renderer>().isVisible)
