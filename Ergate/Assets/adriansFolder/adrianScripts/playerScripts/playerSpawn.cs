@@ -61,6 +61,7 @@ public class playerSpawn : MonoBehaviour
     IEnumerator PlayerRespawnDelay()
     {
         yield return new WaitForSeconds(2.2f);
+        HealthBar.instance.SetCurrentHealth(m_PlayerStats.m_maximumHealth);
         m_CameraLock.m_LockOn = false;
         m_PlayerStats.m_currentPlayerHealth = m_PlayerStats.m_maximumHealth;
         m_PlayerStats.m_currentPlayerPoise = m_PlayerStats.m_maximumPoise;
