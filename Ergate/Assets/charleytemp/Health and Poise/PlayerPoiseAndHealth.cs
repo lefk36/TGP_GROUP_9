@@ -56,6 +56,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
 
     private void Start()
     {
+        HealthBar.instance.SetupCubes(10);
         m_PlayerSpawn = GetComponent<playerSpawn>();
         m_PlayerController = GetComponent<PlayerController>();
         m_Character = GameObject.Find("Character");
@@ -134,7 +135,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     //}
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
-      
+        HealthBar.instance.RemoveHealth(healthDamageAmount);
         m_PlayerAnimator.SetTrigger("TakeDamage");
         Debug.Log("okayer damage taken");
         rb.AddForce(attackDirection, ForceMode.Impulse);
