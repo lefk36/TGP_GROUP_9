@@ -15,8 +15,7 @@ public class Swat : BaseEnemy
         m_Animator = GetComponent<Animator>();
         m_Agent = GetComponent<NavMeshAgent>();
         m_Target = GameObject.FindGameObjectWithTag("Player");
-        //m_CanAttack = true;
-        m_IsAttacking = false;
+        m_CanAttack = true;
     }
 
     // Update is called once per frame
@@ -28,7 +27,19 @@ public class Swat : BaseEnemy
         if (enemyToPlayer.magnitude <= m_Agent.stoppingDistance)
         {
             m_Animator.SetBool("IsRunning", false);
-            m_Animator.SetBool("InRange", true);
+            StartCoroutine(ResetShoot());
+            if (m_CanAttack)
+            {
+                Debug.Log("Player in Range and can attack");
+                
+                
+            }
+            //else
+            //{
+            //    Debug.Log("CannotAttack");
+            //    m_Animator.SetBool("InRange", false);
+            //}
+            
         }
         else
         {
@@ -51,10 +62,24 @@ public class Swat : BaseEnemy
         return this.MemberwiseClone() as BaseEnemy;
     }
 
-    //IEnumerator ResetShoot()
-    //{
+    IEnumerator ResetShoot()
+    {
+        if(m_CanAttack)
+        {
+            m_Animator.SetBool("InRange", true);
+            Debug.Log(m_Animator.GetCurrentAnimatorStateInfo(0).length);
+            if(m_Animator.GetCurrentAnimatorStateInfo(0).length == 0)
+            {
+                m_CanAttack = false;
+            }
+        }
+        else
+        {
+            m_Animator.SetBool("InRange", false);
+            yield return new WaitForSeconds(4f);
+            m_CanAttack = true;
+        }
         
-    //    yield return new WaitForSeconds(1f);
-    //    m_CanAttack = true;
-    //}
+        
+    }
 }
