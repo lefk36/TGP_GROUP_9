@@ -110,6 +110,11 @@ public class EnemiesCameraLock : MonoBehaviour
         m_MiddleButtonPressed = Input.GetMouseButtonDown(2);
 
         
+            foreach (RaycastHit hit in m_Hits)
+            {
+                
+            }
+        
         //If the player press the mouse middle button or presses the right stick
         if (m_MiddleButtonPressed || m_RightStickPressed)
         {
@@ -261,12 +266,18 @@ public class EnemiesCameraLock : MonoBehaviour
                 m_RayDirection = enemy.transform.position - transform.position;
                 m_Hits = Physics.RaycastAll(transform.position, m_RayDirection, m_MaxDistanceAllowed, m_Layer);
 
-                if (enemy == null)
+                foreach (RaycastHit hit in m_Hits)
                 {
-                    m_LockOn = false;
-                    m_TargetableEnemies.Remove(enemy);
-
+                    if (hit.collider.tag == "Enemy")
+                    {
+                        if (hit.collider.gameObject == null)
+                        {
+                            m_LockOn = false;
+                            m_TargetableEnemies.Remove(hit.collider.gameObject);
+                        }
+                    }
                 }
+
                 //If the enemies are visible
                 if (enemy.GetComponent<Renderer>().isVisible)
                 {

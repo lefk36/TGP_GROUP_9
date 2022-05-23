@@ -8,12 +8,12 @@ using UnityEngine;
 //    int healthDamageAmount;
 //    int poiseDamageAmount;
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.tag == "Enemy")
-        {
-            Debug.Log("Player took damage");
-            EventManager.current.PlayerDamage(attackDirection, healthDamageAmount, poiseDamageAmount);
-        }
-    }
-}
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        if (other.gameObject.tag == "Enemy")
+//        {
+//            Debug.Log("Player took damage");
+//            EventManager.current.PlayerDamage(attackDirection, healthDamageAmount, poiseDamageAmount);
+//        }
+//    }
+//}
