@@ -2,12 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
 
     [SerializeField] private Image fillImage;
     [SerializeField] private Text timeText;
+
+
+    public int storeRemainingTime;
 
     public int timeDuration { get; private set; }
 
@@ -22,6 +26,7 @@ public class Timer : MonoBehaviour
     {
         if(remainingTime <= 0)
         {
+            SceneManager.LoadScene("GameOver",LoadSceneMode.Single);
             Debug.Log("Player Lost");
         }
     }
