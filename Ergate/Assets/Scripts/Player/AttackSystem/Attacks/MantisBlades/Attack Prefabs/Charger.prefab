@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1143921974457936173}
   - component: {fileID: 1143921974457936162}
   - component: {fileID: 7446231363856521138}
-  - component: {fileID: 5913341670178997115}
+  - component: {fileID: 2578299280685841574}
   m_Layer: 0
   m_Name: Charger
   m_TagString: Untagged
@@ -111,7 +111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   secondsOfLife: 0.5
---- !u!114 &5913341670178997115
+--- !u!114 &2578299280685841574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -120,7 +120,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 1143921974457936163}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b7ca5df1e1b2163499eb572c258a147b, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e935b157b6291340bb6bbb396ad994e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
+  knockPower: 5

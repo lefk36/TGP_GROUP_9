@@ -27,13 +27,11 @@ public class Swat : BaseEnemy
         Vector3 enemyToPlayer = playerFloorPos - transform.position;
         if (enemyToPlayer.magnitude <= m_Agent.stoppingDistance)
         {
-            Debug.Log("Player in Range");
             m_Animator.SetBool("IsRunning", false);
             m_Animator.SetBool("InRange", true);
         }
         else
         {
-            Debug.Log("Player not in range");
             SetEnemyPath();
             m_Animator.SetBool("IsRunning", true);
             m_Animator.SetBool("InRange", false);
