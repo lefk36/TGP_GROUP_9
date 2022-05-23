@@ -17,7 +17,6 @@ MonoBehaviour:
   attackName: airslash2
   chainableAttacks:
   - {fileID: 11400000, guid: 28580da66b405c1408ea921b08f3bfe2, type: 2}
-  - {fileID: 11400000, guid: fe2eec2afb5fd524ba26007e5e32adf6, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
   attackEndTime: 0.1
