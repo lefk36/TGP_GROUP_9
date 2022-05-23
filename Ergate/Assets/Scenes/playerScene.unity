@@ -983,7 +983,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_timer: {fileID: 538244968}
-  countTime: 100
+  countTime: 300
 --- !u!114 &2142173873 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2142173873, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}

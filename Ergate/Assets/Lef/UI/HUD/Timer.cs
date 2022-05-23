@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class Timer : MonoBehaviour
 {
@@ -22,6 +23,7 @@ public class Timer : MonoBehaviour
     {
         if(remainingTime <= 0)
         {
+            SceneManager.LoadScene("GameOver", LoadSceneMode.Single);
             Debug.Log("Player Lost");
         }
     }
