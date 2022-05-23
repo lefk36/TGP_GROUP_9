@@ -62,7 +62,6 @@ public class playerSpawn : MonoBehaviour
     {
         yield return new WaitForSeconds(2.2f);
         m_CameraLock.m_LockOn = false;
-        m_CameraLock.m_HasLocked = false;
         m_PlayerStats.m_currentPlayerHealth = m_PlayerStats.m_maximumHealth;
         m_PlayerStats.m_currentPlayerPoise = m_PlayerStats.m_maximumPoise;
         m_PlayerController.lockMovement = false;        //stuns the player while they're DEAD

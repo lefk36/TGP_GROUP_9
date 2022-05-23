@@ -17,6 +17,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     [HideInInspector] public bool m_CanAttack;
     public float m_AttackRate;
     [HideInInspector] public bool m_IsAttacking;
+    [HideInInspector] public EnemiesCameraLock m_CameraLock;
 
 
     public void TakeDamage(float damageTaken)
@@ -26,6 +27,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         if (m_Health <= 0f)
         {
             m_Animator.SetTrigger("IsDead");
+            m_CameraLock.m_LockOn = false;
             StartCoroutine(EnemyDeath());
         }
     }

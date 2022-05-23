@@ -16,6 +16,7 @@ public class Swat : BaseEnemy
         m_Agent = GetComponent<NavMeshAgent>();
         m_Target = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
+        m_CameraLock = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<EnemiesCameraLock>();
         m_CanAttack = true;
     }
 

@@ -58,7 +58,6 @@ public class EnemiesCameraLock : MonoBehaviour
     private float m_ShortestDistance = Mathf.Infinity;
     private bool m_ResetShortest;
     private GameObject nearestEnemy;
-    public bool m_HasLocked = false;
 
     private void Awake()
     {
@@ -94,7 +93,6 @@ public class EnemiesCameraLock : MonoBehaviour
         {
             //Sets the object to look at and the smooth rotation of the camera center in Y
             m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
-            m_HasLocked = true;
             Vector3 cameraCenterToEnemy = m_TargetableEnemies[m_TargetableEnemyIndex].transform.position - m_CameraMovement.gameObject.transform.position;
             Quaternion lookEnemyRotation = Quaternion.LookRotation(cameraCenterToEnemy);
             Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
@@ -109,16 +107,15 @@ public class EnemiesCameraLock : MonoBehaviour
         //        m_TargetableEnemies.Remove(m_TargetToLook.targetObj.gameObject);
         //    }
         //}
-        if(m_HasLocked)
-        {
-            if (m_TargetableEnemies[m_TargetableEnemyIndex] == null)
-            {
-                m_TargetableEnemies.Remove(m_TargetableEnemies[m_TargetableEnemyIndex]);
-                m_HasLocked = false;
-                m_LockOn = false;
+        //if(m_HasLocked)
+        //{
+        //    if (m_TargetToLook.targetObj == null)
+        //    {
+        //        m_HasLocked = false;
+        //        m_LockOn = false;
 
-            }
-        }
+        //    }
+        //}
         
     }
 

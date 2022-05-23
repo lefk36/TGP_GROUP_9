@@ -18,6 +18,7 @@ public class Zombie : BaseEnemy
         m_Animator = GetComponent<Animator>();
         m_Agent = GetComponent<NavMeshAgent>();
         m_Target = GameObject.FindGameObjectWithTag("Player");
+        m_CameraLock = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<EnemiesCameraLock>();
         rb = GetComponent<Rigidbody>();
         m_CanAttack = true;
         m_IsAttacking = false;

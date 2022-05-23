@@ -95,7 +95,7 @@ public class Weapon : MonoBehaviour
     }
     protected virtual Vector3 FindTargetPosition(AttackData data)
     {
-        if (data.toEnemy && controllerScript.cameraLockedToTarget)
+        if (data.toEnemy && controllerScript.cameraLockedToTarget && lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex] != null)
         {
             return lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex].transform.position;
         }
