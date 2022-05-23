@@ -13,6 +13,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     [HideInInspector] public NavMeshAgent m_Agent;
     [HideInInspector] public PlayerPoiseAndHealth m_PlayerStats;
     [HideInInspector] public Animator m_Animator;
+    [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool m_CanAttack;
     public float m_AttackRate;
     [HideInInspector] public bool m_IsAttacking;
@@ -46,8 +47,19 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     {
         if(!m_IsAttacking)
         {
-            Vector3 targetPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z);
-            m_Agent.SetDestination(targetPos);
+            Vector3 offset = transform.rotation * -Vector3.forward * 1.0f;
+            Vector3 targetPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z) + offset;
+            if (m_Agent.enabled)
+            {
+                m_Agent.SetDestination(targetPos);
+            }
+        }
+    }
+    public void ReEnableAgent()
+    {
+        if(m_Agent.enabled == false && rb.velocity.magnitude < 0.05f)
+        {
+            m_Agent.enabled = true;
         }
     }
 

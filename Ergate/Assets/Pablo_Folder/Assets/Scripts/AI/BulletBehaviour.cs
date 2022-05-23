@@ -17,7 +17,7 @@ public class BulletBehaviour : MonoBehaviour
 
     private void Start()
     {
-        m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
         StartCoroutine(BulletDestroy());
     }
 

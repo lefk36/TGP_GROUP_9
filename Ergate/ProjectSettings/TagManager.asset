@@ -20,11 +20,11 @@ TagManager:
   - slipperyGround
   - checkpoint
   - Enemy
-  - Player
+  - PlayerHitbox
   - LineOfSight
   - Floor
-  - 
-  - 
+  - PlayerTerrainColl
+  - EnemyAttack
   - 
   - 
   - 

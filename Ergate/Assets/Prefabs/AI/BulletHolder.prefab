@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6850308387658967755}
   - component: {fileID: 1582222003792134560}
   - component: {fileID: 1820028676681395566}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: BulletHolder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -76,8 +76,8 @@ CapsuleCollider:
   m_Enabled: 1
   m_Radius: 0.01958666
   m_Height: 0.13406855
-  m_Direction: 0
-  m_Center: {x: 0.0144895315, y: 0.00108888, z: -0.000036446378}
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7810669037829625419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -88,6 +88,10 @@ PrefabInstance:
     - target: {fileID: 1404200745246544, guid: 068381675912eb044a912de01e17f9cd, type: 3}
       propertyPath: m_Name
       value: Pistol Bullet
+      objectReference: {fileID: 0}
+    - target: {fileID: 1404200745246544, guid: 068381675912eb044a912de01e17f9cd, type: 3}
+      propertyPath: m_Layer
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 4738416058690398, guid: 068381675912eb044a912de01e17f9cd, type: 3}
       propertyPath: m_RootOrder

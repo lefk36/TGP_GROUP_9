@@ -510,7 +510,7 @@ GameObject:
   - component: {fileID: 2300282442589688768}
   - component: {fileID: 6755306549676502460}
   - component: {fileID: 8575368891455167139}
-  m_Layer: 0
+  m_Layer: 15
   m_Name: Mutant
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -545,7 +545,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 1
@@ -623,6 +623,7 @@ MonoBehaviour:
   m_Agent: {fileID: 0}
   m_PlayerStats: {fileID: 0}
   m_Animator: {fileID: 0}
+  rb: {fileID: 0}
   m_CanAttack: 0
   m_AttackRate: 0
   m_IsAttacking: 0
