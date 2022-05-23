@@ -24,7 +24,7 @@ MonoBehaviour:
   attackDirection: {x: 0, y: -1, z: 0}
   speed: 30
   stoppingPower: 1
-  animationTriggerName: Slash3
+  animationTriggerName: AirSlam
   airRequired: 1
   timeHeldRequired: 0.4
   buttonRequired: AlternativeHold
