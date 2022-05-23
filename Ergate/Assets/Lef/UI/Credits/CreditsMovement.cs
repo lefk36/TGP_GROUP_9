@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class CreditsMovement : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+
+    [SerializeField] private float speed;
+
+   
 
     // Update is called once per frame
     void Update()
     {
-        
+        MoveCredit(new Vector2(0, 1));
     }
+
+    private void MoveCredit(Vector2 direction)
+    {
+        transform.Translate(direction * speed * Time.deltaTime);
+    }
+
+
 }
