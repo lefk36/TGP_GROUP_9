@@ -26,5 +26,5 @@ MonoBehaviour:
   stoppingPower: 1
   animationTriggerName: AirSlam
   airRequired: 1
-  timeHeldRequired: 0.4
-  buttonRequired: AlternativeHold
+  timeHeldRequired: 0
+  buttonRequired: AlternativeDown

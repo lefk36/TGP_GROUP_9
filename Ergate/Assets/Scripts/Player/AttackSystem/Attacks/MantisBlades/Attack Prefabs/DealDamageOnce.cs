@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class DealDamageOnce : MonoBehaviour
 {
-    private List<BaseEnemy> damagedEnemies;
+    private List<GameObject> damagedEnemies;
     private void Start()
     {
-        damagedEnemies = new List<BaseEnemy>();
+        damagedEnemies = new List<GameObject>();
     }
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Enemy")
-        {
-            other.GetComponent<BaseEnemy>();
-        }
+        //if(other.tag == "Enemy" && damagedEnemies.Contains(other.transform.))
+        //{
+        //    GameObject enemy = other.transform.parent.gameObject;
+        //}
     }
 }

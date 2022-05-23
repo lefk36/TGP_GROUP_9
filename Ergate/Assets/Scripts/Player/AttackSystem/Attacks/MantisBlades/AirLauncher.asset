@@ -15,7 +15,8 @@ MonoBehaviour:
   thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
   attackObject: {fileID: 286232789824516609, guid: d702666d3e5477c42afa795c8eaa2591, type: 3}
   attackName: airlauncher
-  chainableAttacks: []
+  chainableAttacks:
+  - {fileID: 11400000, guid: fe2eec2afb5fd524ba26007e5e32adf6, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
   attackEndTime: 0.25
