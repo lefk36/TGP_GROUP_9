@@ -32,18 +32,32 @@ public class TravellingAttack : AttackState
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
         Vector3 newAttackDirection = attackParentObj.rotation * attackDirection;
         float distanceTravelled = 0;
-        Vector3 startPosition = playerScript.transform.position;
         float newAttackRange = attackRange;
         if (toEnemy)
         {
             newAttackRange = FindNewRange();
         }
+        float timeWhileNotMoving = 0;
         while(distanceTravelled < newAttackRange)
         {
             rb.velocity = newAttackDirection * speed;
+            Vector3 lastPos = playerScript.transform.position;
             yield return null;
             Vector3 currentPosition = playerScript.transform.position;
-            distanceTravelled = (startPosition - currentPosition).magnitude;
+            float nextStep = (lastPos - currentPosition).magnitude;
+            distanceTravelled += nextStep;
+            if(nextStep <= 0.01)
+            {
+                timeWhileNotMoving+=Time.deltaTime;
+            }
+            else
+            {
+                timeWhileNotMoving = 0;
+            }
+            if(timeWhileNotMoving > 0.5f)
+            {
+                break;
+            }
         }
         playerScript.lockFalling = false;
         rb.velocity = rb.velocity / stoppingPower;

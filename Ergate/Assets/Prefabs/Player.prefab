@@ -641,6 +641,7 @@ MonoBehaviour:
   dashTime: 0.25
   dashStoppingPower: 3
   m_hasDashed: 0
+  dashCooldown: 0.5
   stickToAttack: 0
   m_AttackInput: {fileID: 18877949}
 --- !u!114 &1031727961

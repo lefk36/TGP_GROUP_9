@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
     public float dashStoppingPower;
     [HideInInspector] public bool m_hasDashed = false;
     private bool coroutineRunning = false;
+    public float dashCooldown;
 
     //other scripts
     EnemiesCameraLock lockScript;
@@ -377,7 +378,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("IsDashing", false);
             }
 
-            if (Input.GetButtonDown("dash") && !m_hasDashed)
+            if (Input.GetButtonDown("dash") && !m_hasDashed && !coroutineRunning)
             {
 
                 m_hasDashed = true;
@@ -411,6 +412,7 @@ public class PlayerController : MonoBehaviour
         lockMovement = false;
         rigidbody.velocity = rigidbody.velocity / dashStoppingPower;
         m_hasDashed = false;
+        yield return new WaitForSeconds(dashCooldown);
         coroutineRunning = false;
     }
 
