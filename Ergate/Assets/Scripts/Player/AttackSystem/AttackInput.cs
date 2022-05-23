@@ -6,6 +6,7 @@ public class AttackInput : MonoBehaviour
 {
     private UIController weaponWheelController;
     private PlayerController playerControllerScript;
+    private PlayerPoiseAndHealth playerHealthScript;
     private float basicHoldTime = 0;
     private float alternativeHoldTime = 0;
     private float noInputTime = 0;
@@ -15,12 +16,13 @@ public class AttackInput : MonoBehaviour
     {
         weaponWheelController = GetComponent<UIController>();
         playerControllerScript = transform.parent.GetComponent<PlayerController>();
+        playerHealthScript = transform.parent.GetComponent<PlayerPoiseAndHealth>();
     }
     void Update()
     {
         UpdateInAir();
         Weapon activeWeapon = weaponWheelController.weaponScripts[weaponWheelController.activeWeaponIndex];
-        if (!playerControllerScript.m_hasDashed)
+        if (!playerControllerScript.m_hasDashed && !playerHealthScript.m_IsDead)
         {
             if (Input.GetButton("BasicAttack"))
             {
