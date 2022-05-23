@@ -124,4 +124,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  knockPower: 5
+  knockPower: 14
+  overrideDirection: 1
+  newDirection: {x: 0, y: 0, z: 1}

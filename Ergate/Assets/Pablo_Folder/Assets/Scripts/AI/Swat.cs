@@ -11,16 +11,18 @@ public class Swat : BaseEnemy
     void Start()
     {
         m_Health = 200f;
-        m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
         m_Animator = GetComponent<Animator>();
         m_Agent = GetComponent<NavMeshAgent>();
         m_Target = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody>();
         m_CanAttack = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        ReEnableAgent();
         FacePlayer();
         Vector3 playerFloorPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z);
         Vector3 enemyToPlayer = playerFloorPos - transform.position;

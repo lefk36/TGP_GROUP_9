@@ -17,16 +17,18 @@ public class Mutant : BaseEnemy
         m_RotationRate = 5;
         m_PoiseDamage = 30;
         m_AttackRate = 1f;
-        m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
         m_Animator = GetComponent<Animator>();
         m_Agent = GetComponent<NavMeshAgent>();
         m_Target = GameObject.FindGameObjectWithTag("Player");
+        rb = GetComponent<Rigidbody>();
         m_CanAttack = true;
         m_IsAttacking = false;
     }
 
     private void Update()
     {
+        ReEnableAgent();
         FacePlayer();
         Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
         if (enemyToPlayer.magnitude < m_Agent.stoppingDistance)
