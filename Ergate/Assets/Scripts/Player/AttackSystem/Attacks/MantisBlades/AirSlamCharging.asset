@@ -10,25 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
-  m_Name: BaseAttackData
+  m_Name: AirSlamCharging
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 3c5b615c01c50864d92429a49925c38b, type: 3}
+  thisAttackState: {fileID: 11500000, guid: 8cdfa2389aeabcf42a1ed40b839e191c, type: 3}
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
-  attackName: MantisBase
+  attackName: slamcharge
   chainableAttacks:
-  - {fileID: 11400000, guid: 60324730250b08b459589ab8c9c04e70, type: 2}
-  - {fileID: 11400000, guid: 0cae995d79083f642afe9526a45681ef, type: 2}
-  - {fileID: 11400000, guid: 3ce54698ba3929741b14469727bfde8d, type: 2}
-  - {fileID: 11400000, guid: 075db9eff811af246bd0f3486371c41a, type: 2}
+  - {fileID: 11400000, guid: 20e24b2f7128b9e4584405b10d50db39, type: 2}
+  - {fileID: 11400000, guid: fe2eec2afb5fd524ba26007e5e32adf6, type: 2}
   attackBeginningTime: 0
   attackTime: 0
   attackEndTime: 0
   attackRange: 1
-  toEnemy: 1
+  toEnemy: 0
   attackDirection: {x: 0, y: 0, z: 0}
   speed: 0
   stoppingPower: 1
   animationTriggerName: 
-  airRequired: 0
+  airRequired: 1
   timeHeldRequired: 0
-  buttonRequired: 
+  buttonRequired: AlternativeDown

@@ -27,4 +27,4 @@ MonoBehaviour:
   animationTriggerName: Slash3
   airRequired: 1
   timeHeldRequired: 0
-  buttonRequired: AlternativeDown
+  buttonRequired: AlternativeUp
