@@ -260,6 +260,13 @@ public class EnemiesCameraLock : MonoBehaviour
                 //Creates raycasts from the camera to all the enemies
                 m_RayDirection = enemy.transform.position - transform.position;
                 m_Hits = Physics.RaycastAll(transform.position, m_RayDirection, m_MaxDistanceAllowed, m_Layer);
+
+                if (enemy == null)
+                {
+                    m_LockOn = false;
+                    m_TargetableEnemies.Remove(enemy);
+
+                }
                 //If the enemies are visible
                 if (enemy.GetComponent<Renderer>().isVisible)
                 {

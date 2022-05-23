@@ -29,13 +29,23 @@ public class Swat : BaseEnemy
         if (enemyToPlayer.magnitude <= m_Agent.stoppingDistance)
         {
             m_Animator.SetBool("IsRunning", false);
-            StartCoroutine(ResetShoot());
-            if (m_CanAttack)
+            if(m_CanAttack)
             {
-                Debug.Log("Player in Range and can attack");
-                
+                m_Animator.SetBool("InRange", true);
+               
+                if(m_Animator.GetCurrentAnimatorStateInfo(0).normalizedTime < 1 && !m_Animator.IsInTransition(0))
+                {
+                    StartCoroutine(ResetShoot());
+                    
+                }
+            }
+            else
+            {
+                Debug.Log("Reloding");
+                m_Animator.SetBool("InRange", false);
                 
             }
+            
             //else
             //{
             //    Debug.Log("CannotAttack");
@@ -66,22 +76,9 @@ public class Swat : BaseEnemy
 
     IEnumerator ResetShoot()
     {
-        if(m_CanAttack)
-        {
-            m_Animator.SetBool("InRange", true);
-            Debug.Log(m_Animator.GetCurrentAnimatorStateInfo(0).length);
-            if(m_Animator.GetCurrentAnimatorStateInfo(0).length == 0)
-            {
-                m_CanAttack = false;
-            }
-        }
-        else
-        {
-            m_Animator.SetBool("InRange", false);
-            yield return new WaitForSeconds(4f);
-            m_CanAttack = true;
-        }
-        
-        
+        m_CanAttack = false;
+        yield return new WaitForSeconds(4f);
+        Debug.Log("CanAttackAgain");
+        m_CanAttack = true;
     }
 }
