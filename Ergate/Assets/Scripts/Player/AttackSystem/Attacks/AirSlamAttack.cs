@@ -28,6 +28,7 @@ public class AirSlamAttack : AttackState
         playerScript.lockMovement = true;
         playerScript.stickToAttack = true;
         playerScript.lockFalling = true;
+        playerScript.allowDash = false;
         Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
         rb.velocity = new Vector3(0, 0, 0);
         if (animationTrigger != null)
@@ -44,6 +45,7 @@ public class AirSlamAttack : AttackState
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
+        playerScript.allowDash = true;
         completed = true;
     }
 }

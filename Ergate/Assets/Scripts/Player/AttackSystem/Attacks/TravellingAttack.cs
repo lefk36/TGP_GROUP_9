@@ -22,6 +22,7 @@ public class TravellingAttack : AttackState
         playerScript.lockAttackDirection = true;
         playerScript.lockMovement = true;
         playerScript.stickToAttack = true;
+        playerScript.allowDash = false;
         yield return new WaitForSeconds(attackBeginningTime);
         if (animationTrigger != null)
         {
@@ -65,6 +66,7 @@ public class TravellingAttack : AttackState
         playerScript.stickToAttack = false;
         playerScript.lockAttackDirection = false;
         playerScript.lockMovement = false;
+        playerScript.allowDash = true;
         GameObject.Destroy(attackInstance);
         completed = true;
     }

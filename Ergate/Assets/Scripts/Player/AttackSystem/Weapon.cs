@@ -84,6 +84,7 @@ public class Weapon : MonoBehaviour
             controllerScript.stickToAttack = false;
             controllerScript.lockAttackDirection = false;
             controllerScript.lockMovement = false;
+            controllerScript.allowDash = true;
 
             controllerScript.rigidbody.velocity = controllerScript.rigidbody.velocity / 2;
             controllerScript.lockFalling = false;

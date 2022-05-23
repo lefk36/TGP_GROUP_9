@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class DealDamageOnce : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private List<BaseEnemy> damagedEnemies;
+    private void Start()
     {
-        
+        damagedEnemies = new List<BaseEnemy>();
     }
-
-    // Update is called once per frame
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-        
+        if(other.tag == "Enemy")
+        {
+            other.GetComponent<BaseEnemy>();
+        }
     }
 }

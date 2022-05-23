@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 4593853951538899962}
   - component: {fileID: 3890807311991301612}
   - component: {fileID: 7672038083591954730}
+  - component: {fileID: 225897589285955861}
   m_Layer: 0
   m_Name: Masher
   m_TagString: Untagged
@@ -110,3 +111,15 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8293648546519496879}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &225897589285955861
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8293648546519496879}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7ca5df1e1b2163499eb572c258a147b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

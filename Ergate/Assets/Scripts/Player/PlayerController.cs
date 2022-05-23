@@ -24,6 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool lockFalling;
     public bool lockAttackDirection;
     private bool m_VelocityStopped;
+    public bool allowDash;
 
     [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
     [HideInInspector] public bool isOnGround = true;
@@ -264,7 +265,7 @@ public class PlayerController : MonoBehaviour
             gravityScaleScript.gravityScale = 1;
         }
 
-        if(m_hasDashed && !coroutineRunning)
+        if (m_hasDashed && !coroutineRunning && allowDash)
         {
             StartCoroutine(dash(m_InputDirection));
         }
@@ -378,7 +379,7 @@ public class PlayerController : MonoBehaviour
                 animator.SetBool("IsDashing", false);
             }
 
-            if (Input.GetButtonDown("dash") && !m_hasDashed && !coroutineRunning)
+            if (Input.GetButtonDown("dash") && !m_hasDashed && !coroutineRunning && allowDash)
             {
 
                 m_hasDashed = true;
