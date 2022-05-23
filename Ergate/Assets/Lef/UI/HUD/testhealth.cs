@@ -25,7 +25,7 @@ public class testhealth : MonoBehaviour
 
     public void SubmitUp()
     {
-        amountUp = 2.0f;
+       
         HealthBar.instance.AddHealth(amountUp);
     }
 

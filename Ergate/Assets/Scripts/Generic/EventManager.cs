@@ -33,13 +33,13 @@ using System;
 //    //    }
 //    //}
 
-//    //public event Action onEnemyDestroy;
-//    //public void DestroyEnemy()
-//    //{
-//    //    if (onEnemyDestroy != null)
-//    //    {
-//    //        onEnemyDestroy();
-//    //    }
-//    //}
-   
-//}
+    public event Action onEnemyDestroy;
+    public void DestroyEnemy()
+    {
+        if (onEnemyDestroy != null)
+        {
+            onEnemyDestroy();
+        }
+    }
+
+}

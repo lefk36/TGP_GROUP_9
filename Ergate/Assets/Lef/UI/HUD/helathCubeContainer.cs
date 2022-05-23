@@ -8,13 +8,18 @@ public class helathCubeContainer : MonoBehaviour
 
     public helathCubeContainer next;
 
-    [Range(0, 1)] float fill;
+    [SerializeField]
+    float fill = 100;
     [SerializeField] private Image fillImage;
+
+    private float percentage;
+
+    private float currentAmount;
 
    public void SetCube(float count)
     {
         fill = count;
-        fillImage.fillAmount = fill;
+        fillImage.fillAmount = (fill*100);
         count--;
         if(next != null)
         {
