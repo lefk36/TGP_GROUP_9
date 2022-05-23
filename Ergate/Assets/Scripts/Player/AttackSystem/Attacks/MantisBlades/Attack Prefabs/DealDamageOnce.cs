@@ -12,9 +12,9 @@ public class DealDamageOnce : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy" && !damagedEnemies.Contains(other.transform.parent.parent.gameObject))
+        if (other.tag == "Enemy" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {
-            GameObject enemy = other.transform.parent.parent.gameObject;
+            GameObject enemy = other.transform.parent.gameObject;
             damagedEnemies.Add(enemy);
             enemy.GetComponent<BaseEnemy>().TakeDamage(damage);
         }
