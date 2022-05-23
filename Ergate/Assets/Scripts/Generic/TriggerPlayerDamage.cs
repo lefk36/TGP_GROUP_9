@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TriggerPlayerDamage : MonoBehaviour
-{
-    Vector3 attackDirection;
-    int healthDamageAmount;
-    int poiseDamageAmount;
+//public class TriggerPlayerDamage : MonoBehaviour
+//{
+//    Vector3 attackDirection;
+//    int healthDamageAmount;
+//    int poiseDamageAmount;
 
 //    private void OnTriggerEnter(Collider other)
 //    {
