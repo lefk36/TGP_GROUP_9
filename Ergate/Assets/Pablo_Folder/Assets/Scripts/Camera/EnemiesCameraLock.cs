@@ -137,7 +137,6 @@ public class EnemiesCameraLock : MonoBehaviour
                 //If the list of targetable enemies is different than 0 then set the lock mode to true
                 if (m_TargetableEnemies.Count != 0 && m_TargetableEnemyIndex >= 0)
                 {
-                    playerControllerScript.cameraLockedToTarget = true;
                     m_LockOn = true;
                     m_PlayerAnimator.runtimeAnimatorController = m_PlayerLockOnAnimator;
                 }
@@ -145,7 +144,6 @@ public class EnemiesCameraLock : MonoBehaviour
             else if (m_LockOn)
             {
                 //If the lock mode is active set it to false
-                playerControllerScript.cameraLockedToTarget = false;
                 m_LockOn = false;
                 m_PlayerAnimator.runtimeAnimatorController = m_DefaultAnimatorController;
             }
@@ -332,7 +330,7 @@ public class EnemiesCameraLock : MonoBehaviour
 
                         //Updates the List and theindex of the enemies
                         //If the index is greater than the last index, then the index is the last index in the list
-                        if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                        if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1 && m_TargetableEnemies.Count > 0)
                         {
                             m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
                         }
@@ -346,8 +344,7 @@ public class EnemiesCameraLock : MonoBehaviour
                         {
                             if (indexOfGameObjectToRemove - 1 < 0)
                             {
-                                m_LockOn = false;
-                                playerControllerScript.cameraLockedToTarget = false;
+                                m_TargetableEnemyIndex = 0;
                             }
                             else
                             {

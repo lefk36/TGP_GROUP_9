@@ -31,7 +31,10 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
             m_Animator.SetTrigger("IsDead");
             m_CameraLock.m_LockOn = false;
             isDead = true;
-            m_CameraLock.m_TargetableEnemies.Remove(gameObject);
+            if (m_CameraLock.m_TargetableEnemies.Contains(gameObject))
+            {
+                m_CameraLock.m_TargetableEnemies.Remove(gameObject);
+            }
             StartCoroutine(EnemyDeath());
         }
     }
