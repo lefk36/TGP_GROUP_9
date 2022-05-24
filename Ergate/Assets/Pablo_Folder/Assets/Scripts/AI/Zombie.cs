@@ -11,7 +11,7 @@ public class Zombie : BaseEnemy
 
     private void Start()
     {
-        m_Health = 20f;
+        m_Health = 150f;
         m_HealthDamage = 20;
         m_PoiseDamage = 20;
         m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
