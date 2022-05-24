@@ -6,10 +6,11 @@ using UnityEngine.AI;
 public class DealDamageLaunch : MonoBehaviour
 {
     public float damage;
-    public float knockPower;
+    public float range;
+    public float speed;
+    public float stoppingPower;
     private List<GameObject> damagedEnemies;
-    public bool overrideDirection = false;
-    public Vector3 newDirection;
+    public Vector3 direction;
     private void Start()
     {
         damagedEnemies = new List<GameObject>();
@@ -21,21 +22,9 @@ public class DealDamageLaunch : MonoBehaviour
             GameObject enemy = other.transform.parent.gameObject;
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             damagedEnemies.Add(enemy);
-            Vector3 knockbackForceDirection;
-            if (!overrideDirection)
-            {
-                Vector3 positionNoY = new Vector3(transform.position.x, enemy.transform.position.y, transform.position.z);
-                knockbackForceDirection = enemy.transform.position - enemyScript.m_Target.transform.position;
-            }
-            else
-            {
-                knockbackForceDirection = transform.rotation * newDirection;
-            }
-            knockbackForceDirection.Normalize();
-            enemy.GetComponent<NavMeshAgent>().enabled = false;
-            enemyScript.rb.velocity = new Vector3(0, 0, 0);
-            enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
-            enemyScript.TakeDamage(damage);
+
+            direction.Normalize();
+            enemyScript.StartCoroutine(Launch(enemy, enemyScript));
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {
@@ -44,5 +33,22 @@ public class DealDamageLaunch : MonoBehaviour
             damagedEnemies.Add(barrel);
             barrelScript.takeDamage(damage);
         }
+    }
+    IEnumerator Launch(GameObject enemy, BaseEnemy enemyScript)
+    {
+        enemyScript.rb.velocity = new Vector3(0, 0, 0);
+        float distanceTravelled = 0;
+        enemyScript.TakeDamage(damage);
+        do
+        {
+            enemy.GetComponent<NavMeshAgent>().enabled = false;
+            enemyScript.rb.velocity = direction * speed;
+            Vector3 lastPos = enemy.transform.position;
+            yield return null;
+            Vector3 currentPosition = enemy.transform.position;
+            float nextStep = (lastPos - currentPosition).magnitude;
+            distanceTravelled += nextStep;
+        } while (distanceTravelled < range);
+        enemyScript.rb.velocity = enemyScript.rb.velocity / stoppingPower;
     }
 }

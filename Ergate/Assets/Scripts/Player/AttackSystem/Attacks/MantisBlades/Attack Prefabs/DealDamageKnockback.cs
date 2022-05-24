@@ -8,6 +8,7 @@ public class DealDamageKnockback : MonoBehaviour
     public float knockPower;
     private List<GameObject> damagedEnemies;
     public bool overrideDirection = false;
+    public bool rotate = false;
     public Vector3 newDirection;
     private void Start()
     {
@@ -28,7 +29,14 @@ public class DealDamageKnockback : MonoBehaviour
             }
             else
             {
-                knockbackForceDirection = transform.rotation * newDirection;
+                if (!rotate)
+                {
+                    knockbackForceDirection = newDirection;
+                }
+                else
+                {
+                    knockbackForceDirection = transform.rotation * newDirection;
+                }
             }
             knockbackForceDirection.Normalize();
             enemyScript.m_Agent.enabled = false;

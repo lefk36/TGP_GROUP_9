@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Riser
   m_EditorClassIdentifier: 
   thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
-  attackObject: {fileID: 286232789824516609, guid: d702666d3e5477c42afa795c8eaa2591, type: 3}
+  attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
   attackName: riser
   chainableAttacks: []
   attackBeginningTime: 0.1
