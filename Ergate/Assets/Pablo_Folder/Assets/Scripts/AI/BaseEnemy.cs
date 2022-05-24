@@ -8,6 +8,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public float m_Health;
     public int m_HealthDamage;
     public int m_PoiseDamage;
+    public float m_stoppingDistance;
     public float m_RotationRate;
     [HideInInspector] public GameObject m_Target;
     [HideInInspector] public NavMeshAgent m_Agent;
@@ -49,7 +50,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     {
         if(!m_IsAttacking)
         {
-            Vector3 offset = transform.rotation * -Vector3.forward * 1.0f;
+            Vector3 offset = transform.rotation * -Vector3.forward * m_stoppingDistance;
             Vector3 targetPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z) + offset;
             if (m_Agent.enabled)
             {
@@ -59,7 +60,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     }
     public void ReEnableAgent()
     {
-        if(m_Agent.enabled == false && rb.velocity.magnitude < 0.05f)
+        if(m_Agent.enabled == false)
         {
             m_Agent.enabled = true;
         }
@@ -69,7 +70,10 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     IEnumerator EnemyDeath()
     {
-        m_Agent.SetDestination(transform.position);
+        if (m_Agent.enabled)
+        {
+            m_Agent.SetDestination(transform.position);
+        }
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }

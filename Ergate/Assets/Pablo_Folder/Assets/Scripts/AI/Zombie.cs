@@ -26,16 +26,16 @@ public class Zombie : BaseEnemy
 
     private void Update()
     {
-        ReEnableAgent();
         FacePlayer();
+
         Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
-        if (enemyToPlayer.magnitude < m_Agent.stoppingDistance)
+        if (enemyToPlayer.magnitude < m_stoppingDistance + m_Agent.radius)
         {
             m_Animator.SetBool("IsRunning", false);
         }
         else
         {
-            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack"))
+            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage"))
             {
                 SetEnemyPath();
             }
@@ -49,7 +49,7 @@ public class Zombie : BaseEnemy
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Should fire attack animation");
+            //Debug.Log("Should fire attack animation");
             if(!m_Animator.GetBool("IsRunning"))
             {
                 m_Animator.SetTrigger("IsAttacking");

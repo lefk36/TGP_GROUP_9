@@ -23,7 +23,6 @@ public class Swat : BaseEnemy
     // Update is called once per frame
     void Update()
     {
-        ReEnableAgent();
         FacePlayer();
         Vector3 playerFloorPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z);
         Vector3 enemyToPlayer = playerFloorPos - transform.position;

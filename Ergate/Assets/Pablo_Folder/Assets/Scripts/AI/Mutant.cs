@@ -29,16 +29,16 @@ public class Mutant : BaseEnemy
 
     private void Update()
     {
-        ReEnableAgent();
         FacePlayer();
+
         Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
-        if (enemyToPlayer.magnitude < m_Agent.stoppingDistance)
+        if (enemyToPlayer.magnitude < m_stoppingDistance + m_Agent.radius)
         {
             m_Animator.SetBool("IsRunning", false);
         }
         else
         {
-            if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack"))
+            if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage"))
             {
                 SetEnemyPath();
             }

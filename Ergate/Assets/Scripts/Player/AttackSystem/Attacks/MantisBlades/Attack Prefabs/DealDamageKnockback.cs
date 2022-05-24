@@ -24,7 +24,7 @@ public class DealDamageKnockback : MonoBehaviour
             if (!overrideDirection)
             {
                 Vector3 positionNoY = new Vector3(transform.position.x, enemy.transform.position.y, transform.position.z);
-                knockbackForceDirection = enemy.transform.position - positionNoY;
+                knockbackForceDirection = enemy.transform.position - enemyScript.m_Target.transform.position;
             }
             else
             {
@@ -32,6 +32,7 @@ public class DealDamageKnockback : MonoBehaviour
             }
             knockbackForceDirection.Normalize();
             enemy.GetComponent<NavMeshAgent>().enabled = false;
+            enemyScript.rb.velocity = new Vector3(0, 0, 0);
             enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
             enemyScript.TakeDamage(damage);
         }
