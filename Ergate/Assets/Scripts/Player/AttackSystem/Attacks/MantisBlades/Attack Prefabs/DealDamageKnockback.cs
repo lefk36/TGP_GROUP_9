@@ -31,9 +31,17 @@ public class DealDamageKnockback : MonoBehaviour
                 knockbackForceDirection = transform.rotation * newDirection;
             }
             knockbackForceDirection.Normalize();
+            enemyScript.m_Agent.enabled = false;
             enemyScript.rb.velocity = new Vector3(0, 0, 0);
             enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
             enemyScript.TakeDamage(damage);
+        }
+        if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
+        {
+            GameObject barrel = other.transform.parent.gameObject;
+            barrelStatsScript barrelScript = barrel.GetComponent<barrelStatsScript>();
+            damagedEnemies.Add(barrel);
+            barrelScript.takeDamage(damage);
         }
     }
 }
