@@ -155,7 +155,7 @@ public class PlayerController : MonoBehaviour
 
         if (cameraLockedToTarget && !lockAttackDirection)
         {
-            if(lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex] != null)
+            if(lockScript.m_TargetableEnemyIndex >= 0 && lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex] != null)
             {
                 Vector3 dirToEnemy = lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex].transform.position - transform.position;
                 RotateObjectToDirectionInstant(dirToEnemy, attackDirectionObject);
