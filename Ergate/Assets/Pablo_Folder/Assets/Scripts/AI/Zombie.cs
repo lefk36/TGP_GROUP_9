@@ -52,7 +52,7 @@ public class Zombie : BaseEnemy
         {
             m_Animator.SetTrigger("Falling");
         }
-        else
+        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
         {
             m_Animator.SetTrigger("BackToIdle");
         }
