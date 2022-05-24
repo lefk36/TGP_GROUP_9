@@ -17,6 +17,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     [HideInInspector] public Animator m_Animator;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool m_CanAttack;
+    public bool m_IsTakingDamage;
     public float m_AttackRate;
     [HideInInspector] public bool m_IsAttacking;
     [HideInInspector] public EnemiesCameraLock m_CameraLock;
@@ -69,19 +70,21 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
             }
         }
     }
-    public void ReEnableAgent()
+    public void NotTakingDamage()
     {
-        if(m_Agent.enabled == false)
-        {
-            m_Agent.enabled = true;
-        }
+        m_IsTakingDamage = false;
+        //if(m_Agent.enabled == false)
+        //{
+        //    m_Agent.enabled = true;
+        //}
     }
-    public void DisableAgent()
+    public void TakingDamage()
     {
-        if(m_Agent.enabled == true)
-        {
-            m_Agent.enabled = false;
-        }
+        m_IsTakingDamage = true;
+        //if(m_Agent.enabled == true)
+        //{
+        //    m_Agent.enabled = false;
+        //}
     }
 
     public abstract BaseEnemy Clone();
@@ -102,7 +105,7 @@ interface IEnemy
     void DealDamage(Vector3 attackDirection, int healthDamageDealt, int poiseDamageDealt);
     void FacePlayer();
     void SetEnemyPath();
-    void ReEnableAgent();
-    void DisableAgent();
+    void NotTakingDamage();
+    void TakingDamage();
 
 }
