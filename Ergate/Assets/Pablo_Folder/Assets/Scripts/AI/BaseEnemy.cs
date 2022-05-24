@@ -43,9 +43,13 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public void FacePlayer()
     {
-        Vector3 faceDirection = (m_Target.transform.position - transform.position).normalized;
-        Quaternion directionToRotate = Quaternion.LookRotation(new Vector3(faceDirection.x, 0, faceDirection.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, directionToRotate, Time.deltaTime * m_RotationRate);
+        if(m_Agent.enabled)
+        {
+            Vector3 faceDirection = (m_Target.transform.position - transform.position).normalized;
+            Quaternion directionToRotate = Quaternion.LookRotation(new Vector3(faceDirection.x, 0, faceDirection.z));
+            transform.rotation = Quaternion.Lerp(transform.rotation, directionToRotate, Time.deltaTime * m_RotationRate);
+        }
+        
 
     }
 
@@ -68,16 +72,19 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
             m_Agent.enabled = true;
         }
     }
+    public void DisableAgent()
+    {
+        if(m_Agent.enabled == true)
+        {
+            m_Agent.enabled = false;
+        }
+    }
 
     public abstract BaseEnemy Clone();
 
     IEnumerator EnemyDeath()
     {
-        if (m_Agent.enabled)
-        {
-            m_Agent.SetDestination(transform.position);
-            
-        }
+        m_Agent.enabled = false;
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
@@ -91,4 +98,7 @@ interface IEnemy
     void DealDamage(Vector3 attackDirection, int healthDamageDealt, int poiseDamageDealt);
     void FacePlayer();
     void SetEnemyPath();
+    void ReEnableAgent();
+    void DisableAgent();
+
 }
