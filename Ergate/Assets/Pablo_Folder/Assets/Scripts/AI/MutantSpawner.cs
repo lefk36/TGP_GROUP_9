@@ -65,7 +65,11 @@ public class MutantSpawner : BaseSpawner
                 m_EnemiesToBeDeleted.Add(m_EnemyInstance);
                 yield return new WaitForSeconds(m_SpawnRate);
             }
-            
+            else
+            {
+                yield return null;
+            }
+
         }
 
     }

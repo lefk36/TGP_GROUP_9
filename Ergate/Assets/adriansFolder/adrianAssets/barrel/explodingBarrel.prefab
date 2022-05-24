@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2836581008726113581}
   - component: {fileID: 2836581008726113577}
   - component: {fileID: 6509753112163008855}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: explodingBarrel
   m_TagString: barrel
   m_Icon: {fileID: 0}
@@ -116,8 +116,6 @@ MonoBehaviour:
   m_explosionForce: 1000
   m_damage: 100
   m_explosionParticles: {fileID: 2083962581129970134, guid: 42fcaaa00f6fe0c459ced0f8df045434, type: 3}
-  m_barrel_partOne: {fileID: 6998708684175227290, guid: e955aa7961f41694b822ddb6e7008118, type: 3}
-  m_barrel_partTwo: {fileID: 4634246673423154086, guid: 46dfffb22b745934bac3031ab5c0bb3a, type: 3}
 --- !u!54 &2836581008726113581
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,7 +139,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2836581008726113572}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f8bc94c3c701a1c43bb114bc16fbf77b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
