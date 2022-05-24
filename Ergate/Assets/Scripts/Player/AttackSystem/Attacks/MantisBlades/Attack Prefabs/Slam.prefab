@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4659449802379313647}
   - component: {fileID: 6921185175958845087}
   - component: {fileID: 5807993360478472949}
-  - component: {fileID: -5429491062275985736}
   m_Layer: 0
   m_Name: Slam
   m_TagString: Untagged
@@ -111,19 +110,3 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 339373331580153760}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &-5429491062275985736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339373331580153760}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c409eb26e969adf42894d867ce787e29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 20
-  knockPower: 15
-  overrideDirection: 0
-  newDirection: {x: 0, y: 0, z: 0}
