@@ -59,7 +59,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_EnemiesToBeSpawned: 1
+  m_EnemiesMaxSpawn: 1
   m_SpawnRate: 1
   m_Prefab: {fileID: 2467397685397992805, guid: 3f51a2d9145813b44bbb9a74afa110c0, type: 3}
   m_EnemiesToBeDeleted: []
   m_EnemiesToBeSpawnedHold: 0
+  m_EnemyInstance: {fileID: 0}
+  m_BeginWeb: {fileID: 0}
+  m_EndWeb: {fileID: 0}
+  killEnemies: 0
+  m_CanSpawn: 0
