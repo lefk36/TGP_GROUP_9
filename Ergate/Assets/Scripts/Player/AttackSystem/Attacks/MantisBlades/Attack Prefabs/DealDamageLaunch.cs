@@ -37,5 +37,12 @@ public class DealDamageLaunch : MonoBehaviour
             enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
             enemyScript.TakeDamage(damage);
         }
+        if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
+        {
+            GameObject barrel = other.transform.parent.gameObject;
+            barrelStatsScript barrelScript = barrel.GetComponent<barrelStatsScript>();
+            damagedEnemies.Add(barrel);
+            barrelScript.takeDamage(damage);
+        }
     }
 }

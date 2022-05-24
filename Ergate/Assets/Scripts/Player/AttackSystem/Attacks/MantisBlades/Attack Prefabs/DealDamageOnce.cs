@@ -18,5 +18,12 @@ public class DealDamageOnce : MonoBehaviour
             damagedEnemies.Add(enemy);
             enemy.GetComponent<BaseEnemy>().TakeDamage(damage);
         }
+        if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
+        {
+            GameObject barrel = other.transform.parent.gameObject;
+            barrelStatsScript barrelScript = barrel.GetComponent<barrelStatsScript>();
+            damagedEnemies.Add(barrel);
+            barrelScript.takeDamage(damage);
+        }
     }
 }
