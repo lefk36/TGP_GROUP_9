@@ -123,7 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c409eb26e969adf42894d867ce787e29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 25
   knockPower: 15
   overrideDirection: 0
   newDirection: {x: 0, y: 0, z: 0}
