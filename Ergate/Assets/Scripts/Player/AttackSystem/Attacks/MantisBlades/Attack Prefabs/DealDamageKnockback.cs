@@ -31,7 +31,6 @@ public class DealDamageKnockback : MonoBehaviour
                 knockbackForceDirection = transform.rotation * newDirection;
             }
             knockbackForceDirection.Normalize();
-            enemy.GetComponent<NavMeshAgent>().enabled = false;
             enemyScript.rb.velocity = new Vector3(0, 0, 0);
             enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
             enemyScript.TakeDamage(damage);
