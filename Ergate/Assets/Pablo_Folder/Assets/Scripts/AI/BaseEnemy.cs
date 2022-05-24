@@ -46,8 +46,9 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public void FacePlayer()
     {
-        if(m_Agent.enabled)
+        if(!isDead)
         {
+            Debug.Log("FacingPlayer");
             Vector3 faceDirection = (m_Target.transform.position - transform.position).normalized;
             Quaternion directionToRotate = Quaternion.LookRotation(new Vector3(faceDirection.x, 0, faceDirection.z));
             transform.rotation = Quaternion.Lerp(transform.rotation, directionToRotate, Time.deltaTime * m_RotationRate);
