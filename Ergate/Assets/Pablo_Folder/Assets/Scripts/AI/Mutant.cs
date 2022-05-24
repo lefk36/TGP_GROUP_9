@@ -32,6 +32,7 @@ public class Mutant : BaseEnemy
         FacePlayer();
 
         Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
+        Debug.Log(m_stoppingDistance);
         if (enemyToPlayer.magnitude < m_stoppingDistance + m_Agent.radius)
         {
             m_Animator.SetBool("IsRunning", false);

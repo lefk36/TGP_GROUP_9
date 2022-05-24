@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1275761652148525936}
   - component: {fileID: 2821429835524814174}
   - component: {fileID: 2431127722920300546}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: debrisToDestroy
   m_TagString: Untagged
   m_Icon: {fileID: 0}

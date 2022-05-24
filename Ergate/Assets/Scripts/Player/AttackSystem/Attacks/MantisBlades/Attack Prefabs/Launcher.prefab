@@ -123,3 +123,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7af68dbd779a8af44ad487630e8a8cf6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 10
+  range: 6
+  speed: 20
+  stoppingPower: 4
+  direction: {x: 0, y: 1, z: 0}

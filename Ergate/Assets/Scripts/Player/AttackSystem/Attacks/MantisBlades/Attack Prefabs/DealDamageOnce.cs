@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class DealDamageOnce : MonoBehaviour
 {
@@ -15,8 +16,11 @@ public class DealDamageOnce : MonoBehaviour
         if (other.tag == "Enemy" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {
             GameObject enemy = other.transform.parent.gameObject;
+            enemy.GetComponent<NavMeshAgent>().enabled = false;
             damagedEnemies.Add(enemy);
-            enemy.GetComponent<BaseEnemy>().TakeDamage(damage);
+            BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
+            enemyScript.rb.velocity = new Vector3(0, 0, 0);
+            enemyScript.TakeDamage(damage);
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {
