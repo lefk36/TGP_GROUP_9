@@ -19,9 +19,9 @@ public abstract class BaseSpawner : MonoBehaviour
 
     public GameObject m_EnemyInstance;
 
-    public GameObject m_BeginWeb;
+    //public GameObject m_BeginWeb;
 
-    public GameObject m_EndWeb;
+    //public GameObject m_EndWeb;
 
     public bool killEnemies = false;
 
