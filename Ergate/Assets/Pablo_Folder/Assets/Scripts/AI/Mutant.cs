@@ -45,6 +45,7 @@ public class Mutant : BaseEnemy
             }
             m_Animator.SetBool("IsRunning", true);
         }
+
     }
 
 

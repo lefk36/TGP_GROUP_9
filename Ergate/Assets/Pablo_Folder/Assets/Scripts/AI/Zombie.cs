@@ -27,6 +27,11 @@ public class Zombie : BaseEnemy
 
     private void Update()
     {
+        if(m_IsTakingDamage && (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f))
+        {
+            m_Agent.enabled = true;
+        }
+
         FacePlayer();
 
         Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
@@ -41,6 +46,15 @@ public class Zombie : BaseEnemy
                 SetEnemyPath();
             }
             m_Animator.SetBool("IsRunning", true);
+        }
+
+        if(rb.velocity.y < 0f)
+        {
+            m_Animator.SetTrigger("Falling");
+        }
+        else
+        {
+            m_Animator.SetTrigger("BackToIdle");
         }
     }
 
