@@ -6,6 +6,7 @@ using UnityEngine.AI;
 public class DealDamageOnce : MonoBehaviour
 {
     public float damage;
+    public Vector3 force;
     private List<GameObject> damagedEnemies;
     private void Start()
     {
@@ -20,6 +21,7 @@ public class DealDamageOnce : MonoBehaviour
             damagedEnemies.Add(enemy);
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             enemyScript.rb.velocity = new Vector3(0, 0, 0);
+            enemyScript.rb.AddForce(force, ForceMode.Impulse);
             enemyScript.TakeDamage(damage);
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))

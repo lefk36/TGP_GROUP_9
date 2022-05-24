@@ -27,6 +27,8 @@ public class Zombie : BaseEnemy
 
     private void Update()
     {
+        Debug.Log(rb.velocity);
+        Debug.Log(m_IsTakingDamage);
         if(!m_IsTakingDamage && (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f))
         {
             m_Agent.enabled = true;
