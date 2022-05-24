@@ -68,16 +68,16 @@ public class EnemiesCameraLock : MonoBehaviour
     {
         playerControllerScript = transform.parent.parent.GetComponent<PlayerController>();
         m_Character = GameObject.Find("Character");
-        if(m_Character != null)
+        if (m_Character != null)
         {
             m_Model = GameObject.Find("Model");
-            if(m_Model != null)
+            if (m_Model != null)
             {
                 m_PlayerAnimator = m_Model.GetComponent<Animator>();
 
             }
         }
-        
+
     }
     private void OnEnable()
     {
@@ -89,7 +89,7 @@ public class EnemiesCameraLock : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if(m_LockOn && m_TargetableEnemies[m_TargetableEnemyIndex] != null)
+        if (m_LockOn && m_TargetableEnemies[m_TargetableEnemyIndex] != null)
         {
             //Sets the object to look at and the smooth rotation of the camera center in Y
             m_TargetToLook.targetObj = m_TargetableEnemies[m_TargetableEnemyIndex].transform;
@@ -98,7 +98,7 @@ public class EnemiesCameraLock : MonoBehaviour
             Vector3 rotation = Quaternion.Lerp(m_CameraMovement.gameObject.transform.rotation, lookEnemyRotation, Time.deltaTime * m_TurnToEnemySpeed).eulerAngles;
             m_CameraMovement.gameObject.transform.rotation = Quaternion.Euler(0f, rotation.y, 0f);
 
-            
+
         }
         //else
         //{
@@ -116,7 +116,7 @@ public class EnemiesCameraLock : MonoBehaviour
 
         //    }
         //}
-        
+
     }
 
     private void Update()
@@ -133,10 +133,7 @@ public class EnemiesCameraLock : MonoBehaviour
             //If the lock mode is not active
             if (!m_LockOn)
             {
-                if(m_TargetableEnemies.Count > 0)
-                {
-                    m_TargetableEnemyIndex = 0;
-                }
+                m_TargetableEnemyIndex = 0;
                 //If the list of targetable enemies is different than 0 then set the lock mode to true
                 if (m_TargetableEnemies.Count != 0 && m_TargetableEnemyIndex >= 0)
                 {
@@ -166,76 +163,69 @@ public class EnemiesCameraLock : MonoBehaviour
                 m_CameraMovement.enabled = false;
                 m_CameraMovementActive = false;
             }
-
-            //If the scrollWheel input is not 0 means that we go up or down on the targetable enemies list
-            if (m_ScrollWheelInputValue != 0f)
+            if (m_TargetableEnemies.Count > 0)
             {
-                //If you scroll up go up in the list
-                if (m_ScrollWheelInputValue > 0f)
+                //If the scrollWheel input is not 0 means that we go up or down on the targetable enemies list
+                if (m_ScrollWheelInputValue != 0f)
                 {
+                    //If you scroll up go up in the list
+                    if (m_ScrollWheelInputValue > 0f)
+                    {
+                        m_TargetableEnemyIndex++;
+                        //If the index is greater than the last index in the list set it to 0
+                        if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                        {
+                            m_TargetableEnemyIndex = 0;
+                        }
+                        m_ScrollWheelInputValue = 0f;
+
+                    }
+                    //if you scroll down go down in the list
+                    else if (m_ScrollWheelInputValue < 0f)
+                    {
+                        m_TargetableEnemyIndex--;
+                        //If the index is less than 0 then go to the las index in the list
+                        if (m_TargetableEnemyIndex < 0)
+                        {
+                            m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                        }
+                        m_ScrollWheelInputValue = 0f;
+                    }
+                }
+
+                if (m_ControllerHorizontal > 0f && !m_ControllerHorizontalInputDone)
+                {
+
+                    m_ControllerHorizontalInputDone = true;
                     m_TargetableEnemyIndex++;
                     //If the index is greater than the last index in the list set it to 0
                     if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
                     {
                         m_TargetableEnemyIndex = 0;
                     }
-                    m_ScrollWheelInputValue = 0f;
-
                 }
-                //if you scroll down go down in the list
-                else if (m_ScrollWheelInputValue < 0f)
+                else if (m_ControllerHorizontal < 0f && !m_ControllerHorizontalInputDone)
                 {
+                    m_ControllerHorizontalInputDone = true;
                     m_TargetableEnemyIndex--;
                     //If the index is less than 0 then go to the las index in the list
                     if (m_TargetableEnemyIndex < 0)
                     {
-                        m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                        if (m_TargetableEnemies.Count - 1 >= 0)
+                        {
+                            m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
+                        }
                     }
-                    m_ScrollWheelInputValue = 0f;
-                }
-            }
 
-            if(m_ControllerHorizontal > 0f && !m_ControllerHorizontalInputDone)
-            {
-                
-                m_ControllerHorizontalInputDone = true;
-                m_TargetableEnemyIndex++;
-                //If the index is greater than the last index in the list set it to 0
-                if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                }
+
+                if (m_ControllerHorizontal == 0)
                 {
-                    m_TargetableEnemyIndex = 0;
+                    m_ControllerHorizontalInputDone = false;
                 }
-            }
-            else if(m_ControllerHorizontal < 0f && !m_ControllerHorizontalInputDone)
-            {
-                m_ControllerHorizontalInputDone = true;
-                m_TargetableEnemyIndex--;
-                //If the index is less than 0 then go to the las index in the list
-                if (m_TargetableEnemyIndex < 0)
-                {
-                    m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
-                }
-                
-            }
 
-            if (m_ControllerHorizontal == 0)
-            {
-                m_ControllerHorizontalInputDone = false;
-            }
 
-            //If there is only 1 item in the list, the index if the list is 0
-            if (m_TargetableEnemies.Count == 1)
-            {
-                m_TargetableEnemyIndex = 0;
             }
-
-            //If the player is not visible the lock mode turns off
-            if (!m_Player.isVisible)
-            {
-                m_LockOn = false;
-            }
-
-            
         }
         else
         {
@@ -252,12 +242,23 @@ public class EnemiesCameraLock : MonoBehaviour
                 m_CameraMovementActive = true;
             }
         }
+        //If there is only 1 item in the list, the index if the list is 0
+        if (m_TargetableEnemies.Count == 1)
+        {
+            m_TargetableEnemyIndex = 0;
+        }
+
+        //If the player is not visible the lock mode turns off
+        if (!m_Player.isVisible)
+        {
+            m_LockOn = false;
+        }
     }
 
     //Coroutine at the start
     IEnumerator EnemyListChange()
     {
-        
+
         //While the game is running
         while (true)
         {
@@ -267,7 +268,7 @@ public class EnemiesCameraLock : MonoBehaviour
             if (!m_ResetShortest)
             {
                 m_ShortestDistance = Mathf.Infinity;
-                
+
             }
 
             //Foreach enemy in the array
@@ -277,7 +278,7 @@ public class EnemiesCameraLock : MonoBehaviour
                 //Creates raycasts from the camera to all the enemies
                 m_RayDirection = enemy.transform.position - transform.position;
                 m_Hits = Physics.RaycastAll(transform.position, m_RayDirection, m_MaxDistanceAllowed, m_Layer);
-                
+
 
                 //If the enemies are visible
                 if (enemy.GetComponent<Renderer>().isVisible && !enemy.transform.parent.GetComponent<BaseEnemy>().isDead)
@@ -315,7 +316,7 @@ public class EnemiesCameraLock : MonoBehaviour
                                 }
                             }
                         }
-                        
+
                     }
 
 
@@ -331,19 +332,19 @@ public class EnemiesCameraLock : MonoBehaviour
 
                         //Updates the List and theindex of the enemies
                         //If the index is greater than the last index, then the index is the last index in the list
-                        if(m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
+                        if (m_TargetableEnemyIndex > m_TargetableEnemies.Count - 1)
                         {
                             m_TargetableEnemyIndex = m_TargetableEnemies.Count - 1;
                         }
                         //If the index is less than 0, then it sets the index to 0
-                        else if(m_TargetableEnemyIndex < 0)
+                        else if (m_TargetableEnemyIndex < 0)
                         {
                             m_TargetableEnemyIndex = 0;
                         }
                         //If the index is equal to the index that is about to be removed from screen, it sets the index to that one minus 1
-                        else if(m_TargetableEnemyIndex == indexOfGameObjectToRemove)
+                        else if (m_TargetableEnemyIndex == indexOfGameObjectToRemove)
                         {
-                            if(indexOfGameObjectToRemove - 1 < 0)
+                            if (indexOfGameObjectToRemove - 1 < 0)
                             {
                                 m_LockOn = false;
                                 playerControllerScript.cameraLockedToTarget = false;
