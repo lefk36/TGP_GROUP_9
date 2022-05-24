@@ -280,7 +280,7 @@ public class EnemiesCameraLock : MonoBehaviour
                 
 
                 //If the enemies are visible
-                if (enemy.GetComponent<Renderer>().isVisible)
+                if (enemy.GetComponent<Renderer>().isVisible && !enemy.transform.parent.GetComponent<BaseEnemy>().isDead)
                 {
                     //Foreach hit in the raycasts crated if the tag of the collider is enemy, then add that gameObject in the list if it wasnt before
                     foreach (RaycastHit hit in m_Hits)
@@ -343,7 +343,15 @@ public class EnemiesCameraLock : MonoBehaviour
                         //If the index is equal to the index that is about to be removed from screen, it sets the index to that one minus 1
                         else if(m_TargetableEnemyIndex == indexOfGameObjectToRemove)
                         {
-                            m_TargetableEnemyIndex = indexOfGameObjectToRemove - 1;
+                            if(indexOfGameObjectToRemove - 1 < 0)
+                            {
+                                m_LockOn = false;
+                                playerControllerScript.cameraLockedToTarget = false;
+                            }
+                            else
+                            {
+                                m_TargetableEnemyIndex = indexOfGameObjectToRemove - 1;
+                            }
                         }
 
                     }

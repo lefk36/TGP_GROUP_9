@@ -10,6 +10,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public int m_PoiseDamage;
     public float m_stoppingDistance;
     public float m_RotationRate;
+    public bool isDead = false;
     [HideInInspector] public GameObject m_Target;
     [HideInInspector] public NavMeshAgent m_Agent;
     [HideInInspector] public PlayerPoiseAndHealth m_PlayerStats;
@@ -29,6 +30,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         {
             m_Animator.SetTrigger("IsDead");
             m_CameraLock.m_LockOn = false;
+            isDead = true;
             m_CameraLock.m_TargetableEnemies.Remove(gameObject);
             StartCoroutine(EnemyDeath());
         }

@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
 
     [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
     [HideInInspector] public bool isOnGround = true;
-    public bool cameraLockedToTarget; //edit this in camera script to determine whether
+    public bool cameraLockedToTarget; //edit this in camera script to determine whether its locked to target
 
     //this object's components
     [HideInInspector] public new Rigidbody rigidbody;
@@ -155,6 +155,7 @@ public class PlayerController : MonoBehaviour
 
         if (cameraLockedToTarget && !lockAttackDirection)
         {
+            Debug.Log(lockScript.m_TargetableEnemyIndex);
             if(lockScript.m_TargetableEnemyIndex >= 0 && lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex] != null)
             {
                 Vector3 dirToEnemy = lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex].transform.position - transform.position;
