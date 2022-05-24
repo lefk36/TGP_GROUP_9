@@ -7,12 +7,9 @@ public class ZombieSpawner : BaseSpawner
     private Zombie m_ZombieInstance;
     private Zombie m_ZombieCopy;
 
-    private void Start()
-    {
-        m_EnemiesToBeSpawnedHold = m_EnemiesToBeSpawned;
-    }
     private void OnEnable()
     {
+        m_EnemiesToBeSpawnedHold = m_EnemiesToBeSpawned;
         m_ZombieInstance = m_Prefab.GetComponent<Zombie>();
         m_ZombieCopy = m_ZombieInstance.Clone() as Zombie;
         GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);

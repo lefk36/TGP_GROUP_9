@@ -14,7 +14,7 @@ public abstract class BaseSpawner : MonoBehaviour
     public List<GameObject> m_EnemiesToBeDeleted;
 
     //Hold of the enemies spawned
-    [HideInInspector] public int m_EnemiesToBeSpawnedHold;
+    public int m_EnemiesToBeSpawnedHold;
 
     public GameObject m_EnemyInstance;
 
