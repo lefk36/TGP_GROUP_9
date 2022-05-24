@@ -22,6 +22,7 @@ public class Zombie : BaseEnemy
         rb = GetComponent<Rigidbody>();
         m_CanAttack = true;
         m_IsAttacking = false;
+        
     }
 
     private void Update()
