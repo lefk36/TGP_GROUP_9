@@ -10,21 +10,25 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public int m_PoiseDamage;
     public float m_stoppingDistance;
     public float m_RotationRate;
-    public bool isDead = false;
+    public bool lockFalling;
+
+    [HideInInspector] public GravityScaler gravityScaleScript;
     [HideInInspector] public GameObject m_Target;
     [HideInInspector] public NavMeshAgent m_Agent;
     [HideInInspector] public PlayerPoiseAndHealth m_PlayerStats;
     [HideInInspector] public Animator m_Animator;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool m_CanAttack;
-    public bool m_IsTakingDamage;
-    public float m_AttackRate;
+    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public bool m_IsTakingDamage;
+    [HideInInspector] public float m_AttackRate;
     [HideInInspector] public bool m_IsAttacking;
     [HideInInspector] public EnemiesCameraLock m_CameraLock;
 
 
     public void TakeDamage(float damageTaken)
     {
+        lockFalling = true;
         m_Animator.SetTrigger("TakeDamage");
         m_Health -= damageTaken;
         if (m_Health <= 0f)
@@ -72,18 +76,12 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public void NotTakingDamage()
     {
         m_IsTakingDamage = false;
-        //if(m_Agent.enabled == false)
-        //{
-        //    m_Agent.enabled = true;
-        //}
+        lockFalling = false;
     }
     public void TakingDamage()
     {
         m_IsTakingDamage = true;
-        //if(m_Agent.enabled == true)
-        //{
-        //    m_Agent.enabled = false;
-        //}
+        lockFalling = true;
     }
 
     public abstract BaseEnemy Clone();
@@ -94,7 +92,6 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
-
 }
 
 

@@ -845,6 +845,7 @@ GameObject:
   - component: {fileID: 2374682309085751625}
   - component: {fileID: -6536254424049255970}
   - component: {fileID: 3682693730583560538}
+  - component: {fileID: 1450398814034216995}
   m_Layer: 15
   m_Name: Zombie
   m_TagString: Untagged
@@ -879,7 +880,7 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 80
@@ -967,15 +968,30 @@ MonoBehaviour:
   m_PoiseDamage: 0
   m_stoppingDistance: 1
   m_RotationRate: 10
+  isDead: 0
   m_Target: {fileID: 0}
   m_Agent: {fileID: 0}
   m_PlayerStats: {fileID: 0}
   m_Animator: {fileID: 0}
   rb: {fileID: 0}
   m_CanAttack: 0
+  m_IsTakingDamage: 0
   m_AttackRate: 0.5
   m_IsAttacking: 0
   m_CameraLock: {fileID: 0}
+--- !u!114 &1450398814034216995
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3185726276918342703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5795bf84f866b1c4dbda8b2592e75aad, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gravityScale: 1
 --- !u!1 &3192325217610335777
 GameObject:
   m_ObjectHideFlags: 0

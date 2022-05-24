@@ -16,6 +16,7 @@ public class Swat : BaseEnemy
         m_Agent = GetComponent<NavMeshAgent>();
         m_Target = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
+        gravityScaleScript = GetComponent<GravityScaler>();
         m_CameraLock = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<EnemiesCameraLock>();
         m_CanAttack = true;
     }
@@ -61,6 +62,30 @@ public class Swat : BaseEnemy
 
         }
 
+    }
+    private void FixedUpdate()
+    {
+        if (lockFalling)
+        {
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            }
+            gravityScaleScript.gravityScale = 0;
+        }
+        else
+        {
+            gravityScaleScript.gravityScale = 1;
+        }
+        if (rb.velocity.y > 0.2f && !lockFalling) //when rising
+        {
+            gravityScaleScript.gravityScale = 3.0f;
+        }
+        if (rb.velocity.y < 0 && !lockFalling) //when falling
+        {
+
+            gravityScaleScript.gravityScale = 6.0f;
+        }
     }
 
     public void Shoot()

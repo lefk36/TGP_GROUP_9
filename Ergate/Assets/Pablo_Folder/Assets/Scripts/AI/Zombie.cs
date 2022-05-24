@@ -20,6 +20,7 @@ public class Zombie : BaseEnemy
         m_Target = GameObject.FindGameObjectWithTag("Player");
         m_CameraLock = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<EnemiesCameraLock>();
         rb = GetComponent<Rigidbody>();
+        gravityScaleScript = GetComponent<GravityScaler>();
         m_CanAttack = true;
         m_IsAttacking = false;
         
@@ -57,6 +58,30 @@ public class Zombie : BaseEnemy
         else
         {
             m_Animator.SetTrigger("BackToIdle");
+        }
+    }
+    private void FixedUpdate()
+    {
+        if (lockFalling)
+        {
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            }
+            gravityScaleScript.gravityScale = 0;
+        }
+        else
+        {
+            gravityScaleScript.gravityScale = 1;
+        }
+        if (rb.velocity.y > 0.2f && !lockFalling) //when rising
+        {
+            gravityScaleScript.gravityScale = 3.0f;
+        }
+        if (rb.velocity.y < 0 && !lockFalling) //when falling
+        {
+
+            gravityScaleScript.gravityScale = 6.0f;
         }
     }
 
