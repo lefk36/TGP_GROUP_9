@@ -157,6 +157,7 @@ public class PlayerController : MonoBehaviour
         {
             if(lockScript.m_TargetableEnemyIndex >= 0 && lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex] != null)
             {
+                Debug.Log("Player Getting In Direction");
                 Vector3 dirToEnemy = lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex].transform.position - transform.position;
                 RotateObjectToDirectionInstant(dirToEnemy, attackDirectionObject);
             }

@@ -176,12 +176,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4450992694127786519, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
       propertyPath: m_SpawnerList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4450992694127786519, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
       propertyPath: m_SpawnerList.Array.data[0]
       value: 
-      objectReference: {fileID: 1897078429}
+      objectReference: {fileID: 1449874105}
     - target: {fileID: 4450992694127786519, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
       propertyPath: m_SpawnerList.Array.data[1]
       value: 
@@ -851,6 +851,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1449874105 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 65037439743250079, guid: 1bc52896135c4ce49b704bea66aede21, type: 3}
+  m_PrefabInstance: {fileID: 401324374}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a6a8228829c4e4fb757da047d9114c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1535130340
 GameObject:
   m_ObjectHideFlags: 0

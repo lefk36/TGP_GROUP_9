@@ -74,6 +74,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         if (m_Agent.enabled)
         {
             m_Agent.SetDestination(transform.position);
+            
         }
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
