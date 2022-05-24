@@ -3698,9 +3698,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 422468601}
     m_Modifications:
+    - target: {fileID: 2011921729, guid: 57eea58f78885f84784231219fdb24ae, type: 3}
+      propertyPath: m_TagString
+      value: barrel
+      objectReference: {fileID: 0}
     - target: {fileID: 2836581008726113572, guid: 57eea58f78885f84784231219fdb24ae, type: 3}
       propertyPath: m_Name
       value: explodingBarrel (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2836581008726113572, guid: 57eea58f78885f84784231219fdb24ae, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 2836581008726113578, guid: 57eea58f78885f84784231219fdb24ae, type: 3}
       propertyPath: m_RootOrder
