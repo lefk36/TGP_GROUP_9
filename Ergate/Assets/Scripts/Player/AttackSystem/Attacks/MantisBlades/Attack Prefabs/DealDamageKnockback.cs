@@ -8,6 +8,7 @@ public class DealDamageKnockback : MonoBehaviour
     public float knockPower;
     private List<GameObject> damagedEnemies;
     public bool overrideDirection = false;
+    public bool rotate = false;
     public Vector3 newDirection;
     private void Start()
     {
@@ -28,12 +29,27 @@ public class DealDamageKnockback : MonoBehaviour
             }
             else
             {
-                knockbackForceDirection = transform.rotation * newDirection;
+                if (!rotate)
+                {
+                    knockbackForceDirection = newDirection;
+                }
+                else
+                {
+                    knockbackForceDirection = transform.rotation * newDirection;
+                }
             }
             knockbackForceDirection.Normalize();
-            enemy.GetComponent<NavMeshAgent>().enabled = false;
+            enemyScript.m_Agent.enabled = false;
+            enemyScript.TakeDamage(damage, false);
+            enemyScript.rb.velocity = new Vector3(0, 0, 0);
             enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
-            enemyScript.TakeDamage(damage);
+        }
+        if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
+        {
+            GameObject barrel = other.transform.parent.gameObject;
+            barrelStatsScript barrelScript = barrel.GetComponent<barrelStatsScript>();
+            damagedEnemies.Add(barrel);
+            barrelScript.takeDamage(damage);
         }
     }
 }

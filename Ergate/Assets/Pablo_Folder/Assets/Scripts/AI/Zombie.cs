@@ -11,7 +11,7 @@ public class Zombie : BaseEnemy
 
     private void Start()
     {
-        m_Health = 350f;
+        m_Health = 150f;
         m_HealthDamage = 20;
         m_PoiseDamage = 20;
         m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
@@ -20,26 +20,65 @@ public class Zombie : BaseEnemy
         m_Target = GameObject.FindGameObjectWithTag("Player");
         m_CameraLock = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<EnemiesCameraLock>();
         rb = GetComponent<Rigidbody>();
+        gravityScaleScript = GetComponent<GravityScaler>();
         m_CanAttack = true;
         m_IsAttacking = false;
+        m_GroundCollider = transform.GetChild(0).GetComponent<SphereCollider>();
+        
     }
 
     private void Update()
     {
-        ReEnableAgent();
+
+        RaycastHit hit;
+        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius - 0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y - 0.1f, m_Ground);
+
+        if(!m_IsTakingDamage && isOnGround)
+        {
+            lockFalling = false;
+            m_Agent.enabled = true;
+        }
+
         FacePlayer();
+
         Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
-        if (enemyToPlayer.magnitude < m_Agent.stoppingDistance)
+        if (enemyToPlayer.magnitude < m_stoppingDistance + m_Agent.radius)
         {
             m_Animator.SetBool("IsRunning", false);
         }
         else
         {
-            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack"))
+            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieFalling"))
             {
                 SetEnemyPath();
             }
             m_Animator.SetBool("IsRunning", true);
+        }
+
+        if(rb.velocity.y < -0.1f)
+        {
+            m_Animator.SetBool("IsFalling", true);
+        }
+        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
+        {
+            m_Animator.SetBool("IsFalling", false);
+        }
+
+        
+    }
+    private void FixedUpdate()
+    {
+        if (lockFalling)
+        {
+            if (rb.velocity.y < 0)
+            {
+                rb.velocity = new Vector3(rb.velocity.x, 0, rb.velocity.z);
+            }
+            gravityScaleScript.gravityScale = 0;
+        }
+        else
+        {
+            gravityScaleScript.gravityScale = 1;
         }
     }
 
@@ -49,8 +88,8 @@ public class Zombie : BaseEnemy
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Debug.Log("Should fire attack animation");
-            if(!m_Animator.GetBool("IsRunning"))
+            //Debug.Log("Should fire attack animation");
+            if(!m_Animator.GetBool("IsRunning") && m_Agent.enabled)
             {
                 m_Animator.SetTrigger("IsAttacking");
             }
@@ -74,6 +113,8 @@ public class Zombie : BaseEnemy
         if(check.Equals("DealDamage"))
         {
             m_IsAttacking = true;
+            
+            
             //StartCoroutine(AttackReset());
         }
     }
@@ -83,6 +124,8 @@ public class Zombie : BaseEnemy
         if(check.Equals("NoDealingDamage"))
         {
             m_IsAttacking = false;
+            
+            
         }
     }
 

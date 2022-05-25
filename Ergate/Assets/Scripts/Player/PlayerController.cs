@@ -24,11 +24,10 @@ public class PlayerController : MonoBehaviour
     public bool lockFalling;
     public bool lockAttackDirection;
     private bool m_VelocityStopped;
-    public bool allowDash;
+    public bool allowDash = true;
 
     [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
     [HideInInspector] public bool isOnGround = true;
-    public bool cameraLockedToTarget; //edit this in camera script to determine whether
 
     //this object's components
     [HideInInspector] public new Rigidbody rigidbody;
@@ -79,7 +78,7 @@ public class PlayerController : MonoBehaviour
     public float dashCooldown;
 
     //other scripts
-    EnemiesCameraLock lockScript;
+    [HideInInspector] public EnemiesCameraLock lockScript;
     [HideInInspector] public bool stickToAttack = false;
 
     private Vector3 m_InputDirection;
@@ -153,16 +152,16 @@ public class PlayerController : MonoBehaviour
         //    Cursor.visible = true;
         //}
 
-        if (cameraLockedToTarget && !lockAttackDirection)
+        if (lockScript.m_LockOn && !lockAttackDirection)
         {
-            if(lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex] != null)
+            if(lockScript.m_TargetableEnemyIndex >= 0 && lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex] != null)
             {
                 Vector3 dirToEnemy = lockScript.m_TargetableEnemies[lockScript.m_TargetableEnemyIndex].transform.position - transform.position;
                 RotateObjectToDirectionInstant(dirToEnemy, attackDirectionObject);
             }
             
         }
-        else if (!cameraLockedToTarget && !lockAttackDirection)
+        else if (!lockScript.m_LockOn && !lockAttackDirection)
         {
             RotateObjectToDirectionInstant(camera.transform.forward, attackDirectionObject);
         }

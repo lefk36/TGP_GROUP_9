@@ -7,23 +7,30 @@ public class ZombieSpawner : BaseSpawner
     private Zombie m_ZombieInstance;
     private Zombie m_ZombieCopy;
 
-    private void Start()
-    {
-        m_EnemiesToBeSpawnedHold = m_EnemiesToBeSpawned;
-    }
     private void OnEnable()
     {
+        m_EnemiesToBeSpawnedHold = m_EnemiesToBeSpawned;
         m_ZombieInstance = m_Prefab.GetComponent<Zombie>();
         m_ZombieCopy = m_ZombieInstance.Clone() as Zombie;
-        GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
-        m_EnemyInstance = instantiatedEnemy;
-        m_EnemiesToBeDeleted.Add(m_EnemyInstance);
-        m_EnemiesToBeSpawned--;
+        //GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
+        //m_EnemyInstance = instantiatedEnemy;
+        //m_EnemiesToBeDeleted.Add(m_EnemyInstance);
+        //m_EnemiesToBeSpawned--;
+        m_CanSpawn = true;
         EnemiesSpawning();
     }
 
     private void Update()
     {
+        
+        if (m_EnemiesToBeDeleted.Count >= m_EnemiesMaxSpawn)
+        {
+            m_CanSpawn = false;
+        }
+        else
+        {
+            m_CanSpawn = true;
+        }
         //foreach (GameObject enemy in m_EnemiesLeft)
         //{
         //    if (enemy == null)
@@ -42,19 +49,31 @@ public class ZombieSpawner : BaseSpawner
 
     private void EnemiesSpawning()
     {
-        StartCoroutine(EnemySpawn());
+        if(m_CanSpawn)
+        {
+            StartCoroutine(EnemySpawn());
+        }
+        
     }
 
     IEnumerator EnemySpawn()
     {
         while(m_EnemiesToBeSpawned > 0)
         {
-            yield return new WaitForSeconds(m_SpawnRate);
-            m_EnemiesToBeSpawned--;
-            GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
-            m_EnemyInstance = instantiatedEnemy;
-            m_EnemiesToBeDeleted.Add(m_EnemyInstance);
-
+            if(m_CanSpawn)
+            {
+                m_EnemiesToBeSpawned--;
+                GameObject instantiatedEnemy = Instantiate(m_ZombieCopy.gameObject, transform.position, transform.rotation);
+                m_EnemyInstance = instantiatedEnemy;
+                m_EnemiesToBeDeleted.Add(m_EnemyInstance);
+                yield return new WaitForSeconds(m_SpawnRate);
+            }
+            else
+            {
+                yield return null;
+            }
+            
+            
         }
 
     }

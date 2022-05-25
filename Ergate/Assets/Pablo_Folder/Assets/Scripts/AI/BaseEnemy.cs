@@ -8,26 +8,47 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public float m_Health;
     public int m_HealthDamage;
     public int m_PoiseDamage;
+    public float m_stoppingDistance;
     public float m_RotationRate;
+    public bool lockFalling;
+
+    [HideInInspector] public GravityScaler gravityScaleScript;
     [HideInInspector] public GameObject m_Target;
     [HideInInspector] public NavMeshAgent m_Agent;
     [HideInInspector] public PlayerPoiseAndHealth m_PlayerStats;
     [HideInInspector] public Animator m_Animator;
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public bool m_CanAttack;
-    public float m_AttackRate;
+    [HideInInspector] public bool isDead = false;
+    [HideInInspector] public bool m_IsTakingDamage;
+    [HideInInspector] public float m_AttackRate;
     [HideInInspector] public bool m_IsAttacking;
     [HideInInspector] public EnemiesCameraLock m_CameraLock;
+    [HideInInspector] public SphereCollider m_GroundCollider;
+    public LayerMask m_Ground;
+    public bool isOnGround;
 
-
-    public void TakeDamage(float damageTaken)
+    public void TakeDamage(float damageTaken, bool p_lockFalling)
     {
+        lockFalling = p_lockFalling;
+        m_Agent.enabled = false;
+        m_IsTakingDamage = true;
         m_Animator.SetTrigger("TakeDamage");
+        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage"))
+        {
+            m_Animator.Play("ZombieTakeDamage", -1, 0f);
+        }
         m_Health -= damageTaken;
         if (m_Health <= 0f)
         {
             m_Animator.SetTrigger("IsDead");
+            lockFalling = false;
             m_CameraLock.m_LockOn = false;
+            isDead = true;
+            if (m_CameraLock.m_TargetableEnemies.Contains(gameObject))
+            {
+                m_CameraLock.m_TargetableEnemies.Remove(gameObject);
+            }
             StartCoroutine(EnemyDeath());
         }
     }
@@ -39,9 +60,13 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public void FacePlayer()
     {
-        Vector3 faceDirection = (m_Target.transform.position - transform.position).normalized;
-        Quaternion directionToRotate = Quaternion.LookRotation(new Vector3(faceDirection.x, 0, faceDirection.z));
-        transform.rotation = Quaternion.Lerp(transform.rotation, directionToRotate, Time.deltaTime * m_RotationRate);
+        if(m_Agent.enabled)
+        {
+            Vector3 faceDirection = (m_Target.transform.position - transform.position).normalized;
+            Quaternion directionToRotate = Quaternion.LookRotation(new Vector3(faceDirection.x, 0, faceDirection.z));
+            transform.rotation = Quaternion.Lerp(transform.rotation, directionToRotate, Time.deltaTime * m_RotationRate);
+        }
+        
 
     }
 
@@ -49,7 +74,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     {
         if(!m_IsAttacking)
         {
-            Vector3 offset = transform.rotation * -Vector3.forward * 1.0f;
+            Vector3 offset = transform.rotation * -Vector3.forward * m_stoppingDistance;
             Vector3 targetPos = new Vector3(m_Target.transform.position.x, transform.position.y, m_Target.transform.position.z) + offset;
             if (m_Agent.enabled)
             {
@@ -57,30 +82,29 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
             }
         }
     }
-    public void ReEnableAgent()
+    public void NotTakingDamage()
     {
-        if(m_Agent.enabled == false && rb.velocity.magnitude < 0.05f)
-        {
-            m_Agent.enabled = true;
-        }
+        m_IsTakingDamage = false;
+        lockFalling = false;
     }
 
     public abstract BaseEnemy Clone();
 
     IEnumerator EnemyDeath()
     {
-        m_Agent.SetDestination(transform.position);
+        m_Agent.enabled = false;
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
     }
-
 }
 
 
 interface IEnemy
 {
-    void TakeDamage(float damageTaken);
+    void TakeDamage(float damageTaken, bool p_lockFalling);
     void DealDamage(Vector3 attackDirection, int healthDamageDealt, int poiseDamageDealt);
     void FacePlayer();
     void SetEnemyPath();
+    void NotTakingDamage();
+
 }

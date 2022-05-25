@@ -15,10 +15,10 @@ public class MutantSpawner : BaseSpawner
     {
         m_MutantInstance = m_Prefab.GetComponent<Mutant>();
         m_MutantCopy = m_MutantInstance.Clone() as Mutant;
-        GameObject instantiatedEnemy = Instantiate(m_MutantCopy.gameObject, transform.position, transform.rotation);
-        m_EnemyInstance = instantiatedEnemy;
-        m_EnemiesToBeDeleted.Add(m_EnemyInstance);
-        m_EnemiesToBeSpawned--;
+        //GameObject instantiatedEnemy = Instantiate(m_MutantCopy.gameObject, transform.position, transform.rotation);
+        //m_EnemyInstance = instantiatedEnemy;
+        //m_EnemiesToBeDeleted.Add(m_EnemyInstance);
+        //m_EnemiesToBeSpawned--;
         EnemiesSpawning();
     }
 
@@ -31,6 +31,15 @@ public class MutantSpawner : BaseSpawner
         //        m_EnemiesToBeDeleted.Remove(enemy);
         //    }
         //}
+        if (m_EnemiesToBeDeleted.Count >= m_EnemiesMaxSpawn)
+        {
+            m_CanSpawn = false;
+        }
+        else
+        {
+            m_CanSpawn = true;
+        }
+
         RemoveNullEnemies();
         if (killEnemies)
         {
@@ -48,11 +57,19 @@ public class MutantSpawner : BaseSpawner
     {
         while (m_EnemiesToBeSpawned > 0)
         {
-            yield return new WaitForSeconds(m_SpawnRate);
-            m_EnemiesToBeSpawned--;
-            GameObject instantiatedEnemy = Instantiate(m_MutantCopy.gameObject, transform.position, transform.rotation);
-            m_EnemyInstance = instantiatedEnemy;
-            m_EnemiesToBeDeleted.Add(m_EnemyInstance);
+            if(m_CanSpawn)
+            {
+                m_EnemiesToBeSpawned--;
+                GameObject instantiatedEnemy = Instantiate(m_MutantCopy.gameObject, transform.position, transform.rotation);
+                m_EnemyInstance = instantiatedEnemy;
+                m_EnemiesToBeDeleted.Add(m_EnemyInstance);
+                yield return new WaitForSeconds(m_SpawnRate);
+            }
+            else
+            {
+                yield return null;
+            }
+
         }
 
     }

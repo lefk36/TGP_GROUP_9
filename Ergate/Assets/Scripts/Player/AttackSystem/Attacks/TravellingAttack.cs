@@ -39,7 +39,7 @@ public class TravellingAttack : AttackState
             newAttackRange = FindNewRange();
         }
         float timeWhileNotMoving = 0;
-        while(distanceTravelled < newAttackRange)
+        do
         {
             rb.velocity = newAttackDirection * speed;
             Vector3 lastPos = playerScript.transform.position;
@@ -47,19 +47,19 @@ public class TravellingAttack : AttackState
             Vector3 currentPosition = playerScript.transform.position;
             float nextStep = (lastPos - currentPosition).magnitude;
             distanceTravelled += nextStep;
-            if(nextStep <= 0.01)
+            if (nextStep <= 0.01)
             {
-                timeWhileNotMoving+=Time.deltaTime;
+                timeWhileNotMoving += Time.deltaTime;
             }
             else
             {
                 timeWhileNotMoving = 0;
             }
-            if(timeWhileNotMoving > 0.5f)
+            if (timeWhileNotMoving > 0.5f)
             {
                 break;
             }
-        }
+        } while (distanceTravelled < newAttackRange);
         playerScript.lockFalling = false;
         rb.velocity = rb.velocity / stoppingPower;
         yield return new WaitForSeconds(attackEndTime);

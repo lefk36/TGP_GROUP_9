@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AirLauncher
   m_EditorClassIdentifier: 
   thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
-  attackObject: {fileID: 286232789824516609, guid: d702666d3e5477c42afa795c8eaa2591, type: 3}
+  attackObject: {fileID: 5768864813189160395, guid: 82cdbe1ede639e241b6196b57d6c4a7c, type: 3}
   attackName: airlauncher
   chainableAttacks:
   - {fileID: 11400000, guid: fe2eec2afb5fd524ba26007e5e32adf6, type: 2}

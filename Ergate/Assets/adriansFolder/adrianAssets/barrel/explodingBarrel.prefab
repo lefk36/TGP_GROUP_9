@@ -1,5 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2011921729
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2011921730}
+  - component: {fileID: 2011921731}
+  m_Layer: 10
+  m_Name: AttackHitbox
+  m_TagString: barrel
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2011921730
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011921729}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2836581008726113578}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &2011921731
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011921729}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1.0000001, y: 2, z: 1.0000002}
+  m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
 --- !u!1 &2836581008726113572
 GameObject:
   m_ObjectHideFlags: 0
@@ -16,9 +60,9 @@ GameObject:
   - component: {fileID: 2836581008726113581}
   - component: {fileID: 2836581008726113577}
   - component: {fileID: 6509753112163008855}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: explodingBarrel
-  m_TagString: barrel
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33,7 +77,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.18, y: 0.759, z: 0}
   m_LocalScale: {x: 1, y: 0.581298, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 2011921730}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -116,8 +161,6 @@ MonoBehaviour:
   m_explosionForce: 1000
   m_damage: 100
   m_explosionParticles: {fileID: 2083962581129970134, guid: 42fcaaa00f6fe0c459ced0f8df045434, type: 3}
-  m_barrel_partOne: {fileID: 6998708684175227290, guid: e955aa7961f41694b822ddb6e7008118, type: 3}
-  m_barrel_partTwo: {fileID: 4634246673423154086, guid: 46dfffb22b745934bac3031ab5c0bb3a, type: 3}
 --- !u!54 &2836581008726113581
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -141,7 +184,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2836581008726113572}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: f8bc94c3c701a1c43bb114bc16fbf77b, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2

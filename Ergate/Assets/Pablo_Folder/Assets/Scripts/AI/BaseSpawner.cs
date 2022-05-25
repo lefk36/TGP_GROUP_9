@@ -6,6 +6,7 @@ public abstract class BaseSpawner : MonoBehaviour
 {
     //Enemies to be spawned
     public int m_EnemiesToBeSpawned;
+    public int m_EnemiesMaxSpawn;
     //Interval between enemies spawning
     public float m_SpawnRate;
     //Variable of the prefab
@@ -14,15 +15,17 @@ public abstract class BaseSpawner : MonoBehaviour
     public List<GameObject> m_EnemiesToBeDeleted;
 
     //Hold of the enemies spawned
-    [HideInInspector] public int m_EnemiesToBeSpawnedHold;
+    public int m_EnemiesToBeSpawnedHold;
 
     public GameObject m_EnemyInstance;
 
-    public GameObject m_BeginWeb;
+    //public GameObject m_BeginWeb;
 
-    public GameObject m_EndWeb;
+    //public GameObject m_EndWeb;
 
     public bool killEnemies = false;
+
+    public bool m_CanSpawn;
 
     public abstract void ResetSpawner();
     public abstract void KillAll();
