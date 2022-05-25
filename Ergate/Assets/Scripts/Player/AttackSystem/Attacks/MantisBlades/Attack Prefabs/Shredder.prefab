@@ -9,7 +9,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8126017878192413201}
-  - component: {fileID: 6896266060819536974}
   m_Layer: 0
   m_Name: Shredder
   m_TagString: Untagged
@@ -33,18 +32,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6896266060819536974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1253363325158376372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96c809ebc2d5c8e48840f14df1f7d00c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &6613719018055717449
 GameObject:
   m_ObjectHideFlags: 0
@@ -57,6 +44,7 @@ GameObject:
   - component: {fileID: 5534162124385169003}
   - component: {fileID: 7872101692590821281}
   - component: {fileID: 6382241789943164696}
+  - component: {fileID: 6736802767034299883}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -142,6 +130,21 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &6736802767034299883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6613719018055717449}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c809ebc2d5c8e48840f14df1f7d00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tickRate: 0.3
+  damagePerTick: 3
+  force: {x: 0, y: 0, z: 0}
 --- !u!1 &9190142265822983268
 GameObject:
   m_ObjectHideFlags: 0
@@ -154,6 +157,7 @@ GameObject:
   - component: {fileID: 3342838842659551755}
   - component: {fileID: 7378690425012073155}
   - component: {fileID: 8444643095704458088}
+  - component: {fileID: 1772232413452716635}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -239,3 +243,18 @@ MeshCollider:
   m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1772232413452716635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9190142265822983268}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96c809ebc2d5c8e48840f14df1f7d00c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tickRate: 0.3
+  damagePerTick: 3
+  force: {x: 0, y: 0, z: 0}
