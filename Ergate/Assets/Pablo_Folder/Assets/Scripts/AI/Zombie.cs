@@ -23,6 +23,7 @@ public class Zombie : BaseEnemy
         gravityScaleScript = GetComponent<GravityScaler>();
         m_CanAttack = true;
         m_IsAttacking = false;
+        m_GroundCollider = transform.GetChild(0).GetComponent<SphereCollider>();
         
     }
 
@@ -30,16 +31,14 @@ public class Zombie : BaseEnemy
     {
         Debug.Log(rb.velocity);
         Debug.Log(m_IsTakingDamage);
-        if(!m_IsTakingDamage && (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f))
-        {
-           
-            m_Agent.enabled = true;
 
-        }
-        else if(m_IsTakingDamage)
+        RaycastHit hit;
+        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius, Vector3.down, out hit, m_GroundCollider.bounds.extents.y - 0.2f, m_Ground);
+
+        if(!m_IsTakingDamage && isOnGround)
         {
-            Debug.Log("Setting agent to false");
-            m_Agent.enabled = false;
+            lockFalling = false;
+            m_Agent.enabled = true;
         }
 
         FacePlayer();
@@ -62,11 +61,12 @@ public class Zombie : BaseEnemy
         {
             m_Animator.SetBool("IsFalling", true);
         }
-        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && m_Agent.enabled)
+        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
         {
             m_Animator.SetBool("IsFalling", false);
-
         }
+
+        
     }
     private void FixedUpdate()
     {

@@ -24,12 +24,19 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     [HideInInspector] public float m_AttackRate;
     [HideInInspector] public bool m_IsAttacking;
     [HideInInspector] public EnemiesCameraLock m_CameraLock;
-
+    [HideInInspector] public SphereCollider m_GroundCollider;
+    public LayerMask m_Ground;
+    public bool isOnGround;
 
     public void TakeDamage(float damageTaken)
     {
         lockFalling = true;
+        m_Agent.enabled = false;
         m_Animator.SetTrigger("TakeDamage");
+        if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage"))
+        {
+            m_Animator.Play("ZombieTakeDamage", -1, 0f);
+        }
         m_Health -= damageTaken;
         if (m_Health <= 0f)
         {
@@ -81,7 +88,6 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public void TakingDamage()
     {
         m_IsTakingDamage = true;
-        lockFalling = true;
     }
 
     public abstract BaseEnemy Clone();
