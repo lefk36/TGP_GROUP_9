@@ -1,91 +1,78 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 using UnityEngine.UI;
+using TMPro;
+using UnityEngine.EventSystems;
 
-public enum Item
+public  class ItemScript : MonoBehaviour
 {
-    Weapon,
-    Potion,
-    Key,
-    Default
-}
+    [SerializeField] private Image itemImage;
 
-public enum Attributes
-{
-    Speed,
-    Intellect,
-    Strength,
-    Defence,
-    Health
-}
+    [SerializeField] private TMP_Text quantityText;
 
-public abstract class ItemScript : ScriptableObject
-{
-    public Sprite ItemIcon;
-    [SerializeField]
-    public ItemBuff[] buffs;
+    [SerializeField] private Image frameImage;
 
-    public int id;
+    public event Action<ItemScript> OnItemClicked, OnItemOnItemBeginDrag, OnItemEndDrag, OnRightMouseClicked;
 
-    /// <summary>
-    /// Sets the type of an item based on an enum
-    /// </summary>
-    public Item type;
-    [TextArea(15,20)]
-    // Description of Items on Screen
-    public string description;
 
-    public my_Item CreateItem(ItemScript item)
+    private bool empty = true;
+
+    private void Awake()
     {
-        my_Item newItem = new my_Item(this);
-        return newItem;
+        ResetData();
+        Deselect();
     }
 
-    public void OnButtonClick(string img_name)
+    public void ResetData()
     {
-        Debug.Log(img_name);
+        this.itemImage.gameObject.SetActive(false);
+        empty = true;
     }
-}
 
-[System.Serializable]
-public class my_Item
-{
-    public string Name;
-    public int Id;
-    public ItemBuff[] buffs;
-    public my_Item(ItemScript item)
+    public void Deselect()
     {
-        Name = item.name;
-        Id = item.id;
-        buffs = new ItemBuff[item.buffs.Length];
-        for(int i =0; i< buffs.Length; i++)
+        frameImage.enabled = false;
+    }
+
+    public void SetData(Sprite sprite, int quantity)
+    {
+        this.itemImage.gameObject.SetActive(true);
+        this.itemImage.sprite = sprite;
+        this.quantityText.text = quantity + "";
+        empty = false;
+    }
+
+    private void Select()
+    {
+        frameImage.enabled = true;
+    }
+
+    public void OnBeginDrag()
+    {
+        if (empty)
+            return;
+        OnItemOnItemBeginDrag?.Invoke(this);
+    }
+
+    public void OnEndDrag()
+    {
+        OnItemEndDrag?.Invoke(this);
+    }
+
+    public void OnPointerClick(BaseEventData data)
+    {
+        PointerEventData pointerData = (PointerEventData)data;
+        if(pointerData.button == PointerEventData.InputButton.Right)
         {
-            buffs[i].m_attribute = item.buffs[i].m_attribute;
-            buffs[i] = new ItemBuff(item.buffs[i].min, item.buffs[i].max);
+            OnRightMouseClicked?.Invoke(this);
+        }
+        else
+        {
+            OnItemClicked?.Invoke(this);
         }
     }
 
-   
-}
-
-[System.Serializable]
-public class ItemBuff
-{
-    public Attributes m_attribute;
-    public int value;
-    public int min;
-    public int max;
-    public ItemBuff(int m_min, int m_max)
-    {
-        min = m_min;
-        max = m_max;
-        GenerateValue();
-    }
-
-    public void GenerateValue()
-    {
-        value = UnityEngine.Random.Range(min, max);
-    }
 }
 

@@ -6,11 +6,11 @@ using UnityEngine;
 public class PotionItem : ItemScript
 {
 
-    // class for creating potion Items
+    //// class for creating potion Items
 
-    public int restoreHealth;
-    void Awake()
-    {
-        type = Item.Potion;
-    }
+    //public int restoreHealth;
+    //void Awake()
+    //{
+    //    type = Item.Potion;
+    //}
 }

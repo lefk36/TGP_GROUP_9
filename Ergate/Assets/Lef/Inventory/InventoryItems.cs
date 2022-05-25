@@ -20,4 +20,5 @@ public class InventoryItems : ScriptableObject
     [field: SerializeField]
     public int size { get; private set; } = 10;
 
+
 }

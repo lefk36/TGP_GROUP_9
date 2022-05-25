@@ -6,18 +6,18 @@ using UnityEngine.UI;
 
 
 
-public class Item_s : MonoBehaviour, ISerializationCallbackReceiver
-{
-    // variable created to pass the current item being added to the inventory
-    public ItemScript s_item;
+////public class Item_s : MonoBehaviour, ISerializationCallbackReceiver
+////{
+//    //// variable created to pass the current item being added to the inventory
+//    //public ItemScript s_item;
 
 
-    public void OnAfterDeserialize()
-    {
-    }
+//    //public void OnAfterDeserialize()
+//    //{
+//    //}
 
-    public void OnBeforeSerialize()
-    {
-        GetComponentInChildren<SpriteRenderer>().sprite = s_item.ItemIcon;
-    }
-}
+//    //public void OnBeforeSerialize()
+//    //{
+//    //    GetComponentInChildren<SpriteRenderer>().sprite = s_item.ItemIcon;
+//    //}
+//}

@@ -7,8 +7,8 @@ public class DefaultItem : ItemScript
 {
     // class for creating the Default Items
 
-    public void Awake()
-    {
-        type = Item.Default;
-    }
+    //public void Awake()
+    //{
+    //    type = Item.Default;
+    //}
 }
