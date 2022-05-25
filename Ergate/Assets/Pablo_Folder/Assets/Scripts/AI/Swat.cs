@@ -26,7 +26,7 @@ public class Swat : BaseEnemy
     void Update()
     {
         RaycastHit hit;
-        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius - 0.2f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y - 0.2f, m_Ground);
+        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius - 0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y+0.1f, m_Ground);
 
         if (!m_IsTakingDamage && isOnGround)
         {
@@ -40,7 +40,7 @@ public class Swat : BaseEnemy
         if (enemyToPlayer.magnitude <= m_Agent.stoppingDistance)
         {
             m_Animator.SetBool("IsRunning", false);
-            if(m_CanAttack)
+            if(m_CanAttack && m_Agent.enabled)
             {
                 m_Animator.SetBool("InRange", true);
                
@@ -98,15 +98,6 @@ public class Swat : BaseEnemy
         {
             gravityScaleScript.gravityScale = 1;
         }
-        if (rb.velocity.y > 0.2f && !lockFalling) //when rising
-        {
-            gravityScaleScript.gravityScale = 3.0f;
-        }
-        if (rb.velocity.y < 0 && !lockFalling) //when falling
-        {
-
-            gravityScaleScript.gravityScale = 6.0f;
-        }
     }
 
     public void Shoot()
@@ -124,7 +115,6 @@ public class Swat : BaseEnemy
     {
         m_CanAttack = false;
         yield return new WaitForSeconds(4f);
-        Debug.Log("CanAttackAgain");
         m_CanAttack = true;
     }
 }

@@ -31,7 +31,7 @@ public class Zombie : BaseEnemy
     {
 
         RaycastHit hit;
-        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius - 0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y - 0.1f, m_Ground);
+        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius - 0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y + 0.1f, m_Ground);
 
         if(!m_IsTakingDamage && isOnGround)
         {
@@ -88,13 +88,12 @@ public class Zombie : BaseEnemy
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            //Debug.Log("Should fire attack animation");
             if(!m_Animator.GetBool("IsRunning") && m_Agent.enabled)
             {
                 m_Animator.SetTrigger("IsAttacking");
             }
 
-            if (m_IsAttacking && m_CanAttack)
+            if (m_IsAttacking && m_CanAttack && m_Agent.enabled)
             {
                 DealDamage(Vector3.zero, m_HealthDamage, m_PoiseDamage);
                 StartCoroutine(AttackReset());
