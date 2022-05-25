@@ -307,6 +307,10 @@ PrefabInstance:
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 719428980}
+    - target: {fileID: 1561259660, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: countTime
+      value: 300
+      objectReference: {fileID: 0}
     - target: {fileID: 2142173873, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

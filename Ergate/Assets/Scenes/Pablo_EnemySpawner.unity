@@ -176,7 +176,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4450992694127786519, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
       propertyPath: m_SpawnerList.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4450992694127786519, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
       propertyPath: m_SpawnerList.Array.data[0]
