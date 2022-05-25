@@ -30,6 +30,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public void TakeDamage(float damageTaken)
     {
+        m_IsTakingDamage = true;
         lockFalling = true;
         m_Agent.enabled = false;
         m_Animator.SetTrigger("TakeDamage");
@@ -41,6 +42,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         if (m_Health <= 0f)
         {
             m_Animator.SetTrigger("IsDead");
+            lockFalling = false;
             m_CameraLock.m_LockOn = false;
             isDead = true;
             if (m_CameraLock.m_TargetableEnemies.Contains(gameObject))
@@ -85,10 +87,6 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         m_IsTakingDamage = false;
         lockFalling = false;
     }
-    public void TakingDamage()
-    {
-        m_IsTakingDamage = true;
-    }
 
     public abstract BaseEnemy Clone();
 
@@ -108,6 +106,5 @@ interface IEnemy
     void FacePlayer();
     void SetEnemyPath();
     void NotTakingDamage();
-    void TakingDamage();
 
 }

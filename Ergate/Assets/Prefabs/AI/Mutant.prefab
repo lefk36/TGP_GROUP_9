@@ -634,6 +634,11 @@ MonoBehaviour:
   m_AttackRate: 0
   m_IsAttacking: 0
   m_CameraLock: {fileID: 0}
+  m_GroundCollider: {fileID: 0}
+  m_Ground:
+    serializedVersion: 2
+    m_Bits: 8
+  isOnGround: 0
 --- !u!114 &100833823464621376
 MonoBehaviour:
   m_ObjectHideFlags: 0

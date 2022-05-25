@@ -26,10 +26,20 @@ public class Mutant : BaseEnemy
         gravityScaleScript = GetComponent<GravityScaler>();
         m_CanAttack = true;
         m_IsAttacking = false;
+        m_GroundCollider = transform.GetChild(0).GetComponent<SphereCollider>();
     }
 
     private void Update()
     {
+        RaycastHit hit;
+        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius - 0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y - 0.1f, m_Ground);
+
+        if (!m_IsTakingDamage && isOnGround)
+        {
+            lockFalling = false;
+            m_Agent.enabled = true;
+        }
+
         FacePlayer();
 
         Vector3 enemyToPlayer = m_Target.transform.position - transform.position;
@@ -40,11 +50,20 @@ public class Mutant : BaseEnemy
         }
         else
         {
-            if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage"))
+            if (!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieFalling"))
             {
                 SetEnemyPath();
             }
             m_Animator.SetBool("IsRunning", true);
+        }
+
+        if (rb.velocity.y < -0.1f)
+        {
+            m_Animator.SetBool("IsFalling", true);
+        }
+        else if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
+        {
+            m_Animator.SetBool("IsFalling", false);
         }
 
     }
