@@ -31,7 +31,7 @@ public class Zombie : BaseEnemy
     {
 
         RaycastHit hit;
-        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius-0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y-0.1f, m_Ground);
+        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius - 0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y - 0.1f, m_Ground);
 
         if(!m_IsTakingDamage && isOnGround)
         {

@@ -1109,6 +1109,11 @@ MonoBehaviour:
   m_AttackRate: 0
   m_IsAttacking: 0
   m_CameraLock: {fileID: 0}
+  m_GroundCollider: {fileID: 0}
+  m_Ground:
+    serializedVersion: 2
+    m_Bits: 8
+  isOnGround: 0
   m_BulletPref: {fileID: 2579590962576745729, guid: 513be572cf6d3ca41a37dc721defab0a, type: 3}
   m_GunMuzzle: {fileID: 1907544403334879084}
 --- !u!54 &1362707542891920334

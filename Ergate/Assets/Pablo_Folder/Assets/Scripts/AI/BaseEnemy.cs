@@ -42,6 +42,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         if (m_Health <= 0f)
         {
             m_Animator.SetTrigger("IsDead");
+            lockFalling = false;
             m_CameraLock.m_LockOn = false;
             isDead = true;
             if (m_CameraLock.m_TargetableEnemies.Contains(gameObject))
