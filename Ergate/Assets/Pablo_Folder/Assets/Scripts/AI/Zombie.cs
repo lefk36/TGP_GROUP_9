@@ -29,11 +29,9 @@ public class Zombie : BaseEnemy
 
     private void Update()
     {
-        Debug.Log(rb.velocity);
-        Debug.Log(m_IsTakingDamage);
 
         RaycastHit hit;
-        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius, Vector3.down, out hit, m_GroundCollider.bounds.extents.y - 0.2f, m_Ground);
+        isOnGround = Physics.SphereCast(m_GroundCollider.bounds.center, m_GroundCollider.radius-0.1f, Vector3.down, out hit, m_GroundCollider.bounds.extents.y-0.1f, m_Ground);
 
         if(!m_IsTakingDamage && isOnGround)
         {
@@ -81,15 +79,6 @@ public class Zombie : BaseEnemy
         else
         {
             gravityScaleScript.gravityScale = 1;
-        }
-        if (rb.velocity.y > 0.2f && !lockFalling) //when rising
-        {
-            gravityScaleScript.gravityScale = 3.0f;
-        }
-        if (rb.velocity.y < 0 && !lockFalling) //when falling
-        {
-
-            gravityScaleScript.gravityScale = 6.0f;
         }
     }
 

@@ -25,7 +25,7 @@ public class DealDamageKnockback : MonoBehaviour
             if (!overrideDirection)
             {
                 Vector3 positionNoY = new Vector3(transform.position.x, enemy.transform.position.y, transform.position.z);
-                knockbackForceDirection = enemy.transform.position - enemyScript.m_Target.transform.position;
+                knockbackForceDirection = enemy.transform.position - positionNoY;
             }
             else
             {
@@ -40,9 +40,9 @@ public class DealDamageKnockback : MonoBehaviour
             }
             knockbackForceDirection.Normalize();
             enemyScript.m_Agent.enabled = false;
+            enemyScript.TakeDamage(damage, false);
             enemyScript.rb.velocity = new Vector3(0, 0, 0);
             enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
-            enemyScript.TakeDamage(damage);
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {

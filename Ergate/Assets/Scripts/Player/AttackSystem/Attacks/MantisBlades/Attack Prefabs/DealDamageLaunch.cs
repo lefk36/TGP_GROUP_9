@@ -38,7 +38,7 @@ public class DealDamageLaunch : MonoBehaviour
     {
         enemyScript.rb.velocity = new Vector3(0, 0, 0);
         float distanceTravelled = 0;
-        enemyScript.TakeDamage(damage);
+        enemyScript.TakeDamage(damage, true);
         do
         {
             enemy.GetComponent<NavMeshAgent>().enabled = false;

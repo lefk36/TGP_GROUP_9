@@ -626,10 +626,9 @@ MonoBehaviour:
   lockMovement: 0
   lockFalling: 0
   lockAttackDirection: 0
-  allowDash: 0
+  allowDash: 1
   readyForAction: 1
   isOnGround: 1
-  cameraLockedToTarget: 0
   rigidbody: {fileID: 0}
   gravityScaleScript: {fileID: 0}
   m_PlayerStats: {fileID: 8759917491035486813}
@@ -643,6 +642,7 @@ MonoBehaviour:
   dashStoppingPower: 3
   m_hasDashed: 0
   dashCooldown: 0.5
+  lockScript: {fileID: 0}
   stickToAttack: 0
   m_AttackInput: {fileID: 18877949}
 --- !u!114 &1031727961

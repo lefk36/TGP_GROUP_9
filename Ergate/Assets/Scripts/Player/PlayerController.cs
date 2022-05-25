@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public bool lockFalling;
     public bool lockAttackDirection;
     private bool m_VelocityStopped;
-    public bool allowDash;
+    public bool allowDash = true;
 
     [HideInInspector] public bool readyForAction = true; //Use this property in other scripts to check if the player is currently in the middle of another action (example: atttacking or knocked on the ground)
     [HideInInspector] public bool isOnGround = true;

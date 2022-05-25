@@ -403,6 +403,10 @@ PrefabInstance:
       propertyPath: wheelControllerScript
       value: 
       objectReference: {fileID: 18877945}
+    - target: {fileID: 5991469130341453005, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -5.942444
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
 --- !u!114 &622315772 stripped

@@ -28,10 +28,11 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public LayerMask m_Ground;
     public bool isOnGround;
 
-    public void TakeDamage(float damageTaken)
+    public void TakeDamage(float damageTaken, bool p_lockFalling)
     {
-        lockFalling = true;
+        lockFalling = p_lockFalling;
         m_Agent.enabled = false;
+        m_IsTakingDamage = true;
         m_Animator.SetTrigger("TakeDamage");
         if (m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage"))
         {
@@ -85,10 +86,6 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         m_IsTakingDamage = false;
         lockFalling = false;
     }
-    public void TakingDamage()
-    {
-        m_IsTakingDamage = true;
-    }
 
     public abstract BaseEnemy Clone();
 
@@ -103,11 +100,10 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
 interface IEnemy
 {
-    void TakeDamage(float damageTaken);
+    void TakeDamage(float damageTaken, bool p_lockFalling);
     void DealDamage(Vector3 attackDirection, int healthDamageDealt, int poiseDamageDealt);
     void FacePlayer();
     void SetEnemyPath();
     void NotTakingDamage();
-    void TakingDamage();
 
 }

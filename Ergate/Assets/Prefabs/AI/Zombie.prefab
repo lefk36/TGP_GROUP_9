@@ -968,17 +968,24 @@ MonoBehaviour:
   m_PoiseDamage: 0
   m_stoppingDistance: 1
   m_RotationRate: 10
-  isDead: 0
+  lockFalling: 0
+  gravityScaleScript: {fileID: 0}
   m_Target: {fileID: 0}
   m_Agent: {fileID: 0}
   m_PlayerStats: {fileID: 0}
   m_Animator: {fileID: 0}
   rb: {fileID: 0}
   m_CanAttack: 0
+  isDead: 0
   m_IsTakingDamage: 0
   m_AttackRate: 0.5
   m_IsAttacking: 0
   m_CameraLock: {fileID: 0}
+  m_GroundCollider: {fileID: 0}
+  m_Ground:
+    serializedVersion: 2
+    m_Bits: 8
+  isOnGround: 0
 --- !u!114 &1450398814034216995
 MonoBehaviour:
   m_ObjectHideFlags: 0

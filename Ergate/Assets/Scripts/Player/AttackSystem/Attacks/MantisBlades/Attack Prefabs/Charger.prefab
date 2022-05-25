@@ -126,4 +126,5 @@ MonoBehaviour:
   damage: 15
   knockPower: 12
   overrideDirection: 1
+  rotate: 1
   newDirection: {x: 0, y: 0, z: 1}
