@@ -14,7 +14,7 @@ public  class ItemScript : MonoBehaviour
 
     [SerializeField] private Image frameImage;
 
-    public event Action<ItemScript> OnItemClicked, OnItemOnItemBeginDrag, OnItemEndDrag, OnRightMouseClicked;
+    public event Action<ItemScript> OnItemClicked, OnItemOnItemBeginDrag, OnItemEndDrag, OnRightMouseClicked, OnItemSwap;
 
 
     private bool empty = true;
@@ -44,15 +44,17 @@ public  class ItemScript : MonoBehaviour
         empty = false;
     }
 
-    private void Select()
+    public void Select()
     {
         frameImage.enabled = true;
     }
 
     public void OnBeginDrag()
     {
-        if (empty)
+        if (empty == true)
+        {
             return;
+        }
         OnItemOnItemBeginDrag?.Invoke(this);
     }
 
