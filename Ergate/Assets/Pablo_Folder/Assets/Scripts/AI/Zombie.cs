@@ -29,7 +29,14 @@ public class Zombie : BaseEnemy
     {
         if(!m_IsTakingDamage && (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f))
         {
+           
             m_Agent.enabled = true;
+
+        }
+        else if(m_IsTakingDamage)
+        {
+            Debug.Log("Setting agent to false");
+            m_Agent.enabled = false;
         }
 
         FacePlayer();
@@ -41,20 +48,21 @@ public class Zombie : BaseEnemy
         }
         else
         {
-            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage"))
+            if(!m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieAttack") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieTakeDamage") && !m_Animator.GetCurrentAnimatorStateInfo(0).IsName("ZombieFalling"))
             {
                 SetEnemyPath();
             }
             m_Animator.SetBool("IsRunning", true);
         }
 
-        if(rb.velocity.y < 0f)
+        if(rb.velocity.y < -0.1f)
         {
-            m_Animator.SetTrigger("Falling");
+            m_Animator.SetBool("IsFalling", true);
         }
-        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
+        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f && m_Agent.enabled)
         {
-            m_Animator.SetTrigger("BackToIdle");
+            m_Animator.SetBool("IsFalling", false);
+
         }
     }
 
@@ -65,7 +73,7 @@ public class Zombie : BaseEnemy
         if(other.gameObject.CompareTag("Player"))
         {
             //Debug.Log("Should fire attack animation");
-            if(!m_Animator.GetBool("IsRunning"))
+            if(!m_Animator.GetBool("IsRunning") && m_Agent.enabled)
             {
                 m_Animator.SetTrigger("IsAttacking");
             }
@@ -89,6 +97,8 @@ public class Zombie : BaseEnemy
         if(check.Equals("DealDamage"))
         {
             m_IsAttacking = true;
+            
+            
             //StartCoroutine(AttackReset());
         }
     }
@@ -98,6 +108,8 @@ public class Zombie : BaseEnemy
         if(check.Equals("NoDealingDamage"))
         {
             m_IsAttacking = false;
+            
+            
         }
     }
 
