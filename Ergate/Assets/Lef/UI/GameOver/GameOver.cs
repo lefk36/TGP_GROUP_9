@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class GameOver : MonoBehaviour
 {
     [SerializeField] GameObject playButtons;
@@ -12,6 +13,8 @@ public class GameOver : MonoBehaviour
     {
         playButtons.SetActive(false);
         Invoke("ButtonsActive", 2.0f);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
     }
 
    
