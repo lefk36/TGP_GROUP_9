@@ -25,6 +25,14 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     [HideInInspector] public bool m_IsAttacking;
     [HideInInspector] public EnemiesCameraLock m_CameraLock;
     [HideInInspector] public SphereCollider m_GroundCollider;
+
+    // Drop Item values
+     
+     [SerializeField] GameObject itemPrefab;
+    private int itemNum;
+    private int randNum;
+    
+
     public LayerMask m_Ground;
     public bool isOnGround;
 
@@ -50,6 +58,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
                 m_CameraLock.m_TargetableEnemies.Remove(gameObject);
             }
             StartCoroutine(EnemyDeath());
+
         }
     }
 
@@ -82,6 +91,7 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
             }
         }
     }
+
     public void NotTakingDamage()
     {
         m_IsTakingDamage = false;
@@ -95,7 +105,32 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         m_Agent.enabled = false;
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
+        DropItems();
     }
+
+    public void DropItems()
+    {
+        randNum = Random.Range(0, 101);
+        Debug.Log("Random number : " + randNum);
+
+        if(randNum >= 95)
+        {
+            itemNum = 0;
+            Instantiate(itemPrefab, transform.position, Quaternion.identity);
+        }
+        else if (randNum > 75 && randNum < 95)
+        {
+            itemNum = 0;
+            Instantiate(itemPrefab, transform.position, Quaternion.identity);
+        }
+        else if(randNum > 45 && randNum <= 50)
+        {
+            itemNum = 1;
+            Instantiate(itemPrefab, transform.position, Quaternion.identity);
+        }
+       
+    }
+
 }
 
 
