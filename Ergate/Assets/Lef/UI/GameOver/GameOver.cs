@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         playButtons.SetActive(false);
-        Invoke("hordeMode", 2.0f);
+        Invoke("ButtonsActive", 2.0f);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
@@ -27,12 +27,12 @@ public class GameOver : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("hordeMode");
     }
 
     public void MainButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Lef_MainMenu");
     }
 
 }

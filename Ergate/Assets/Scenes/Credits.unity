@@ -425,6 +425,36 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 657862536}
   m_CullTransparentMesh: 1
+--- !u!1 &704517246
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 704517247}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &704517247
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 704517246}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 719.55963, y: -598.8886, z: 3560.793}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &910149531
 GameObject:
   m_ObjectHideFlags: 0
@@ -844,7 +874,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa7bfd32614aab64a8d2ccada52b5697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playButtons: {fileID: 1844254942}
+  playButtons: {fileID: 704517246}
 --- !u!1 &1993035899
 GameObject:
   m_ObjectHideFlags: 0
