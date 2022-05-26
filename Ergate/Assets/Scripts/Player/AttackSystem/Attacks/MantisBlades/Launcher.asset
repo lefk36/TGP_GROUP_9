@@ -12,14 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Launcher
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
+  thisAttackState: NormalStandingAttack
   attackObject: {fileID: 286232789824516609, guid: d702666d3e5477c42afa795c8eaa2591, type: 3}
   attackName: Launcher
+  soundName: 
   chainableAttacks:
   - {fileID: 11400000, guid: ef3e77da822e7714ba0175b711e68b24, type: 2}
   - {fileID: 11400000, guid: b03423e837af14341a6f89a81186274f, type: 2}
   attackBeginningTime: 0.3
   attackTime: 0.5
+  attackEndTime: 0
   attackRange: 1
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}

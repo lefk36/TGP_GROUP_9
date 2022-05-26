@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Riser
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
+  thisAttackState: TravellingAttack
   attackObject: {fileID: 4003389853322350757, guid: 067b808ce43546348a35743bb683a192, type: 3}
   attackName: riser
+  soundName: 
   chainableAttacks: []
   attackBeginningTime: 0.1
   attackTime: 0.35

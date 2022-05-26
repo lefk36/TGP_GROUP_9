@@ -6,7 +6,7 @@ using UnityEditor;
 [CreateAssetMenu(fileName ="Attack Data")]
 public class AttackData : ScriptableObject
 {
-    [SerializeField] private MonoScript thisAttackState;
+    [SerializeField] private string thisAttackState;
     [SerializeField] private GameObject attackObject;
     [HideInInspector] public AttackState state;
     public string attackName;
@@ -30,9 +30,57 @@ public class AttackData : ScriptableObject
     {
         if (thisAttackState != null)
         {
-            System.Type type = thisAttackState.GetClass();
-            var this_stateInstance = (AttackState)System.Activator.CreateInstance(type);
-            state = this_stateInstance;
+            if(thisAttackState == "AttackState" || thisAttackState == "")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(AttackState));
+                state = this_stateInstance;
+            }
+            else if(thisAttackState == "AirSlamAttack")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(AirSlamAttack));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "ContinousHoldingAttack")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(ContinousHoldingAttack));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "HoldingState")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(HoldingState));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "HoldingStateAlternative")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(HoldingStateAlternative));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "NormalAirAttack")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(NormalAirAttack));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "NormalStandingAttack")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(NormalStandingAttack));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "PausingState")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(PausingState));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "ShootingAttack")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(ShootingAttack));
+                state = this_stateInstance;
+            }
+            else if (thisAttackState == "TravellingAttack")
+            {
+                var this_stateInstance = (AttackState)System.Activator.CreateInstance(typeof(TravellingAttack));
+                state = this_stateInstance;
+            }
+
         }
         if (state != null) {
             if (attackObject != null)

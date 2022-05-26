@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: AirSlash3
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
+  thisAttackState: NormalAirAttack
   attackObject: {fileID: 3922462700105408470, guid: 3ffded2c9584b254f9091bdfb51371e0, type: 3}
   attackName: airslash3
+  soundName: 
   chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5

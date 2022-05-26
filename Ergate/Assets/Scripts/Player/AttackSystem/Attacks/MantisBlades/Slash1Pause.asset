@@ -12,13 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Slash1Pause
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: e2918a05c58beef44a59d8ea99e758e0, type: 3}
+  thisAttackState: PausingState
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
   attackName: s1pause
+  soundName: 
   chainableAttacks:
   - {fileID: 11400000, guid: 3b4c3c19ac1e2984ab7aca2123970adb, type: 2}
   attackBeginningTime: 0
   attackTime: 0.25
+  attackEndTime: 0
   attackRange: 1
   toEnemy: 0
   attackDirection: {x: 0, y: 0, z: 0}

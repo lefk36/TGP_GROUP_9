@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Shoot
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 8b14bcaa227cf904fab448dbdcb4e64f, type: 3}
+  thisAttackState: ShootingAttack
   attackObject: {fileID: 1395322134253157773, guid: b61cdcaed09821240899290382d7d512, type: 3}
   attackName: spikeshot
   soundName: gunShot

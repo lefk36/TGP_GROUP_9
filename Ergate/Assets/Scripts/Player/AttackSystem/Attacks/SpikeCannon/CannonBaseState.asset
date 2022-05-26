@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: CannonBaseState
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 3c5b615c01c50864d92429a49925c38b, type: 3}
+  thisAttackState: AttackState
   attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
   attackName: cannonBase
+  soundName: 
   chainableAttacks:
   - {fileID: 11400000, guid: 94013a002a7142e409bfee5aa86ec403, type: 2}
   - {fileID: 11400000, guid: bdb4efb1841a8da4eb502d7ea3e6ae50, type: 2}

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: AirSlam
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 6077c6123a3f8de479fa1762864b800b, type: 3}
+  thisAttackState: AirSlamAttack
   attackObject: {fileID: 339373331580153760, guid: 4572ba7e4219f1142a789a05e45d9fa3, type: 3}
   attackName: airslam
   soundName: explosion

@@ -12,12 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Shredder
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: e50e41d29a23ba24882cda6bca455c74, type: 3}
+  thisAttackState: ContinousHoldingAttack
   attackObject: {fileID: 1253363325158376372, guid: b07c4cf3c5e30594c88bec5dba6585f9, type: 3}
   attackName: shredder
+  soundName: 
   chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5
+  attackEndTime: 0
   attackRange: 1
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}

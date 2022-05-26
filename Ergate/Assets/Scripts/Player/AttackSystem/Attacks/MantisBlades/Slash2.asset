@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: Slash2
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
+  thisAttackState: NormalStandingAttack
   attackObject: {fileID: 2568402339028432046, guid: 7fdaf02a1e0b41240a21ed0254fef96a, type: 3}
   attackName: Slash2
   soundName: chargedPunch

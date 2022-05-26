@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
   m_Name: AirLauncher
   m_EditorClassIdentifier: 
-  thisAttackState: {fileID: 11500000, guid: 3e036237004cd384993ed8ae48d1b2cc, type: 3}
+  thisAttackState: NormalAirAttack
   attackObject: {fileID: 5768864813189160395, guid: 82cdbe1ede639e241b6196b57d6c4a7c, type: 3}
   attackName: airlauncher
+  soundName: 
   chainableAttacks:
   - {fileID: 11400000, guid: fe2eec2afb5fd524ba26007e5e32adf6, type: 2}
   attackBeginningTime: 0.3
