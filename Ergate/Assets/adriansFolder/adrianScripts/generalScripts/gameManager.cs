@@ -7,7 +7,7 @@ public class gameManager : MonoBehaviour
     public audioController m_audioController;
     public GameObject m_audioManager;
 
-    private Scene playerScene;
+    [HideInInspector] public Scene playerScene;
 
     private void Awake()
     {

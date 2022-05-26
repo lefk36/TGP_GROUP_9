@@ -65,9 +65,12 @@ public class DealDamageTick : MonoBehaviour
     void DealDamage(GameObject enemy)
     {
         BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
-        enemyScript.m_Agent.enabled = false;
-        enemyScript.rb.velocity = new Vector3(0, 0, 0);
-        enemyScript.rb.AddForce(force, ForceMode.Impulse);
-        enemyScript.TakeDamage(damagePerTick, true);
+        if (!enemyScript.isDead)
+        {
+            enemyScript.m_Agent.enabled = false;
+            enemyScript.rb.velocity = new Vector3(0, 0, 0);
+            enemyScript.rb.AddForce(force, ForceMode.Impulse);
+            enemyScript.TakeDamage(damagePerTick, true);
+        }
     }
 }

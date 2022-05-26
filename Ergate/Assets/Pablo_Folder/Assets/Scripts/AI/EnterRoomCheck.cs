@@ -10,10 +10,12 @@ public class EnterRoomCheck : MonoBehaviour
     [SerializeField] private GameObject m_EndWallWeb;
     private bool m_EnemiesPresent;
 
+    private gameManager manager;
+
     private void Start()
     {
-
-        m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        manager = GameObject.Find("LevelManager").GetComponent<gameManager>();
+        StartCoroutine(WaitForSceneLoad());
         
     }
     private void Update()
@@ -33,7 +35,7 @@ public class EnterRoomCheck : MonoBehaviour
               m_EndWallWeb.SetActive(false);
         }
 
-        if(m_PlayerStats.m_IsDead)
+        if (m_PlayerStats != null && m_PlayerStats.m_IsDead)
         {
             StartCoroutine(SpawnerResetDelay());
         }
@@ -64,5 +66,17 @@ public class EnterRoomCheck : MonoBehaviour
 
         m_WallWeb.SetActive(false);
         m_EndWallWeb.SetActive(false);
+    }
+    IEnumerator WaitForSceneLoad()
+    {
+        while (!manager.playerScene.isLoaded)
+        {
+            yield return null;
+        }
+        if (m_PlayerStats == null)
+        {
+            m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        }
+        yield return null;
     }
 }

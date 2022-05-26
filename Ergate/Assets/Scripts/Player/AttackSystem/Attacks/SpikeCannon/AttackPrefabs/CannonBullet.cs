@@ -25,11 +25,14 @@ public class CannonBullet : MonoBehaviour
         {
             GameObject enemy = other.transform.parent.gameObject;
             enemy.GetComponent<NavMeshAgent>().enabled = false;
-            damagedEnemies.Add(enemy);
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
-            enemyScript.rb.velocity = new Vector3(0, 0, 0);
-            enemyScript.TakeDamage(damage, true);
-            Destroy(this.gameObject);
+            if (!enemyScript.isDead)
+            {
+                damagedEnemies.Add(enemy);
+                enemyScript.rb.velocity = new Vector3(0, 0, 0);
+                enemyScript.TakeDamage(damage, true);
+                Destroy(this.gameObject);
+            }
         }
         else if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {

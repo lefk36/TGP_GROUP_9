@@ -33,8 +33,11 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     [HideInInspector] public int itemNum;
     [HideInInspector] public int randNum;
 
+    protected gameManager manager;
+
     public void TakeDamage(float damageTaken, bool p_lockFalling)
     {
+
         lockFalling = p_lockFalling;
         m_Agent.enabled = false;
         m_IsTakingDamage = true;
@@ -44,12 +47,12 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
             m_Animator.Play("ZombieTakeDamage", -1, 0f);
         }
         m_Health -= damageTaken;
-        if (m_Health <= 0f)
+        if (m_Health <= 0f && !isDead)
         {
             m_Animator.SetTrigger("IsDead");
             lockFalling = false;
-            m_CameraLock.m_LockOn = false;
             isDead = true;
+            m_CameraLock.m_LockOn = false;
             if (m_CameraLock.m_TargetableEnemies.Contains(gameObject))
             {
                 m_CameraLock.m_TargetableEnemies.Remove(gameObject);

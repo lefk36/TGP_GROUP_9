@@ -17,16 +17,15 @@ public class Mutant : BaseEnemy
         m_RotationRate = 5;
         m_PoiseDamage = 30;
         m_AttackRate = 1f;
-        m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
         m_Animator = GetComponent<Animator>();
         m_Agent = GetComponent<NavMeshAgent>();
-        m_Target = GameObject.FindGameObjectWithTag("Player");
-        m_CameraLock = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<EnemiesCameraLock>();
         rb = GetComponent<Rigidbody>();
         gravityScaleScript = GetComponent<GravityScaler>();
         m_CanAttack = true;
         m_IsAttacking = false;
         m_GroundCollider = transform.GetChild(0).GetComponent<SphereCollider>();
+        manager = GameObject.Find("LevelManager").GetComponent<gameManager>();
+        StartCoroutine(WaitForSceneLoad());
     }
 
     private void Update()
@@ -134,5 +133,25 @@ public class Mutant : BaseEnemy
         m_CanAttack = true;
 
 
+    }
+    IEnumerator WaitForSceneLoad()
+    {
+        while (!manager.playerScene.isLoaded)
+        {
+            yield return null;
+        }
+        if (m_PlayerStats == null)
+        {
+            m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        }
+        if (m_Target == null)
+        {
+            m_Target = GameObject.FindGameObjectWithTag("Player");
+        }
+        if (m_CameraLock == null)
+        {
+            m_CameraLock = GameObject.FindGameObjectWithTag("Player").transform.Find("Camera Centre").GetChild(0).GetComponent<EnemiesCameraLock>();
+        }
+        yield return null;
     }
 }

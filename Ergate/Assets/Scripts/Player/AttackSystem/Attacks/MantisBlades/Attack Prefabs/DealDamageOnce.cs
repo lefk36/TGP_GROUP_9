@@ -18,11 +18,14 @@ public class DealDamageOnce : MonoBehaviour
         {
             GameObject enemy = other.transform.parent.gameObject;
             enemy.GetComponent<NavMeshAgent>().enabled = false;
-            damagedEnemies.Add(enemy);
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
-            enemyScript.rb.velocity = new Vector3(0, 0, 0);
-            enemyScript.rb.AddForce(force, ForceMode.Impulse);
-            enemyScript.TakeDamage(damage, true);
+            if (!enemyScript.isDead)
+            {
+                damagedEnemies.Add(enemy);
+                enemyScript.rb.velocity = new Vector3(0, 0, 0);
+                enemyScript.rb.AddForce(force, ForceMode.Impulse);
+                enemyScript.TakeDamage(damage, true);
+            }
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {

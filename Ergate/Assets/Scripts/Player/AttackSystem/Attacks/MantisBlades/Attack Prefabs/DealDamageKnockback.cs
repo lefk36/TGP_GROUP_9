@@ -20,6 +20,8 @@ public class DealDamageKnockback : MonoBehaviour
         {
             GameObject enemy = other.transform.parent.gameObject;
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
+            if (!enemyScript.isDead)
+            {
             damagedEnemies.Add(enemy);
             Vector3 knockbackForceDirection;
             if (!overrideDirection)
@@ -40,9 +42,10 @@ public class DealDamageKnockback : MonoBehaviour
             }
             knockbackForceDirection.Normalize();
             enemyScript.m_Agent.enabled = false;
-            enemyScript.TakeDamage(damage, false);
+
             enemyScript.rb.velocity = new Vector3(0, 0, 0);
             enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
+            }
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {

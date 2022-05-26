@@ -11,15 +11,14 @@ public class Swat : BaseEnemy
     void Start()
     {
         m_Health = 100f;
-        m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
         m_Animator = GetComponent<Animator>();
         m_Agent = GetComponent<NavMeshAgent>();
-        m_Target = GameObject.FindGameObjectWithTag("Player");
         rb = GetComponent<Rigidbody>();
         gravityScaleScript = GetComponent<GravityScaler>();
-        m_CameraLock = GameObject.FindGameObjectWithTag("Player").GetComponentInChildren<EnemiesCameraLock>();
         m_CanAttack = true;
         m_GroundCollider = transform.GetChild(0).GetComponent<SphereCollider>();
+        manager = GameObject.Find("LevelManager").GetComponent<gameManager>();
+        StartCoroutine(WaitForSceneLoad());
     }
 
     // Update is called once per frame
@@ -116,5 +115,25 @@ public class Swat : BaseEnemy
         m_CanAttack = false;
         yield return new WaitForSeconds(4f);
         m_CanAttack = true;
+    }
+    IEnumerator WaitForSceneLoad()
+    {
+        while (!manager.playerScene.isLoaded)
+        {
+            yield return null;
+        }
+        if (m_PlayerStats == null)
+        {
+            m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+        }
+        if (m_Target == null)
+        {
+            m_Target = GameObject.FindGameObjectWithTag("Player");
+        }
+        if (m_CameraLock == null)
+        {
+            m_CameraLock = GameObject.FindGameObjectWithTag("Player").transform.Find("Camera Centre").GetChild(0).GetComponent<EnemiesCameraLock>();
+        }
+        yield return null;
     }
 }

@@ -21,10 +21,13 @@ public class DealDamageLaunch : MonoBehaviour
         {
             GameObject enemy = other.transform.parent.gameObject;
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
-            damagedEnemies.Add(enemy);
+            if (!enemyScript.isDead)
+            {
+                damagedEnemies.Add(enemy);
 
-            direction.Normalize();
-            enemyScript.StartCoroutine(Launch(enemy, enemyScript));
+                direction.Normalize();
+                enemyScript.StartCoroutine(Launch(enemy, enemyScript));
+            }
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
         {
