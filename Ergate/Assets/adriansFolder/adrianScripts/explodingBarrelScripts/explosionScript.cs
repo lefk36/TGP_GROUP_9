@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class explosionScript : MonoBehaviour
 {
@@ -34,7 +35,11 @@ public class explosionScript : MonoBehaviour
 
             if(colliders[i].attachedRigidbody != null)
             {
-
+                if(colliders[i].GetComponent<NavMeshAgent>() != null)
+                {
+                    //colliders[i].GetComponent<NavMeshAgent>().enabled = false;
+                    colliders[i].GetComponent<BaseEnemy>().TakeDamage(m_damage, true);
+                }
                 if(colliders[i].GetComponent<barrelStatsScript>() != null)
                 {
                     colliders[i].GetComponent<barrelStatsScript>().takeDamage(m_damage);
