@@ -17,6 +17,8 @@ public class menuManager : MonoBehaviour
     private float musicVolume;
     private float soundEffectVolume;
 
+   
+
     public AudioMixer audioMixer;
 
     public UIController uiControllerScript;
@@ -54,7 +56,7 @@ public class menuManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         Time.timeScale = 1f;
-        uiControllerScript.pauseMenuState = false; ;
+        uiControllerScript.pauseMenuState = false; 
     }
 
     public void startGame()
@@ -78,4 +80,5 @@ public class menuManager : MonoBehaviour
         settingsMenu.SetActive(false);
         mainMenu.SetActive(true);
     }
+
 }
