@@ -7,6 +7,7 @@ public class AttackInput : MonoBehaviour
     private UIController weaponWheelController;
     private PlayerController playerControllerScript;
     private PlayerPoiseAndHealth playerHealthScript;
+    public audioController m_audioController;
     private float basicHoldTime = 0;
     private float alternativeHoldTime = 0;
     private float noInputTime = 0;
@@ -26,6 +27,7 @@ public class AttackInput : MonoBehaviour
         {
             if (Input.GetButton("BasicAttack"))
             {
+                m_audioController.play("playerAttackScream");
                 basicHoldTime += Time.deltaTime;
                 if (activeWeapon.ReadInput("BasicHold", basicHoldTime, inAir))//if input matched an attack
                 {
