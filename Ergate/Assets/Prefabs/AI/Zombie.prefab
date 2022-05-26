@@ -982,6 +982,8 @@ MonoBehaviour:
   m_IsAttacking: 0
   m_CameraLock: {fileID: 0}
   m_GroundCollider: {fileID: 0}
+  items: 3
+  itemPrefab: {fileID: 4807927978124915129, guid: af734e2b9e447824b9241c3c9988e043, type: 3}
   m_Ground:
     serializedVersion: 2
     m_Bits: 8
