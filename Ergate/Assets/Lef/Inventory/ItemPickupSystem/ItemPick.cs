@@ -16,14 +16,7 @@ public class ItemPick : MonoBehaviour
 
     private void Start()
     {
-        try
-        {
-            GetComponent<ItemPick>().InventoryItem.ItemImage = InventoryItem.ItemImage;
-        }
-        catch
-        {
-            
-        }
+        GetComponent<ItemPick>().InventoryItem.ItemImage = InventoryItem.ItemImage;
     }
 
     internal void DestroyItem()

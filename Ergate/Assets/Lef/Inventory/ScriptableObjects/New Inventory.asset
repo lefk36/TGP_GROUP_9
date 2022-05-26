@@ -13,14 +13,14 @@ MonoBehaviour:
   m_Name: New Inventory
   m_EditorClassIdentifier: 
   m_inventoryItems:
-  - quantity: 0
-    item: {fileID: 0}
-  - quantity: 0
-    item: {fileID: 0}
-  - quantity: 0
-    item: {fileID: 0}
-  - quantity: 0
-    item: {fileID: 0}
+  - quantity: 8
+    item: {fileID: 11400000, guid: 9ce2996389578e24baba5111c3526e06, type: 2}
+  - quantity: 1
+    item: {fileID: 11400000, guid: bacaf77e5922d224b84c1cfdfac597f9, type: 2}
+  - quantity: 1
+    item: {fileID: 11400000, guid: bacaf77e5922d224b84c1cfdfac597f9, type: 2}
+  - quantity: 1
+    item: {fileID: 11400000, guid: bacaf77e5922d224b84c1cfdfac597f9, type: 2}
   - quantity: 0
     item: {fileID: 0}
   - quantity: 0
