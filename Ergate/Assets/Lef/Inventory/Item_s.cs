@@ -4,20 +4,20 @@ using UnityEngine;
 using UnityEditor;
 using UnityEngine.UI;
 
+namespace Inventory.Model
+{ 
+    public abstract class Item_s : ScriptableObject
+    {
+        [field: SerializeField] public bool IsStackable { get; set; }
 
+        public int ID => GetInstanceID();
 
-////public class Item_s : MonoBehaviour, ISerializationCallbackReceiver
-////{
-//    //// variable created to pass the current item being added to the inventory
-//    //public ItemScript s_item;
+        [field: SerializeField] public int MaxStackSize { get; set; } = 1;
 
+        [field: SerializeField] public string Name { get; set; }
 
-//    //public void OnAfterDeserialize()
-//    //{
-//    //}
+        [field: SerializeField] [field: TextArea] public string Description { get; set; }
 
-//    //public void OnBeforeSerialize()
-//    //{
-//    //    GetComponentInChildren<SpriteRenderer>().sprite = s_item.ItemIcon;
-//    //}
-//}
+        [field: SerializeField] public Sprite ItemImage { get; set; }
+    }
+}
