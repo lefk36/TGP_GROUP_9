@@ -30,7 +30,7 @@ public class ContinousHoldingAttack : AttackState
             playerAnimator.SetTrigger(animationTrigger);
         }
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
-        attackInstance.GetComponent<DealDamageTick>().SetAudio(soundName, playerScript.m_audioController.GetComponent<audioController>());
+        attackInstance.transform.GetChild(0).GetComponent<DealDamageTick>().SetAudio(soundName, playerScript.m_audioController.GetComponent<audioController>());
         while (!Input.GetButtonUp("AlternativeAttack"))
         {
             if (!Input.GetButton("AlternativeAttack"))
