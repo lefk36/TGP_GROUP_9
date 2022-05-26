@@ -202,6 +202,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 8759917491035486813, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_audioController
+      value: 
+      objectReference: {fileID: 76268992}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
 --- !u!114 &18877945 stripped
@@ -253,19 +257,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 798228580205453908, guid: e2058896ab3be7f4e919e9bd2850e5cc, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 798228580205453908, guid: e2058896ab3be7f4e919e9bd2850e5cc, type: 3}
       propertyPath: m_AnchorMin.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 798228580205453908, guid: e2058896ab3be7f4e919e9bd2850e5cc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 60.379
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 798228580205453908, guid: e2058896ab3be7f4e919e9bd2850e5cc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -60
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 798228580362178647, guid: e2058896ab3be7f4e919e9bd2850e5cc, type: 3}
       propertyPath: m_AnchorMax.x
