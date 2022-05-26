@@ -58,14 +58,14 @@ namespace Inventory
             if (inventoryItem.IsEmpty)
                 return;
             IItemAction itemAction = inventoryItem.item as IItemAction;
-            if(itemAction != null)
+            if (itemAction != null)
             {
                 itemAction.IsAction(gameObject);
             }
             IDestroyableItem destroyable = inventoryItem.item as IDestroyableItem;
-            if(destroyable != null)
+            if (destroyable != null)
             {
-                inventoryData.RemoveItem(itemIndex,1);
+                inventoryData.RemoveItem(itemIndex, 1);
             }
         }
 
@@ -95,31 +95,25 @@ namespace Inventory
             inventoryUI.UpdateDescription(itemIndex, item.ItemImage, item.name, item.Description);
         }
 
-        private void Update()
+        public void Pause()
         {
-            if (Input.GetKeyDown(KeyCode.I))
+
+            if (inventoryUI.isActiveAndEnabled == false)
             {
-                Time.timeScale = 0;
-                Cursor.lockState = CursorLockMode.None;
-                Cursor.visible = true;
-                if (inventoryUI.isActiveAndEnabled == false)
+                inventoryUI.Show();
+                foreach (var item in inventoryData.GetCurrentInvnetoryState())
                 {
-                    inventoryUI.Show();
-                    foreach (var item in inventoryData.GetCurrentInvnetoryState())
-                    {
-                        inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
-                    }
-                }
-                else
-                {
-                    inventoryUI.Hide();
-                    Time.timeScale = 1;
-                    Cursor.lockState = CursorLockMode.Locked;
-                    Cursor.visible = false;
+                    inventoryUI.UpdateData(item.Key, item.Value.item.ItemImage, item.Value.quantity);
                 }
             }
-        }
-        
 
-    }
+
+        }
+
+        public void GoBack()
+        {
+            inventoryUI.Hide();
+        }
+
+    }   
 }

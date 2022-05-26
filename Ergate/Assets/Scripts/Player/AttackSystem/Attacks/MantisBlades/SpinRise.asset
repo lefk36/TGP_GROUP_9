@@ -15,6 +15,7 @@ MonoBehaviour:
   thisAttackState: {fileID: 11500000, guid: e16246a87e21e0a4589b3691d1de8ae0, type: 3}
   attackObject: {fileID: 5064823402312973434, guid: e5523370edbd1164a9b10e4d378b587c, type: 3}
   attackName: spinrise
+  soundName: playerKick
   chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5

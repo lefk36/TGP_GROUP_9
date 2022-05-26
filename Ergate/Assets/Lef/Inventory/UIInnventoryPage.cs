@@ -135,10 +135,9 @@ namespace Inventory.UI
         {
             gameObject.SetActive(true);
             ResetSelection();
-
-
         }
 
+      
         public void ResetSelection()
         {
             itemDescription.ResetDescription();

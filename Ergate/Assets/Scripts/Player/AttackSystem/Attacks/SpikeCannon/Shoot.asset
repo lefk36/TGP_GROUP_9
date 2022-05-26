@@ -15,7 +15,7 @@ MonoBehaviour:
   thisAttackState: {fileID: 11500000, guid: 8b14bcaa227cf904fab448dbdcb4e64f, type: 3}
   attackObject: {fileID: 1395322134253157773, guid: b61cdcaed09821240899290382d7d512, type: 3}
   attackName: spikeshot
-  soundName: 
+  soundName: gunShot
   chainableAttacks: []
   attackBeginningTime: 0.1
   attackTime: 0
