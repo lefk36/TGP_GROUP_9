@@ -99,6 +99,9 @@ namespace Inventory
         {
             if (Input.GetKeyDown(KeyCode.I))
             {
+                Time.timeScale = 0;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
                 if (inventoryUI.isActiveAndEnabled == false)
                 {
                     inventoryUI.Show();
@@ -110,9 +113,13 @@ namespace Inventory
                 else
                 {
                     inventoryUI.Hide();
+                    Time.timeScale = 1;
+                    Cursor.lockState = CursorLockMode.Locked;
+                    Cursor.visible = false;
                 }
             }
         }
+        
 
     }
 }

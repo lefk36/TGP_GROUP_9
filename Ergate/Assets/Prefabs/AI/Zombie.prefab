@@ -986,6 +986,9 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 8
   isOnGround: 0
+  itemPrefab: {fileID: 7076754497971872251, guid: d7a841eb99a7e0d4ca8fb3eada66cb5e, type: 3}
+  itemNum: 0
+  randNum: 0
 --- !u!114 &1450398814034216995
 MonoBehaviour:
   m_ObjectHideFlags: 0
