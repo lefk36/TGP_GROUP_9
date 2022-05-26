@@ -37,8 +37,15 @@ public class explosionScript : MonoBehaviour
             {
                 if(colliders[i].GetComponent<NavMeshAgent>() != null)
                 {
-                    //colliders[i].GetComponent<NavMeshAgent>().enabled = false;
-                    colliders[i].GetComponent<BaseEnemy>().TakeDamage(m_damage, true);
+                    
+                    if(colliders[i].GetComponent<BaseEnemy>() != null)
+                    {
+
+                        colliders[i].GetComponent<BaseEnemy>().TakeDamage(m_damage, true);
+                        colliders[i].GetComponent<NavMeshAgent>().enabled = false;
+                        Debug.Log("the enemy has taken damage");
+                    }
+                    
                 }
                 if(colliders[i].GetComponent<barrelStatsScript>() != null)
                 {
