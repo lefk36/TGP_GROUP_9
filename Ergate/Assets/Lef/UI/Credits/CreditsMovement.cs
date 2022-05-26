@@ -16,6 +16,10 @@ public class CreditsMovement : MonoBehaviour
     void CreditsMove(Vector2 direction)
     {
         transform.Translate(direction * speed * Time.deltaTime);
+        if(transform.position.y >= 2500)
+        {
+            speed = 0;
+        }
     }
 
 }

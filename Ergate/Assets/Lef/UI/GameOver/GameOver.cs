@@ -12,7 +12,7 @@ public class GameOver : MonoBehaviour
     void Start()
     {
         playButtons.SetActive(false);
-        Invoke("ButtonsActive", 2.0f);
+        Invoke("hordeMode", 2.0f);
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
     }
