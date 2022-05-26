@@ -32,6 +32,7 @@ public class NormalAirAttack : AttackState
         }
         yield return new WaitForSeconds(attackBeginningTime);
         rb.AddForce(0, 1 * attackRange, 0, ForceMode.Impulse);
+        playerScript.m_audioController.GetComponent<audioController>().play(soundName);
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
         yield return new WaitForSeconds(attackTime);
         playerScript.lockFalling = false;

@@ -14,6 +14,7 @@ public class AirSlamAttack : AttackState
         {
             if (playerScript.isOnGround)
             {
+                playerScript.m_audioController.GetComponent<audioController>().play(soundName);
                 attackInstance = Object.Instantiate(attackObject, attackParentObj);
                 attackInstance.transform.parent = null;
             }

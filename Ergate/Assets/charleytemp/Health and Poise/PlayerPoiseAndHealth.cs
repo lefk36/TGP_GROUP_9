@@ -38,6 +38,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     private playerSpawn m_PlayerSpawn;
     public bool m_IsDead = false;
     private AttackInput m_AttackInput;
+    public audioController m_audioController;
 
     void Awake()
     {
@@ -130,6 +131,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
     public void TakeDamage(Vector3 attackDirection, int healthDamageAmount, int poiseDamageAmount)
     {
         HealthBar.instance.RemoveHealth(healthDamageAmount);
+        m_audioController.play("playerTakingDamage");
         m_PlayerAnimator.SetTrigger("TakeDamage");
         Debug.Log("okayer damage taken");
         rb.AddForce(attackDirection, ForceMode.Impulse);

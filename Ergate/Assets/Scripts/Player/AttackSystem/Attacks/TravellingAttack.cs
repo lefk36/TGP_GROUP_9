@@ -30,6 +30,7 @@ public class TravellingAttack : AttackState
         }
         Rigidbody rb = playerScript.gameObject.GetComponent<Rigidbody>();
         playerScript.lockFalling = true;
+        playerScript.m_audioController.GetComponent<audioController>().play(soundName);
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
         Vector3 newAttackDirection = attackParentObj.rotation * attackDirection;
         float distanceTravelled = 0;
