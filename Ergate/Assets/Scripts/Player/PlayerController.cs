@@ -218,7 +218,7 @@ public class PlayerController : MonoBehaviour
             
             animator.SetBool("IsRunning", false);
             if (m_runAudio)
-            {
+            { 
                 m_audioController.GetComponent<audioController>().pauseClip("playerRunning");
                 m_runAudio = false;
             }
