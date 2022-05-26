@@ -27,12 +27,12 @@ public class GameOver : MonoBehaviour
 
     public void PlayButton()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene("hordeMode");
     }
 
     public void MainButton()
     {
-        SceneManager.LoadScene("MainMenu");
+        SceneManager.LoadScene("Lef_MainMenu");
     }
 
 }
