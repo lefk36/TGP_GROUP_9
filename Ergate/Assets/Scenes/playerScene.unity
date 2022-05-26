@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: wheelEventSystem
       value: 
       objectReference: {fileID: 622315772}
+    - target: {fileID: 18877949, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: m_audioController
+      value: 
+      objectReference: {fileID: 76268992}
     - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_player
       value: 
@@ -273,6 +277,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ebaff622c5d53dd428ed339bcdc70401, type: 3}
+--- !u!114 &76268992 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2735059268387317989, guid: ebaff622c5d53dd428ed339bcdc70401, type: 3}
+  m_PrefabInstance: {fileID: 76268991}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46ee3efc260765e4484ecdbb90f0a7c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &90676267 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 90676267, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
