@@ -21,6 +21,8 @@ public class menuManager : MonoBehaviour
     private float masterVolume;
     private float musicVolume;
     private float soundEffectVolume;
+    private float mouseSensitivity;
+    private float controllerSensitivity;
 
    
 
@@ -36,9 +38,11 @@ public class menuManager : MonoBehaviour
         audioMixer.GetFloat("masterVolume", out masterVolume);
         audioMixer.GetFloat("musicVolume", out musicVolume);
         audioMixer.GetFloat("soundEffectVolume", out soundEffectVolume);
+        mouseSensitivity = cameraSensitivity.m_MouseSensitivity;
+        controllerSensitivity = cameraSensitivity.m_ControllerSensitivity;
 
-        sensContrSlider.value = cameraSensitivity.m_ControllerSensitivity;
-        sensMouseSlider.value = cameraSensitivity.m_MouseSensitivity;
+        sensMouseSlider.value = mouseSensitivity;
+        sensContrSlider.value = controllerSensitivity;
         masterSlider.value = masterVolume;
         musicSlider.value = musicVolume;
         soundEffectSlider.value = soundEffectVolume;
