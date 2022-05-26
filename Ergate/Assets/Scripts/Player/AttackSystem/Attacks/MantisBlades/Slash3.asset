@@ -15,9 +15,11 @@ MonoBehaviour:
   thisAttackState: {fileID: 11500000, guid: 634f6f3295fb0944a99157f26803835a, type: 3}
   attackObject: {fileID: 7320784251681795308, guid: 6b79c4d8fa2c3e34c9c01ddc7af8c605, type: 3}
   attackName: slash3
+  soundName: chargedPunch
   chainableAttacks: []
   attackBeginningTime: 0.3
   attackTime: 0.5
+  attackEndTime: 0
   attackRange: 1
   toEnemy: 1
   attackDirection: {x: 0, y: 0, z: 0}
