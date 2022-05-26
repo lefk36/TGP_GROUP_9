@@ -7,7 +7,7 @@ public class ItemHealthModifier : CharacterModifications
 {
     public override void AffectCharacterStats(GameObject character, float val)
     {
-        HealthBar.instance.AddHealth((int)val);
-
+        //HealthBar.instance.AddHealth((int)val);
+        Debug.Log("Heal Amount : " + val);
     }
 }

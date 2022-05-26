@@ -252,7 +252,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inventoryUI: {fileID: 1351359999}
   inventoryData: {fileID: 11400000, guid: 443d805dece9952429a5dc5ce2758ea6, type: 2}
-  initialItems: []
+  initialItems:
+  - quantity: 1
+    item: {fileID: 11400000, guid: f4b4a488fd88fbe468af1ad22ed727af, type: 2}
 --- !u!114 &237319909
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -923,7 +925,7 @@ PrefabInstance:
     - target: {fileID: 4807927978124915124, guid: af734e2b9e447824b9241c3c9988e043, type: 3}
       propertyPath: <InventoryItem>k__BackingField
       value: 
-      objectReference: {fileID: 11400000, guid: bacaf77e5922d224b84c1cfdfac597f9, type: 2}
+      objectReference: {fileID: 11400000, guid: f4b4a488fd88fbe468af1ad22ed727af, type: 2}
     - target: {fileID: 4807927978124915125, guid: af734e2b9e447824b9241c3c9988e043, type: 3}
       propertyPath: m_RootOrder
       value: 6
@@ -1416,6 +1418,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4807927978124915124, guid: af734e2b9e447824b9241c3c9988e043, type: 3}
+      propertyPath: <InventoryItem>k__BackingField
+      value: 
+      objectReference: {fileID: 11400000, guid: f4b4a488fd88fbe468af1ad22ed727af, type: 2}
     - target: {fileID: 4807927978124915125, guid: af734e2b9e447824b9241c3c9988e043, type: 3}
       propertyPath: m_RootOrder
       value: 5

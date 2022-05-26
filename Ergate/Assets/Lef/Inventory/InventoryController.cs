@@ -57,7 +57,16 @@ namespace Inventory
             InventoryItem inventoryItem = inventoryData.GetItemAt(itemIndex);
             if (inventoryItem.IsEmpty)
                 return;
-           
+            IItemAction itemAction = inventoryItem.item as IItemAction;
+            if(itemAction != null)
+            {
+                itemAction.IsAction(gameObject);
+            }
+            IDestroyableItem destroyable = inventoryItem.item as IDestroyableItem;
+            if(destroyable != null)
+            {
+                inventoryData.RemoveItem(itemIndex,1);
+            }
         }
 
         private void SignalDragging(int itemIndex)

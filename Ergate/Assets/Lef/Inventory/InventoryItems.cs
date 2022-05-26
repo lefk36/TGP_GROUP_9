@@ -73,6 +73,22 @@ namespace Inventory.Model
             return m_quantity;
         }
 
+        public void RemoveItem(int itemIndex, int amount)
+        {
+           if(m_inventoryItems.Count > itemIndex)
+            {
+                if (m_inventoryItems[itemIndex].IsEmpty)
+                    return;
+                int reminder = m_inventoryItems[itemIndex].quantity - amount;
+                if (reminder <= 0)
+                    m_inventoryItems[itemIndex] = InventoryItem.GetEmptyItem();
+                else
+                    m_inventoryItems[itemIndex] = m_inventoryItems[itemIndex].ChangeQuantity(reminder);
+
+                InformItemChange();
+            }
+        }
+
         private int AddNonStackableItem(Item_s m_item, int m_quantity)
         {
             InventoryItem newItem = new InventoryItem
