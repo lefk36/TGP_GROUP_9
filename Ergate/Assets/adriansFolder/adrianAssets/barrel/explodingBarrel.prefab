@@ -144,7 +144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f996a75ad3cf5446ace0ad0db8c63ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_health: 50
+  m_health: 20
 --- !u!114 &2836581008726113575
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -157,8 +157,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2781284ac61e1964184501b8f05bda29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_radius: 2
-  m_explosionForce: 1000
+  m_radius: 3.6
+  m_explosionForce: 350
   m_damage: 100
   m_explosionParticles: {fileID: 2083962581129970134, guid: 42fcaaa00f6fe0c459ced0f8df045434, type: 3}
 --- !u!54 &2836581008726113581
