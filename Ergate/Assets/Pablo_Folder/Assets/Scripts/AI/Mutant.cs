@@ -142,7 +142,7 @@ public class Mutant : BaseEnemy
         }
         if (m_PlayerStats == null)
         {
-            m_PlayerStats = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerPoiseAndHealth>();
+            m_PlayerStats = GameObject.FindObjectOfType<PlayerPoiseAndHealth>();
         }
         if (m_Target == null)
         {
