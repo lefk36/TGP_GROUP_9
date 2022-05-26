@@ -6,75 +6,83 @@ using UnityEngine.UI;
 using TMPro;
 using UnityEngine.EventSystems;
 
-public  class ItemScript : MonoBehaviour
+namespace Inventory.UI
 {
-    [SerializeField] private Image itemImage;
-
-    [SerializeField] private TMP_Text quantityText;
-
-    [SerializeField] private Image frameImage;
-
-    public event Action<ItemScript> OnItemClicked, OnItemOnItemBeginDrag, OnItemEndDrag, OnRightMouseClicked, OnItemSwap;
-
-
-    private bool empty = true;
-
-    private void Awake()
+    public class ItemScript : MonoBehaviour, IPointerClickHandler, IBeginDragHandler, IEndDragHandler, IDragHandler
     {
-        ResetData();
-        Deselect();
-    }
+        [SerializeField] private Image itemImage;
 
-    public void ResetData()
-    {
-        this.itemImage.gameObject.SetActive(false);
-        empty = true;
-    }
+        [SerializeField] private TMP_Text quantityText;
 
-    public void Deselect()
-    {
-        frameImage.enabled = false;
-    }
+        [SerializeField] private Image frameImage;
 
-    public void SetData(Sprite sprite, int quantity)
-    {
-        this.itemImage.gameObject.SetActive(true);
-        this.itemImage.sprite = sprite;
-        this.quantityText.text = quantity + "";
-        empty = false;
-    }
+        public event Action<ItemScript> OnItemClicked, OnItemOnItemBeginDrag, OnItemEndDrag, OnRightMouseClicked, OnItemSwap;
 
-    public void Select()
-    {
-        frameImage.enabled = true;
-    }
 
-    public void OnBeginDrag()
-    {
-        if (empty == true)
+        private bool empty = true;
+
+        private void Awake()
         {
-            return;
+            ResetData();
+            Deselect();
         }
-        OnItemOnItemBeginDrag?.Invoke(this);
-    }
 
-    public void OnEndDrag()
-    {
-        OnItemEndDrag?.Invoke(this);
-    }
-
-    public void OnPointerClick(BaseEventData data)
-    {
-        PointerEventData pointerData = (PointerEventData)data;
-        if(pointerData.button == PointerEventData.InputButton.Right)
+        public void ResetData()
         {
-            OnRightMouseClicked?.Invoke(this);
+            this.itemImage.gameObject.SetActive(false);
+            empty = true;
         }
-        else
+
+        public void Deselect()
         {
-            OnItemClicked?.Invoke(this);
+            frameImage.enabled = false;
+        }
+
+        public void SetData(Sprite sprite, int quantity)
+        {
+            this.itemImage.gameObject.SetActive(true);
+            this.itemImage.sprite = sprite;
+            this.quantityText.text = quantity + "";
+            empty = false;
+        }
+
+        public void Select()
+        {
+            frameImage.enabled = true;
+        }
+
+
+        public void OnPointerClick(PointerEventData pointerData)
+        {
+
+            if (pointerData.button == PointerEventData.InputButton.Right)
+            {
+                OnRightMouseClicked?.Invoke(this);
+            }
+            else
+            {
+                OnItemClicked?.Invoke(this);
+            }
+        }
+
+        public void OnBeginDrag(PointerEventData eventData)
+        {
+            if (empty == true)
+            {
+                return;
+            }
+            OnItemOnItemBeginDrag?.Invoke(this);
+        }
+
+        public void OnEndDrag(PointerEventData eventData)
+        {
+            OnItemEndDrag?.Invoke(this);
+        }
+
+        public void OnDrag(PointerEventData eventData)
+        {
+            //Unity nedds this function for this to work, don't delete pls
         }
     }
-
 }
 
