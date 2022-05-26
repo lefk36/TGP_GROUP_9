@@ -28,6 +28,8 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
     public LayerMask m_Ground;
     public bool isOnGround;
 
+    public GameObject itemPrefab;
+
     public void TakeDamage(float damageTaken, bool p_lockFalling)
     {
         lockFalling = p_lockFalling;
@@ -95,6 +97,12 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         m_Agent.enabled = false;
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
+        
+    }
+
+    public void DropItem()
+    {
+
     }
 }
 
@@ -107,4 +115,5 @@ interface IEnemy
     void SetEnemyPath();
     void NotTakingDamage();
 
+    void DropItem();
 }
