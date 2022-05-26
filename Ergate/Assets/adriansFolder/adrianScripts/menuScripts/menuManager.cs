@@ -10,6 +10,8 @@ public class menuManager : MonoBehaviour
     public Slider masterSlider;
     public Slider soundEffectSlider;
     public Slider musicSlider;
+    public GameObject settingsMenu;
+    public GameObject mainMenu;
 
     private float masterVolume;
     private float musicVolume;
@@ -57,11 +59,23 @@ public class menuManager : MonoBehaviour
 
     public void startGame()
     {
-        SceneManager.LoadScene("basicLevelTestScene", LoadSceneMode.Single);
+        SceneManager.LoadScene("hordeMode", LoadSceneMode.Single);
     }
 
     public void quitGame()
     {
         Application.Quit();
+    }
+
+    public void loadSettingsMenu()
+    {
+        settingsMenu.SetActive(true);
+        mainMenu.SetActive(false);
+    }
+
+    public void backToMain()
+    {
+        settingsMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 }

@@ -77,7 +77,7 @@ public class PlayerPoiseAndHealth : MonoBehaviour
 
     private void Update()
     {
-        m_timeBetweenHealthRegen -= Time.deltaTime;
+        //m_timeBetweenHealthRegen -= Time.deltaTime;
         //m_timeBetweenPoiseRegen -= Time.deltaTime;
         if (m_currentPlayerHealth <= m_minimumHealth)
             m_currentPlayerHealth = m_minimumHealth;
@@ -94,11 +94,11 @@ public class PlayerPoiseAndHealth : MonoBehaviour
         }
 
 
-        if (m_currentPlayerHealth <= m_maximumHealth && m_timeBetweenHealthRegen <= 0)
-        {
-            m_currentPlayerHealth += m_currentPlayerHealthRegen;
-            m_timeBetweenHealthRegen = 5f;
-        }
+        //if (m_currentPlayerHealth <= m_maximumHealth && m_timeBetweenHealthRegen <= 0)
+        //{
+        //    m_currentPlayerHealth += m_currentPlayerHealthRegen;
+        //    m_timeBetweenHealthRegen = 5f;
+        //}
         #endregion
 
     }
