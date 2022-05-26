@@ -9,12 +9,15 @@ EditorBuildSettings:
     path: Assets/Scenes/Lef_MainMenu.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   - enabled: 1
-    path: Assets/Scenes/basicLevelTestScene.unity
-    guid: 18158b74d1056004b9f1e8398e4c134e
+    path: Assets/Scenes/hordeMode.unity
+    guid: 917172bc5bb852249832ee24e4a8b71f
   - enabled: 1
     path: Assets/Scenes/GameOver.unity
     guid: db1ab498c1e2aa6468956ffd8a11e942
   - enabled: 1
     path: Assets/Scenes/playerScene.unity
     guid: eef5d93c48a3bd741af3331e2b7d51f5
+  - enabled: 1
+    path: Assets/Scenes/Credits.unity
+    guid: 3d62af1c311f311408970c09ebd56834
   m_configObjects: {}
