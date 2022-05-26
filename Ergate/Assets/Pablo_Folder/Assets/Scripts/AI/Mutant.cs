@@ -57,11 +57,11 @@ public class Mutant : BaseEnemy
             m_Animator.SetBool("IsRunning", true);
         }
 
-        if (rb.velocity.y < -0.1f)
+        if (Mathf.Abs(rb.velocity.y) > 0.1 && !isOnGround)
         {
             m_Animator.SetBool("IsFalling", true);
         }
-        else if (rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
+        else if (isOnGround)
         {
             m_Animator.SetBool("IsFalling", false);
         }
