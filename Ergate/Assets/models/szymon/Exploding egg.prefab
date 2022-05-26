@@ -141,6 +141,7 @@ GameObject:
   - component: {fileID: 5141325984431535619}
   - component: {fileID: 8811584551258889855}
   - component: {fileID: 2597819810766947126}
+  - component: {fileID: 2192977239153395730}
   m_Layer: 3
   m_Name: Exploding egg
   m_TagString: Untagged
@@ -251,6 +252,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_health: 20
+--- !u!208 &2192977239153395730
+NavMeshObstacle:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2288954430139389210}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Shape: 1
+  m_Extents: {x: 0.5, y: 0.5, z: 0.5}
+  m_MoveThreshold: 0.1
+  m_Carve: 0
+  m_CarveOnlyStationary: 1
+  m_Center: {x: 0, y: 0, z: 0}
+  m_TimeToStationary: 0.5
 --- !u!1 &3342809217732550761
 GameObject:
   m_ObjectHideFlags: 0

@@ -150,6 +150,10 @@ PrefabInstance:
       propertyPath: m_audioController
       value: 
       objectReference: {fileID: 76268992}
+    - target: {fileID: 813576615, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: inventoryUI
+      value: 
+      objectReference: {fileID: 75477999}
     - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_player
       value: 
@@ -1177,39 +1181,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &813576614 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7393055299828996669, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
-  m_PrefabInstance: {fileID: 18877942}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &813576615
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813576614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe8e5db099d6c6d40bbb45d2c00691d3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryUI: {fileID: 75477999}
-  inventoryData: {fileID: 11400000, guid: 443d805dece9952429a5dc5ce2758ea6, type: 2}
-  initialItems: []
---- !u!114 &813576616
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 813576614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5cef5bd771404144895391e890201d82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  inventoryData: {fileID: 11400000, guid: 443d805dece9952429a5dc5ce2758ea6, type: 2}
 --- !u!114 &1243017628 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1243017628, guid: db685156d4af3604e83a8679ba54dd5f, type: 3}
