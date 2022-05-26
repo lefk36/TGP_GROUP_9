@@ -146,6 +146,10 @@ PrefabInstance:
       propertyPath: wheelEventSystem
       value: 
       objectReference: {fileID: 622315772}
+    - target: {fileID: 18877947, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
+      propertyPath: baseAttackData
+      value: 
+      objectReference: {fileID: 11400000, guid: 28a51a538d778154e96a29e80aba7db8, type: 2}
     - target: {fileID: 5708728538087310303, guid: dc3e8a0a6503ec94c8988c56bec8405c, type: 3}
       propertyPath: m_player
       value: 
