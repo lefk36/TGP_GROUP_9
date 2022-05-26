@@ -6,10 +6,10 @@ public class Camera_Movement : MonoBehaviour
 {
 
     [Range(0f, 100f)] //Made it a range so it can be changed in inspector
-    [Min(0f)] [SerializeField] private float m_MouseSensitivity; //Mouse Sensitivity of the camera
+    [Min(0f)] [SerializeField] public float m_MouseSensitivity; //Mouse Sensitivity of the camera
 
     [Range(0f, 100f)]
-    [Min(0f)] [SerializeField] private float m_ControllerSensitivity; //Controller Sensitivity of the camera
+    [Min(0f)] [SerializeField] public float m_ControllerSensitivity; //Controller Sensitivity of the camera
 
     [Range(0f, 80f)]
     [Min(0f)] [SerializeField] private float m_ClampAngle;//Limit angle movement X rotation
