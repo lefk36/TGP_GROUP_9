@@ -30,6 +30,9 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
 
     public GameObject itemPrefab;
 
+    [HideInInspector] public int itemNum;
+    [HideInInspector] public int randNum;
+
     public void TakeDamage(float damageTaken, bool p_lockFalling)
     {
         lockFalling = p_lockFalling;
@@ -97,11 +100,22 @@ public abstract class BaseEnemy : MonoBehaviour, IEnemy
         m_Agent.enabled = false;
         yield return new WaitForSeconds(3f);
         Destroy(gameObject);
-        
+        DropItem();
     }
 
     public void DropItem()
     {
+        randNum = Random.Range(0, 101);
+        if (randNum > 95)
+        {
+            itemNum = 1;
+            GameObject pickableItem = Instantiate(itemPrefab, transform.position, Quaternion.identity) as GameObject;
+        }
+        else if(randNum >= 45 && randNum <= 75)
+        {
+            itemNum = 1;
+            GameObject pickableItem = Instantiate(itemPrefab, transform.position, Quaternion.identity) as GameObject;
+        }
 
     }
 }
