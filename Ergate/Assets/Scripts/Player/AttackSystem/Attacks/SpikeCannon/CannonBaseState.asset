@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 552be0acfc98da24a845f9ba84923343, type: 3}
+  m_Name: CannonBaseState
+  m_EditorClassIdentifier: 
+  thisAttackState: {fileID: 11500000, guid: 3c5b615c01c50864d92429a49925c38b, type: 3}
+  attackObject: {fileID: 6856500945413422900, guid: 4cfbca9b6b1316040a00da4a4079fd61, type: 3}
+  attackName: cannonBase
+  chainableAttacks:
+  - {fileID: 11400000, guid: 94013a002a7142e409bfee5aa86ec403, type: 2}
+  - {fileID: 11400000, guid: bdb4efb1841a8da4eb502d7ea3e6ae50, type: 2}
+  attackBeginningTime: 0
+  attackTime: 0
+  attackEndTime: 0
+  attackRange: 1
+  toEnemy: 1
+  attackDirection: {x: 0, y: 0, z: 0}
+  speed: 0
+  stoppingPower: 1
+  animationTriggerName: 
+  airRequired: 0
+  timeHeldRequired: 0
+  buttonRequired: 
