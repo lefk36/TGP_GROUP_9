@@ -10,7 +10,7 @@ public class Swat : BaseEnemy
     // Start is called before the first frame update
     void Start()
     {
-        m_Health = 100f;
+        m_Health = 20f;
         m_Animator = GetComponent<Animator>();
         m_Agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();

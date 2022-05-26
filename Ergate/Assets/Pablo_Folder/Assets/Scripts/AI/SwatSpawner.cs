@@ -7,10 +7,6 @@ public class SwatSpawner : BaseSpawner
     private Swat m_SwatInstance;
     private Swat m_SwatCopy;
 
-    private void Start()
-    {
-        m_EnemiesToBeSpawnedHold = m_EnemiesToBeSpawned;
-    }
     private void OnEnable()
     {
         m_SwatInstance = m_Prefab.GetComponent<Swat>();

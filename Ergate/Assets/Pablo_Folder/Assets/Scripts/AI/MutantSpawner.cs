@@ -7,10 +7,6 @@ public class MutantSpawner : BaseSpawner
     private Mutant m_MutantInstance;
     private Mutant m_MutantCopy;
     // Start is called before the first frame update
-    private void Start()
-    {
-        m_EnemiesToBeSpawnedHold = m_EnemiesToBeSpawned;
-    }
     private void OnEnable()
     {
         m_MutantInstance = m_Prefab.GetComponent<Mutant>();

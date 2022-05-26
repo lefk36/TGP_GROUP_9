@@ -12,7 +12,7 @@ public class Mutant : BaseEnemy
 
     private void Start()
     {
-        m_Health = 300f;
+        m_Health = 100f;
         m_HealthDamage = 40;
         m_RotationRate = 5;
         m_PoiseDamage = 30;

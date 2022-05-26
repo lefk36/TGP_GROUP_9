@@ -3183,6 +3183,10 @@ PrefabInstance:
       propertyPath: m_EnemiesToBeSpawned
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 65037439743250079, guid: 1bc52896135c4ce49b704bea66aede21, type: 3}
+      propertyPath: m_EnemiesToBeSpawnedHold
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6146977058419525750, guid: 1bc52896135c4ce49b704bea66aede21, type: 3}
       propertyPath: m_RootOrder
       value: 13
@@ -5002,6 +5006,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 65037439743250079, guid: 1bc52896135c4ce49b704bea66aede21, type: 3}
       propertyPath: m_EnemiesToBeSpawned
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 65037439743250079, guid: 1bc52896135c4ce49b704bea66aede21, type: 3}
+      propertyPath: m_EnemiesToBeSpawnedHold
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6146977058419525750, guid: 1bc52896135c4ce49b704bea66aede21, type: 3}
@@ -10193,6 +10201,10 @@ PrefabInstance:
       propertyPath: m_EnemiesToBeSpawned
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 4178219638620925230, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
+      propertyPath: m_EnemiesToBeSpawnedHold
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4178219638620925231, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -10542,6 +10554,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178219638620925230, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
       propertyPath: m_EnemiesToBeSpawned
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178219638620925230, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
+      propertyPath: m_EnemiesToBeSpawnedHold
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4178219638620925231, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
@@ -13211,6 +13227,10 @@ PrefabInstance:
       propertyPath: m_EnemiesMaxSpawn
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 4178219638620925230, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
+      propertyPath: m_EnemiesToBeSpawnedHold
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 4178219638620925231, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
       propertyPath: m_RootOrder
       value: 9
@@ -13390,10 +13410,10 @@ Transform:
   - {fileID: 1163020520}
   - {fileID: 1813440233}
   - {fileID: 603449998}
+  - {fileID: 1625140488}
   - {fileID: 1020104277}
   - {fileID: 848305826}
   - {fileID: 1013009659}
-  - {fileID: 1625140488}
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17395,7 +17415,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1208618134}
-  m_RootOrder: 13
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 56.96, y: 43.696, z: 18.237}
 --- !u!108 &1625140489
 Light:
@@ -18136,6 +18156,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4178219638620925230, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
       propertyPath: m_EnemiesToBeSpawned
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4178219638620925230, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
+      propertyPath: m_EnemiesToBeSpawnedHold
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4178219638620925231, guid: 4c40c1e8aadbf9c4aa533a2356c9f419, type: 3}
@@ -20379,6 +20403,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3584427857939599689, guid: 87a7866a9d3212c4ea5df3f44df5329e, type: 3}
+      propertyPath: m_EnemiesToBeSpawnedHold
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9111837194770901227, guid: 87a7866a9d3212c4ea5df3f44df5329e, type: 3}
       propertyPath: m_RootOrder
       value: 8
@@ -20674,6 +20702,10 @@ PrefabInstance:
     - target: {fileID: 4450992694127786520, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
       propertyPath: m_Name
       value: PlayerEnterCheck (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450992694127786520, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4983476396324883536, guid: f8bfadfebbdf9274c8b6c4a4d1d06620, type: 3}
       propertyPath: m_LocalPosition.x
