@@ -150,7 +150,7 @@ public class Mutant : BaseEnemy
         }
         if (m_CameraLock == null)
         {
-            m_CameraLock = GameObject.FindGameObjectWithTag("Player").transform.Find("Camera Centre").GetChild(0).GetComponent<EnemiesCameraLock>();
+            m_CameraLock = GameObject.FindGameObjectWithTag("MainCamera").GetComponent<EnemiesCameraLock>();
         }
         yield return null;
     }
