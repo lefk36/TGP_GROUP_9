@@ -55,11 +55,11 @@ public class Zombie : BaseEnemy
             m_Animator.SetBool("IsRunning", true);
         }
 
-        if(Mathf.Abs(rb.velocity.y) > 0.1f && !isOnGround)
+        if(rb.velocity.y < -0.1f)
         {
             m_Animator.SetBool("IsFalling", true);
         }
-        else if(isOnGround)
+        else if(rb.velocity.y > -0.1f && rb.velocity.y < 0.1f)
         {
             m_Animator.SetBool("IsFalling", false);
         }
