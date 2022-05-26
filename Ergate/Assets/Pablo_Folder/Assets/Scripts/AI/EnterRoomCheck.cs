@@ -9,6 +9,7 @@ public class EnterRoomCheck : MonoBehaviour
     [SerializeField] private GameObject m_WallWeb;
     [SerializeField] private GameObject m_EndWallWeb;
     private bool m_EnemiesPresent;
+    private bool m_EnterRoomResetIsDone;
 
     private gameManager manager;
 
@@ -20,12 +21,16 @@ public class EnterRoomCheck : MonoBehaviour
     }
     private void Update()
     {
-        m_EnemiesPresent = false;
+        
         foreach(BaseSpawner spawner in m_SpawnerList)
         {
             if(spawner.m_EnemiesToBeDeleted.Count > 0 || spawner.m_EnemiesToBeSpawned != 0)
             {
                 m_EnemiesPresent = true;
+            }
+            else
+            {
+                m_EnemiesPresent = false;
             }
         }
 
@@ -35,9 +40,10 @@ public class EnterRoomCheck : MonoBehaviour
               m_EndWallWeb.SetActive(false);
         }
 
-        if (m_PlayerStats != null && m_PlayerStats.m_IsDead)
+        if (m_PlayerStats != null && m_PlayerStats.m_IsDead && !m_EnterRoomResetIsDone)
         {
             StartCoroutine(SpawnerResetDelay());
+            
         }
     }
 
@@ -66,6 +72,7 @@ public class EnterRoomCheck : MonoBehaviour
 
         m_WallWeb.SetActive(false);
         m_EndWallWeb.SetActive(false);
+        m_EnterRoomResetIsDone = true;
     }
     IEnumerator WaitForSceneLoad()
     {

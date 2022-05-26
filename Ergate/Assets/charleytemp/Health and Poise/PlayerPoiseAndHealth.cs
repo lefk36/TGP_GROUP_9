@@ -141,7 +141,6 @@ public class PlayerPoiseAndHealth : MonoBehaviour
 
     void PlayerDie()
     {
-        Debug.LogError("you are dead now. RIP");
         m_PlayerController.lockMovement = true;        //stuns the player while they're DEAD
         m_PlayerController.lockAttackDirection = true; //
         m_PlayerController.readyForAction = false; //
