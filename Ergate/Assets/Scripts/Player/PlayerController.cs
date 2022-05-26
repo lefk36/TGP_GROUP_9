@@ -332,23 +332,23 @@ public class PlayerController : MonoBehaviour
         
 
     }
-    void RotateObjectToDirection(Vector3 direction, Transform target, float timeToRotate, ref float outVelocity)
+    public void RotateObjectToDirection(Vector3 direction, Transform target, float timeToRotate, ref float outVelocity)
     {
         float targetAngle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg; //Calculates the angle on which to rotate the character
         float angle = Mathf.SmoothDampAngle(target.eulerAngles.y, targetAngle, ref outVelocity, timeToRotate); // Function to smooth the angle movement
         target.rotation = Quaternion.Euler(0f, angle, 0f);
     }
-    void RotateObjectToDirection(float targetAngle, Transform target, float timeToRotate, ref float outVelocity)
+    public void RotateObjectToDirection(float targetAngle, Transform target, float timeToRotate, ref float outVelocity)
     {
         float angle = Mathf.SmoothDampAngle(target.eulerAngles.y, targetAngle, ref outVelocity, timeToRotate); // Function to smooth the angle movement
         target.rotation = Quaternion.Euler(0f, angle, 0f);
     }
-    void RotateObjectToDirectionInstant(Vector3 direction, Transform target)
+    public void RotateObjectToDirectionInstant(Vector3 direction, Transform target)
     {
         float angle = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg; //Calculates the angle on which to rotate the character
         target.rotation = Quaternion.Euler(0f, angle, 0f);
     }
-    void RotateObjectToDirectionInstant(float targetAngle, Transform target)
+    public void RotateObjectToDirectionInstant(float targetAngle, Transform target)
     {
         target.rotation = Quaternion.Euler(0f, targetAngle, 0f);
     }
