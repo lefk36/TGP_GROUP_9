@@ -22,6 +22,7 @@ public class ShootingAttack : AttackState
         Vector3 direction = hit.point - playerScript.transform.position;
         playerScript.RotateObjectToDirectionInstant(direction, attackParentObj);
         yield return new WaitForSeconds(attackBeginningTime);
+        playerScript.m_audioController.GetComponent<audioController>().play(soundName);
         attackInstance = GameObject.Instantiate(attackObject, playerScript.transform.position, Quaternion.Euler(0, 0, 0));
         if (Physics.Raycast(playerScript.camera.transform.position, playerScript.camera.transform.forward, out hit, Mathf.Infinity))
         {

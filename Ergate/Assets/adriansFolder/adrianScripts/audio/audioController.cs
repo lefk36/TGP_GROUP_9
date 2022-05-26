@@ -74,7 +74,10 @@ public class audioController : MonoBehaviour
             }
             else
             {
-                Debug.Log("no sound exists with that name");
+                if(name != "")
+                {
+                    Debug.Log("no sound exists with that name");
+                }
             }
         }
 

@@ -21,6 +21,7 @@ public class AttackState
     protected bool toEnemy;
     protected float speed;
     protected float stoppingPower;
+    protected string soundName;
 
     protected GameObject attackInstance;
     public void SetAttackObject(GameObject p_attackObject)
@@ -31,7 +32,7 @@ public class AttackState
     {
         playerScript = p_playerScript;
     }
-    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string p_animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed, float p_stoppingPower, float p_attackEndTime)
+    public void SetAttackDataVariables(float p_beginningTime, float p_attackTime, float p_range, string p_animationTrigger, Vector3 p_attackDirection, bool p_toEnemy, float p_speed, float p_stoppingPower, float p_attackEndTime, string p_soundName)
     {
         attackBeginningTime = p_beginningTime;
         attackTime = p_attackTime;
@@ -42,6 +43,7 @@ public class AttackState
         attackDirection = p_attackDirection;
         speed = p_speed;
         stoppingPower = p_stoppingPower;
+        soundName = p_soundName;
     }
     public virtual void SetVariables(PlayerController p_playerScript, Transform p_attackParentObj, Vector3 p_targetPos, Animator anim)
     {

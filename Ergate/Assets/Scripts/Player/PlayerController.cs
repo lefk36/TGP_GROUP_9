@@ -62,7 +62,7 @@ public class PlayerController : MonoBehaviour
     bool doubleJumped = false;
 
     //variables for audio
-    private GameObject m_audioController;
+    [HideInInspector] public GameObject m_audioController;
     private bool m_runAudio = false;
 
 

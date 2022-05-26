@@ -28,6 +28,7 @@ public class NormalStandingAttack : AttackState
             playerAnimator.SetTrigger(animationTrigger);
         }
         yield return new WaitForSeconds(attackBeginningTime);
+        playerScript.m_audioController.GetComponent<audioController>().play(soundName);
         attackInstance = Object.Instantiate(attackObject, attackParentObj);
         attackInstance.transform.parent = null;
         yield return new WaitForSeconds(attackTime);

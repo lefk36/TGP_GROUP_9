@@ -10,6 +10,7 @@ public class AttackData : ScriptableObject
     [SerializeField] private GameObject attackObject;
     [HideInInspector] public AttackState state;
     public string attackName;
+    public string soundName;
     private AttackData transitionAttackData;
     public List<AttackData> chainableAttacks;
     public float attackBeginningTime = 0;
@@ -39,7 +40,7 @@ public class AttackData : ScriptableObject
                 state.SetAttackObject(attackObject);
             }
             attackDirection = attackDirection.normalized;
-            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName, attackDirection, toEnemy, speed, stoppingPower, attackEndTime);
+            state.SetAttackDataVariables(attackBeginningTime, attackTime, attackRange, animationTriggerName, attackDirection, toEnemy, speed, stoppingPower, attackEndTime, soundName);
         }
     }
     public bool airRequired;
