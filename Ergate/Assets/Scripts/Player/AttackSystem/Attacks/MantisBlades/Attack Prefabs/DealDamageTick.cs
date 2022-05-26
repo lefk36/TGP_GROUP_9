@@ -5,13 +5,36 @@ using UnityEngine.AI;
 public class DealDamageTick : MonoBehaviour
 {
     public float tickRate;
+    float soundTime;
     public float damagePerTick;
+    public string soundName;
+    public audioController audioControllerScript;
     public Vector3 force;
 
     Dictionary<GameObject, float> trackedEnemies;
     private void Start()
     {
+        soundName = "";
+        audioControllerScript = null;
+        soundTime = tickRate;
         trackedEnemies = new Dictionary<GameObject, float>();
+    }
+    private void Update()
+    {
+        soundTime += Time.deltaTime;
+        if(soundTime > tickRate)
+        {
+            soundTime = 0;
+            if(soundName != "" && audioControllerScript != null)
+            {
+                audioControllerScript.play(soundName);
+            }
+        }
+    }
+    public void SetAudio(string p_soundName, audioController p_audioController)
+    {
+        soundName = p_soundName;
+        audioControllerScript = p_audioController;
     }
     private void OnTriggerEnter(Collider other)
     {
