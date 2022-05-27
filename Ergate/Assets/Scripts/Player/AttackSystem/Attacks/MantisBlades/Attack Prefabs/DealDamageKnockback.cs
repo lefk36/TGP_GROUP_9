@@ -22,29 +22,30 @@ public class DealDamageKnockback : MonoBehaviour
             BaseEnemy enemyScript = enemy.GetComponent<BaseEnemy>();
             if (!enemyScript.isDead)
             {
-            damagedEnemies.Add(enemy);
-            Vector3 knockbackForceDirection;
-            if (!overrideDirection)
-            {
-                Vector3 positionNoY = new Vector3(transform.position.x, enemy.transform.position.y, transform.position.z);
-                knockbackForceDirection = enemy.transform.position - positionNoY;
-            }
-            else
-            {
-                if (!rotate)
+                damagedEnemies.Add(enemy);
+                Vector3 knockbackForceDirection;
+                if (!overrideDirection)
                 {
-                    knockbackForceDirection = newDirection;
+                    Vector3 positionNoY = new Vector3(transform.position.x, enemy.transform.position.y, transform.position.z);
+                    knockbackForceDirection = enemy.transform.position - positionNoY;
                 }
                 else
                 {
-                    knockbackForceDirection = transform.rotation * newDirection;
+                    if (!rotate)
+                    {
+                        knockbackForceDirection = newDirection;
+                    }
+                    else
+                    {
+                        knockbackForceDirection = transform.rotation * newDirection;
+                    }
                 }
-            }
-            knockbackForceDirection.Normalize();
-            enemyScript.m_Agent.enabled = false;
+                knockbackForceDirection.Normalize();
+                enemyScript.m_Agent.enabled = false;
 
-            enemyScript.rb.velocity = new Vector3(0, 0, 0);
-            enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
+                enemyScript.rb.velocity = new Vector3(0, 0, 0);
+                enemyScript.rb.AddForce(knockbackForceDirection * knockPower, ForceMode.Impulse);
+                enemyScript.TakeDamage(damage, false);
             }
         }
         if (other.tag == "barrel" && !damagedEnemies.Contains(other.transform.parent.gameObject))
